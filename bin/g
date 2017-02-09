@@ -2,5 +2,5 @@
 OUT=`basename ${1} .sourceps`.out.ps
 `dirname $0`/gw "$@"
 xdg-open $OUT
-# rm $OUT
+rm $OUT
 unset OUT
