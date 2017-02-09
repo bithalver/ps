@@ -1,0 +1,1 @@
+cat $1.ps | gs -I/home/meszi/PS/lib -q -sDEVICE=pbm -dNOPAUSE -sOutputFile=$1%03d.pbm

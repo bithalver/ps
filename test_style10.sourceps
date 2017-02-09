@@ -1,0 +1,15 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init begin_file
+0 setlinewidth 
+
+(Testing 'style 10') begin_page
+
+[0 0][1 0][1 1] <</style 10>> pdadd
+[0 0][1 0][0.5 0.86602540] <</style 10>> pdadd
+
+end_page
+
+end_file

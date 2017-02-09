@@ -1,0 +1,70 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/waves { dup /allparts exch def waves_1} def
+
+/waves_1 {
+[/pa /pb /pc /colorarray /parts] params
+  pa pb pc <</colors colorarray allparts parts sub 1 add cnth>> pdcn
+  parts 1 gt {
+  /pd pa pc pointhalve def
+  /pe pa pb pointhalve def
+  /pf pb pc pointhalve def
+  [
+    contrast_pattern 1 nth 0 ne { [pe pb pf] } if
+    contrast_pattern 2 nth 0 ne { [pa pe pd] } if
+    contrast_pattern 3 nth 0 ne { [pe pd pf] } if
+    contrast_pattern 4 nth 0 ne { [pd pf pc] } if
+    contrast_pattern 5 nth 0 ne { [pa pf pd pointshift pd] } if
+    contrast_pattern 6 nth 0 ne { [pc pe pd pointshift pd] } if
+  ] {aload pop colorarray parts 1 sub waves_1 netsadd} forall 
+  } if 
+end} def
+
+%    pb
+%     1
+%  pe  pf
+%   2 3 4
+%pa  pd  pc
+%   5   6
+
+/PS_BACKGROUND [0.75 0.75 0.75] def
+/PS_STYLE 10 def /PS_THREADS 16 def
+
+my_init begin_file
+/r (REC_DEPTH) 4 {exec cvi} GfEoCL def
+/contrast_style (CONTRAST_STYLE) -1 {exec cvi} GfEoCL def
+/contrast_pattern (CONTRAST_PATTERN) [1 1 0 0 0 1] {} GfEoCL def
+
+contrast_style -1 eq contrast_style 1 eq or {/contrast_pattern [0 1 0 0 0 1] def} if
+contrast_style 2 eq {/contrast_pattern [1 1 1 1 0 0] def} if
+
+[(Contrast)(1st kind)] begin_page
+/h 6 90 basiccplane def
+/c1 [[0 0 0][1 1 0][1 0 0]] def /c2 [[1 0 0][0 0 0][1 1 0]] def /c3 [[1 1 0][1 0 0][0 0 0]] def
+h [1 7 2] nthpoints c1 r waves nadd
+h [2 7 3] nthpoints c2 r waves nadd
+h [3 7 4] nthpoints c3 r waves nadd
+h [4 7 5] nthpoints c1 r waves nadd
+h [5 7 6] nthpoints c2 r waves nadd
+h [6 7 1] nthpoints c3 r waves nadd
+end_page
+
+[(Contrast)(2nd kind)] begin_page
+/h 4 45 basiccplane def
+/c1 [[0 0 1][1 1 1]] def /c2 [[1 1 1][0 0 1]] def
+h [3 5 2] nthpoints c1 r waves nadd
+h [4 5 3] nthpoints c2 r waves nadd
+h [1 5 4] nthpoints c1 r waves nadd
+h [2 5 1] nthpoints c2 r waves nadd
+end_page
+
+[(Contrast)(3rd kind)] begin_page
+/h 4 90 basiccplane def
+/c1 [[0 0 1][0.2 0.2 1][0.4 0.4 1][0.6 0.6 1][0.8 0.8 1][1 1 1]] def
+h [3 4 1] nthpoints c1 r waves nadd
+h [1 2 3] nthpoints c1 r waves nadd
+end_page
+
+end_file

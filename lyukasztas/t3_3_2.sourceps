@@ -1,0 +1,95 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 20 def
+
+/k 3 90 basicplane def
+/p12 k [1 2] nthpoints pointhalve def
+/p13 k [1 3] nthpoints pointhalve def
+/p23 k [2 3] nthpoints pointhalve def
+
+/allpoint [ k [1 2 3] nthpoints p12 p13 p23 ] def
+
+allpoint [1 2 3] nthpoints pcn
+allpoint [2 3 1] nthpoints paddn1
+allpoint [3 1 2] nthpoints paddn1
+allpoint [3 4 1] nthpoints paddn1
+allpoint [3 4 2] nthpoints paddn1
+allpoint [2 5 1] nthpoints paddn1
+allpoint [2 5 3] nthpoints paddn1
+allpoint [1 6 2] nthpoints paddn1
+allpoint [1 6 3] nthpoints paddn1
+allpoint [1 6 1] nthpoints <</threads 20>>pdaddn1
+allpoint [2 5 2] nthpoints <</threads 20>>pdaddn1
+allpoint [3 4 3] nthpoints <</threads 20>>pdaddn1
+/egy exch def
+
+/egy1 allpoint [2 3] nthpoints egy 3 2 connectnetstopoints def
+/egy2 egy1 aload pop pop [1 2] nthpoints egy 2 1 connectnetstopoints def
+/egy3 egy1 aload pop pop [1 3] nthpoints egy 3 1 connectnetstopoints def
+/ketto egy egy1 netsadd egy2 netsadd egy3 netsadd def
+
+/egy4 egy2 aload pop pop [2 3] nthpoints egy 3 2 connectnetstopoints def
+/egy5 egy3 aload pop pop [2 3] nthpoints egy 3 2 connectnetstopoints def
+/egy6 egy5 aload pop pop [2 1] nthpoints egy 1 2 connectnetstopoints def
+/egy7 egy4 aload pop pop [2 1] nthpoints egy 1 2 connectnetstopoints def
+/egy8 egy5 aload pop pop [3 1] nthpoints egy 1 3 connectnetstopoints def
+/harom ketto egy4 netsadd egy5 netsadd egy6 netsadd 
+       egy7 netsadd egy8 netsadd def
+
+%     0
+%   2 1 3
+% 7 4 6 5 8
+
+/op threads 2 mul 3 div def
+/tesztt
+egy1 aload pop pop [1 6] nthpoints op pnthpart
+egy5 aload pop pop [1 6] nthpoints op pnthpart
+egy4 aload pop pop [1 6] nthpoints op pnthpart
+<</threads 100>> pdcn def
+
+/teszt
+allpoint [1 4] nthpoints allpoint [1 6] nthpoints op pnthpart pcn
+allpoint [1 5] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [2 4] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [2 6] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [3 5] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [3 6] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+def
+
+/teszt1 teszt aload pop pop [5 7] nthpoints teszt 7 5 connectnetstopoints def
+/teszt2 teszt1 aload pop pop [1 5] nthpoints teszt 5 1 connectnetstopoints def
+/teszt3 teszt1 aload pop pop [1 7] nthpoints teszt 7 1 connectnetstopoints def
+/teszt4 teszt2 aload pop pop [5 7] nthpoints teszt 7 5 connectnetstopoints def
+/teszt5 teszt3 aload pop pop [5 7] nthpoints teszt 7 5 connectnetstopoints def
+/teszt6 teszt5 aload pop pop [5 1] nthpoints teszt 1 5 connectnetstopoints def
+/teszt7 teszt4 aload pop pop [5 1] nthpoints teszt 1 5 connectnetstopoints def
+/teszt8 teszt5 aload pop pop [7 1] nthpoints teszt 1 7 connectnetstopoints def
+
+% allpoint  teszt
+% 1 1
+% 2 5
+% 3 7
+% 4 2
+% 5 4
+% 6 6
+%   3
+
+begin_file 
+(3_1) begin_page egy nadd end_page 
+(3_2) begin_page ketto nadd end_page
+(3_3) begin_page harom nadd end_page
+% (teszt) begin_page egy nadd egy7 nadd egy8 nadd tesztt nadd end_page
+(teszt) begin_page /style 2 def
+teszt nadd teszt1 nadd teszt2 nadd teszt3 nadd 
+teszt4 nadd teszt5 nadd teszt6 nadd teszt7 nadd teszt8 nadd 
+end_page
+(teszt1) begin_page /style 2 def
+teszt1 nadd teszt2 nadd teszt3 nadd 
+teszt4 nadd teszt5 nadd teszt6 nadd
+end_page
+
+end_file 

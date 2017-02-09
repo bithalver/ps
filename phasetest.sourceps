@@ -1,0 +1,82 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% /Times-Roman 12 selectfont (0123456789) stringwidth exch == == quit
+
+% /integertype {(Integer) ==} def  1 type exec (XX) == quit
+% [(aa)(bb)(cc)] (_X_) addstringsdelim == quit
+
+/threads 125 def
+% /style 4 def
+% /numbering 1 def
+
+/h 6 90 basicplane def
+/n1 h 2 1 4 1 2 connectbasicplane def /n2 h 3 2 4 1 2 connectbasicplane def
+/n3 h 4 3 4 1 2 connectbasicplane def /n4 h 5 4 4 1 2 connectbasicplane def
+/n5 h 6 5 4 1 2 connectbasicplane def /n6 h 1 6 4 1 2 connectbasicplane def
+
+/p12 [ [h 1] [h 2] [h 3] [h 4] [h 5] [h 6]
+   [n1 3] [n1 4] [n2 3] [n2 4] [n3 3] [n3 4] 
+   [n4 3] [n4 4] [n5 3] [n5 4] [n6 3] [n6 4] ] buildplane [[0 0]] arrayadd def
+
+p12 [1 2 8] nthpoints pcn
+p12 [8 2 9] nthpoints paddn1
+p12 [3 2 9] nthpoints paddn1 /tal1 exch def
+
+/tal2 p12 [3 4] nthpoints tal1 1 2 connectnetstopoints def
+/tal3 p12 [5 6] nthpoints tal1 1 2 connectnetstopoints def
+
+p12 [ 9 10  3] nthpoints pcn
+p12 [10  3 11] nthpoints paddn1
+p12 [ 3 11 12] nthpoints paddn1 /sas1 exch def
+
+/sas2 p12 [14 5] nthpoints sas1 2 3 connectnetstopoints def
+/sas3 p12 [18 1] nthpoints sas1 2 3 connectnetstopoints def
+
+/keret tal1 tal2 netsadd tal3 netsadd 
+       sas1 netsadd sas2 netsadd sas3 netsadd def
+
+p12 [1 2 3] nthpoints pcn
+p12 [3 4 5] nthpoints paddn1
+p12 [5 6 1] nthpoints paddn1
+/belso31 exch def
+
+p12 [2 3 4] nthpoints pcn
+p12 [4 5 6] nthpoints paddn1
+p12 [6 1 2] nthpoints paddn1
+/belso32 exch def
+
+p12 [1 2 19] nthpoints pcn
+p12 [3 2 19] nthpoints paddn1
+p12 [3 4 19] nthpoints paddn1
+p12 [5 4 19] nthpoints paddn1
+p12 [5 6 19] nthpoints paddn1
+p12 [1 6 19] nthpoints paddn1
+/belso61 exch def
+
+/belso62 p12 [2 3] nthpoints belso61 1 2 connectnetstopoints def
+
+/a keret belso31 netsadd keret [24 22] nnthpoints keret 7 8
+connectnetstopoints netsadd def
+/b a a [19 20] nnthpoints a 13 4 connectnetstopoints netsadd def
+
+begin_file
+ 0 1 threads { /i exch def
+   (Phase: ) i 3 string cvs addstring begin_page 
+%  keret nadd belso31 nadd 
+  keret nadd belso32 nadd belso31 nadd 
+  /allnets allnets i i phase def % First variation
+%  /allnets allnets 0 i phase def % Second variation
+%  /allnets allnets i threads phase def % Third variation
+  end_page
+} for
+
+% (12_1) begin_page b nadd end_page
+% (12_2) begin_page keret nadd belso32 nadd end_page
+% (12_3) begin_page keret nadd belso61 nadd end_page
+% (12_4) begin_page keret nadd belso62 nadd end_page
+
+end_file

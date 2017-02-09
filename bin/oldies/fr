@@ -1,0 +1,9 @@
+#!/bin/bash
+# Find and Replace in files
+#Parameters:
+# 1: Directory
+# 2: Pattern for filename
+# 3: Search pattern
+# 4: Replace pattern
+
+find $1 -name "$2" -exec grep -s -q $3 {} \; -exec fr_1 {} $3 $4 \;

@@ -1,0 +1,70 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/threads 20 def
+/style 1 def
+
+my_init
+
+/k 3 90 basicplane def
+/k1 k 1 nthpoint def
+/k2 k 2 nthpoint def
+/k3 k 3 nthpoint def
+
+k1 k2 k3 pointmirror /p1 exch def
+k2 k3 k1 pointmirror /p2 exch def
+k3 k1 k2 pointmirror /p3 exch def
+
+/k11 [ p1 k2 k3 ] def
+/k12 [ p2 k3 k1 ] def
+/k13 [ p3 k1 k2 ] def
+
+/p31 k3 k1 ppointsub k3 ppointadd def
+/p12 k1 k2 ppointsub k1 ppointadd def
+/p23 k2 k3 ppointsub k2 ppointadd def
+
+/p13 k1 k3 ppointsub k1 ppointadd def
+/p21 k2 k1 ppointsub k2 ppointadd def
+/p32 k3 k2 ppointsub k3 ppointadd def
+
+k1 p12 p13 pointmirror /p11 exch def
+k2 p23 p21 pointmirror /p22 exch def
+k3 p31 p32 pointmirror /p33 exch def
+
+k1 k2 k3 pcn
+k3 k1 k2 4 -1 roll paddn
+k2 k3 k1 4 -1 roll paddn /kn exch def
+
+k11 [1 2 3] nthpoints pcn
+k11 [3 1 2] nthpoints 4 -1 roll paddn
+k11 [2 3 1] nthpoints 4 -1 roll paddn /k11n exch def
+
+k12 [1 2 3] nthpoints pcn
+k12 [3 1 2] nthpoints 4 -1 roll paddn
+k12 [2 3 1] nthpoints 4 -1 roll paddn 
+/k12n exch def
+
+k13 [1 2 3] nthpoints pcn
+k13 [3 1 2] nthpoints 4 -1 roll paddn
+k13 [2 3 1] nthpoints 4 -1 roll paddn
+/k13n exch def
+
+k1 p12 p2 pcn /k22an exch def k3 p32 p2 pcn /k22bn exch def
+k3 p31 p1 pcn /k11an exch def k2 p21 p1 pcn /k11bn exch def
+k2 p23 p3 pcn /k33an exch def k1 p13 p3 pcn /k33bn exch def
+
+p11 p12 p13  p11 p13 p12 pcn paddn /s1n exch def
+p22 p23 p21  p22 p21 p23 pcn paddn /s2n exch def
+p33 p31 p32  p33 p32 p31 pcn paddn /s3n exch def
+
+begin_file
+
+(T3) begin_page kn nadd k12n nadd k13n nadd  k22an nadd k22bn nadd
+k33an nadd k33bn nadd  s1n nadd  end_page
+
+(T4) begin_page  kn nadd k11n nadd k12n nadd k13n nadd
+k22an nadd k22bn nadd  k11an nadd k11bn nadd  k33an nadd k33bn nadd
+s1n nadd s2n nadd s3n nadd  end_page
+
+end_file

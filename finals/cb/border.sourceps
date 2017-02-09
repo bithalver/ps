@@ -1,0 +1,19 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init begin_file
+
+(Border) begin_page
+/threads 10 def
+
+[ 10   0] [0 0] [  0  10] <</cb_type (border)>> pdadd
+[  0  10] [0 0] [-10   0] <</cb_type (border)>> pdadd
+[-10   0] [0 0] [  0 -10] <</cb_type (border)>> pdadd
+[  0 -10] [0 0] [ 10   0] <</cb_type (border)>> pdadd
+
+% [ 10   0] [0 0] [  0  10] padd
+% [  0  10] [0 0] [-10   0] padd
+% [-10   0] [0 0] [  0 -10] padd
+% [  0 -10] [0 0] [ 10   0] padd
+end_page end_file

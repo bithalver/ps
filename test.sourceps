@@ -1,0 +1,9 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+begin_file
+(This is a testpage for poster) begin_page
+[0 1][0 0][1 0] padd
+end_page end_file

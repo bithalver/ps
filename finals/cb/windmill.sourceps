@@ -1,0 +1,58 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init begin_file
+
+% /leftmargin 0 cm def /rightmargin 0 cm def
+/threads 20 def
+/d  <</cb_type (lines) /cb_subtype [on off]>> def
+/d1 <</cb_type (lines) /cb_subtype [off on]>> def
+
+/h1 6 90 basiccplane def
+/h2 h1 1 2 6 1 6 connectbasiccplane def
+/h3 h1 1 6 6 1 2 connectbasiccplane def
+
+(Windmill3) begin_page
+h1 1 threepointc d pdadd
+h2 1 threepointc d pdadd
+h3 1 threepointc d pdadd
+end_page
+
+(Windmill6) begin_page
+1 dict begin
+/h 6 90 basiccplane def
+% 0.001 setlinewidth
+
+h [1 7 2] nthpoints d pdadd
+h [2 7 3] nthpoints d pdadd
+h [3 7 4] nthpoints d pdadd
+h [4 7 5] nthpoints d pdadd
+h [5 7 6] nthpoints d pdadd
+h [6 7 1] nthpoints d pdadd
+end_page
+
+(Windmill) begin_page
+[  0  10] [0 0] [ 10   0] d pdadd
+[ 10   0] [0 0] [  0 -10] d pdadd
+[  0 -10] [0 0] [-10   0] d pdadd
+[-10   0] [0 0] [  0  10] d pdadd
+end_page
+
+(Horizontal) begin_page
+[  0  10] [0 0] [ 10   0] d1 pdadd
+[ 10   0] [0 0] [  0 -10] d pdadd
+[  0 -10] [0 0] [-10   0] d1 pdadd
+[-10   0] [0 0] [  0  10] d pdadd
+end_page
+
+% %%Page: "Vertical" Vertical
+% clearallnets
+% [  0  10] [0 0] [ 10   0] d pdadd
+% [ 10   0] [0 0] [  0 -10] d1 pdadd
+% [  0 -10] [0 0] [-10   0] d pdadd
+% [-10   0] [0 0] [  0  10] d1 pdadd
+% 
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "Vertical" Vertical
+end_file

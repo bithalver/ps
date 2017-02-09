@@ -1,0 +1,14 @@
+FILE_NAME=$1
+set | perl -e '
+print "%!PS-Adobe-3.0\n";
+while (<>) {
+  if (/^PS_[0-9a-zA-Z_]+=.+/) {
+    s/\\/\\\\/; 
+    s/^/\//; 
+    s/=\x27(.+)\x27$/=$1/; 
+    s/^(.+?)=(.+)$/$1 $2 def/;
+    print;
+  };
+} 
+' >${FILE_NAME}
+unset FILE_NAME

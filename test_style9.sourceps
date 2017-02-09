@@ -1,0 +1,29 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init begin_file
+0 setlinewidth 
+
+/doit {
+/threads exch def
+[(Comparing 'style 9' and 'border')()(Threads: )threads any2str addstring] begin_page
+
+[0 0][1 0][1 1] <</cb_type (border)>>  pdadd
+[0 0][1 0][1 1] <</style 9>> pdadd
+% The next line gives exactly the same as previous
+% 1 0 moveto  0.3333 0 0 0.3333 0 1 curveto stroke
+
+[0 0][1 0][0.5 0.86602540] <</cb_type (border)>> pdadd
+[0 0][1 0][0.5 0.86602540] <</style 9>> pdadd
+% The next line gives exactly the same as previous
+% 1 0 moveto  0.333333 0 0.1666666 0.28867513 0.5 0.86602540 curveto stroke
+
+end_page
+}def
+
+1 1 10 {doit} for
+20 doit
+% 100 doit
+
+end_file

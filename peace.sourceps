@@ -1,0 +1,48 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% /h 6 90 basiccplane def  /h1 [ h [1 3 4 5 7] nthpoints ] def
+/h1 [[0.0 1.0] [-0.8653 -0.6] [0.0 -1.0] [0.8653 -0.6] [0 0]]  def
+/n [[0 1][-1 1][-1 0][-1 -1][0 -1][1 -1][1 0][1 1]] def
+
+
+begin_file
+
+(Peace, first version) begin_page 
+h1 [1 5 2] nthpoints pcn nadd h1 [2 5 3] nthpoints pcn nadd
+h1 [3 5 4] nthpoints pcn nadd h1 [4 5 1] nthpoints pcn nadd
+
+n [1 2 3] nthpoints pcn nadd n [3 4 5] nthpoints pcn nadd
+n [5 6 7] nthpoints pcn nadd n [7 8 1] nthpoints pcn nadd
+end_page
+
+(Peace, second version) begin_page 
+/d <</threads 10>> def
+/rp [[0 1][-0.3 0][0 -1][0.3 0]] def
+/r rp [1 2 3] nthpoints d pdcn  rp [2 3 4] nthpoints d pdaddn1
+   rp [3 4 1] nthpoints d pdaddn1  rp [4 1 2] nthpoints d pdaddn1 def
+
+h1 [1 5] nthpoints r 1 3 connectnetstopoints nadd h1 [2 5] nthpoints r 1 3 connectnetstopoints nadd
+h1 [3 5] nthpoints r 1 3 connectnetstopoints nadd h1 [4 5] nthpoints r 1 3 connectnetstopoints nadd
+
+n [1 2 3] nthpoints pcn nadd n [3 4 5] nthpoints pcn nadd
+n [5 6 7] nthpoints pcn nadd n [7 8 1] nthpoints pcn nadd
+end_page
+
+(Peace, third version) begin_page 
+/d <</threads 8>> def
+/rp1 [[0 1][-0.4 0][0 -1][0.4 0][0 0]] def
+/r1 rp1 [1 5 2] nthpoints d pdcn rp1 [2 5 3] nthpoints d pdaddn1
+    rp1 [3 5 4] nthpoints d pdaddn1 rp1 [4 5 1] nthpoints d pdaddn1 def
+
+h1 [1 5] nthpoints r1 1 4 connectnetstopoints nadd h1 [2 5] nthpoints r1 1 4 connectnetstopoints nadd
+h1 [3 5] nthpoints r1 1 4 connectnetstopoints nadd h1 [4 5] nthpoints r1 1 4 connectnetstopoints nadd
+
+n [1 2 3] nthpoints pcn nadd n [3 4 5] nthpoints pcn nadd
+n [5 6 7] nthpoints pcn nadd n [7 8 1] nthpoints pcn nadd
+end_page
+
+end_file

@@ -1,0 +1,1783 @@
+%!PS-Adobe-3.0
+%%Creator: /Users/meszi/Documents/poster/my_poster
+%%DocumentData: Clean7Bit
+%%Pages: 15
+%%DocumentMedia: A4 595 842 0 white ()
+%%BoundingBox: 0 0 595 842
+%%EndComments
+
+% Print poster zodiac_holes.ps in 5x3 tiles with 3 magnification
+%%BeginProlog
+/cutmark	% - cutmark -
+{		% draw cutline
+	0.23 setlinewidth 0 setgray
+	clipmargin
+	dup 0 moveto
+	dup neg leftmargin add 0 rlineto stroke
+	% draw sheet alignment mark
+	dup dup neg moveto
+	dup 0 rlineto
+	dup dup lineto
+	0 rlineto
+	closepath fill
+} bind def
+
+% usage: 	row col tileprolog ps-code tilepilog
+% these procedures output the tile specified by row & col
+/tileprolog
+{ 	%def
+	gsave
+       leftmargin botmargin translate
+	do_turn {exch} if
+	/colcount exch def
+	/rowcount exch def
+	% clip page contents
+	clipmargin neg dup moveto
+	pagewidth clipmargin 2 mul add 0 rlineto
+	0 pageheight clipmargin 2 mul add rlineto
+	pagewidth clipmargin 2 mul add neg 0 rlineto
+	closepath clip
+	% set page contents transformation
+	do_turn
+	{	pagewidth 0 translate
+		90 rotate
+	} if
+	pagewidth colcount 1 sub mul neg
+	pageheight rowcount 1 sub mul neg
+	do_turn {exch} if
+	translate
+	posterxl posteryb translate
+	sfactor dup scale
+	imagexl neg imageyb neg translate
+	tiledict begin
+	0 setgray 0 setlinecap 1 setlinewidth
+	0 setlinejoin 10 setmiterlimit [] 0 setdash newpath
+} bind def
+
+/tileepilog
+{	end % of tiledict
+	grestore
+	% print the cutmarks
+	gsave
+       leftmargin botmargin translate
+	pagewidth pageheight translate cutmark 90 rotate cutmark
+	0 pagewidth translate cutmark 90 rotate cutmark
+	0 pageheight translate cutmark 90 rotate cutmark
+	0 pagewidth translate cutmark 90 rotate cutmark
+	grestore
+	% print the page label
+	0 setgray
+	leftmargin clipmargin 3 mul add clipmargin labelsize add neg botmargin add moveto
+	(Grid \( ) show
+	rowcount strg cvs show
+	( , ) show
+	colcount strg cvs show
+	( \)) show
+	showpage
+} bind def
+
+/my_print {
+%%BeginDocument: zodiac_holes.ps
+
+
+gsave
+/Times-Roman 12 selectfont
+297.638 39.685 moveto (Zodiac) dup stringwidth pop neg 2 div 0 rmoveto show
+297.5 421.0 translate 269.154 dup scale 
+0.00074307 setlinewidth 
+0.0875 0.673446 moveto -0.0875 0.673446 lineto stroke
+0.0875 0.690946 moveto 0.0875 0.655946 lineto stroke
+0.07875 0.682196 moveto 0.07875 0.664696 lineto stroke
+0.07 0.682196 moveto 0.07 0.664696 lineto stroke
+0.06125 0.682196 moveto 0.06125 0.664696 lineto stroke
+0.0525 0.682196 moveto 0.0525 0.664696 lineto stroke
+0.04375 0.682196 moveto 0.04375 0.664696 lineto stroke
+0.035 0.682196 moveto 0.035 0.664696 lineto stroke
+0.02625 0.682196 moveto 0.02625 0.664696 lineto stroke
+0.0175 0.682196 moveto 0.0175 0.664696 lineto stroke
+0.00875 0.682196 moveto 0.00875 0.664696 lineto stroke
+0.0 0.682196 moveto 0.0 0.664696 lineto stroke
+-0.00875 0.682196 moveto -0.00875 0.664696 lineto stroke
+-0.0175 0.682196 moveto -0.0175 0.664696 lineto stroke
+-0.02625 0.682196 moveto -0.02625 0.664696 lineto stroke
+-0.035 0.682196 moveto -0.035 0.664696 lineto stroke
+-0.04375 0.682196 moveto -0.04375 0.664696 lineto stroke
+-0.0525 0.682196 moveto -0.0525 0.664696 lineto stroke
+-0.06125 0.682196 moveto -0.06125 0.664696 lineto stroke
+-0.07 0.682196 moveto -0.07 0.664696 lineto stroke
+-0.07875 0.682196 moveto -0.07875 0.664696 lineto stroke
+-0.0875 0.690946 moveto -0.0875 0.655946 lineto stroke
+-0.0875 0.673446 moveto -0.175 0.825 lineto stroke
+-0.0723446 0.682196 moveto -0.102655 0.664696 lineto stroke
+-0.0842973 0.685398 moveto -0.0994527 0.676648 lineto stroke
+-0.0886723 0.692976 moveto -0.103828 0.684226 lineto stroke
+-0.0930473 0.700554 moveto -0.108203 0.691804 lineto stroke
+-0.0974223 0.708131 moveto -0.112578 0.699381 lineto stroke
+-0.101797 0.715709 moveto -0.116953 0.706959 lineto stroke
+-0.106172 0.723287 moveto -0.121328 0.714537 lineto stroke
+-0.110547 0.730865 moveto -0.125703 0.722115 lineto stroke
+-0.114922 0.738442 moveto -0.130078 0.729692 lineto stroke
+-0.119297 0.74602 moveto -0.134453 0.73727 lineto stroke
+-0.123672 0.753598 moveto -0.138828 0.744848 lineto stroke
+-0.128047 0.761176 moveto -0.143203 0.752426 lineto stroke
+-0.132422 0.768753 moveto -0.147578 0.760003 lineto stroke
+-0.136797 0.776331 moveto -0.151953 0.767581 lineto stroke
+-0.141172 0.783909 moveto -0.156328 0.775159 lineto stroke
+-0.145547 0.791486 moveto -0.160703 0.782736 lineto stroke
+-0.149922 0.799064 moveto -0.165078 0.790314 lineto stroke
+-0.154297 0.806642 moveto -0.169453 0.797892 lineto stroke
+-0.158672 0.814219 moveto -0.173828 0.80547 lineto stroke
+-0.163047 0.821797 moveto -0.178203 0.813047 lineto stroke
+-0.159845 0.83375 moveto -0.190155 0.81625 lineto stroke
+-0.175 0.825 moveto -0.0875 0.976554 lineto stroke
+-0.159845 0.81625 moveto -0.190155 0.83375 lineto stroke
+-0.163047 0.828203 moveto -0.178203 0.836953 lineto stroke
+-0.158672 0.83578 moveto -0.173828 0.84453 lineto stroke
+-0.154297 0.843358 moveto -0.169453 0.852108 lineto stroke
+-0.149922 0.850936 moveto -0.165078 0.859686 lineto stroke
+-0.145547 0.858514 moveto -0.160703 0.867264 lineto stroke
+-0.141172 0.866091 moveto -0.156328 0.874841 lineto stroke
+-0.136797 0.873669 moveto -0.151953 0.882419 lineto stroke
+-0.132422 0.881247 moveto -0.147578 0.889997 lineto stroke
+-0.128047 0.888824 moveto -0.143203 0.897574 lineto stroke
+-0.123672 0.896402 moveto -0.138828 0.905152 lineto stroke
+-0.119297 0.90398 moveto -0.134453 0.91273 lineto stroke
+-0.114922 0.911558 moveto -0.130078 0.920308 lineto stroke
+-0.110547 0.919135 moveto -0.125703 0.927885 lineto stroke
+-0.106172 0.926713 moveto -0.121328 0.935463 lineto stroke
+-0.101797 0.934291 moveto -0.116953 0.943041 lineto stroke
+-0.0974223 0.941869 moveto -0.112578 0.950619 lineto stroke
+-0.0930473 0.949446 moveto -0.108203 0.958196 lineto stroke
+-0.0886723 0.957024 moveto -0.103828 0.965774 lineto stroke
+-0.0842973 0.964602 moveto -0.0994527 0.973352 lineto stroke
+-0.0723446 0.967804 moveto -0.102655 0.985304 lineto stroke
+-0.0875 0.976554 moveto 0.0875 0.976554 lineto stroke
+-0.0875 0.959054 moveto -0.0875 0.994054 lineto stroke
+-0.07875 0.967804 moveto -0.07875 0.985304 lineto stroke
+-0.07 0.967804 moveto -0.07 0.985304 lineto stroke
+-0.06125 0.967804 moveto -0.06125 0.985304 lineto stroke
+-0.0525 0.967804 moveto -0.0525 0.985304 lineto stroke
+-0.04375 0.967804 moveto -0.04375 0.985304 lineto stroke
+-0.035 0.967804 moveto -0.035 0.985304 lineto stroke
+-0.02625 0.967804 moveto -0.02625 0.985304 lineto stroke
+-0.0175 0.967804 moveto -0.0175 0.985304 lineto stroke
+-0.00875 0.967804 moveto -0.00875 0.985304 lineto stroke
+0.0 0.967804 moveto 0.0 0.985304 lineto stroke
+0.00875 0.967804 moveto 0.00875 0.985304 lineto stroke
+0.0175 0.967804 moveto 0.0175 0.985304 lineto stroke
+0.02625 0.967804 moveto 0.02625 0.985304 lineto stroke
+0.035 0.967804 moveto 0.035 0.985304 lineto stroke
+0.04375 0.967804 moveto 0.04375 0.985304 lineto stroke
+0.0525 0.967804 moveto 0.0525 0.985304 lineto stroke
+0.06125 0.967804 moveto 0.06125 0.985304 lineto stroke
+0.07 0.967804 moveto 0.07 0.985304 lineto stroke
+0.07875 0.967804 moveto 0.07875 0.985304 lineto stroke
+0.0875 0.959054 moveto 0.0875 0.994054 lineto stroke
+0.0875 0.976554 moveto 0.175 0.825 lineto stroke
+0.0723446 0.967804 moveto 0.102655 0.985304 lineto stroke
+0.0842973 0.964602 moveto 0.0994527 0.973352 lineto stroke
+0.0886723 0.957024 moveto 0.103828 0.965774 lineto stroke
+0.0930473 0.949446 moveto 0.108203 0.958196 lineto stroke
+0.0974223 0.941869 moveto 0.112578 0.950619 lineto stroke
+0.101797 0.934291 moveto 0.116953 0.943041 lineto stroke
+0.106172 0.926713 moveto 0.121328 0.935463 lineto stroke
+0.110547 0.919135 moveto 0.125703 0.927885 lineto stroke
+0.114922 0.911558 moveto 0.130078 0.920308 lineto stroke
+0.119297 0.90398 moveto 0.134453 0.91273 lineto stroke
+0.123672 0.896402 moveto 0.138828 0.905152 lineto stroke
+0.128047 0.888824 moveto 0.143203 0.897574 lineto stroke
+0.132422 0.881247 moveto 0.147578 0.889997 lineto stroke
+0.136797 0.873669 moveto 0.151953 0.882419 lineto stroke
+0.141172 0.866091 moveto 0.156328 0.874841 lineto stroke
+0.145547 0.858514 moveto 0.160703 0.867264 lineto stroke
+0.149922 0.850936 moveto 0.165078 0.859686 lineto stroke
+0.154297 0.843358 moveto 0.169453 0.852108 lineto stroke
+0.158672 0.83578 moveto 0.173828 0.84453 lineto stroke
+0.163047 0.828203 moveto 0.178203 0.836953 lineto stroke
+0.159845 0.81625 moveto 0.190155 0.83375 lineto stroke
+0.175 0.825 moveto 0.0875 0.673446 lineto stroke
+0.159845 0.83375 moveto 0.190155 0.81625 lineto stroke
+0.163047 0.821797 moveto 0.178203 0.813047 lineto stroke
+0.158672 0.814219 moveto 0.173828 0.80547 lineto stroke
+0.154297 0.806642 moveto 0.169453 0.797892 lineto stroke
+0.149922 0.799064 moveto 0.165078 0.790314 lineto stroke
+0.145547 0.791486 moveto 0.160703 0.782736 lineto stroke
+0.141172 0.783909 moveto 0.156328 0.775159 lineto stroke
+0.136797 0.776331 moveto 0.151953 0.767581 lineto stroke
+0.132422 0.768753 moveto 0.147578 0.760003 lineto stroke
+0.128047 0.761176 moveto 0.143203 0.752426 lineto stroke
+0.123672 0.753598 moveto 0.138828 0.744848 lineto stroke
+0.119297 0.74602 moveto 0.134453 0.73727 lineto stroke
+0.114922 0.738442 moveto 0.130078 0.729692 lineto stroke
+0.110547 0.730865 moveto 0.125703 0.722115 lineto stroke
+0.106172 0.723287 moveto 0.121328 0.714537 lineto stroke
+0.101797 0.715709 moveto 0.116953 0.706959 lineto stroke
+0.0974223 0.708132 moveto 0.112578 0.699381 lineto stroke
+0.0930473 0.700554 moveto 0.108203 0.691804 lineto stroke
+0.0886723 0.692976 moveto 0.103828 0.684226 lineto stroke
+0.0842973 0.685398 moveto 0.0994527 0.676648 lineto stroke
+0.0723446 0.682196 moveto 0.102655 0.664696 lineto stroke
+-0.564054 0.626971 moveto -0.564054 0.801971 lineto stroke
+-0.546554 0.626971 moveto -0.581555 0.626971 lineto stroke
+-0.555304 0.635721 moveto -0.572805 0.635721 lineto stroke
+-0.555304 0.644471 moveto -0.572805 0.644471 lineto stroke
+-0.555304 0.653221 moveto -0.572805 0.653221 lineto stroke
+-0.555304 0.661971 moveto -0.572805 0.661971 lineto stroke
+-0.555304 0.670721 moveto -0.572805 0.670721 lineto stroke
+-0.555304 0.679471 moveto -0.572805 0.679471 lineto stroke
+-0.555304 0.688221 moveto -0.572805 0.688221 lineto stroke
+-0.555304 0.696971 moveto -0.572805 0.696971 lineto stroke
+-0.555304 0.705721 moveto -0.572805 0.705721 lineto stroke
+-0.555304 0.714471 moveto -0.572805 0.714471 lineto stroke
+-0.555304 0.723221 moveto -0.572805 0.723221 lineto stroke
+-0.555304 0.731971 moveto -0.572805 0.731971 lineto stroke
+-0.555304 0.740721 moveto -0.572804 0.740721 lineto stroke
+-0.555304 0.749471 moveto -0.572804 0.749471 lineto stroke
+-0.555304 0.758221 moveto -0.572804 0.758221 lineto stroke
+-0.555304 0.766971 moveto -0.572804 0.766971 lineto stroke
+-0.555304 0.775721 moveto -0.572805 0.775721 lineto stroke
+-0.555304 0.784471 moveto -0.572804 0.784471 lineto stroke
+-0.555304 0.793221 moveto -0.572804 0.793221 lineto stroke
+-0.546554 0.801971 moveto -0.581554 0.801971 lineto stroke
+-0.564054 0.801971 moveto -0.4125 0.889471 lineto stroke
+-0.555304 0.786815 moveto -0.572804 0.817126 lineto stroke
+-0.552102 0.798768 moveto -0.560852 0.813924 lineto stroke
+-0.544524 0.803143 moveto -0.553274 0.818299 lineto stroke
+-0.536946 0.807518 moveto -0.545696 0.822674 lineto stroke
+-0.529369 0.811893 moveto -0.538119 0.827049 lineto stroke
+-0.521791 0.816268 moveto -0.530541 0.831424 lineto stroke
+-0.514213 0.820643 moveto -0.522963 0.835799 lineto stroke
+-0.506635 0.825018 moveto -0.515385 0.840174 lineto stroke
+-0.499058 0.829393 moveto -0.507808 0.844549 lineto stroke
+-0.49148 0.833768 moveto -0.50023 0.848924 lineto stroke
+-0.483902 0.838143 moveto -0.492652 0.853299 lineto stroke
+-0.476324 0.842518 moveto -0.485074 0.857674 lineto stroke
+-0.468747 0.846893 moveto -0.477497 0.862049 lineto stroke
+-0.461169 0.851268 moveto -0.469919 0.866424 lineto stroke
+-0.453591 0.855643 moveto -0.462341 0.870799 lineto stroke
+-0.446014 0.860018 moveto -0.454764 0.875174 lineto stroke
+-0.438436 0.864393 moveto -0.447186 0.879549 lineto stroke
+-0.430858 0.868768 moveto -0.439608 0.883924 lineto stroke
+-0.42328 0.873143 moveto -0.43203 0.888299 lineto stroke
+-0.415703 0.877518 moveto -0.424453 0.892674 lineto stroke
+-0.40375 0.874315 moveto -0.42125 0.904626 lineto stroke
+-0.4125 0.889471 moveto -0.260946 0.801971 lineto stroke
+-0.42125 0.874315 moveto -0.40375 0.904626 lineto stroke
+-0.409297 0.877518 moveto -0.400547 0.892674 lineto stroke
+-0.401719 0.873143 moveto -0.39297 0.888299 lineto stroke
+-0.394142 0.868768 moveto -0.385392 0.883924 lineto stroke
+-0.386564 0.864393 moveto -0.377814 0.879549 lineto stroke
+-0.378986 0.860018 moveto -0.370236 0.875174 lineto stroke
+-0.371409 0.855643 moveto -0.362659 0.870799 lineto stroke
+-0.363831 0.851268 moveto -0.355081 0.866424 lineto stroke
+-0.356253 0.846893 moveto -0.347503 0.862049 lineto stroke
+-0.348675 0.842518 moveto -0.339925 0.857674 lineto stroke
+-0.341098 0.838143 moveto -0.332348 0.853299 lineto stroke
+-0.33352 0.833768 moveto -0.32477 0.848924 lineto stroke
+-0.325942 0.829393 moveto -0.317192 0.844549 lineto stroke
+-0.318365 0.825018 moveto -0.309615 0.840174 lineto stroke
+-0.310787 0.820643 moveto -0.302037 0.835799 lineto stroke
+-0.303209 0.816268 moveto -0.294459 0.831424 lineto stroke
+-0.295631 0.811893 moveto -0.286881 0.827049 lineto stroke
+-0.288054 0.807518 moveto -0.279304 0.822674 lineto stroke
+-0.280476 0.803143 moveto -0.271726 0.818299 lineto stroke
+-0.272898 0.798768 moveto -0.264148 0.813924 lineto stroke
+-0.269695 0.786816 moveto -0.252196 0.817126 lineto stroke
+-0.260946 0.801971 moveto -0.4125 0.539471 lineto stroke
+-0.287196 0.817126 moveto -0.234696 0.786816 lineto stroke
+-0.281648 0.796424 moveto -0.255398 0.781268 lineto stroke
+-0.289226 0.783299 moveto -0.262976 0.768143 lineto stroke
+-0.296804 0.770174 moveto -0.270554 0.755018 lineto stroke
+-0.304381 0.757049 moveto -0.278131 0.741893 lineto stroke
+-0.311959 0.743924 moveto -0.285709 0.728768 lineto stroke
+-0.319537 0.730799 moveto -0.293287 0.715643 lineto stroke
+-0.327115 0.717674 moveto -0.300865 0.702518 lineto stroke
+-0.334692 0.704549 moveto -0.308442 0.689393 lineto stroke
+-0.34227 0.691424 moveto -0.31602 0.676268 lineto stroke
+-0.349848 0.678299 moveto -0.323598 0.663143 lineto stroke
+-0.357426 0.665174 moveto -0.331176 0.650018 lineto stroke
+-0.365003 0.652049 moveto -0.338753 0.636893 lineto stroke
+-0.372581 0.638924 moveto -0.346331 0.623768 lineto stroke
+-0.380159 0.625799 moveto -0.353909 0.610643 lineto stroke
+-0.387736 0.612674 moveto -0.361486 0.597518 lineto stroke
+-0.395314 0.599549 moveto -0.369064 0.584393 lineto stroke
+-0.402892 0.586424 moveto -0.376642 0.571268 lineto stroke
+-0.41047 0.573299 moveto -0.38422 0.558143 lineto stroke
+-0.418047 0.560174 moveto -0.391797 0.545018 lineto stroke
+-0.43875 0.554626 moveto -0.38625 0.524316 lineto stroke
+-0.4125 0.539471 moveto -0.260946 0.626971 lineto stroke
+-0.40375 0.524316 moveto -0.42125 0.554626 lineto stroke
+-0.400547 0.536268 moveto -0.409297 0.551424 lineto stroke
+-0.39297 0.540643 moveto -0.40172 0.555799 lineto stroke
+-0.385392 0.545018 moveto -0.394142 0.560174 lineto stroke
+-0.377814 0.549393 moveto -0.386564 0.564549 lineto stroke
+-0.370236 0.553768 moveto -0.378986 0.568924 lineto stroke
+-0.362659 0.558143 moveto -0.371409 0.573299 lineto stroke
+-0.355081 0.562518 moveto -0.363831 0.577674 lineto stroke
+-0.347503 0.566893 moveto -0.356253 0.582049 lineto stroke
+-0.339925 0.571268 moveto -0.348676 0.586424 lineto stroke
+-0.332348 0.575643 moveto -0.341098 0.590799 lineto stroke
+-0.32477 0.580018 moveto -0.33352 0.595174 lineto stroke
+-0.317192 0.584393 moveto -0.325942 0.599549 lineto stroke
+-0.309615 0.588768 moveto -0.318365 0.603924 lineto stroke
+-0.302037 0.593143 moveto -0.310787 0.608299 lineto stroke
+-0.294459 0.597518 moveto -0.303209 0.612674 lineto stroke
+-0.286881 0.601893 moveto -0.295631 0.617049 lineto stroke
+-0.279304 0.606268 moveto -0.288054 0.621424 lineto stroke
+-0.271726 0.610643 moveto -0.280476 0.625799 lineto stroke
+-0.264148 0.615018 moveto -0.272898 0.630174 lineto stroke
+-0.252195 0.611816 moveto -0.269696 0.642126 lineto stroke
+-0.260946 0.626971 moveto -0.564054 0.626971 lineto stroke
+-0.260946 0.657282 moveto -0.260946 0.59666 lineto stroke
+-0.276101 0.642126 moveto -0.276101 0.611815 lineto stroke
+-0.291256 0.642126 moveto -0.291256 0.611815 lineto stroke
+-0.306412 0.642126 moveto -0.306412 0.611815 lineto stroke
+-0.321567 0.642126 moveto -0.321567 0.611815 lineto stroke
+-0.336723 0.642126 moveto -0.336723 0.611815 lineto stroke
+-0.351878 0.642126 moveto -0.351878 0.611815 lineto stroke
+-0.367034 0.642126 moveto -0.367034 0.611815 lineto stroke
+-0.382189 0.642126 moveto -0.382189 0.611815 lineto stroke
+-0.397345 0.642126 moveto -0.397345 0.611815 lineto stroke
+-0.4125 0.642126 moveto -0.4125 0.611815 lineto stroke
+-0.427655 0.642126 moveto -0.427655 0.611815 lineto stroke
+-0.442811 0.642126 moveto -0.442811 0.611815 lineto stroke
+-0.457966 0.642126 moveto -0.457966 0.611815 lineto stroke
+-0.473122 0.642126 moveto -0.473122 0.611815 lineto stroke
+-0.488277 0.642126 moveto -0.488277 0.611815 lineto stroke
+-0.503433 0.642126 moveto -0.503433 0.611815 lineto stroke
+-0.518588 0.642126 moveto -0.518588 0.611815 lineto stroke
+-0.533744 0.642126 moveto -0.533744 0.611815 lineto stroke
+-0.548899 0.642126 moveto -0.548899 0.611815 lineto stroke
+-0.564054 0.657282 moveto -0.564054 0.59666 lineto stroke
+-0.801971 0.260946 moveto -0.889471 0.4125 lineto stroke
+-0.786816 0.269695 moveto -0.817126 0.252196 lineto stroke
+-0.798768 0.272898 moveto -0.813924 0.264148 lineto stroke
+-0.803143 0.280476 moveto -0.818299 0.271726 lineto stroke
+-0.807518 0.288054 moveto -0.822674 0.279304 lineto stroke
+-0.811893 0.295631 moveto -0.827049 0.286881 lineto stroke
+-0.816268 0.303209 moveto -0.831424 0.294459 lineto stroke
+-0.820643 0.310787 moveto -0.835799 0.302037 lineto stroke
+-0.825018 0.318365 moveto -0.840174 0.309615 lineto stroke
+-0.829393 0.325942 moveto -0.844549 0.317192 lineto stroke
+-0.833768 0.33352 moveto -0.848924 0.32477 lineto stroke
+-0.838143 0.341098 moveto -0.853299 0.332348 lineto stroke
+-0.842518 0.348675 moveto -0.857674 0.339925 lineto stroke
+-0.846893 0.356253 moveto -0.862049 0.347503 lineto stroke
+-0.851268 0.363831 moveto -0.866424 0.355081 lineto stroke
+-0.855643 0.371409 moveto -0.870799 0.362659 lineto stroke
+-0.860018 0.378986 moveto -0.875174 0.370236 lineto stroke
+-0.864393 0.386564 moveto -0.879549 0.377814 lineto stroke
+-0.868768 0.394142 moveto -0.883924 0.385392 lineto stroke
+-0.873143 0.401719 moveto -0.888299 0.39297 lineto stroke
+-0.877518 0.409297 moveto -0.892674 0.400547 lineto stroke
+-0.874315 0.42125 moveto -0.904626 0.40375 lineto stroke
+-0.889471 0.4125 moveto -0.801971 0.564054 lineto stroke
+-0.874315 0.40375 moveto -0.904626 0.42125 lineto stroke
+-0.877518 0.415703 moveto -0.892674 0.424453 lineto stroke
+-0.873143 0.42328 moveto -0.888299 0.43203 lineto stroke
+-0.868768 0.430858 moveto -0.883924 0.439608 lineto stroke
+-0.864393 0.438436 moveto -0.879549 0.447186 lineto stroke
+-0.860018 0.446014 moveto -0.875174 0.454764 lineto stroke
+-0.855643 0.453591 moveto -0.870799 0.462341 lineto stroke
+-0.851268 0.461169 moveto -0.866424 0.469919 lineto stroke
+-0.846893 0.468747 moveto -0.862049 0.477497 lineto stroke
+-0.842518 0.476324 moveto -0.857674 0.485074 lineto stroke
+-0.838143 0.483902 moveto -0.853299 0.492652 lineto stroke
+-0.833768 0.49148 moveto -0.848924 0.50023 lineto stroke
+-0.829393 0.499058 moveto -0.844549 0.507808 lineto stroke
+-0.825018 0.506635 moveto -0.840174 0.515385 lineto stroke
+-0.820643 0.514213 moveto -0.835799 0.522963 lineto stroke
+-0.816268 0.521791 moveto -0.831424 0.530541 lineto stroke
+-0.811893 0.529369 moveto -0.827049 0.538119 lineto stroke
+-0.807518 0.536946 moveto -0.822674 0.545696 lineto stroke
+-0.803143 0.544524 moveto -0.818299 0.553274 lineto stroke
+-0.798768 0.552102 moveto -0.813924 0.560852 lineto stroke
+-0.786815 0.555304 moveto -0.817126 0.572804 lineto stroke
+-0.801971 0.564054 moveto -0.539471 0.4125 lineto stroke
+-0.817126 0.537804 moveto -0.786815 0.590304 lineto stroke
+-0.796424 0.543352 moveto -0.781268 0.569602 lineto stroke
+-0.783299 0.535774 moveto -0.768143 0.562024 lineto stroke
+-0.770174 0.528196 moveto -0.755018 0.554446 lineto stroke
+-0.757049 0.520619 moveto -0.741893 0.546869 lineto stroke
+-0.743924 0.513041 moveto -0.728768 0.539291 lineto stroke
+-0.730799 0.505463 moveto -0.715643 0.531713 lineto stroke
+-0.717674 0.497885 moveto -0.702518 0.524135 lineto stroke
+-0.704549 0.490308 moveto -0.689393 0.516558 lineto stroke
+-0.691424 0.48273 moveto -0.676268 0.50898 lineto stroke
+-0.678299 0.475152 moveto -0.663143 0.501402 lineto stroke
+-0.665174 0.467574 moveto -0.650018 0.493824 lineto stroke
+-0.652049 0.459997 moveto -0.636893 0.486247 lineto stroke
+-0.638924 0.452419 moveto -0.623768 0.478669 lineto stroke
+-0.625799 0.444841 moveto -0.610643 0.471091 lineto stroke
+-0.612674 0.437264 moveto -0.597518 0.463514 lineto stroke
+-0.599549 0.429686 moveto -0.584393 0.455936 lineto stroke
+-0.586424 0.422108 moveto -0.571268 0.448358 lineto stroke
+-0.573299 0.41453 moveto -0.558143 0.44078 lineto stroke
+-0.560174 0.406953 moveto -0.545018 0.433203 lineto stroke
+-0.554626 0.38625 moveto -0.524316 0.43875 lineto stroke
+-0.539471 0.4125 moveto -0.626971 0.260946 lineto stroke
+-0.554626 0.42125 moveto -0.524316 0.40375 lineto stroke
+-0.551424 0.409297 moveto -0.536268 0.400547 lineto stroke
+-0.555799 0.40172 moveto -0.540643 0.39297 lineto stroke
+-0.560174 0.394142 moveto -0.545018 0.385392 lineto stroke
+-0.564549 0.386564 moveto -0.549393 0.377814 lineto stroke
+-0.568924 0.378986 moveto -0.553768 0.370236 lineto stroke
+-0.573299 0.371409 moveto -0.558143 0.362659 lineto stroke
+-0.577674 0.363831 moveto -0.562518 0.355081 lineto stroke
+-0.582049 0.356253 moveto -0.566893 0.347503 lineto stroke
+-0.586424 0.348676 moveto -0.571268 0.339925 lineto stroke
+-0.590799 0.341098 moveto -0.575643 0.332348 lineto stroke
+-0.595174 0.33352 moveto -0.580018 0.32477 lineto stroke
+-0.599549 0.325942 moveto -0.584393 0.317192 lineto stroke
+-0.603924 0.318365 moveto -0.588768 0.309615 lineto stroke
+-0.608299 0.310787 moveto -0.593143 0.302037 lineto stroke
+-0.612674 0.303209 moveto -0.597518 0.294459 lineto stroke
+-0.617049 0.295631 moveto -0.601893 0.286881 lineto stroke
+-0.621424 0.288054 moveto -0.606268 0.279304 lineto stroke
+-0.625799 0.280476 moveto -0.610643 0.271726 lineto stroke
+-0.630174 0.272898 moveto -0.615018 0.264148 lineto stroke
+-0.642126 0.269696 moveto -0.611816 0.252195 lineto stroke
+-0.626971 0.260946 moveto -0.626971 0.564054 lineto stroke
+-0.59666 0.260946 moveto -0.657282 0.260946 lineto stroke
+-0.611815 0.276101 moveto -0.642126 0.276101 lineto stroke
+-0.611815 0.291256 moveto -0.642126 0.291256 lineto stroke
+-0.611815 0.306412 moveto -0.642126 0.306412 lineto stroke
+-0.611815 0.321567 moveto -0.642126 0.321567 lineto stroke
+-0.611815 0.336723 moveto -0.642126 0.336723 lineto stroke
+-0.611815 0.351878 moveto -0.642126 0.351878 lineto stroke
+-0.611815 0.367034 moveto -0.642126 0.367034 lineto stroke
+-0.611815 0.382189 moveto -0.642126 0.382189 lineto stroke
+-0.611815 0.397345 moveto -0.642126 0.397345 lineto stroke
+-0.611815 0.4125 moveto -0.642126 0.4125 lineto stroke
+-0.611815 0.427655 moveto -0.642126 0.427655 lineto stroke
+-0.611815 0.442811 moveto -0.642126 0.442811 lineto stroke
+-0.611815 0.457966 moveto -0.642126 0.457966 lineto stroke
+-0.611815 0.473122 moveto -0.642126 0.473122 lineto stroke
+-0.611815 0.488277 moveto -0.642126 0.488277 lineto stroke
+-0.611815 0.503433 moveto -0.642126 0.503433 lineto stroke
+-0.611815 0.518588 moveto -0.642126 0.518588 lineto stroke
+-0.611815 0.533744 moveto -0.642126 0.533744 lineto stroke
+-0.611815 0.548899 moveto -0.642126 0.548899 lineto stroke
+-0.59666 0.564054 moveto -0.657282 0.564054 lineto stroke
+-0.626971 0.564054 moveto -0.801971 0.260946 lineto stroke
+-0.657282 0.581555 moveto -0.59666 0.546554 lineto stroke
+-0.650876 0.557649 moveto -0.620565 0.540149 lineto stroke
+-0.659626 0.542494 moveto -0.629315 0.524994 lineto stroke
+-0.668376 0.527338 moveto -0.638065 0.509838 lineto stroke
+-0.677126 0.512183 moveto -0.646815 0.494683 lineto stroke
+-0.685876 0.497027 moveto -0.655566 0.479527 lineto stroke
+-0.694626 0.481872 moveto -0.664315 0.464372 lineto stroke
+-0.703376 0.466716 moveto -0.673065 0.449216 lineto stroke
+-0.712126 0.451561 moveto -0.681816 0.434061 lineto stroke
+-0.720876 0.436405 moveto -0.690565 0.418905 lineto stroke
+-0.729626 0.42125 moveto -0.699315 0.40375 lineto stroke
+-0.738376 0.406095 moveto -0.708066 0.388595 lineto stroke
+-0.747126 0.390939 moveto -0.716816 0.373439 lineto stroke
+-0.755876 0.375784 moveto -0.725565 0.358284 lineto stroke
+-0.764626 0.360628 moveto -0.734316 0.343128 lineto stroke
+-0.773376 0.345473 moveto -0.743065 0.327973 lineto stroke
+-0.782126 0.330317 moveto -0.751815 0.312817 lineto stroke
+-0.790876 0.315162 moveto -0.760566 0.297662 lineto stroke
+-0.799626 0.300006 moveto -0.769316 0.282506 lineto stroke
+-0.808376 0.284851 moveto -0.778066 0.267351 lineto stroke
+-0.832282 0.278446 moveto -0.77166 0.243445 lineto stroke
+-0.673446 -0.0875 moveto -0.825 -0.175 lineto stroke
+-0.682196 -0.0723446 moveto -0.664696 -0.102655 lineto stroke
+-0.685398 -0.0842973 moveto -0.676648 -0.0994527 lineto stroke
+-0.692976 -0.0886723 moveto -0.684226 -0.103828 lineto stroke
+-0.700554 -0.0930473 moveto -0.691804 -0.108203 lineto stroke
+-0.708131 -0.0974223 moveto -0.699381 -0.112578 lineto stroke
+-0.715709 -0.101797 moveto -0.706959 -0.116953 lineto stroke
+-0.723287 -0.106172 moveto -0.714537 -0.121328 lineto stroke
+-0.730865 -0.110547 moveto -0.722115 -0.125703 lineto stroke
+-0.738442 -0.114922 moveto -0.729692 -0.130078 lineto stroke
+-0.74602 -0.119297 moveto -0.73727 -0.134453 lineto stroke
+-0.753598 -0.123672 moveto -0.744848 -0.138828 lineto stroke
+-0.761176 -0.128047 moveto -0.752426 -0.143203 lineto stroke
+-0.768753 -0.132422 moveto -0.760003 -0.147578 lineto stroke
+-0.776331 -0.136797 moveto -0.767581 -0.151953 lineto stroke
+-0.783909 -0.141172 moveto -0.775159 -0.156328 lineto stroke
+-0.791486 -0.145547 moveto -0.782736 -0.160703 lineto stroke
+-0.799064 -0.149922 moveto -0.790314 -0.165078 lineto stroke
+-0.806642 -0.154297 moveto -0.797892 -0.169453 lineto stroke
+-0.814219 -0.158672 moveto -0.80547 -0.173828 lineto stroke
+-0.821797 -0.163047 moveto -0.813047 -0.178203 lineto stroke
+-0.83375 -0.159845 moveto -0.81625 -0.190155 lineto stroke
+-0.825 -0.175 moveto -0.976554 -0.0875 lineto stroke
+-0.81625 -0.159845 moveto -0.83375 -0.190155 lineto stroke
+-0.828203 -0.163047 moveto -0.836953 -0.178203 lineto stroke
+-0.83578 -0.158672 moveto -0.84453 -0.173828 lineto stroke
+-0.843358 -0.154297 moveto -0.852108 -0.169453 lineto stroke
+-0.850936 -0.149922 moveto -0.859686 -0.165078 lineto stroke
+-0.858514 -0.145547 moveto -0.867264 -0.160703 lineto stroke
+-0.866091 -0.141172 moveto -0.874841 -0.156328 lineto stroke
+-0.873669 -0.136797 moveto -0.882419 -0.151953 lineto stroke
+-0.881247 -0.132422 moveto -0.889997 -0.147578 lineto stroke
+-0.888824 -0.128047 moveto -0.897574 -0.143203 lineto stroke
+-0.896402 -0.123672 moveto -0.905152 -0.138828 lineto stroke
+-0.90398 -0.119297 moveto -0.91273 -0.134453 lineto stroke
+-0.911558 -0.114922 moveto -0.920308 -0.130078 lineto stroke
+-0.919135 -0.110547 moveto -0.927885 -0.125703 lineto stroke
+-0.926713 -0.106172 moveto -0.935463 -0.121328 lineto stroke
+-0.934291 -0.101797 moveto -0.943041 -0.116953 lineto stroke
+-0.941869 -0.0974223 moveto -0.950619 -0.112578 lineto stroke
+-0.949446 -0.0930473 moveto -0.958196 -0.108203 lineto stroke
+-0.957024 -0.0886723 moveto -0.965774 -0.103828 lineto stroke
+-0.964602 -0.0842973 moveto -0.973352 -0.0994527 lineto stroke
+-0.967804 -0.0723446 moveto -0.985304 -0.102655 lineto stroke
+-0.976554 -0.0875 moveto -0.673446 0.0875 lineto stroke
+-0.959054 -0.117811 moveto -0.994054 -0.0571891 lineto stroke
+-0.952649 -0.0939054 moveto -0.970149 -0.0635946 lineto stroke
+-0.937494 -0.0851554 moveto -0.954994 -0.0548446 lineto stroke
+-0.922338 -0.0764054 moveto -0.939838 -0.0460946 lineto stroke
+-0.907183 -0.0676554 moveto -0.924683 -0.0373446 lineto stroke
+-0.892027 -0.0589054 moveto -0.909527 -0.0285946 lineto stroke
+-0.876872 -0.0501554 moveto -0.894372 -0.0198446 lineto stroke
+-0.861716 -0.0414054 moveto -0.879216 -0.0110946 lineto stroke
+-0.846561 -0.0326554 moveto -0.864061 -0.00234457 lineto stroke
+-0.831405 -0.0239054 moveto -0.848905 0.00640544 lineto stroke
+-0.81625 -0.0151554 moveto -0.83375 0.0151554 lineto stroke
+-0.801094 -0.00640544 moveto -0.818595 0.0239054 lineto stroke
+-0.785939 0.00234457 moveto -0.803439 0.0326554 lineto stroke
+-0.770784 0.0110946 moveto -0.788284 0.0414054 lineto stroke
+-0.755628 0.0198446 moveto -0.773128 0.0501554 lineto stroke
+-0.740473 0.0285946 moveto -0.757973 0.0589054 lineto stroke
+-0.725317 0.0373446 moveto -0.742817 0.0676554 lineto stroke
+-0.710162 0.0460946 moveto -0.727662 0.0764054 lineto stroke
+-0.695006 0.0548446 moveto -0.712506 0.0851554 lineto stroke
+-0.679851 0.0635946 moveto -0.697351 0.0939054 lineto stroke
+-0.655946 0.0571891 moveto -0.690946 0.117811 lineto stroke
+-0.673446 0.0875 moveto -0.825 0.175 lineto stroke
+-0.664696 0.102655 moveto -0.682196 0.0723446 lineto stroke
+-0.676648 0.0994527 moveto -0.685398 0.0842973 lineto stroke
+-0.684226 0.103828 moveto -0.692976 0.0886723 lineto stroke
+-0.691804 0.108203 moveto -0.700554 0.0930473 lineto stroke
+-0.699381 0.112578 moveto -0.708131 0.0974223 lineto stroke
+-0.706959 0.116953 moveto -0.715709 0.101797 lineto stroke
+-0.714537 0.121328 moveto -0.723287 0.106172 lineto stroke
+-0.722115 0.125703 moveto -0.730865 0.110547 lineto stroke
+-0.729692 0.130078 moveto -0.738442 0.114922 lineto stroke
+-0.73727 0.134453 moveto -0.74602 0.119297 lineto stroke
+-0.744848 0.138828 moveto -0.753598 0.123672 lineto stroke
+-0.752426 0.143203 moveto -0.761176 0.128047 lineto stroke
+-0.760003 0.147578 moveto -0.768753 0.132422 lineto stroke
+-0.767581 0.151953 moveto -0.776331 0.136797 lineto stroke
+-0.775159 0.156328 moveto -0.783909 0.141172 lineto stroke
+-0.782736 0.160703 moveto -0.791486 0.145547 lineto stroke
+-0.790314 0.165078 moveto -0.799064 0.149922 lineto stroke
+-0.797892 0.169453 moveto -0.806642 0.154297 lineto stroke
+-0.80547 0.173828 moveto -0.814219 0.158672 lineto stroke
+-0.813047 0.178203 moveto -0.821797 0.163047 lineto stroke
+-0.81625 0.190155 moveto -0.83375 0.159845 lineto stroke
+-0.825 0.175 moveto -0.976554 0.0875 lineto stroke
+-0.83375 0.190155 moveto -0.81625 0.159845 lineto stroke
+-0.836953 0.178203 moveto -0.828203 0.163047 lineto stroke
+-0.84453 0.173828 moveto -0.83578 0.158672 lineto stroke
+-0.852108 0.169453 moveto -0.843358 0.154297 lineto stroke
+-0.859686 0.165078 moveto -0.850936 0.149922 lineto stroke
+-0.867264 0.160703 moveto -0.858514 0.145547 lineto stroke
+-0.874841 0.156328 moveto -0.866091 0.141172 lineto stroke
+-0.882419 0.151953 moveto -0.873669 0.136797 lineto stroke
+-0.889997 0.147578 moveto -0.881247 0.132422 lineto stroke
+-0.897574 0.143203 moveto -0.888824 0.128047 lineto stroke
+-0.905152 0.138828 moveto -0.896402 0.123672 lineto stroke
+-0.91273 0.134453 moveto -0.90398 0.119297 lineto stroke
+-0.920308 0.130078 moveto -0.911558 0.114922 lineto stroke
+-0.927885 0.125703 moveto -0.919135 0.110547 lineto stroke
+-0.935463 0.121328 moveto -0.926713 0.106172 lineto stroke
+-0.943041 0.116953 moveto -0.934291 0.101797 lineto stroke
+-0.950619 0.112578 moveto -0.941869 0.0974223 lineto stroke
+-0.958196 0.108203 moveto -0.949446 0.0930473 lineto stroke
+-0.965774 0.103828 moveto -0.957024 0.0886723 lineto stroke
+-0.973352 0.0994527 moveto -0.964602 0.0842973 lineto stroke
+-0.985304 0.102655 moveto -0.967804 0.0723446 lineto stroke
+-0.976554 0.0875 moveto -0.673446 -0.0875 lineto stroke
+-0.994054 0.0571891 moveto -0.959054 0.117811 lineto stroke
+-0.970149 0.0635946 moveto -0.952649 0.0939054 lineto stroke
+-0.954994 0.0548446 moveto -0.937494 0.0851554 lineto stroke
+-0.939838 0.0460946 moveto -0.922338 0.0764054 lineto stroke
+-0.924683 0.0373446 moveto -0.907183 0.0676554 lineto stroke
+-0.909527 0.0285946 moveto -0.892027 0.0589054 lineto stroke
+-0.894372 0.0198446 moveto -0.876872 0.0501554 lineto stroke
+-0.879216 0.0110946 moveto -0.861716 0.0414054 lineto stroke
+-0.864061 0.00234457 moveto -0.846561 0.0326554 lineto stroke
+-0.848905 -0.00640544 moveto -0.831405 0.0239054 lineto stroke
+-0.83375 -0.0151554 moveto -0.81625 0.0151554 lineto stroke
+-0.818595 -0.0239054 moveto -0.801094 0.00640544 lineto stroke
+-0.803439 -0.0326554 moveto -0.785939 -0.00234457 lineto stroke
+-0.788284 -0.0414054 moveto -0.770784 -0.0110946 lineto stroke
+-0.773128 -0.0501554 moveto -0.755628 -0.0198446 lineto stroke
+-0.757973 -0.0589054 moveto -0.740473 -0.0285946 lineto stroke
+-0.742817 -0.0676554 moveto -0.725317 -0.0373446 lineto stroke
+-0.727662 -0.0764054 moveto -0.710162 -0.0460946 lineto stroke
+-0.712506 -0.0851554 moveto -0.695006 -0.0548446 lineto stroke
+-0.697351 -0.0939054 moveto -0.679851 -0.0635946 lineto stroke
+-0.690946 -0.117811 moveto -0.655946 -0.0571891 lineto stroke
+-0.539471 -0.4125 moveto -0.626971 -0.564054 lineto stroke
+-0.554626 -0.40375 moveto -0.524315 -0.42125 lineto stroke
+-0.551424 -0.415703 moveto -0.536268 -0.424453 lineto stroke
+-0.555799 -0.42328 moveto -0.540643 -0.43203 lineto stroke
+-0.560174 -0.430858 moveto -0.545018 -0.439608 lineto stroke
+-0.564549 -0.438436 moveto -0.549393 -0.447186 lineto stroke
+-0.568924 -0.446014 moveto -0.553768 -0.454764 lineto stroke
+-0.573299 -0.453591 moveto -0.558143 -0.462341 lineto stroke
+-0.577674 -0.461169 moveto -0.562518 -0.469919 lineto stroke
+-0.582049 -0.468747 moveto -0.566893 -0.477497 lineto stroke
+-0.586424 -0.476325 moveto -0.571268 -0.485075 lineto stroke
+-0.590799 -0.483902 moveto -0.575643 -0.492652 lineto stroke
+-0.595174 -0.49148 moveto -0.580018 -0.50023 lineto stroke
+-0.599549 -0.499058 moveto -0.584393 -0.507808 lineto stroke
+-0.603924 -0.506635 moveto -0.588768 -0.515385 lineto stroke
+-0.608299 -0.514213 moveto -0.593143 -0.522963 lineto stroke
+-0.612674 -0.521791 moveto -0.597518 -0.530541 lineto stroke
+-0.617049 -0.529369 moveto -0.601893 -0.538119 lineto stroke
+-0.621424 -0.536946 moveto -0.606268 -0.545696 lineto stroke
+-0.625799 -0.544524 moveto -0.610643 -0.553274 lineto stroke
+-0.630174 -0.552102 moveto -0.615018 -0.560852 lineto stroke
+-0.642126 -0.555305 moveto -0.611815 -0.572804 lineto stroke
+-0.626971 -0.564054 moveto -0.889471 -0.4125 lineto stroke
+-0.611815 -0.537804 moveto -0.642126 -0.590304 lineto stroke
+-0.632518 -0.543352 moveto -0.647674 -0.569602 lineto stroke
+-0.645643 -0.535774 moveto -0.660799 -0.562024 lineto stroke
+-0.658768 -0.528196 moveto -0.673924 -0.554446 lineto stroke
+-0.671893 -0.520619 moveto -0.687049 -0.546869 lineto stroke
+-0.685018 -0.513041 moveto -0.700174 -0.539291 lineto stroke
+-0.698143 -0.505463 moveto -0.713299 -0.531713 lineto stroke
+-0.711268 -0.497885 moveto -0.726424 -0.524135 lineto stroke
+-0.724393 -0.490308 moveto -0.739549 -0.516558 lineto stroke
+-0.737518 -0.48273 moveto -0.752674 -0.50898 lineto stroke
+-0.750643 -0.475152 moveto -0.765799 -0.501402 lineto stroke
+-0.763768 -0.467574 moveto -0.778924 -0.493824 lineto stroke
+-0.776893 -0.459997 moveto -0.792049 -0.486247 lineto stroke
+-0.790018 -0.452419 moveto -0.805174 -0.478669 lineto stroke
+-0.803143 -0.444841 moveto -0.818299 -0.471091 lineto stroke
+-0.816268 -0.437264 moveto -0.831424 -0.463514 lineto stroke
+-0.829393 -0.429686 moveto -0.844549 -0.455936 lineto stroke
+-0.842518 -0.422108 moveto -0.857674 -0.448358 lineto stroke
+-0.855643 -0.41453 moveto -0.870799 -0.44078 lineto stroke
+-0.868768 -0.406953 moveto -0.883924 -0.433203 lineto stroke
+-0.874315 -0.38625 moveto -0.904626 -0.43875 lineto stroke
+-0.889471 -0.4125 moveto -0.626971 -0.260946 lineto stroke
+-0.874315 -0.43875 moveto -0.904626 -0.38625 lineto stroke
+-0.868768 -0.418047 moveto -0.883924 -0.391797 lineto stroke
+-0.855643 -0.41047 moveto -0.870799 -0.384219 lineto stroke
+-0.842518 -0.402892 moveto -0.857674 -0.376642 lineto stroke
+-0.829393 -0.395314 moveto -0.844549 -0.369064 lineto stroke
+-0.816268 -0.387736 moveto -0.831424 -0.361486 lineto stroke
+-0.803143 -0.380159 moveto -0.818299 -0.353909 lineto stroke
+-0.790018 -0.372581 moveto -0.805174 -0.346331 lineto stroke
+-0.776893 -0.365003 moveto -0.792049 -0.338753 lineto stroke
+-0.763768 -0.357426 moveto -0.778924 -0.331176 lineto stroke
+-0.750643 -0.349848 moveto -0.765799 -0.323598 lineto stroke
+-0.737518 -0.34227 moveto -0.752674 -0.31602 lineto stroke
+-0.724393 -0.334692 moveto -0.739549 -0.308442 lineto stroke
+-0.711268 -0.327115 moveto -0.726424 -0.300865 lineto stroke
+-0.698143 -0.319537 moveto -0.713299 -0.293287 lineto stroke
+-0.685018 -0.311959 moveto -0.700174 -0.285709 lineto stroke
+-0.671893 -0.304381 moveto -0.687049 -0.278131 lineto stroke
+-0.658768 -0.296804 moveto -0.673924 -0.270554 lineto stroke
+-0.645643 -0.289226 moveto -0.660799 -0.262976 lineto stroke
+-0.632518 -0.281648 moveto -0.647674 -0.255398 lineto stroke
+-0.611816 -0.287196 moveto -0.642126 -0.234696 lineto stroke
+-0.626971 -0.260946 moveto -0.801971 -0.260946 lineto stroke
+-0.626971 -0.243446 moveto -0.626971 -0.278446 lineto stroke
+-0.635721 -0.252196 moveto -0.635721 -0.269696 lineto stroke
+-0.644471 -0.252196 moveto -0.644471 -0.269696 lineto stroke
+-0.653221 -0.252196 moveto -0.653221 -0.269696 lineto stroke
+-0.661971 -0.252196 moveto -0.661971 -0.269696 lineto stroke
+-0.670721 -0.252196 moveto -0.670721 -0.269696 lineto stroke
+-0.679471 -0.252196 moveto -0.679471 -0.269696 lineto stroke
+-0.688221 -0.252196 moveto -0.688221 -0.269696 lineto stroke
+-0.696971 -0.252196 moveto -0.696971 -0.269696 lineto stroke
+-0.705721 -0.252196 moveto -0.705721 -0.269696 lineto stroke
+-0.714471 -0.252196 moveto -0.714471 -0.269696 lineto stroke
+-0.723221 -0.252196 moveto -0.723221 -0.269696 lineto stroke
+-0.731971 -0.252196 moveto -0.731971 -0.269696 lineto stroke
+-0.740721 -0.252196 moveto -0.740721 -0.269696 lineto stroke
+-0.749471 -0.252196 moveto -0.749471 -0.269696 lineto stroke
+-0.758221 -0.252196 moveto -0.758221 -0.269696 lineto stroke
+-0.766971 -0.252196 moveto -0.766971 -0.269696 lineto stroke
+-0.775721 -0.252196 moveto -0.775721 -0.269696 lineto stroke
+-0.784471 -0.252196 moveto -0.784471 -0.269696 lineto stroke
+-0.793221 -0.252196 moveto -0.793221 -0.269696 lineto stroke
+-0.801971 -0.243445 moveto -0.801971 -0.278446 lineto stroke
+-0.801971 -0.260946 moveto -0.801971 -0.564054 lineto stroke
+-0.832282 -0.260946 moveto -0.77166 -0.260946 lineto stroke
+-0.817126 -0.276101 moveto -0.786816 -0.276101 lineto stroke
+-0.817126 -0.291256 moveto -0.786816 -0.291256 lineto stroke
+-0.817126 -0.306412 moveto -0.786816 -0.306412 lineto stroke
+-0.817126 -0.321567 moveto -0.786816 -0.321567 lineto stroke
+-0.817126 -0.336723 moveto -0.786816 -0.336723 lineto stroke
+-0.817126 -0.351878 moveto -0.786816 -0.351878 lineto stroke
+-0.817126 -0.367034 moveto -0.786816 -0.367034 lineto stroke
+-0.817126 -0.382189 moveto -0.786816 -0.382189 lineto stroke
+-0.817126 -0.397345 moveto -0.786816 -0.397345 lineto stroke
+-0.817126 -0.4125 moveto -0.786816 -0.4125 lineto stroke
+-0.817126 -0.427655 moveto -0.786816 -0.427655 lineto stroke
+-0.817126 -0.442811 moveto -0.786816 -0.442811 lineto stroke
+-0.817126 -0.457966 moveto -0.786815 -0.457966 lineto stroke
+-0.817126 -0.473122 moveto -0.786815 -0.473122 lineto stroke
+-0.817126 -0.488277 moveto -0.786815 -0.488277 lineto stroke
+-0.817126 -0.503433 moveto -0.786815 -0.503433 lineto stroke
+-0.817126 -0.518588 moveto -0.786815 -0.518588 lineto stroke
+-0.817126 -0.533744 moveto -0.786815 -0.533744 lineto stroke
+-0.817126 -0.548899 moveto -0.786815 -0.548899 lineto stroke
+-0.832282 -0.564054 moveto -0.77166 -0.564054 lineto stroke
+-0.801971 -0.564054 moveto -0.539471 -0.4125 lineto stroke
+-0.786815 -0.590304 moveto -0.817126 -0.537804 lineto stroke
+-0.781268 -0.569602 moveto -0.796424 -0.543352 lineto stroke
+-0.768143 -0.562024 moveto -0.783299 -0.535774 lineto stroke
+-0.755018 -0.554446 moveto -0.770174 -0.528196 lineto stroke
+-0.741893 -0.546869 moveto -0.757049 -0.520619 lineto stroke
+-0.728768 -0.539291 moveto -0.743924 -0.513041 lineto stroke
+-0.715643 -0.531713 moveto -0.730799 -0.505463 lineto stroke
+-0.702518 -0.524135 moveto -0.717674 -0.497885 lineto stroke
+-0.689393 -0.516558 moveto -0.704549 -0.490308 lineto stroke
+-0.676268 -0.50898 moveto -0.691424 -0.48273 lineto stroke
+-0.663143 -0.501402 moveto -0.678299 -0.475152 lineto stroke
+-0.650018 -0.493824 moveto -0.665174 -0.467574 lineto stroke
+-0.636893 -0.486247 moveto -0.652049 -0.459997 lineto stroke
+-0.623768 -0.478669 moveto -0.638924 -0.452419 lineto stroke
+-0.610643 -0.471091 moveto -0.625799 -0.444841 lineto stroke
+-0.597518 -0.463514 moveto -0.612674 -0.437264 lineto stroke
+-0.584393 -0.455936 moveto -0.599549 -0.429686 lineto stroke
+-0.571268 -0.448358 moveto -0.586424 -0.422108 lineto stroke
+-0.558143 -0.44078 moveto -0.573299 -0.41453 lineto stroke
+-0.545018 -0.433203 moveto -0.560174 -0.406953 lineto stroke
+-0.524316 -0.43875 moveto -0.554626 -0.38625 lineto stroke
+-0.4125 -0.539471 moveto -0.260946 -0.626971 lineto stroke
+-0.42125 -0.554626 moveto -0.40375 -0.524316 lineto stroke
+-0.409297 -0.551424 moveto -0.400547 -0.536268 lineto stroke
+-0.40172 -0.555799 moveto -0.39297 -0.540643 lineto stroke
+-0.394142 -0.560174 moveto -0.385392 -0.545018 lineto stroke
+-0.386564 -0.564549 moveto -0.377814 -0.549393 lineto stroke
+-0.378986 -0.568924 moveto -0.370236 -0.553768 lineto stroke
+-0.371409 -0.573299 moveto -0.362659 -0.558143 lineto stroke
+-0.363831 -0.577674 moveto -0.355081 -0.562518 lineto stroke
+-0.356253 -0.582049 moveto -0.347503 -0.566893 lineto stroke
+-0.348676 -0.586424 moveto -0.339925 -0.571268 lineto stroke
+-0.341098 -0.590799 moveto -0.332348 -0.575643 lineto stroke
+-0.33352 -0.595174 moveto -0.32477 -0.580018 lineto stroke
+-0.325942 -0.599549 moveto -0.317192 -0.584393 lineto stroke
+-0.318365 -0.603924 moveto -0.309615 -0.588768 lineto stroke
+-0.310787 -0.608299 moveto -0.302037 -0.593143 lineto stroke
+-0.303209 -0.612674 moveto -0.294459 -0.597518 lineto stroke
+-0.295631 -0.617049 moveto -0.286881 -0.601893 lineto stroke
+-0.288054 -0.621424 moveto -0.279304 -0.606268 lineto stroke
+-0.280476 -0.625799 moveto -0.271726 -0.610643 lineto stroke
+-0.272898 -0.630174 moveto -0.264148 -0.615018 lineto stroke
+-0.269696 -0.642126 moveto -0.252195 -0.611816 lineto stroke
+-0.260946 -0.626971 moveto -0.564054 -0.801971 lineto stroke
+-0.278446 -0.59666 moveto -0.243446 -0.657282 lineto stroke
+-0.284851 -0.620566 moveto -0.267351 -0.650876 lineto stroke
+-0.300006 -0.629315 moveto -0.282506 -0.659626 lineto stroke
+-0.315162 -0.638065 moveto -0.297662 -0.668376 lineto stroke
+-0.330317 -0.646816 moveto -0.312817 -0.677126 lineto stroke
+-0.345473 -0.655566 moveto -0.327973 -0.685876 lineto stroke
+-0.360628 -0.664316 moveto -0.343128 -0.694626 lineto stroke
+-0.375784 -0.673066 moveto -0.358284 -0.703376 lineto stroke
+-0.390939 -0.681816 moveto -0.373439 -0.712126 lineto stroke
+-0.406095 -0.690565 moveto -0.388595 -0.720876 lineto stroke
+-0.42125 -0.699315 moveto -0.40375 -0.729626 lineto stroke
+-0.436405 -0.708066 moveto -0.418905 -0.738376 lineto stroke
+-0.451561 -0.716815 moveto -0.434061 -0.747126 lineto stroke
+-0.466716 -0.725565 moveto -0.449216 -0.755876 lineto stroke
+-0.481872 -0.734315 moveto -0.464372 -0.764626 lineto stroke
+-0.497027 -0.743065 moveto -0.479527 -0.773376 lineto stroke
+-0.512183 -0.751815 moveto -0.494683 -0.782126 lineto stroke
+-0.527338 -0.760565 moveto -0.509838 -0.790876 lineto stroke
+-0.542494 -0.769315 moveto -0.524993 -0.799626 lineto stroke
+-0.557649 -0.778065 moveto -0.540149 -0.808376 lineto stroke
+-0.581554 -0.77166 moveto -0.546554 -0.832282 lineto stroke
+-0.564054 -0.801971 moveto -0.564054 -0.626971 lineto stroke
+-0.546554 -0.801971 moveto -0.581554 -0.801971 lineto stroke
+-0.555304 -0.793221 moveto -0.572804 -0.793221 lineto stroke
+-0.555304 -0.784471 moveto -0.572804 -0.784471 lineto stroke
+-0.555304 -0.775721 moveto -0.572804 -0.775721 lineto stroke
+-0.555304 -0.766971 moveto -0.572804 -0.766971 lineto stroke
+-0.555304 -0.758221 moveto -0.572804 -0.758221 lineto stroke
+-0.555304 -0.749471 moveto -0.572804 -0.749471 lineto stroke
+-0.555304 -0.740721 moveto -0.572804 -0.740721 lineto stroke
+-0.555304 -0.731971 moveto -0.572804 -0.731971 lineto stroke
+-0.555304 -0.723221 moveto -0.572805 -0.723221 lineto stroke
+-0.555304 -0.714471 moveto -0.572805 -0.714471 lineto stroke
+-0.555304 -0.705721 moveto -0.572805 -0.705721 lineto stroke
+-0.555304 -0.696971 moveto -0.572805 -0.696971 lineto stroke
+-0.555304 -0.688221 moveto -0.572805 -0.688221 lineto stroke
+-0.555304 -0.679471 moveto -0.572805 -0.679471 lineto stroke
+-0.555304 -0.670721 moveto -0.572805 -0.670721 lineto stroke
+-0.555304 -0.661971 moveto -0.572805 -0.661971 lineto stroke
+-0.555304 -0.653221 moveto -0.572805 -0.653221 lineto stroke
+-0.555304 -0.644471 moveto -0.572804 -0.644471 lineto stroke
+-0.555304 -0.635721 moveto -0.572805 -0.635721 lineto stroke
+-0.546554 -0.626971 moveto -0.581555 -0.626971 lineto stroke
+-0.564054 -0.626971 moveto -0.260946 -0.801971 lineto stroke
+-0.581555 -0.657282 moveto -0.546554 -0.59666 lineto stroke
+-0.557649 -0.650876 moveto -0.540149 -0.620565 lineto stroke
+-0.542494 -0.659626 moveto -0.524994 -0.629315 lineto stroke
+-0.527338 -0.668376 moveto -0.509838 -0.638065 lineto stroke
+-0.512183 -0.677126 moveto -0.494683 -0.646815 lineto stroke
+-0.497027 -0.685876 moveto -0.479527 -0.655566 lineto stroke
+-0.481872 -0.694626 moveto -0.464372 -0.664315 lineto stroke
+-0.466716 -0.703376 moveto -0.449216 -0.673065 lineto stroke
+-0.451561 -0.712126 moveto -0.434061 -0.681816 lineto stroke
+-0.436405 -0.720876 moveto -0.418905 -0.690565 lineto stroke
+-0.42125 -0.729626 moveto -0.40375 -0.699315 lineto stroke
+-0.406095 -0.738376 moveto -0.388595 -0.708066 lineto stroke
+-0.390939 -0.747126 moveto -0.373439 -0.716816 lineto stroke
+-0.375784 -0.755876 moveto -0.358284 -0.725565 lineto stroke
+-0.360628 -0.764626 moveto -0.343128 -0.734316 lineto stroke
+-0.345473 -0.773376 moveto -0.327973 -0.743065 lineto stroke
+-0.330317 -0.782126 moveto -0.312817 -0.751815 lineto stroke
+-0.315162 -0.790876 moveto -0.297662 -0.760566 lineto stroke
+-0.300006 -0.799626 moveto -0.282506 -0.769316 lineto stroke
+-0.284851 -0.808376 moveto -0.267351 -0.778066 lineto stroke
+-0.278446 -0.832282 moveto -0.243445 -0.77166 lineto stroke
+-0.260946 -0.801971 moveto -0.4125 -0.889471 lineto stroke
+-0.269695 -0.786816 moveto -0.252196 -0.817126 lineto stroke
+-0.272898 -0.798768 moveto -0.264148 -0.813924 lineto stroke
+-0.280476 -0.803143 moveto -0.271726 -0.818299 lineto stroke
+-0.288054 -0.807518 moveto -0.279304 -0.822674 lineto stroke
+-0.295631 -0.811893 moveto -0.286881 -0.827049 lineto stroke
+-0.303209 -0.816268 moveto -0.294459 -0.831424 lineto stroke
+-0.310787 -0.820643 moveto -0.302037 -0.835799 lineto stroke
+-0.318365 -0.825018 moveto -0.309615 -0.840174 lineto stroke
+-0.325942 -0.829393 moveto -0.317192 -0.844549 lineto stroke
+-0.33352 -0.833768 moveto -0.32477 -0.848924 lineto stroke
+-0.341098 -0.838143 moveto -0.332348 -0.853299 lineto stroke
+-0.348675 -0.842518 moveto -0.339925 -0.857674 lineto stroke
+-0.356253 -0.846893 moveto -0.347503 -0.862049 lineto stroke
+-0.363831 -0.851268 moveto -0.355081 -0.866424 lineto stroke
+-0.371409 -0.855643 moveto -0.362659 -0.870799 lineto stroke
+-0.378986 -0.860018 moveto -0.370236 -0.875174 lineto stroke
+-0.386564 -0.864393 moveto -0.377814 -0.879549 lineto stroke
+-0.394142 -0.868768 moveto -0.385392 -0.883924 lineto stroke
+-0.401719 -0.873143 moveto -0.39297 -0.888299 lineto stroke
+-0.409297 -0.877518 moveto -0.400547 -0.892674 lineto stroke
+-0.42125 -0.874315 moveto -0.40375 -0.904626 lineto stroke
+-0.4125 -0.889471 moveto -0.4125 -0.539471 lineto stroke
+-0.3775 -0.889471 moveto -0.4475 -0.889471 lineto stroke
+-0.395 -0.871971 moveto -0.43 -0.871971 lineto stroke
+-0.395 -0.854471 moveto -0.43 -0.854471 lineto stroke
+-0.395 -0.836971 moveto -0.43 -0.836971 lineto stroke
+-0.395 -0.819471 moveto -0.43 -0.819471 lineto stroke
+-0.395 -0.801971 moveto -0.43 -0.801971 lineto stroke
+-0.395 -0.784471 moveto -0.43 -0.784471 lineto stroke
+-0.395 -0.766971 moveto -0.43 -0.766971 lineto stroke
+-0.395 -0.749471 moveto -0.43 -0.749471 lineto stroke
+-0.395 -0.731971 moveto -0.43 -0.731971 lineto stroke
+-0.395 -0.714471 moveto -0.43 -0.714471 lineto stroke
+-0.395 -0.696971 moveto -0.43 -0.696971 lineto stroke
+-0.395 -0.679471 moveto -0.43 -0.679471 lineto stroke
+-0.395 -0.661971 moveto -0.43 -0.661971 lineto stroke
+-0.395 -0.644471 moveto -0.43 -0.644471 lineto stroke
+-0.395 -0.626971 moveto -0.43 -0.626971 lineto stroke
+-0.395 -0.609471 moveto -0.43 -0.609471 lineto stroke
+-0.395 -0.591971 moveto -0.43 -0.591971 lineto stroke
+-0.395 -0.574471 moveto -0.43 -0.574471 lineto stroke
+-0.395 -0.556971 moveto -0.43 -0.556971 lineto stroke
+-0.3775 -0.539471 moveto -0.4475 -0.539471 lineto stroke
+-0.0875 -0.673446 moveto 0.0875 -0.673446 lineto stroke
+-0.0875 -0.690946 moveto -0.0875 -0.655946 lineto stroke
+-0.07875 -0.682196 moveto -0.07875 -0.664696 lineto stroke
+-0.07 -0.682196 moveto -0.07 -0.664696 lineto stroke
+-0.06125 -0.682196 moveto -0.06125 -0.664696 lineto stroke
+-0.0525 -0.682196 moveto -0.0525 -0.664696 lineto stroke
+-0.04375 -0.682196 moveto -0.04375 -0.664696 lineto stroke
+-0.035 -0.682196 moveto -0.035 -0.664696 lineto stroke
+-0.02625 -0.682196 moveto -0.02625 -0.664696 lineto stroke
+-0.0175 -0.682196 moveto -0.0175 -0.664696 lineto stroke
+-0.00875 -0.682196 moveto -0.00875 -0.664696 lineto stroke
+0.0 -0.682196 moveto 0.0 -0.664696 lineto stroke
+0.00875 -0.682196 moveto 0.00875 -0.664696 lineto stroke
+0.0175 -0.682196 moveto 0.0175 -0.664696 lineto stroke
+0.02625 -0.682196 moveto 0.02625 -0.664696 lineto stroke
+0.035 -0.682196 moveto 0.035 -0.664696 lineto stroke
+0.04375 -0.682196 moveto 0.04375 -0.664696 lineto stroke
+0.0525 -0.682196 moveto 0.0525 -0.664696 lineto stroke
+0.06125 -0.682196 moveto 0.06125 -0.664696 lineto stroke
+0.07 -0.682196 moveto 0.07 -0.664696 lineto stroke
+0.07875 -0.682196 moveto 0.07875 -0.664696 lineto stroke
+0.0875 -0.690946 moveto 0.0875 -0.655946 lineto stroke
+0.0875 -0.673446 moveto 0.0875 -0.976554 lineto stroke
+0.0571891 -0.673446 moveto 0.117811 -0.673446 lineto stroke
+0.0723446 -0.688601 moveto 0.102655 -0.688601 lineto stroke
+0.0723446 -0.703757 moveto 0.102655 -0.703757 lineto stroke
+0.0723446 -0.718912 moveto 0.102655 -0.718912 lineto stroke
+0.0723446 -0.734067 moveto 0.102655 -0.734067 lineto stroke
+0.0723446 -0.749223 moveto 0.102655 -0.749223 lineto stroke
+0.0723446 -0.764378 moveto 0.102655 -0.764378 lineto stroke
+0.0723446 -0.779534 moveto 0.102655 -0.779534 lineto stroke
+0.0723446 -0.794689 moveto 0.102655 -0.794689 lineto stroke
+0.0723446 -0.809844 moveto 0.102655 -0.809844 lineto stroke
+0.0723446 -0.825 moveto 0.102655 -0.825 lineto stroke
+0.0723446 -0.840155 moveto 0.102655 -0.840155 lineto stroke
+0.0723446 -0.855311 moveto 0.102655 -0.855311 lineto stroke
+0.0723446 -0.870466 moveto 0.102655 -0.870466 lineto stroke
+0.0723446 -0.885622 moveto 0.102655 -0.885622 lineto stroke
+0.0723446 -0.900777 moveto 0.102655 -0.900777 lineto stroke
+0.0723446 -0.915933 moveto 0.102655 -0.915933 lineto stroke
+0.0723446 -0.931088 moveto 0.102655 -0.931088 lineto stroke
+0.0723446 -0.946243 moveto 0.102655 -0.946243 lineto stroke
+0.0723446 -0.961399 moveto 0.102655 -0.961399 lineto stroke
+0.0571891 -0.976554 moveto 0.117811 -0.976554 lineto stroke
+0.0875 -0.976554 moveto -0.175 -0.825 lineto stroke
+0.102655 -0.950304 moveto 0.0723446 -1.0028 lineto stroke
+0.0819527 -0.955852 moveto 0.0667973 -0.982102 lineto stroke
+0.0688277 -0.948274 moveto 0.0536723 -0.974524 lineto stroke
+0.0557027 -0.940696 moveto 0.0405473 -0.966946 lineto stroke
+0.0425777 -0.933119 moveto 0.0274223 -0.959369 lineto stroke
+0.0294527 -0.925541 moveto 0.0142973 -0.951791 lineto stroke
+0.0163277 -0.917963 moveto 0.00117228 -0.944213 lineto stroke
+0.00320271 -0.910385 moveto -0.0119527 -0.936635 lineto stroke
+-0.00992228 -0.902808 moveto -0.0250777 -0.929058 lineto stroke
+-0.0230473 -0.89523 moveto -0.0382027 -0.92148 lineto stroke
+-0.0361723 -0.887652 moveto -0.0513277 -0.913902 lineto stroke
+-0.0492973 -0.880074 moveto -0.0644527 -0.906324 lineto stroke
+-0.0624223 -0.872497 moveto -0.0775777 -0.898747 lineto stroke
+-0.0755473 -0.864919 moveto -0.0907027 -0.891169 lineto stroke
+-0.0886723 -0.857341 moveto -0.103828 -0.883591 lineto stroke
+-0.101797 -0.849764 moveto -0.116953 -0.876014 lineto stroke
+-0.114922 -0.842186 moveto -0.130078 -0.868436 lineto stroke
+-0.128047 -0.834608 moveto -0.143203 -0.860858 lineto stroke
+-0.141172 -0.82703 moveto -0.156328 -0.85328 lineto stroke
+-0.154297 -0.819453 moveto -0.169453 -0.845703 lineto stroke
+-0.159845 -0.79875 moveto -0.190155 -0.85125 lineto stroke
+-0.175 -0.825 moveto 0.175 -0.825 lineto stroke
+-0.175 -0.86 moveto -0.175 -0.79 lineto stroke
+-0.1575 -0.8425 moveto -0.1575 -0.8075 lineto stroke
+-0.14 -0.8425 moveto -0.14 -0.8075 lineto stroke
+-0.1225 -0.8425 moveto -0.1225 -0.8075 lineto stroke
+-0.105 -0.8425 moveto -0.105 -0.8075 lineto stroke
+-0.0875 -0.8425 moveto -0.0875 -0.8075 lineto stroke
+-0.07 -0.8425 moveto -0.07 -0.8075 lineto stroke
+-0.0525 -0.8425 moveto -0.0525 -0.8075 lineto stroke
+-0.035 -0.8425 moveto -0.035 -0.8075 lineto stroke
+-0.0175 -0.8425 moveto -0.0175 -0.8075 lineto stroke
+0.0 -0.8425 moveto 0.0 -0.8075 lineto stroke
+0.0175 -0.8425 moveto 0.0175 -0.8075 lineto stroke
+0.035 -0.8425 moveto 0.035 -0.8075 lineto stroke
+0.0525 -0.8425 moveto 0.0525 -0.8075 lineto stroke
+0.07 -0.8425 moveto 0.07 -0.8075 lineto stroke
+0.0875 -0.8425 moveto 0.0875 -0.8075 lineto stroke
+0.105 -0.8425 moveto 0.105 -0.8075 lineto stroke
+0.1225 -0.8425 moveto 0.1225 -0.8075 lineto stroke
+0.14 -0.8425 moveto 0.14 -0.8075 lineto stroke
+0.1575 -0.8425 moveto 0.1575 -0.8075 lineto stroke
+0.175 -0.86 moveto 0.175 -0.79 lineto stroke
+0.175 -0.825 moveto -0.0875 -0.976554 lineto stroke
+0.159845 -0.79875 moveto 0.190155 -0.85125 lineto stroke
+0.154297 -0.819453 moveto 0.169453 -0.845703 lineto stroke
+0.141172 -0.82703 moveto 0.156328 -0.85328 lineto stroke
+0.128047 -0.834608 moveto 0.143203 -0.860858 lineto stroke
+0.114922 -0.842186 moveto 0.130078 -0.868436 lineto stroke
+0.101797 -0.849764 moveto 0.116953 -0.876014 lineto stroke
+0.0886723 -0.857341 moveto 0.103828 -0.883591 lineto stroke
+0.0755473 -0.864919 moveto 0.0907027 -0.891169 lineto stroke
+0.0624223 -0.872497 moveto 0.0775777 -0.898747 lineto stroke
+0.0492973 -0.880074 moveto 0.0644527 -0.906324 lineto stroke
+0.0361723 -0.887652 moveto 0.0513277 -0.913902 lineto stroke
+0.0230473 -0.89523 moveto 0.0382027 -0.92148 lineto stroke
+0.00992228 -0.902808 moveto 0.0250777 -0.929058 lineto stroke
+-0.00320271 -0.910385 moveto 0.0119527 -0.936635 lineto stroke
+-0.0163277 -0.917963 moveto -0.00117228 -0.944213 lineto stroke
+-0.0294527 -0.925541 moveto -0.0142973 -0.951791 lineto stroke
+-0.0425777 -0.933119 moveto -0.0274223 -0.959369 lineto stroke
+-0.0557027 -0.940696 moveto -0.0405473 -0.966946 lineto stroke
+-0.0688277 -0.948274 moveto -0.0536723 -0.974524 lineto stroke
+-0.0819527 -0.955852 moveto -0.0667973 -0.982102 lineto stroke
+-0.102655 -0.950304 moveto -0.0723446 -1.0028 lineto stroke
+-0.0875 -0.976554 moveto -0.0875 -0.673446 lineto stroke
+-0.0571891 -0.976554 moveto -0.117811 -0.976554 lineto stroke
+-0.0723446 -0.961399 moveto -0.102655 -0.961399 lineto stroke
+-0.0723446 -0.946244 moveto -0.102655 -0.946244 lineto stroke
+-0.0723446 -0.931088 moveto -0.102655 -0.931088 lineto stroke
+-0.0723446 -0.915933 moveto -0.102655 -0.915933 lineto stroke
+-0.0723446 -0.900777 moveto -0.102655 -0.900777 lineto stroke
+-0.0723446 -0.885622 moveto -0.102655 -0.885622 lineto stroke
+-0.0723446 -0.870466 moveto -0.102655 -0.870466 lineto stroke
+-0.0723446 -0.855311 moveto -0.102655 -0.855311 lineto stroke
+-0.0723446 -0.840155 moveto -0.102655 -0.840155 lineto stroke
+-0.0723446 -0.825 moveto -0.102655 -0.825 lineto stroke
+-0.0723446 -0.809844 moveto -0.102655 -0.809844 lineto stroke
+-0.0723446 -0.794689 moveto -0.102655 -0.794689 lineto stroke
+-0.0723446 -0.779534 moveto -0.102655 -0.779534 lineto stroke
+-0.0723446 -0.764378 moveto -0.102655 -0.764378 lineto stroke
+-0.0723446 -0.749223 moveto -0.102655 -0.749223 lineto stroke
+-0.0723446 -0.734067 moveto -0.102655 -0.734067 lineto stroke
+-0.0723446 -0.718912 moveto -0.102655 -0.718912 lineto stroke
+-0.0723446 -0.703756 moveto -0.102655 -0.703756 lineto stroke
+-0.0723446 -0.688601 moveto -0.102655 -0.688601 lineto stroke
+-0.0571891 -0.673446 moveto -0.117811 -0.673446 lineto stroke
+0.260946 -0.626971 moveto 0.4125 -0.539471 lineto stroke
+0.269696 -0.642126 moveto 0.252196 -0.611816 lineto stroke
+0.272898 -0.630174 moveto 0.264148 -0.615018 lineto stroke
+0.280476 -0.625799 moveto 0.271726 -0.610643 lineto stroke
+0.288054 -0.621424 moveto 0.279304 -0.606268 lineto stroke
+0.295631 -0.617049 moveto 0.286881 -0.601893 lineto stroke
+0.303209 -0.612674 moveto 0.294459 -0.597518 lineto stroke
+0.310787 -0.608299 moveto 0.302037 -0.593143 lineto stroke
+0.318365 -0.603924 moveto 0.309615 -0.588768 lineto stroke
+0.325942 -0.599549 moveto 0.317192 -0.584393 lineto stroke
+0.33352 -0.595174 moveto 0.32477 -0.580018 lineto stroke
+0.341098 -0.590799 moveto 0.332348 -0.575643 lineto stroke
+0.348675 -0.586424 moveto 0.339926 -0.571268 lineto stroke
+0.356253 -0.582049 moveto 0.347503 -0.566893 lineto stroke
+0.363831 -0.577674 moveto 0.355081 -0.562518 lineto stroke
+0.371409 -0.573299 moveto 0.362659 -0.558143 lineto stroke
+0.378986 -0.568924 moveto 0.370236 -0.553768 lineto stroke
+0.386564 -0.564549 moveto 0.377814 -0.549393 lineto stroke
+0.394142 -0.560174 moveto 0.385392 -0.545018 lineto stroke
+0.40172 -0.555799 moveto 0.39297 -0.540643 lineto stroke
+0.409297 -0.551424 moveto 0.400547 -0.536268 lineto stroke
+0.42125 -0.554626 moveto 0.40375 -0.524316 lineto stroke
+0.4125 -0.539471 moveto 0.564054 -0.801971 lineto stroke
+0.38625 -0.554626 moveto 0.43875 -0.524316 lineto stroke
+0.406953 -0.560174 moveto 0.433203 -0.545018 lineto stroke
+0.41453 -0.573299 moveto 0.44078 -0.558143 lineto stroke
+0.422108 -0.586424 moveto 0.448358 -0.571268 lineto stroke
+0.429686 -0.599549 moveto 0.455936 -0.584393 lineto stroke
+0.437264 -0.612674 moveto 0.463514 -0.597518 lineto stroke
+0.444841 -0.625799 moveto 0.471091 -0.610643 lineto stroke
+0.452419 -0.638924 moveto 0.478669 -0.623768 lineto stroke
+0.459997 -0.652049 moveto 0.486247 -0.636893 lineto stroke
+0.467574 -0.665174 moveto 0.493824 -0.650018 lineto stroke
+0.475152 -0.678299 moveto 0.501402 -0.663143 lineto stroke
+0.48273 -0.691424 moveto 0.50898 -0.676268 lineto stroke
+0.490308 -0.704549 moveto 0.516558 -0.689393 lineto stroke
+0.497885 -0.717674 moveto 0.524135 -0.702518 lineto stroke
+0.505463 -0.730799 moveto 0.531713 -0.715643 lineto stroke
+0.513041 -0.743924 moveto 0.539291 -0.728768 lineto stroke
+0.520619 -0.757049 moveto 0.546869 -0.741893 lineto stroke
+0.528196 -0.770174 moveto 0.554446 -0.755018 lineto stroke
+0.535774 -0.783299 moveto 0.562024 -0.768143 lineto stroke
+0.543352 -0.796424 moveto 0.569602 -0.781268 lineto stroke
+0.537804 -0.817126 moveto 0.590304 -0.786815 lineto stroke
+0.564054 -0.801971 moveto 0.564054 -0.626971 lineto stroke
+0.581554 -0.801971 moveto 0.546554 -0.801971 lineto stroke
+0.572804 -0.793221 moveto 0.555304 -0.793221 lineto stroke
+0.572804 -0.784471 moveto 0.555304 -0.784471 lineto stroke
+0.572804 -0.775721 moveto 0.555304 -0.775721 lineto stroke
+0.572804 -0.766971 moveto 0.555304 -0.766971 lineto stroke
+0.572804 -0.758221 moveto 0.555304 -0.758221 lineto stroke
+0.572804 -0.749471 moveto 0.555304 -0.749471 lineto stroke
+0.572804 -0.740721 moveto 0.555304 -0.740721 lineto stroke
+0.572804 -0.731971 moveto 0.555304 -0.731971 lineto stroke
+0.572805 -0.723221 moveto 0.555304 -0.723221 lineto stroke
+0.572805 -0.714471 moveto 0.555304 -0.714471 lineto stroke
+0.572805 -0.705721 moveto 0.555304 -0.705721 lineto stroke
+0.572805 -0.696971 moveto 0.555304 -0.696971 lineto stroke
+0.572805 -0.688221 moveto 0.555304 -0.688221 lineto stroke
+0.572805 -0.679471 moveto 0.555304 -0.679471 lineto stroke
+0.572805 -0.670721 moveto 0.555304 -0.670721 lineto stroke
+0.572805 -0.661971 moveto 0.555304 -0.661971 lineto stroke
+0.572805 -0.653221 moveto 0.555304 -0.653221 lineto stroke
+0.572804 -0.644471 moveto 0.555304 -0.644471 lineto stroke
+0.572805 -0.635721 moveto 0.555304 -0.635721 lineto stroke
+0.581555 -0.626971 moveto 0.546554 -0.626971 lineto stroke
+0.564054 -0.626971 moveto 0.260946 -0.801971 lineto stroke
+0.546554 -0.59666 moveto 0.581555 -0.657282 lineto stroke
+0.540149 -0.620565 moveto 0.557649 -0.650876 lineto stroke
+0.524994 -0.629315 moveto 0.542494 -0.659626 lineto stroke
+0.509838 -0.638065 moveto 0.527338 -0.668376 lineto stroke
+0.494683 -0.646815 moveto 0.512183 -0.677126 lineto stroke
+0.479527 -0.655566 moveto 0.497027 -0.685876 lineto stroke
+0.464372 -0.664315 moveto 0.481872 -0.694626 lineto stroke
+0.449216 -0.673065 moveto 0.466716 -0.703376 lineto stroke
+0.434061 -0.681816 moveto 0.451561 -0.712126 lineto stroke
+0.418905 -0.690565 moveto 0.436405 -0.720876 lineto stroke
+0.40375 -0.699315 moveto 0.42125 -0.729626 lineto stroke
+0.388595 -0.708066 moveto 0.406095 -0.738376 lineto stroke
+0.373439 -0.716816 moveto 0.390939 -0.747126 lineto stroke
+0.358284 -0.725565 moveto 0.375784 -0.755876 lineto stroke
+0.343128 -0.734316 moveto 0.360628 -0.764626 lineto stroke
+0.327973 -0.743065 moveto 0.345473 -0.773376 lineto stroke
+0.312817 -0.751815 moveto 0.330317 -0.782126 lineto stroke
+0.297662 -0.760566 moveto 0.315162 -0.790876 lineto stroke
+0.282506 -0.769316 moveto 0.300006 -0.799626 lineto stroke
+0.267351 -0.778066 moveto 0.284851 -0.808376 lineto stroke
+0.243445 -0.77166 moveto 0.278446 -0.832282 lineto stroke
+0.260946 -0.801971 moveto 0.4125 -0.889471 lineto stroke
+0.252196 -0.817126 moveto 0.269695 -0.786816 lineto stroke
+0.264148 -0.813924 moveto 0.272898 -0.798768 lineto stroke
+0.271726 -0.818299 moveto 0.280476 -0.803143 lineto stroke
+0.279304 -0.822674 moveto 0.288054 -0.807518 lineto stroke
+0.286881 -0.827049 moveto 0.295631 -0.811893 lineto stroke
+0.294459 -0.831424 moveto 0.303209 -0.816268 lineto stroke
+0.302037 -0.835799 moveto 0.310787 -0.820643 lineto stroke
+0.309615 -0.840174 moveto 0.318365 -0.825018 lineto stroke
+0.317192 -0.844549 moveto 0.325942 -0.829393 lineto stroke
+0.32477 -0.848924 moveto 0.33352 -0.833768 lineto stroke
+0.332348 -0.853299 moveto 0.341098 -0.838143 lineto stroke
+0.339925 -0.857674 moveto 0.348675 -0.842518 lineto stroke
+0.347503 -0.862049 moveto 0.356253 -0.846893 lineto stroke
+0.355081 -0.866424 moveto 0.363831 -0.851268 lineto stroke
+0.362659 -0.870799 moveto 0.371409 -0.855643 lineto stroke
+0.370236 -0.875174 moveto 0.378986 -0.860018 lineto stroke
+0.377814 -0.879549 moveto 0.386564 -0.864393 lineto stroke
+0.385392 -0.883924 moveto 0.394142 -0.868768 lineto stroke
+0.39297 -0.888299 moveto 0.401719 -0.873143 lineto stroke
+0.400547 -0.892674 moveto 0.409297 -0.877518 lineto stroke
+0.40375 -0.904626 moveto 0.42125 -0.874315 lineto stroke
+0.4125 -0.889471 moveto 0.260946 -0.626971 lineto stroke
+0.43875 -0.874315 moveto 0.38625 -0.904626 lineto stroke
+0.418047 -0.868768 moveto 0.391797 -0.883924 lineto stroke
+0.41047 -0.855643 moveto 0.384219 -0.870799 lineto stroke
+0.402892 -0.842518 moveto 0.376642 -0.857674 lineto stroke
+0.395314 -0.829393 moveto 0.369064 -0.844549 lineto stroke
+0.387736 -0.816268 moveto 0.361486 -0.831424 lineto stroke
+0.380159 -0.803143 moveto 0.353909 -0.818299 lineto stroke
+0.372581 -0.790018 moveto 0.346331 -0.805174 lineto stroke
+0.365003 -0.776893 moveto 0.338753 -0.792049 lineto stroke
+0.357426 -0.763768 moveto 0.331176 -0.778924 lineto stroke
+0.349848 -0.750643 moveto 0.323598 -0.765799 lineto stroke
+0.34227 -0.737518 moveto 0.31602 -0.752674 lineto stroke
+0.334692 -0.724393 moveto 0.308442 -0.739549 lineto stroke
+0.327115 -0.711268 moveto 0.300865 -0.726424 lineto stroke
+0.319537 -0.698143 moveto 0.293287 -0.713299 lineto stroke
+0.311959 -0.685018 moveto 0.285709 -0.700174 lineto stroke
+0.304381 -0.671893 moveto 0.278131 -0.687049 lineto stroke
+0.296804 -0.658768 moveto 0.270554 -0.673924 lineto stroke
+0.289226 -0.645643 moveto 0.262976 -0.660799 lineto stroke
+0.281648 -0.632518 moveto 0.255398 -0.647674 lineto stroke
+0.287196 -0.611816 moveto 0.234696 -0.642126 lineto stroke
+0.539471 -0.4125 moveto 0.626971 -0.260946 lineto stroke
+0.554626 -0.42125 moveto 0.524316 -0.40375 lineto stroke
+0.551424 -0.409297 moveto 0.536268 -0.400547 lineto stroke
+0.555799 -0.40172 moveto 0.540643 -0.39297 lineto stroke
+0.560174 -0.394142 moveto 0.545018 -0.385392 lineto stroke
+0.564549 -0.386564 moveto 0.549393 -0.377814 lineto stroke
+0.568924 -0.378986 moveto 0.553768 -0.370236 lineto stroke
+0.573299 -0.371409 moveto 0.558143 -0.362659 lineto stroke
+0.577674 -0.363831 moveto 0.562518 -0.355081 lineto stroke
+0.582049 -0.356253 moveto 0.566893 -0.347503 lineto stroke
+0.586424 -0.348676 moveto 0.571268 -0.339925 lineto stroke
+0.590799 -0.341098 moveto 0.575643 -0.332348 lineto stroke
+0.595174 -0.33352 moveto 0.580018 -0.32477 lineto stroke
+0.599549 -0.325942 moveto 0.584393 -0.317192 lineto stroke
+0.603924 -0.318365 moveto 0.588768 -0.309615 lineto stroke
+0.608299 -0.310787 moveto 0.593143 -0.302037 lineto stroke
+0.612674 -0.303209 moveto 0.597518 -0.294459 lineto stroke
+0.617049 -0.295631 moveto 0.601893 -0.286881 lineto stroke
+0.621424 -0.288054 moveto 0.606268 -0.279304 lineto stroke
+0.625799 -0.280476 moveto 0.610643 -0.271726 lineto stroke
+0.630174 -0.272898 moveto 0.615018 -0.264148 lineto stroke
+0.642126 -0.269696 moveto 0.611816 -0.252195 lineto stroke
+0.626971 -0.260946 moveto 0.801971 -0.564054 lineto stroke
+0.59666 -0.278446 moveto 0.657282 -0.243446 lineto stroke
+0.620566 -0.284851 moveto 0.650876 -0.267351 lineto stroke
+0.629315 -0.300006 moveto 0.659626 -0.282506 lineto stroke
+0.638065 -0.315162 moveto 0.668376 -0.297662 lineto stroke
+0.646816 -0.330317 moveto 0.677126 -0.312817 lineto stroke
+0.655566 -0.345473 moveto 0.685876 -0.327973 lineto stroke
+0.664316 -0.360628 moveto 0.694626 -0.343128 lineto stroke
+0.673066 -0.375784 moveto 0.703376 -0.358284 lineto stroke
+0.681816 -0.390939 moveto 0.712126 -0.373439 lineto stroke
+0.690565 -0.406095 moveto 0.720876 -0.388595 lineto stroke
+0.699315 -0.42125 moveto 0.729626 -0.40375 lineto stroke
+0.708066 -0.436405 moveto 0.738376 -0.418905 lineto stroke
+0.716815 -0.451561 moveto 0.747126 -0.434061 lineto stroke
+0.725565 -0.466716 moveto 0.755876 -0.449216 lineto stroke
+0.734315 -0.481872 moveto 0.764626 -0.464372 lineto stroke
+0.743065 -0.497027 moveto 0.773376 -0.479527 lineto stroke
+0.751815 -0.512183 moveto 0.782126 -0.494683 lineto stroke
+0.760565 -0.527338 moveto 0.790876 -0.509838 lineto stroke
+0.769315 -0.542494 moveto 0.799626 -0.524993 lineto stroke
+0.778065 -0.557649 moveto 0.808376 -0.540149 lineto stroke
+0.77166 -0.581554 moveto 0.832282 -0.546554 lineto stroke
+0.801971 -0.564054 moveto 0.801971 -0.260946 lineto stroke
+0.832282 -0.564054 moveto 0.77166 -0.564054 lineto stroke
+0.817126 -0.548899 moveto 0.786815 -0.548899 lineto stroke
+0.817126 -0.533744 moveto 0.786815 -0.533744 lineto stroke
+0.817126 -0.518588 moveto 0.786815 -0.518588 lineto stroke
+0.817126 -0.503433 moveto 0.786815 -0.503433 lineto stroke
+0.817126 -0.488277 moveto 0.786815 -0.488277 lineto stroke
+0.817126 -0.473122 moveto 0.786815 -0.473122 lineto stroke
+0.817126 -0.457966 moveto 0.786816 -0.457966 lineto stroke
+0.817126 -0.442811 moveto 0.786815 -0.442811 lineto stroke
+0.817126 -0.427655 moveto 0.786816 -0.427655 lineto stroke
+0.817126 -0.4125 moveto 0.786816 -0.4125 lineto stroke
+0.817126 -0.397345 moveto 0.786816 -0.397345 lineto stroke
+0.817126 -0.382189 moveto 0.786816 -0.382189 lineto stroke
+0.817126 -0.367034 moveto 0.786816 -0.367034 lineto stroke
+0.817126 -0.351878 moveto 0.786816 -0.351878 lineto stroke
+0.817126 -0.336723 moveto 0.786816 -0.336723 lineto stroke
+0.817126 -0.321567 moveto 0.786816 -0.321567 lineto stroke
+0.817126 -0.306412 moveto 0.786816 -0.306412 lineto stroke
+0.817126 -0.291256 moveto 0.786816 -0.291256 lineto stroke
+0.817126 -0.276101 moveto 0.786816 -0.276101 lineto stroke
+0.832282 -0.260946 moveto 0.77166 -0.260946 lineto stroke
+0.801971 -0.260946 moveto 0.626971 -0.564054 lineto stroke
+0.77166 -0.243445 moveto 0.832282 -0.278446 lineto stroke
+0.778065 -0.267351 moveto 0.808376 -0.284851 lineto stroke
+0.769315 -0.282506 moveto 0.799626 -0.300006 lineto stroke
+0.760566 -0.297662 moveto 0.790876 -0.315162 lineto stroke
+0.751815 -0.312817 moveto 0.782126 -0.330317 lineto stroke
+0.743065 -0.327973 moveto 0.773376 -0.345473 lineto stroke
+0.734316 -0.343128 moveto 0.764626 -0.360628 lineto stroke
+0.725565 -0.358284 moveto 0.755876 -0.375784 lineto stroke
+0.716815 -0.373439 moveto 0.747126 -0.390939 lineto stroke
+0.708066 -0.388595 moveto 0.738376 -0.406095 lineto stroke
+0.699315 -0.40375 moveto 0.729626 -0.42125 lineto stroke
+0.690565 -0.418905 moveto 0.720876 -0.436405 lineto stroke
+0.681816 -0.434061 moveto 0.712126 -0.451561 lineto stroke
+0.673065 -0.449216 moveto 0.703376 -0.466716 lineto stroke
+0.664315 -0.464372 moveto 0.694626 -0.481872 lineto stroke
+0.655566 -0.479527 moveto 0.685876 -0.497027 lineto stroke
+0.646815 -0.494683 moveto 0.677126 -0.512183 lineto stroke
+0.638065 -0.509838 moveto 0.668376 -0.527338 lineto stroke
+0.629315 -0.524994 moveto 0.659626 -0.542494 lineto stroke
+0.620565 -0.540149 moveto 0.650876 -0.557649 lineto stroke
+0.59666 -0.546554 moveto 0.657282 -0.581555 lineto stroke
+0.626971 -0.564054 moveto 0.889471 -0.4125 lineto stroke
+0.642126 -0.590304 moveto 0.611815 -0.537804 lineto stroke
+0.647674 -0.569602 moveto 0.632518 -0.543352 lineto stroke
+0.660799 -0.562024 moveto 0.645643 -0.535774 lineto stroke
+0.673924 -0.554446 moveto 0.658768 -0.528196 lineto stroke
+0.687049 -0.546869 moveto 0.671893 -0.520619 lineto stroke
+0.700174 -0.539291 moveto 0.685018 -0.513041 lineto stroke
+0.713299 -0.531713 moveto 0.698143 -0.505463 lineto stroke
+0.726424 -0.524135 moveto 0.711268 -0.497885 lineto stroke
+0.739549 -0.516558 moveto 0.724393 -0.490308 lineto stroke
+0.752674 -0.50898 moveto 0.737518 -0.48273 lineto stroke
+0.765799 -0.501402 moveto 0.750643 -0.475152 lineto stroke
+0.778924 -0.493824 moveto 0.763768 -0.467574 lineto stroke
+0.792049 -0.486247 moveto 0.776893 -0.459997 lineto stroke
+0.805174 -0.478669 moveto 0.790018 -0.452419 lineto stroke
+0.818299 -0.471091 moveto 0.803143 -0.444841 lineto stroke
+0.831424 -0.463514 moveto 0.816268 -0.437264 lineto stroke
+0.844549 -0.455936 moveto 0.829393 -0.429686 lineto stroke
+0.857674 -0.448358 moveto 0.842518 -0.422108 lineto stroke
+0.870799 -0.44078 moveto 0.855643 -0.41453 lineto stroke
+0.883924 -0.433203 moveto 0.868768 -0.406953 lineto stroke
+0.904626 -0.43875 moveto 0.874315 -0.38625 lineto stroke
+0.889471 -0.4125 moveto 0.539471 -0.4125 lineto stroke
+0.889471 -0.3775 moveto 0.889471 -0.4475 lineto stroke
+0.871971 -0.395 moveto 0.871971 -0.43 lineto stroke
+0.854471 -0.395 moveto 0.854471 -0.43 lineto stroke
+0.836971 -0.395 moveto 0.836971 -0.43 lineto stroke
+0.819471 -0.395 moveto 0.819471 -0.43 lineto stroke
+0.801971 -0.395 moveto 0.801971 -0.43 lineto stroke
+0.784471 -0.395 moveto 0.784471 -0.43 lineto stroke
+0.766971 -0.395 moveto 0.766971 -0.43 lineto stroke
+0.749471 -0.395 moveto 0.749471 -0.43 lineto stroke
+0.731971 -0.395 moveto 0.731971 -0.43 lineto stroke
+0.714471 -0.395 moveto 0.714471 -0.43 lineto stroke
+0.696971 -0.395 moveto 0.696971 -0.43 lineto stroke
+0.679471 -0.395 moveto 0.679471 -0.43 lineto stroke
+0.661971 -0.395 moveto 0.661971 -0.43 lineto stroke
+0.644471 -0.395 moveto 0.644471 -0.43 lineto stroke
+0.626971 -0.395 moveto 0.626971 -0.43 lineto stroke
+0.609471 -0.395 moveto 0.609471 -0.43 lineto stroke
+0.591971 -0.395 moveto 0.591971 -0.43 lineto stroke
+0.574471 -0.395 moveto 0.574471 -0.43 lineto stroke
+0.556971 -0.395 moveto 0.556971 -0.43 lineto stroke
+0.539471 -0.3775 moveto 0.539471 -0.4475 lineto stroke
+0.673446 0.0875 moveto 0.825 0.175 lineto stroke
+0.682196 0.0723446 moveto 0.664696 0.102655 lineto stroke
+0.685398 0.0842973 moveto 0.676648 0.0994527 lineto stroke
+0.692976 0.0886723 moveto 0.684226 0.103828 lineto stroke
+0.700554 0.0930473 moveto 0.691804 0.108203 lineto stroke
+0.708131 0.0974223 moveto 0.699381 0.112578 lineto stroke
+0.715709 0.101797 moveto 0.706959 0.116953 lineto stroke
+0.723287 0.106172 moveto 0.714537 0.121328 lineto stroke
+0.730865 0.110547 moveto 0.722115 0.125703 lineto stroke
+0.738442 0.114922 moveto 0.729692 0.130078 lineto stroke
+0.74602 0.119297 moveto 0.73727 0.134453 lineto stroke
+0.753598 0.123672 moveto 0.744848 0.138828 lineto stroke
+0.761176 0.128047 moveto 0.752426 0.143203 lineto stroke
+0.768753 0.132422 moveto 0.760003 0.147578 lineto stroke
+0.776331 0.136797 moveto 0.767581 0.151953 lineto stroke
+0.783909 0.141172 moveto 0.775159 0.156328 lineto stroke
+0.791486 0.145547 moveto 0.782736 0.160703 lineto stroke
+0.799064 0.149922 moveto 0.790314 0.165078 lineto stroke
+0.806642 0.154297 moveto 0.797892 0.169453 lineto stroke
+0.814219 0.158672 moveto 0.80547 0.173828 lineto stroke
+0.821797 0.163047 moveto 0.813047 0.178203 lineto stroke
+0.83375 0.159845 moveto 0.81625 0.190155 lineto stroke
+0.825 0.175 moveto 0.825 -0.175 lineto stroke
+0.79 0.175 moveto 0.86 0.175 lineto stroke
+0.8075 0.1575 moveto 0.8425 0.1575 lineto stroke
+0.8075 0.14 moveto 0.8425 0.14 lineto stroke
+0.8075 0.1225 moveto 0.8425 0.1225 lineto stroke
+0.8075 0.105 moveto 0.8425 0.105 lineto stroke
+0.8075 0.0875 moveto 0.8425 0.0875 lineto stroke
+0.8075 0.07 moveto 0.8425 0.07 lineto stroke
+0.8075 0.0525 moveto 0.8425 0.0525 lineto stroke
+0.8075 0.035 moveto 0.8425 0.035 lineto stroke
+0.8075 0.0175 moveto 0.8425 0.0175 lineto stroke
+0.8075 0.0 moveto 0.8425 0.0 lineto stroke
+0.8075 -0.0175 moveto 0.8425 -0.0175 lineto stroke
+0.8075 -0.035 moveto 0.8425 -0.035 lineto stroke
+0.8075 -0.0525 moveto 0.8425 -0.0525 lineto stroke
+0.8075 -0.07 moveto 0.8425 -0.07 lineto stroke
+0.8075 -0.0875 moveto 0.8425 -0.0875 lineto stroke
+0.8075 -0.105 moveto 0.8425 -0.105 lineto stroke
+0.8075 -0.1225 moveto 0.8425 -0.1225 lineto stroke
+0.8075 -0.14 moveto 0.8425 -0.14 lineto stroke
+0.8075 -0.1575 moveto 0.8425 -0.1575 lineto stroke
+0.79 -0.175 moveto 0.86 -0.175 lineto stroke
+0.825 -0.175 moveto 0.976554 -0.0875 lineto stroke
+0.83375 -0.190155 moveto 0.81625 -0.159845 lineto stroke
+0.836953 -0.178203 moveto 0.828203 -0.163047 lineto stroke
+0.84453 -0.173828 moveto 0.83578 -0.158672 lineto stroke
+0.852108 -0.169453 moveto 0.843358 -0.154297 lineto stroke
+0.859686 -0.165078 moveto 0.850936 -0.149922 lineto stroke
+0.867264 -0.160703 moveto 0.858514 -0.145547 lineto stroke
+0.874841 -0.156328 moveto 0.866091 -0.141172 lineto stroke
+0.882419 -0.151953 moveto 0.873669 -0.136797 lineto stroke
+0.889997 -0.147578 moveto 0.881247 -0.132422 lineto stroke
+0.897574 -0.143203 moveto 0.888824 -0.128047 lineto stroke
+0.905152 -0.138828 moveto 0.896402 -0.123672 lineto stroke
+0.91273 -0.134453 moveto 0.90398 -0.119297 lineto stroke
+0.920308 -0.130078 moveto 0.911558 -0.114922 lineto stroke
+0.927885 -0.125703 moveto 0.919135 -0.110547 lineto stroke
+0.935463 -0.121328 moveto 0.926713 -0.106172 lineto stroke
+0.943041 -0.116953 moveto 0.934291 -0.101797 lineto stroke
+0.950619 -0.112578 moveto 0.941869 -0.0974223 lineto stroke
+0.958196 -0.108203 moveto 0.949446 -0.0930473 lineto stroke
+0.965774 -0.103828 moveto 0.957024 -0.0886723 lineto stroke
+0.973352 -0.0994527 moveto 0.964602 -0.0842973 lineto stroke
+0.985304 -0.102655 moveto 0.967804 -0.0723446 lineto stroke
+0.976554 -0.0875 moveto 0.673446 -0.0875 lineto stroke
+0.976554 -0.0571891 moveto 0.976554 -0.117811 lineto stroke
+0.961399 -0.0723446 moveto 0.961399 -0.102655 lineto stroke
+0.946244 -0.0723446 moveto 0.946244 -0.102655 lineto stroke
+0.931088 -0.0723446 moveto 0.931088 -0.102655 lineto stroke
+0.915933 -0.0723446 moveto 0.915933 -0.102655 lineto stroke
+0.900777 -0.0723446 moveto 0.900777 -0.102655 lineto stroke
+0.885622 -0.0723446 moveto 0.885622 -0.102655 lineto stroke
+0.870466 -0.0723446 moveto 0.870466 -0.102655 lineto stroke
+0.855311 -0.0723446 moveto 0.855311 -0.102655 lineto stroke
+0.840155 -0.0723446 moveto 0.840155 -0.102655 lineto stroke
+0.825 -0.0723446 moveto 0.825 -0.102655 lineto stroke
+0.809844 -0.0723446 moveto 0.809844 -0.102655 lineto stroke
+0.794689 -0.0723446 moveto 0.794689 -0.102655 lineto stroke
+0.779534 -0.0723446 moveto 0.779534 -0.102655 lineto stroke
+0.764378 -0.0723446 moveto 0.764378 -0.102655 lineto stroke
+0.749223 -0.0723446 moveto 0.749223 -0.102655 lineto stroke
+0.734067 -0.0723446 moveto 0.734067 -0.102655 lineto stroke
+0.718912 -0.0723446 moveto 0.718912 -0.102655 lineto stroke
+0.703756 -0.0723446 moveto 0.703756 -0.102655 lineto stroke
+0.688601 -0.0723446 moveto 0.688601 -0.102655 lineto stroke
+0.673446 -0.0571891 moveto 0.673446 -0.117811 lineto stroke
+0.673446 -0.0875 moveto 0.976554 0.0875 lineto stroke
+0.690946 -0.117811 moveto 0.655946 -0.0571891 lineto stroke
+0.697351 -0.0939054 moveto 0.679851 -0.0635946 lineto stroke
+0.712507 -0.0851554 moveto 0.695006 -0.0548446 lineto stroke
+0.727662 -0.0764054 moveto 0.710162 -0.0460946 lineto stroke
+0.742817 -0.0676554 moveto 0.725317 -0.0373446 lineto stroke
+0.757973 -0.0589054 moveto 0.740473 -0.0285946 lineto stroke
+0.773128 -0.0501554 moveto 0.755628 -0.0198446 lineto stroke
+0.788284 -0.0414054 moveto 0.770784 -0.0110946 lineto stroke
+0.803439 -0.0326554 moveto 0.785939 -0.00234457 lineto stroke
+0.818595 -0.0239054 moveto 0.801094 0.00640544 lineto stroke
+0.83375 -0.0151554 moveto 0.81625 0.0151554 lineto stroke
+0.848905 -0.00640544 moveto 0.831405 0.0239054 lineto stroke
+0.864061 0.00234457 moveto 0.846561 0.0326554 lineto stroke
+0.879216 0.0110946 moveto 0.861716 0.0414054 lineto stroke
+0.894372 0.0198446 moveto 0.876872 0.0501554 lineto stroke
+0.909527 0.0285946 moveto 0.892027 0.0589054 lineto stroke
+0.924683 0.0373446 moveto 0.907183 0.0676554 lineto stroke
+0.939838 0.0460946 moveto 0.922338 0.0764054 lineto stroke
+0.954993 0.0548446 moveto 0.937493 0.0851554 lineto stroke
+0.970149 0.0635946 moveto 0.952649 0.0939054 lineto stroke
+0.994054 0.0571891 moveto 0.959054 0.117811 lineto stroke
+0.976554 0.0875 moveto 0.673446 0.0875 lineto stroke
+0.976554 0.117811 moveto 0.976554 0.0571891 lineto stroke
+0.961399 0.102655 moveto 0.961399 0.0723446 lineto stroke
+0.946244 0.102655 moveto 0.946244 0.0723446 lineto stroke
+0.931088 0.102655 moveto 0.931088 0.0723446 lineto stroke
+0.915933 0.102655 moveto 0.915933 0.0723446 lineto stroke
+0.900777 0.102655 moveto 0.900777 0.0723446 lineto stroke
+0.885622 0.102655 moveto 0.885622 0.0723446 lineto stroke
+0.870466 0.102655 moveto 0.870466 0.0723446 lineto stroke
+0.855311 0.102655 moveto 0.855311 0.0723446 lineto stroke
+0.840155 0.102655 moveto 0.840155 0.0723446 lineto stroke
+0.825 0.102655 moveto 0.825 0.0723446 lineto stroke
+0.809844 0.102655 moveto 0.809844 0.0723446 lineto stroke
+0.794689 0.102655 moveto 0.794689 0.0723446 lineto stroke
+0.779534 0.102655 moveto 0.779534 0.0723446 lineto stroke
+0.764378 0.102655 moveto 0.764378 0.0723446 lineto stroke
+0.749223 0.102655 moveto 0.749223 0.0723446 lineto stroke
+0.734067 0.102655 moveto 0.734067 0.0723446 lineto stroke
+0.718912 0.102655 moveto 0.718912 0.0723446 lineto stroke
+0.703756 0.102655 moveto 0.703756 0.0723446 lineto stroke
+0.688601 0.102655 moveto 0.688601 0.0723446 lineto stroke
+0.673446 0.117811 moveto 0.673446 0.0571891 lineto stroke
+0.626971 0.260946 moveto 0.539471 0.4125 lineto stroke
+0.642126 0.269696 moveto 0.611816 0.252196 lineto stroke
+0.630174 0.272898 moveto 0.615018 0.264148 lineto stroke
+0.625799 0.280476 moveto 0.610643 0.271726 lineto stroke
+0.621424 0.288054 moveto 0.606268 0.279304 lineto stroke
+0.617049 0.295631 moveto 0.601893 0.286881 lineto stroke
+0.612674 0.303209 moveto 0.597518 0.294459 lineto stroke
+0.608299 0.310787 moveto 0.593143 0.302037 lineto stroke
+0.603924 0.318365 moveto 0.588768 0.309615 lineto stroke
+0.599549 0.325942 moveto 0.584393 0.317192 lineto stroke
+0.595174 0.33352 moveto 0.580018 0.32477 lineto stroke
+0.590799 0.341098 moveto 0.575643 0.332348 lineto stroke
+0.586424 0.348675 moveto 0.571268 0.339926 lineto stroke
+0.582049 0.356253 moveto 0.566893 0.347503 lineto stroke
+0.577674 0.363831 moveto 0.562518 0.355081 lineto stroke
+0.573299 0.371409 moveto 0.558143 0.362659 lineto stroke
+0.568924 0.378986 moveto 0.553768 0.370236 lineto stroke
+0.564549 0.386564 moveto 0.549393 0.377814 lineto stroke
+0.560174 0.394142 moveto 0.545018 0.385392 lineto stroke
+0.555799 0.40172 moveto 0.540643 0.39297 lineto stroke
+0.551424 0.409297 moveto 0.536268 0.400547 lineto stroke
+0.554626 0.42125 moveto 0.524316 0.40375 lineto stroke
+0.539471 0.4125 moveto 0.801971 0.260946 lineto stroke
+0.524316 0.38625 moveto 0.554626 0.43875 lineto stroke
+0.545018 0.391797 moveto 0.560174 0.418047 lineto stroke
+0.558143 0.38422 moveto 0.573299 0.41047 lineto stroke
+0.571268 0.376642 moveto 0.586424 0.402892 lineto stroke
+0.584393 0.369064 moveto 0.599549 0.395314 lineto stroke
+0.597518 0.361486 moveto 0.612674 0.387736 lineto stroke
+0.610643 0.353909 moveto 0.625799 0.380159 lineto stroke
+0.623768 0.346331 moveto 0.638924 0.372581 lineto stroke
+0.636893 0.338753 moveto 0.652049 0.365003 lineto stroke
+0.650018 0.331176 moveto 0.665174 0.357426 lineto stroke
+0.663143 0.323598 moveto 0.678299 0.349848 lineto stroke
+0.676268 0.31602 moveto 0.691424 0.34227 lineto stroke
+0.689393 0.308442 moveto 0.704549 0.334692 lineto stroke
+0.702518 0.300865 moveto 0.717674 0.327115 lineto stroke
+0.715643 0.293287 moveto 0.730799 0.319537 lineto stroke
+0.728768 0.285709 moveto 0.743924 0.311959 lineto stroke
+0.741893 0.278131 moveto 0.757049 0.304381 lineto stroke
+0.755018 0.270554 moveto 0.770174 0.296804 lineto stroke
+0.768143 0.262976 moveto 0.783299 0.289226 lineto stroke
+0.781268 0.255398 moveto 0.796424 0.281648 lineto stroke
+0.786816 0.234696 moveto 0.817126 0.287196 lineto stroke
+0.801971 0.260946 moveto 0.801971 0.564054 lineto stroke
+0.832282 0.260946 moveto 0.77166 0.260946 lineto stroke
+0.817126 0.276101 moveto 0.786816 0.276101 lineto stroke
+0.817126 0.291256 moveto 0.786816 0.291256 lineto stroke
+0.817126 0.306412 moveto 0.786816 0.306412 lineto stroke
+0.817126 0.321567 moveto 0.786816 0.321567 lineto stroke
+0.817126 0.336723 moveto 0.786816 0.336723 lineto stroke
+0.817126 0.351878 moveto 0.786816 0.351878 lineto stroke
+0.817126 0.367034 moveto 0.786816 0.367034 lineto stroke
+0.817126 0.382189 moveto 0.786816 0.382189 lineto stroke
+0.817126 0.397345 moveto 0.786816 0.397345 lineto stroke
+0.817126 0.4125 moveto 0.786816 0.4125 lineto stroke
+0.817126 0.427655 moveto 0.786816 0.427655 lineto stroke
+0.817126 0.442811 moveto 0.786816 0.442811 lineto stroke
+0.817126 0.457966 moveto 0.786815 0.457966 lineto stroke
+0.817126 0.473122 moveto 0.786815 0.473122 lineto stroke
+0.817126 0.488277 moveto 0.786815 0.488277 lineto stroke
+0.817126 0.503433 moveto 0.786815 0.503433 lineto stroke
+0.817126 0.518588 moveto 0.786815 0.518588 lineto stroke
+0.817126 0.533744 moveto 0.786815 0.533744 lineto stroke
+0.817126 0.548899 moveto 0.786815 0.548899 lineto stroke
+0.832282 0.564054 moveto 0.77166 0.564054 lineto stroke
+0.801971 0.564054 moveto 0.889471 0.4125 lineto stroke
+0.786815 0.555304 moveto 0.817126 0.572804 lineto stroke
+0.798768 0.552102 moveto 0.813924 0.560852 lineto stroke
+0.803143 0.544524 moveto 0.818299 0.553274 lineto stroke
+0.807518 0.536946 moveto 0.822674 0.545696 lineto stroke
+0.811893 0.529369 moveto 0.827049 0.538119 lineto stroke
+0.816268 0.521791 moveto 0.831424 0.530541 lineto stroke
+0.820643 0.514213 moveto 0.835799 0.522963 lineto stroke
+0.825018 0.506635 moveto 0.840174 0.515385 lineto stroke
+0.829393 0.499058 moveto 0.844549 0.507808 lineto stroke
+0.833768 0.49148 moveto 0.848924 0.50023 lineto stroke
+0.838143 0.483902 moveto 0.853299 0.492652 lineto stroke
+0.842518 0.476324 moveto 0.857674 0.485074 lineto stroke
+0.846893 0.468747 moveto 0.862049 0.477497 lineto stroke
+0.851268 0.461169 moveto 0.866424 0.469919 lineto stroke
+0.855643 0.453591 moveto 0.870799 0.462341 lineto stroke
+0.860018 0.446014 moveto 0.875174 0.454764 lineto stroke
+0.864393 0.438436 moveto 0.879549 0.447186 lineto stroke
+0.868768 0.430858 moveto 0.883924 0.439608 lineto stroke
+0.873143 0.42328 moveto 0.888299 0.43203 lineto stroke
+0.877518 0.415703 moveto 0.892674 0.424453 lineto stroke
+0.874315 0.40375 moveto 0.904626 0.42125 lineto stroke
+0.889471 0.4125 moveto 0.626971 0.564054 lineto stroke
+0.904626 0.43875 moveto 0.874315 0.38625 lineto stroke
+0.883924 0.433203 moveto 0.868768 0.406953 lineto stroke
+0.870799 0.44078 moveto 0.855643 0.41453 lineto stroke
+0.857674 0.448358 moveto 0.842518 0.422108 lineto stroke
+0.844549 0.455936 moveto 0.829393 0.429686 lineto stroke
+0.831424 0.463514 moveto 0.816268 0.437264 lineto stroke
+0.818299 0.471091 moveto 0.803143 0.444841 lineto stroke
+0.805174 0.478669 moveto 0.790018 0.452419 lineto stroke
+0.792049 0.486247 moveto 0.776893 0.459997 lineto stroke
+0.778924 0.493824 moveto 0.763768 0.467574 lineto stroke
+0.765799 0.501402 moveto 0.750643 0.475152 lineto stroke
+0.752674 0.50898 moveto 0.737518 0.48273 lineto stroke
+0.739549 0.516558 moveto 0.724393 0.490308 lineto stroke
+0.726424 0.524135 moveto 0.711268 0.497885 lineto stroke
+0.713299 0.531713 moveto 0.698143 0.505463 lineto stroke
+0.700174 0.539291 moveto 0.685018 0.513041 lineto stroke
+0.687049 0.546869 moveto 0.671893 0.520619 lineto stroke
+0.673924 0.554446 moveto 0.658768 0.528196 lineto stroke
+0.660799 0.562024 moveto 0.645643 0.535774 lineto stroke
+0.647674 0.569602 moveto 0.632518 0.543352 lineto stroke
+0.642126 0.590304 moveto 0.611815 0.537804 lineto stroke
+0.626971 0.564054 moveto 0.626971 0.260946 lineto stroke
+0.59666 0.564054 moveto 0.657282 0.564054 lineto stroke
+0.611815 0.548899 moveto 0.642126 0.548899 lineto stroke
+0.611815 0.533744 moveto 0.642126 0.533744 lineto stroke
+0.611815 0.518588 moveto 0.642126 0.518588 lineto stroke
+0.611815 0.503433 moveto 0.642126 0.503433 lineto stroke
+0.611815 0.488277 moveto 0.642126 0.488277 lineto stroke
+0.611815 0.473122 moveto 0.642126 0.473122 lineto stroke
+0.611815 0.457966 moveto 0.642126 0.457966 lineto stroke
+0.611815 0.442811 moveto 0.642126 0.442811 lineto stroke
+0.611815 0.427655 moveto 0.642126 0.427655 lineto stroke
+0.611815 0.4125 moveto 0.642126 0.4125 lineto stroke
+0.611815 0.397345 moveto 0.642126 0.397345 lineto stroke
+0.611816 0.382189 moveto 0.642126 0.382189 lineto stroke
+0.611815 0.367034 moveto 0.642126 0.367034 lineto stroke
+0.611816 0.351878 moveto 0.642126 0.351878 lineto stroke
+0.611815 0.336723 moveto 0.642126 0.336723 lineto stroke
+0.611816 0.321567 moveto 0.642126 0.321567 lineto stroke
+0.611816 0.306412 moveto 0.642126 0.306412 lineto stroke
+0.611816 0.291256 moveto 0.642126 0.291256 lineto stroke
+0.611816 0.276101 moveto 0.642126 0.276101 lineto stroke
+0.59666 0.260946 moveto 0.657282 0.260946 lineto stroke
+0.4125 0.539471 moveto 0.260946 0.801971 lineto stroke
+0.43875 0.554626 moveto 0.38625 0.524316 lineto stroke
+0.418047 0.560174 moveto 0.391797 0.545018 lineto stroke
+0.41047 0.573299 moveto 0.38422 0.558143 lineto stroke
+0.402892 0.586424 moveto 0.376642 0.571268 lineto stroke
+0.395314 0.599549 moveto 0.369064 0.584393 lineto stroke
+0.387736 0.612674 moveto 0.361486 0.597518 lineto stroke
+0.380159 0.625799 moveto 0.353909 0.610643 lineto stroke
+0.372581 0.638924 moveto 0.346331 0.623768 lineto stroke
+0.365003 0.652049 moveto 0.338753 0.636893 lineto stroke
+0.357426 0.665174 moveto 0.331176 0.650018 lineto stroke
+0.349848 0.678299 moveto 0.323598 0.663143 lineto stroke
+0.34227 0.691424 moveto 0.31602 0.676268 lineto stroke
+0.334692 0.704549 moveto 0.308442 0.689393 lineto stroke
+0.327115 0.717674 moveto 0.300865 0.702518 lineto stroke
+0.319537 0.730799 moveto 0.293287 0.715643 lineto stroke
+0.311959 0.743924 moveto 0.285709 0.728768 lineto stroke
+0.304381 0.757049 moveto 0.278131 0.741893 lineto stroke
+0.296804 0.770174 moveto 0.270554 0.755018 lineto stroke
+0.289226 0.783299 moveto 0.262976 0.768143 lineto stroke
+0.281648 0.796424 moveto 0.255398 0.781268 lineto stroke
+0.287196 0.817126 moveto 0.234696 0.786816 lineto stroke
+0.260946 0.801971 moveto 0.564054 0.801971 lineto stroke
+0.260946 0.77166 moveto 0.260946 0.832282 lineto stroke
+0.276101 0.786816 moveto 0.276101 0.817126 lineto stroke
+0.291256 0.786816 moveto 0.291256 0.817126 lineto stroke
+0.306412 0.786816 moveto 0.306412 0.817126 lineto stroke
+0.321567 0.786816 moveto 0.321567 0.817126 lineto stroke
+0.336723 0.786816 moveto 0.336723 0.817126 lineto stroke
+0.351878 0.786816 moveto 0.351878 0.817126 lineto stroke
+0.367034 0.786816 moveto 0.367034 0.817126 lineto stroke
+0.382189 0.786816 moveto 0.382189 0.817126 lineto stroke
+0.397345 0.786816 moveto 0.397345 0.817126 lineto stroke
+0.4125 0.786816 moveto 0.4125 0.817126 lineto stroke
+0.427655 0.786816 moveto 0.427655 0.817126 lineto stroke
+0.442811 0.786816 moveto 0.442811 0.817126 lineto stroke
+0.457966 0.786815 moveto 0.457966 0.817126 lineto stroke
+0.473122 0.786815 moveto 0.473122 0.817126 lineto stroke
+0.488277 0.786815 moveto 0.488277 0.817126 lineto stroke
+0.503433 0.786815 moveto 0.503433 0.817126 lineto stroke
+0.518588 0.786815 moveto 0.518588 0.817126 lineto stroke
+0.533744 0.786815 moveto 0.533744 0.817126 lineto stroke
+0.548899 0.786815 moveto 0.548899 0.817126 lineto stroke
+0.564054 0.77166 moveto 0.564054 0.832282 lineto stroke
+0.564054 0.801971 moveto 0.260946 0.626971 lineto stroke
+0.546554 0.832282 moveto 0.581554 0.77166 lineto stroke
+0.540149 0.808376 moveto 0.557649 0.778065 lineto stroke
+0.524993 0.799626 moveto 0.542494 0.769315 lineto stroke
+0.509838 0.790876 moveto 0.527338 0.760565 lineto stroke
+0.494683 0.782126 moveto 0.512183 0.751815 lineto stroke
+0.479527 0.773376 moveto 0.497027 0.743065 lineto stroke
+0.464372 0.764626 moveto 0.481872 0.734315 lineto stroke
+0.449216 0.755876 moveto 0.466716 0.725565 lineto stroke
+0.434061 0.747126 moveto 0.451561 0.716815 lineto stroke
+0.418905 0.738376 moveto 0.436405 0.708066 lineto stroke
+0.40375 0.729626 moveto 0.42125 0.699315 lineto stroke
+0.388595 0.720876 moveto 0.406095 0.690565 lineto stroke
+0.373439 0.712126 moveto 0.390939 0.681816 lineto stroke
+0.358284 0.703376 moveto 0.375784 0.673065 lineto stroke
+0.343128 0.694626 moveto 0.360628 0.664316 lineto stroke
+0.327973 0.685876 moveto 0.345473 0.655566 lineto stroke
+0.312817 0.677126 moveto 0.330317 0.646816 lineto stroke
+0.297662 0.668376 moveto 0.315162 0.638066 lineto stroke
+0.282506 0.659626 moveto 0.300006 0.629315 lineto stroke
+0.267351 0.650876 moveto 0.284851 0.620566 lineto stroke
+0.243446 0.657282 moveto 0.278446 0.59666 lineto stroke
+0.260946 0.626971 moveto 0.564054 0.626971 lineto stroke
+0.260946 0.59666 moveto 0.260946 0.657282 lineto stroke
+0.276101 0.611815 moveto 0.276101 0.642126 lineto stroke
+0.291256 0.611815 moveto 0.291256 0.642126 lineto stroke
+0.306412 0.611815 moveto 0.306412 0.642126 lineto stroke
+0.321567 0.611815 moveto 0.321567 0.642126 lineto stroke
+0.336723 0.611815 moveto 0.336723 0.642126 lineto stroke
+0.351878 0.611815 moveto 0.351878 0.642126 lineto stroke
+0.367034 0.611815 moveto 0.367034 0.642126 lineto stroke
+0.382189 0.611815 moveto 0.382189 0.642126 lineto stroke
+0.397345 0.611815 moveto 0.397345 0.642126 lineto stroke
+0.4125 0.611815 moveto 0.4125 0.642126 lineto stroke
+0.427655 0.611815 moveto 0.427655 0.642126 lineto stroke
+0.442811 0.611815 moveto 0.442811 0.642126 lineto stroke
+0.457966 0.611815 moveto 0.457966 0.642126 lineto stroke
+0.473122 0.611815 moveto 0.473122 0.642126 lineto stroke
+0.488277 0.611815 moveto 0.488277 0.642126 lineto stroke
+0.503433 0.611815 moveto 0.503433 0.642126 lineto stroke
+0.518588 0.611815 moveto 0.518588 0.642126 lineto stroke
+0.533744 0.611815 moveto 0.533744 0.642126 lineto stroke
+0.548899 0.611815 moveto 0.548899 0.642126 lineto stroke
+0.564054 0.59666 moveto 0.564054 0.657282 lineto stroke
+0.564054 0.626971 moveto 0.4125 0.889471 lineto stroke
+0.590304 0.642126 moveto 0.537804 0.611815 lineto stroke
+0.569602 0.647674 moveto 0.543352 0.632518 lineto stroke
+0.562024 0.660799 moveto 0.535774 0.645643 lineto stroke
+0.554446 0.673924 moveto 0.528196 0.658768 lineto stroke
+0.546869 0.687049 moveto 0.520619 0.671893 lineto stroke
+0.539291 0.700174 moveto 0.513041 0.685018 lineto stroke
+0.531713 0.713299 moveto 0.505463 0.698143 lineto stroke
+0.524135 0.726424 moveto 0.497885 0.711268 lineto stroke
+0.516558 0.739549 moveto 0.490308 0.724393 lineto stroke
+0.50898 0.752674 moveto 0.48273 0.737518 lineto stroke
+0.501402 0.765799 moveto 0.475152 0.750643 lineto stroke
+0.493824 0.778924 moveto 0.467574 0.763768 lineto stroke
+0.486247 0.792049 moveto 0.459997 0.776893 lineto stroke
+0.478669 0.805174 moveto 0.452419 0.790018 lineto stroke
+0.471091 0.818299 moveto 0.444841 0.803143 lineto stroke
+0.463514 0.831424 moveto 0.437264 0.816268 lineto stroke
+0.455936 0.844549 moveto 0.429686 0.829393 lineto stroke
+0.448358 0.857674 moveto 0.422108 0.842518 lineto stroke
+0.44078 0.870799 moveto 0.41453 0.855643 lineto stroke
+0.433203 0.883924 moveto 0.406953 0.868768 lineto stroke
+0.43875 0.904626 moveto 0.38625 0.874315 lineto stroke
+0.4125 0.889471 moveto 0.4125 0.539471 lineto stroke
+0.3775 0.889471 moveto 0.4475 0.889471 lineto stroke
+0.395 0.871971 moveto 0.43 0.871971 lineto stroke
+0.395 0.854471 moveto 0.43 0.854471 lineto stroke
+0.395 0.836971 moveto 0.43 0.836971 lineto stroke
+0.395 0.819471 moveto 0.43 0.819471 lineto stroke
+0.395 0.801971 moveto 0.43 0.801971 lineto stroke
+0.395 0.784471 moveto 0.43 0.784471 lineto stroke
+0.395 0.766971 moveto 0.43 0.766971 lineto stroke
+0.395 0.749471 moveto 0.43 0.749471 lineto stroke
+0.395 0.731971 moveto 0.43 0.731971 lineto stroke
+0.395 0.714471 moveto 0.43 0.714471 lineto stroke
+0.395 0.696971 moveto 0.43 0.696971 lineto stroke
+0.395 0.679471 moveto 0.43 0.679471 lineto stroke
+0.395 0.661971 moveto 0.43 0.661971 lineto stroke
+0.395 0.644471 moveto 0.43 0.644471 lineto stroke
+0.395 0.626971 moveto 0.43 0.626971 lineto stroke
+0.395 0.609471 moveto 0.43 0.609471 lineto stroke
+0.395 0.591971 moveto 0.43 0.591971 lineto stroke
+0.395 0.574471 moveto 0.43 0.574471 lineto stroke
+0.395 0.556971 moveto 0.43 0.556971 lineto stroke
+0.3775 0.539471 moveto 0.4475 0.539471 lineto stroke
+showpage grestore
+
+%%EndDocument
+
+} def
+
+%%EndProlog
+
+%%BeginSetup
+% Try to inform the printer about the desired media size:
+/setpagedevice where 	% level-2 page commands available...
+{	pop		% ignore where found
+	3 dict dup /PageSize [ 595 842 ] put
+	dup /Duplex false put
+	setpagedevice
+} if
+/sfactor 3.0000000000 def
+/leftmargin 29 def
+/botmargin 42 def
+/pagewidth 535 def
+/pageheight 757 def
+/imagexl 0 def
+/imageyb 0 def
+/posterxl 244 def
+/posteryb 75 def
+/do_turn true def
+/strg 10 string def
+/clipmargin 6 def
+/labelsize 9 def
+/tiledict 250 dict def
+tiledict begin
+% delay users showpage until cropmark is printed.
+/showpage {} def
+end
+/Helvetica findfont labelsize scalefont setfont
+%%EndSetup
+
+%%Page: 1 1
+1 1 tileprolog
+my_print
+tileepilog
+
+%%Page: 2 2
+1 2 tileprolog
+my_print
+tileepilog
+
+%%Page: 3 3
+1 3 tileprolog
+my_print
+tileepilog
+
+%%Page: 4 4
+2 1 tileprolog
+my_print
+tileepilog
+
+%%Page: 5 5
+2 2 tileprolog
+my_print
+tileepilog
+
+%%Page: 6 6
+2 3 tileprolog
+my_print
+tileepilog
+
+%%Page: 7 7
+3 1 tileprolog
+my_print
+tileepilog
+
+%%Page: 8 8
+3 2 tileprolog
+my_print
+tileepilog
+
+%%Page: 9 9
+3 3 tileprolog
+my_print
+tileepilog
+
+%%Page: 10 10
+4 1 tileprolog
+my_print
+tileepilog
+
+%%Page: 11 11
+4 2 tileprolog
+my_print
+tileepilog
+
+%%Page: 12 12
+4 3 tileprolog
+my_print
+tileepilog
+
+%%Page: 13 13
+5 1 tileprolog
+my_print
+tileepilog
+
+%%Page: 14 14
+5 2 tileprolog
+my_print
+tileepilog
+
+%%Page: 15 15
+5 3 tileprolog
+my_print
+tileepilog
+%%EOF

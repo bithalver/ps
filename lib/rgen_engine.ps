@@ -1,0 +1,73 @@
+% This is the engine part of rgen, the Recursive Generator
+% The examples are in rgen.ps
+
+% The possible styles for Recursive Generator:
+% /rgen_style 0 def % Default, only one net
+% /rgen_style 1 def % 4-sided flower: the base and 3 around it
+% /rgen_style 2 def % Z
+% /rgen_style 3 def % M
+% /rgen_style 4 def % W
+% /rgen_style 5 def % 6-sided flower
+
+/alllevel 1 def % If 0, Then only the lowest level is visible.
+                % If 1, All levels are visible.
+                % If 2, the list of visible levels are in allevels
+                %  (0 is the deepest !)
+/alllevels [0 1 2 3 4 5 6 7 8 9] def
+
+/rgen { dup /maxdepth exch def rgen_1 } def
+
+/rgen_1 { % centerpoint middlepoint angle totalweight parts depth -> 
+[/cp /mp /angle /tw /parts /depth] params % cp == mp == angle ==
+  /cv cp mp ppointsub def % centervector
+  /fp cp cv    angle     pointrotate ppointadd def % firstpoint
+  /lp cp cv -1 angle mul pointrotate ppointadd def % lastpoint
+
+  /fv fp mp ppointsub def % firstvector
+  /lv lp mp ppointsub def % lastvector
+
+  0 depth eq 1 alllevel eq 0 alllevel eq or and
+  alllevel 1 eq depth maxdepth ne and or
+  2 alllevel eq  depth alllevels member and or { 
+    rgen_style 5 le {fp mp lp padd} if
+    rgen_style 1 eq {
+      /op1 mp lv ppointsub def % outer point 1, for flowers
+      /op2 mp fv ppointsub def % outer point 2, for flowers
+      lp mp op2 padd  op2 mp op1 padd  op1 mp fp padd
+    } if
+    rgen_style 2 eq { fp mp lp pointmirror lp mp padd } if
+    rgen_style 3 eq {
+      fp mp lp pointmirror lp mp padd  lp mp fp pointmirror fp mp padd
+    } if
+    rgen_style 4 eq {
+      fp mp lp pointmirror mp lp padd  lp mp fp pointmirror mp fp padd
+    } if
+    rgen_style 5 eq {
+      /op1 fp mp lp pointmirror def  /op2 lp mp fp pointmirror def
+      /op3 mp fv ppointsub def       /op4 mp lv ppointsub def
+      lp mp op1 padd     op2 mp fp padd
+      op1 mp op3 padd    op4 mp op2 padd
+      op3 mp op4 padd
+    } if
+  } if
+
+  depth 1 ge {
+    1 1 parts length { /i exch def
+      /pi parts i nth def
+      /cx pi 1 nth def /cy pi 2 nth def
+      /mx pi 3 nth def /my pi 4 nth def /iangle pi 5 nth def
+
+      /icp fv cx tw div ppointmul 
+           lv cy tw div ppointmul ppointadd 
+           mp ppointadd def
+      /imp fv mx tw div ppointmul 
+           lv my tw div ppointmul ppointadd 
+           mp ppointadd def
+
+      icp imp iangle tw parts depth 1 sub rgen_1
+
+    } for
+  } if
+
+  allnets end /allnets exch def
+} def

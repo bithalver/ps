@@ -1,0 +1,46 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/bat_number (BN) 8 {exec cvi} GfEoCL def
+/bat_from (BF) 1 {exec cvi} GfEoCL def
+/bat_to (BT) bat_number {exec cvi} GfEoCL def
+/bat_distance_from_center (BD) 0 {exec cvr} GfEoCL def
+/bat_angle (BA) 0 {exec cvr} GfEoCL def % Rotation angle
+
+% ---- original bat ----
+/onepattern [ [[1.0 0.0] [0.0 1.0] [-1.0 0.0] [-1.36602545 1.36602545] [-2.7320509 1.0]] [[1 2 3 << >>] [4 3 2 << >>] [3 4 5 << >>]] ] def
+/onefullpattern [onepattern 1 5] def % pattern; point to connect to center; point to connect to end of radius
+% ---- original bat ----
+
+
+% -------- easy test for poster ---------
+% /onepattern [ [[0 0][0 1][1 1][1 0]] [[1 2 3 << >>][3 4 1 << >>]] ] def
+% /onefullpattern [{onepattern} 1 3] def % pattern; point to connect to center; point to connect to end of radius
+% -------- easy test for poster ---------
+
+begin_file
+
+/egy onefullpattern 0 get def
+/fp  onefullpattern 1 get def
+/lp  onefullpattern 2 get def
+
+
+/I bat_number def
+  /h I 90 bat_angle add basiccplane def
+  [(Bat_) I 10 lt {(0)} if I 2 string cvs] addstrings begin_page
+  bat_from 1 bat_to { /j exch def
+    h j nthpoint dup point 0 0 bat_distance_from_center weight [ 3 1 roll ] egy fp lp connectnetstopoints nadd
+  } for
+  end_page
+end_file
+
+% bat_curve1.ps: bin\gw bat_curve.ps "/PS_BN 8 def" "/PS_BF 2 def" "/PS_BT 4 def"
+% bat_curve2.ps: bin\gw bat_curve.ps "/PS_BN 8 def" "/PS_BF 1 def" "/PS_BT 5 def"
+% bat_curve3.ps: bin\gw bat_curve.ps "/PS_BD 0.3 def" "/PS_BN 16 def" "/PS_BF 11 def" "/PS_BT 15 def"
+% bat_curve4.ps: bin\gw bat_curve.ps "/PS_BD 0.3 def" "/PS_BN 24 def" "/PS_BF 17 def" "/PS_BT 21 def"
+% bat_curve5.ps: bin/gw bat_curve "/PS_BD -1 def" "/PS_BN 24 def" "/PS_BF 17 def" "/PS_BT 21 def" "/PS_STYLE 0 def"
+% bat_curve6.ps: bin/gw bat_curve "/PS_BD -1 def" "/PS_BN 16 def" "/PS_BF 11 def" "/PS_BT 15 def" "/PS_STYLE 0 def"
+% bat_curve7.ps: bin/gp bat_curve "/PS_BN 32 def " "/PS_BF 16 def" "/PS_BT 18 def"

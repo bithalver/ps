@@ -1,0 +1,19 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+begin_file (Round) begin_page
+
+/h 6 30 basicplane def
+
+h [1 2 3] nthpoints padd
+h [6 1] nthpoints  pointhalve h [1 1 2] nthpoints pointhalve padd
+h [2 3] nthpoints  pointhalve h [3 3 4] nthpoints pointhalve padd
+
+h [4 5 6] nthpoints padd
+h [3 4] nthpoints  pointhalve h [4 4 5] nthpoints pointhalve padd
+h [5 6] nthpoints  pointhalve h [6 6 1] nthpoints pointhalve padd
+
+end_page end_file

@@ -1,0 +1,66 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% /threads 10 def 
+
+% The environmental variable PS_CODE_STYLE can hold the style.
+/code_style (CODE_STYLE) 1 {exec cvi} GfEoCL def
+
+% code_style type 50 string cvs == quit
+
+begin_file
+
+1 dict begin (HexCode, style: ) code_style 2 string cvs addstring begin_page
+/rot [0 0 0 0
+      0 0 0 0
+      2 2 2 2
+      2 2 2 2] def
+/rot [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] def
+/hcir { % HexCodeInternalRoutine
+  [/i /w /p1 /p2 /p3 /p4] params
+
+  /s code_style def                     % 3 8 4
+  /b i w ge dup {/i i w sub def} if def % 7 5 9
+  s 0 lt {/s s neg def /b b not def} if % 2 6 1
+  /p5 p1 p3 pointhalve def
+  /p6 p1 p2 pointhalve def /p7 p2 p3 pointhalve def
+  /p8 p3 p4 pointhalve def /p9 p4 p1 pointhalve def
+
+  s  1 eq { b {p4 p1 p2} {p2 p3 p4} ifelse padd } if
+  s  2 eq { b {p1 p2 p3} {p3 p4 p1} ifelse padd } if
+  s  3 eq { b {p4 p1 p2 p2 p3 p4} {p1 p2 p3 p3 p4 p1} ifelse padd padd} if
+  s  4 eq { b {p1 p5 p3} {p2 p5 p4} ifelse padd} if
+  s  5 eq { b {p5 p3 p4 p5 p1 p2} {p5 p4 p1 p5 p2 p3} ifelse padd padd} if
+  s  6 eq { b {p4 p1 p2 p6 p3 p9} {p2 p3 p4 p8 p1 p7} ifelse padd padd} if
+  s  7 eq { b {p4 p1 p2 p8 p3 p7} {p2 p3 p4 p9 p1 p6} ifelse padd padd} if
+  s  8 eq { b {p8 p1 p7 p6 p3 p9} {p7 p4 p6 p9 p2 p8} ifelse padd padd} if
+  s  9 eq { b {p8 p1 p7 p6 p3 p9 padd padd} if 
+               p7 p4 p6 p9 p2 p8 padd padd} if
+  s 10 eq { b {p7 p4 p6 p9 p2 p8 padd padd} if 
+               p8 p1 p7 p6 p3 p9 padd padd} if
+
+  i allnets end /allnets exch def
+} def
+
+0 1 15 { /i exch def /i1 i def
+  /ix i 4 mod def /iy i 4 idiv def
+  /x ix 2 mul 1 add def /y 3 iy sub 2 mul 1 add def
+  /xl x 1 sub def /xr x 1 add def /yd y 1 sub def /yu y 1 add def
+  /t [[[x y] [xl y] [xl yu] [x yu]]
+      [[x y] [x yu] [xr yu] [xr y]]
+      [[x y] [xr y] [xr yd] [x yd]]
+      [[x y] [x yd] [xl yd] [xl y]]] def
+  /i i 8 t 2 rot i1 get add 4 mod get aload pop hcir def
+  /i i 4 t 3 rot i1 get add 4 mod get aload pop hcir def
+  /i i 2 t 1 rot i1 get add 4 mod get aload pop hcir def
+  /i i 1 t 0 rot i1 get add 4 mod get aload pop hcir def
+
+%  /i i 8 [x y] [xr y] [xr yd] [x yd] hcir def
+%  /i i 4 [x y] [x yd] [xl yd] [xl y] hcir def
+%  /i i 2 [x y] [x yu] [xr yu] [xr y] hcir def
+%  /i i 1 [x y] [xl y] [xl yu] [x yu] hcir def
+} for
+end_page end

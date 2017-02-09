@@ -1,0 +1,25 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/leftmargin    2 cm def /rightmargin 1 cm def
+/bottommargin  2 cm def /topmargin   1.5 cm def
+
+/threads 10 def /style 0 def
+
+begin_file (DT_3) begin_page
+
+/n 4 15 basicplane def
+
+1 1 4 { /i exch def
+  n [4 1 2] nthpoints pcn nadd
+  /h n 4 1 3 2 1 connectbasicplane def 
+  h [1 2 3] nthpoints pcn nadd
+  /n h 1 2 4 2 3 connectbasicplane def
+%  /h1 h 3 1 3 2 1 connectbasicplane def h1 [2 3 1] nthpoints pcn nadd
+} for
+
+end_page end_file
+wtf {quit} if

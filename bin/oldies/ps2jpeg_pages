@@ -1,0 +1,6 @@
+#!/bin/bash
+FN=$1
+shift
+GEOM=-g`grep BoundingBox ${FN}|sed -e"s/%%BoundingBox: [0-9]+ [0-9]+ //;s/ $//"|tr " " x`
+cat $FN | gs -I/home/meszi/PS/lib -q -sDEVICE=jpeg -dNOPAUSE -sOutputFile=${FN}%d.jpg $GEOM $@
+unset FN

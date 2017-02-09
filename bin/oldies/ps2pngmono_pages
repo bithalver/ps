@@ -1,0 +1,1 @@
+cat $1 | gs -I/home/meszi/PS/lib -q -sDEVICE=pngmono -dNOPAUSE -r200 -sOutputFile=`basename $1 .ps`%03d.png

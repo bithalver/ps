@@ -1,0 +1,246 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 10 def
+
+/h 16 0 basiccplane def
+
+/no01 h  2  1 4 1 3 connectbasicplane def
+/no02 h  3  2 4 1 3 connectbasicplane def
+/no03 h  4  3 4 1 3 connectbasicplane def
+/no04 h  5  4 4 1 3 connectbasicplane def
+/no05 h  6  5 4 1 3 connectbasicplane def
+/no06 h  7  6 4 1 3 connectbasicplane def
+/no07 h  8  7 4 1 3 connectbasicplane def
+/no08 h  9  8 4 1 3 connectbasicplane def
+/no09 h 10  9 4 1 3 connectbasicplane def
+/no10 h 11 10 4 1 3 connectbasicplane def
+/no11 h 12 11 4 1 3 connectbasicplane def
+/no12 h 13 12 4 1 3 connectbasicplane def
+/no13 h 14 13 4 1 3 connectbasicplane def
+/no14 h 15 14 4 1 3 connectbasicplane def
+/no15 h 16 15 4 1 3 connectbasicplane def
+/no16 h  1 16 4 1 3 connectbasicplane def
+
+/nm01 h  3  1 4 1 3 connectbasicplane def
+/nm02 h  5  3 4 1 3 connectbasicplane def
+/nm03 h  7  5 4 1 3 connectbasicplane def
+/nm04 h  9  7 4 1 3 connectbasicplane def
+/nm05 h 11  9 4 1 3 connectbasicplane def
+/nm06 h 13 11 4 1 3 connectbasicplane def
+/nm07 h 15 13 4 1 3 connectbasicplane def
+/nm08 h  1 15 4 1 3 connectbasicplane def
+
+/ni01 h  5  1 4 1 3 connectbasicplane def
+/ni02 h  9  5 4 1 3 connectbasicplane def
+/ni03 h 13  9 4 1 3 connectbasicplane def
+/ni04 h  1 13 4 1 3 connectbasicplane def
+
+
+ni01 [1 2 3] nthpoints pcn
+ni02 [1 2 3] nthpoints 4 -1 roll paddn
+ni03 [1 2 3] nthpoints 4 -1 roll paddn
+ni04 [1 2 3] nthpoints 4 -1 roll paddn
+/inner16 exch def
+
+ni01 [1 4 3] nthpoints pcn
+ni02 [1 4 3] nthpoints 4 -1 roll paddn
+ni03 [1 4 3] nthpoints 4 -1 roll paddn
+ni04 [1 4 3] nthpoints 4 -1 roll paddn
+/inner16_2 exch def
+
+nm01 [1 2 3] nthpoints pcn
+nm02 [1 2 3] nthpoints 4 -1 roll paddn
+nm03 [1 2 3] nthpoints 4 -1 roll paddn
+nm04 [1 2 3] nthpoints 4 -1 roll paddn
+nm05 [1 2 3] nthpoints 4 -1 roll paddn
+nm06 [1 2 3] nthpoints 4 -1 roll paddn
+nm07 [1 2 3] nthpoints 4 -1 roll paddn
+nm08 [1 2 3] nthpoints 4 -1 roll paddn
+/middle16 exch def
+
+nm01 [1 4 3] nthpoints pcn
+nm02 [1 4 3] nthpoints 4 -1 roll paddn
+nm03 [1 4 3] nthpoints 4 -1 roll paddn
+nm04 [1 4 3] nthpoints 4 -1 roll paddn
+nm05 [1 4 3] nthpoints 4 -1 roll paddn
+nm06 [1 4 3] nthpoints 4 -1 roll paddn
+nm07 [1 4 3] nthpoints 4 -1 roll paddn
+nm08 [1 4 3] nthpoints 4 -1 roll paddn
+/middle16_2 exch def
+
+nm01 [2 3] nthpoints nm08 2 nthpoint pcn
+nm02 [2 3] nthpoints nm01 2 nthpoint 4 -1 roll paddn
+nm03 [2 3] nthpoints nm02 2 nthpoint 4 -1 roll paddn
+nm04 [2 3] nthpoints nm03 2 nthpoint 4 -1 roll paddn
+nm05 [2 3] nthpoints nm04 2 nthpoint 4 -1 roll paddn
+nm06 [2 3] nthpoints nm05 2 nthpoint 4 -1 roll paddn
+nm07 [2 3] nthpoints nm06 2 nthpoint 4 -1 roll paddn
+nm08 [2 3] nthpoints nm07 2 nthpoint 4 -1 roll paddn
+/middle16_3_1 exch def
+
+nm01 [4 3] nthpoints nm08 4 nthpoint pcn
+nm02 [4 3] nthpoints nm01 4 nthpoint 4 -1 roll paddn
+nm03 [4 3] nthpoints nm02 4 nthpoint 4 -1 roll paddn
+nm04 [4 3] nthpoints nm03 4 nthpoint 4 -1 roll paddn
+nm05 [4 3] nthpoints nm04 4 nthpoint 4 -1 roll paddn
+nm06 [4 3] nthpoints nm05 4 nthpoint 4 -1 roll paddn
+nm07 [4 3] nthpoints nm06 4 nthpoint 4 -1 roll paddn
+nm08 [4 3] nthpoints nm07 4 nthpoint 4 -1 roll paddn
+/middle16_3_2 exch def
+
+nm01 [2 3] nthpoints nm02 3 nthpoint pcn
+nm02 [2 3] nthpoints nm03 3 nthpoint 4 -1 roll paddn
+nm03 [2 3] nthpoints nm04 3 nthpoint 4 -1 roll paddn
+nm04 [2 3] nthpoints nm05 3 nthpoint 4 -1 roll paddn
+nm05 [2 3] nthpoints nm06 3 nthpoint 4 -1 roll paddn
+nm06 [2 3] nthpoints nm07 3 nthpoint 4 -1 roll paddn
+nm07 [2 3] nthpoints nm08 3 nthpoint 4 -1 roll paddn
+nm08 [2 3] nthpoints nm01 3 nthpoint 4 -1 roll paddn
+/middle16_4_1 exch def
+
+nm01 1 nthpoint nm02 2 nthpoint nm01 3 nthpoint pcn
+nm02 1 nthpoint nm03 2 nthpoint nm02 3 nthpoint 4 -1 roll paddn
+nm03 1 nthpoint nm04 2 nthpoint nm03 3 nthpoint 4 -1 roll paddn
+nm04 1 nthpoint nm05 2 nthpoint nm04 3 nthpoint 4 -1 roll paddn
+nm05 1 nthpoint nm06 2 nthpoint nm05 3 nthpoint 4 -1 roll paddn
+nm06 1 nthpoint nm07 2 nthpoint nm06 3 nthpoint 4 -1 roll paddn
+nm07 1 nthpoint nm08 2 nthpoint nm07 3 nthpoint 4 -1 roll paddn
+nm08 1 nthpoint nm01 2 nthpoint nm08 3 nthpoint 4 -1 roll paddn
+/middle16_4_2 exch def
+
+nm01 [4 1 2] nthpoints pcn
+nm02 [4 1 2] nthpoints 4 -1 roll paddn
+nm03 [4 1 2] nthpoints 4 -1 roll paddn
+nm04 [4 1 2] nthpoints 4 -1 roll paddn
+nm05 [4 1 2] nthpoints 4 -1 roll paddn
+nm06 [4 1 2] nthpoints 4 -1 roll paddn
+nm07 [4 1 2] nthpoints 4 -1 roll paddn
+nm08 [4 1 2] nthpoints 4 -1 roll paddn
+/middle16_5_1 exch def
+
+nm01 [2 3 4] nthpoints pcn
+nm02 [2 3 4] nthpoints 4 -1 roll paddn
+nm03 [2 3 4] nthpoints 4 -1 roll paddn
+nm04 [2 3 4] nthpoints 4 -1 roll paddn
+nm05 [2 3 4] nthpoints 4 -1 roll paddn
+nm06 [2 3 4] nthpoints 4 -1 roll paddn
+nm07 [2 3 4] nthpoints 4 -1 roll paddn
+nm08 [2 3 4] nthpoints 4 -1 roll paddn
+/middle16_5_2 exch def
+
+no01 [1 2 3] nthpoints pcn
+no02 [1 2 3] nthpoints 4 -1 roll paddn
+no03 [1 2 3] nthpoints 4 -1 roll paddn
+no04 [1 2 3] nthpoints 4 -1 roll paddn
+no05 [1 2 3] nthpoints 4 -1 roll paddn
+no06 [1 2 3] nthpoints 4 -1 roll paddn
+no07 [1 2 3] nthpoints 4 -1 roll paddn
+no08 [1 2 3] nthpoints 4 -1 roll paddn
+no09 [1 2 3] nthpoints 4 -1 roll paddn
+no10 [1 2 3] nthpoints 4 -1 roll paddn
+no11 [1 2 3] nthpoints 4 -1 roll paddn
+no12 [1 2 3] nthpoints 4 -1 roll paddn
+no13 [1 2 3] nthpoints 4 -1 roll paddn
+no14 [1 2 3] nthpoints 4 -1 roll paddn
+no15 [1 2 3] nthpoints 4 -1 roll paddn
+no16 [1 2 3] nthpoints 4 -1 roll paddn
+/outer16 exch def
+
+no01 [1 4 3] nthpoints pcn
+no02 [1 4 3] nthpoints 4 -1 roll paddn
+no03 [1 4 3] nthpoints 4 -1 roll paddn
+no04 [1 4 3] nthpoints 4 -1 roll paddn
+no05 [1 4 3] nthpoints 4 -1 roll paddn
+no06 [1 4 3] nthpoints 4 -1 roll paddn
+no07 [1 4 3] nthpoints 4 -1 roll paddn
+no08 [1 4 3] nthpoints 4 -1 roll paddn
+no09 [1 4 3] nthpoints 4 -1 roll paddn
+no10 [1 4 3] nthpoints 4 -1 roll paddn
+no11 [1 4 3] nthpoints 4 -1 roll paddn
+no12 [1 4 3] nthpoints 4 -1 roll paddn
+no13 [1 4 3] nthpoints 4 -1 roll paddn
+no14 [1 4 3] nthpoints 4 -1 roll paddn
+no15 [1 4 3] nthpoints 4 -1 roll paddn
+no16 [1 4 3] nthpoints 4 -1 roll paddn
+/outer16_2 exch def
+
+no01 [2 3] nthpoints no16 2 nthpoint pcn
+no02 [2 3] nthpoints no01 2 nthpoint 4 -1 roll paddn
+no03 [2 3] nthpoints no02 2 nthpoint 4 -1 roll paddn
+no04 [2 3] nthpoints no03 2 nthpoint 4 -1 roll paddn
+no05 [2 3] nthpoints no04 2 nthpoint 4 -1 roll paddn
+no06 [2 3] nthpoints no05 2 nthpoint 4 -1 roll paddn
+no07 [2 3] nthpoints no06 2 nthpoint 4 -1 roll paddn
+no08 [2 3] nthpoints no07 2 nthpoint 4 -1 roll paddn
+no09 [2 3] nthpoints no08 2 nthpoint 4 -1 roll paddn
+no10 [2 3] nthpoints no09 2 nthpoint 4 -1 roll paddn
+no11 [2 3] nthpoints no10 2 nthpoint 4 -1 roll paddn
+no12 [2 3] nthpoints no11 2 nthpoint 4 -1 roll paddn
+no13 [2 3] nthpoints no12 2 nthpoint 4 -1 roll paddn
+no14 [2 3] nthpoints no13 2 nthpoint 4 -1 roll paddn
+no15 [2 3] nthpoints no14 2 nthpoint 4 -1 roll paddn
+no16 [2 3] nthpoints no15 2 nthpoint 4 -1 roll paddn
+/outer16_3_1 exch def
+
+no01 [4 3] nthpoints no16 4 nthpoint pcn
+no02 [4 3] nthpoints no01 4 nthpoint 4 -1 roll paddn
+no03 [4 3] nthpoints no02 4 nthpoint 4 -1 roll paddn
+no04 [4 3] nthpoints no03 4 nthpoint 4 -1 roll paddn
+no05 [4 3] nthpoints no04 4 nthpoint 4 -1 roll paddn
+no06 [4 3] nthpoints no05 4 nthpoint 4 -1 roll paddn
+no07 [4 3] nthpoints no06 4 nthpoint 4 -1 roll paddn
+no08 [4 3] nthpoints no07 4 nthpoint 4 -1 roll paddn
+no09 [4 3] nthpoints no08 4 nthpoint 4 -1 roll paddn
+no10 [4 3] nthpoints no09 4 nthpoint 4 -1 roll paddn
+no11 [4 3] nthpoints no10 4 nthpoint 4 -1 roll paddn
+no12 [4 3] nthpoints no11 4 nthpoint 4 -1 roll paddn
+no13 [4 3] nthpoints no12 4 nthpoint 4 -1 roll paddn
+no14 [4 3] nthpoints no13 4 nthpoint 4 -1 roll paddn
+no15 [4 3] nthpoints no14 4 nthpoint 4 -1 roll paddn
+no16 [4 3] nthpoints no15 4 nthpoint 4 -1 roll paddn
+/outer16_3_2 exch def
+
+begin_file
+
+(16_1) begin_page
+inner16 nadd
+middle16 nadd
+outer16 nadd
+end_page
+
+(16_2) begin_page
+inner16 nadd inner16_2 nadd
+middle16 nadd middle16_2 nadd
+outer16 nadd outer16_2 nadd
+end_page
+
+(16_3) begin_page
+middle16 nadd middle16_2 nadd 
+middle16_3_1 nadd middle16_3_2 nadd
+end_page
+
+(16_4) begin_page
+middle16_4_1 nadd middle16_4_2 nadd
+end_page
+
+(16_5) begin_page
+outer16 nadd outer16_2 nadd
+outer16_3_1 nadd outer16_3_2 nadd
+end_page
+
+(16_6) begin_page
+middle16_3_1 nadd middle16_3_2 nadd
+middle16_5_1 nadd middle16_5_2 nadd
+end_page
+
+(16_7) begin_page
+middle16 nadd middle16_2 nadd 
+middle16_3_1 nadd middle16_3_2 nadd
+middle16_5_1 nadd middle16_5_2 nadd
+end_page
+
+end_file

@@ -1,0 +1,44 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/pointmul { dup 3 1 roll mul 3 1 roll mul exch } def
+/point {aload pop} def
+/pointadd { 3 1 roll 4 3 roll add 3 1 roll add } def
+/pointsub { 4 -1 roll 3 -1 roll sub 3 1 roll sub } def
+
+/threads 8 def
+
+0 setlinewidth
+/nthpart { threads exch sub threads div weight } def % CF4
+/weight { dup 4 1 roll 1 exch sub pointmul 5 2 roll pointmul pointadd } def
+
+/vonal { % p1 p2 ->
+  /p2 exch def  /p1 exch def
+  p1 point moveto p2 point lineto stroke
+
+  /p12diff [ p1 point p2 point 1 nthpart p1 point pointsub exch -1 mul ] def
+  0 1 threads { /k exch def
+    p1 point p2 point k nthpart p12diff point pointadd moveto
+    p1 point p2 point k nthpart p12diff point pointsub lineto stroke
+  } for
+} def
+
+/negyzet { % xfrom yfrom xto yto ->
+  /yto exch def /xto exch def /yfrom exch def /xfrom exch def
+  yfrom 0 le { [ xfrom yfrom ] [ xto yfrom ] vonal } if
+  [ xto yfrom ] [ xto yto ] vonal
+  [ xto yto ] [ xfrom yto ] vonal
+  xfrom 0 le { [ xfrom yto ] [ xfrom yfrom ] vonal } if
+} def
+
+4 1 9 { /m exch def
+  gsave
+  297.638 422.362 translate 453.542 dup scale -0.5 -0.5 translate
+  /darab 1 m div def
+  0 1 m 1 sub { /i exch def   -3 1 m 2 add { /j exch def
+%  0 1 m 1 sub { /i exch def   0 1 m 1 sub { /j exch def
+    darab i mul  darab j mul  darab i 1 add mul  darab j 1 add mul negyzet
+  } for } for
+  showpage grestore
+} for

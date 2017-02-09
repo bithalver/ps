@@ -1,0 +1,43 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/style 0 def /numbering 1 def /threads 20 def
+
+/n1 4 10 basicplane def
+/n2 n1 2 3 4 1 4 connectbasicplane def
+/n3 n2 1 2 4 1 4 connectbasicplane def
+
+% /tal2 p12 [3 4] nthpoints tal1 1 2 connectnetstopoints def
+
+/d1 << /firstthread 0 /lastthread 10
+ /predraw {1 0 0 setrgbcolor wtf {(1 0 0 setrgbcolor) wol} if}
+ /postdraw {0 0 0 setrgbcolor wtf {(0 0 0 setrgbcolor) wol} if} >> def
+
+/d2 << /firstthread 11 /lastthread 20
+ /predraw {0 0 0 setrgbcolor wtf {(0 0 0 setrgbcolor) wol} if}
+ /postdraw {0 0 0 setrgbcolor wtf {(0 0 0 setrgbcolor) wol} if} >> def
+
+/d3 <</firstthread  0 /lastthread 10 /colors [1 0 0] >> def
+/d4 <</firstthread 11 /lastthread 20 >> def
+
+/a1
+  n1 [2 3 4] nthpoints d3 pdcn
+  n1 [2 3 4] nthpoints d4 5 -1 roll pdaddn
+  n2 [4 1 2] nthpoints d3 5 -1 roll pdaddn
+  n2 [4 1 2] nthpoints d4 5 -1 roll pdaddn
+def
+
+/a2
+  n3 [3 4 1] nthpoints d3 pdcn
+  n3 [3 4 1] nthpoints d4 5 -1 roll pdaddn
+def
+
+begin_file
+
+(DoubleColored 1) begin_page a1 nadd end_page
+(DoubleColored 2) begin_page a1 nadd a2 nadd end_page
+
+end_file wtf{quit}if

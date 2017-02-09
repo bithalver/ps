@@ -1,0 +1,146 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 10 def
+
+/h 8 0 basiccplane def
+
+/nm01 h 2 1 4 1 3 connectbasicplane def
+/nm02 h 3 2 4 1 3 connectbasicplane def
+/nm03 h 4 3 4 1 3 connectbasicplane def
+/nm04 h 5 4 4 1 3 connectbasicplane def
+/nm05 h 6 5 4 1 3 connectbasicplane def
+/nm06 h 7 6 4 1 3 connectbasicplane def
+/nm07 h 8 7 4 1 3 connectbasicplane def
+/nm08 h 1 8 4 1 3 connectbasicplane def
+
+nm01 [1 2 3] nthpoints pcn
+nm02 [1 2 3] nthpoints pcn netsadd
+nm03 [1 2 3] nthpoints pcn netsadd
+nm04 [1 2 3] nthpoints pcn netsadd
+nm05 [1 2 3] nthpoints pcn netsadd
+nm06 [1 2 3] nthpoints pcn netsadd
+nm07 [1 2 3] nthpoints pcn netsadd
+nm08 [1 2 3] nthpoints pcn netsadd
+/middle16 exch def
+
+nm01 [1 4 3] nthpoints pcn
+nm02 [1 4 3] nthpoints pcn netsadd
+nm03 [1 4 3] nthpoints pcn netsadd
+nm04 [1 4 3] nthpoints pcn netsadd
+nm05 [1 4 3] nthpoints pcn netsadd
+nm06 [1 4 3] nthpoints pcn netsadd
+nm07 [1 4 3] nthpoints pcn netsadd
+nm08 [1 4 3] nthpoints pcn netsadd
+/middle16_2 exch def
+
+nm01 [2 3] nthpoints nm08 2 nthpoint pcn
+nm02 [2 3] nthpoints nm01 2 nthpoint pcn netsadd
+nm03 [2 3] nthpoints nm02 2 nthpoint pcn netsadd
+nm04 [2 3] nthpoints nm03 2 nthpoint pcn netsadd
+nm05 [2 3] nthpoints nm04 2 nthpoint pcn netsadd
+nm06 [2 3] nthpoints nm05 2 nthpoint pcn netsadd
+nm07 [2 3] nthpoints nm06 2 nthpoint pcn netsadd
+nm08 [2 3] nthpoints nm07 2 nthpoint pcn netsadd
+/middle16_3_1 exch def
+
+nm01 [4 3] nthpoints nm08 4 nthpoint pcn
+nm02 [4 3] nthpoints nm01 4 nthpoint pcn netsadd
+nm03 [4 3] nthpoints nm02 4 nthpoint pcn netsadd
+nm04 [4 3] nthpoints nm03 4 nthpoint pcn netsadd
+nm05 [4 3] nthpoints nm04 4 nthpoint pcn netsadd
+nm06 [4 3] nthpoints nm05 4 nthpoint pcn netsadd
+nm07 [4 3] nthpoints nm06 4 nthpoint pcn netsadd
+nm08 [4 3] nthpoints nm07 4 nthpoint pcn netsadd
+/middle16_3_2 exch def
+
+nm01 [4 1 2] nthpoints pcn
+nm02 [4 1 2] nthpoints pcn netsadd
+nm03 [4 1 2] nthpoints pcn netsadd
+nm04 [4 1 2] nthpoints pcn netsadd
+nm05 [4 1 2] nthpoints pcn netsadd
+nm06 [4 1 2] nthpoints pcn netsadd
+nm07 [4 1 2] nthpoints pcn netsadd
+nm08 [4 1 2] nthpoints pcn netsadd
+/middle16_5_1 exch def
+
+nm01 [2 3 4] nthpoints pcn
+nm02 [2 3 4] nthpoints pcn netsadd
+nm03 [2 3 4] nthpoints pcn netsadd
+nm04 [2 3 4] nthpoints pcn netsadd
+nm05 [2 3 4] nthpoints pcn netsadd
+nm06 [2 3 4] nthpoints pcn netsadd
+nm07 [2 3 4] nthpoints pcn netsadd
+nm08 [2 3 4] nthpoints pcn netsadd
+/middle16_5_2 exch def
+
+middle16 middle16_2 netsadd 
+middle16_3_1 netsadd middle16_3_2 netsadd
+middle16_5_1 netsadd middle16_5_2 netsadd
+/mind exch def
+
+/mindb1 mind   [ 7  5] nnthpoints mind   19 18 connectnetstopoints def
+/mindb2 mindb1 [ 7  5] nnthpoints mindb1 19 18 connectnetstopoints def
+
+/mindo mind mindb1 netsadd mindb2 netsadd def
+% /mind11 {mindo} def
+% 
+% /mind21 mind11 [25 32] nnthpoints mind11 28 29 connectnetstopoints def
+% /mind31 mind21 [25 32] nnthpoints mind21 28 29 connectnetstopoints def
+% /mind12 mind11 [27 26] nnthpoints mind11 30 31 connectnetstopoints def
+% /mind22 mind21 [27 26] nnthpoints mind21 30 31 connectnetstopoints def
+% /mind32 mind31 [27 26] nnthpoints mind31 30 31 connectnetstopoints def
+% /mind13 mind12 [27 26] nnthpoints mind12 30 31 connectnetstopoints def
+% /mind23 mind13 [25 32] nnthpoints mind13 28 29 connectnetstopoints def
+% /mind33 mind23 [25 32] nnthpoints mind23 28 29 connectnetstopoints def
+% 
+%       19 18
+%        7  5
+% 20  9        2 17
+% 21 11       16 24
+%       13 15
+%       22 23
+
+begin_file
+
+(8_3_1) begin_page
+mindo nadd
+% mind nadd
+end_page
+
+% %%Page: "8_3_2" 8_3_2
+% clearallnets mind11 nadd mind12 nadd mind21 nadd mind22 nadd
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "8_3_2" 8_3_2
+
+% %%Page: "8_3_3" 8_3_3
+% clearallnets
+% mind11 nadd mind12 nadd mind13 nadd
+% mind21 nadd mind22 nadd mind23 nadd
+% mind31 nadd mind32 nadd mind33 nadd
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "8_3_3" 8_3_3
+
+/mindA {mind} def
+/mindB mindA mindb1 netsadd def
+/mindC mindB mindb2 netsadd def
+
+/mindm21 mindA   [17 24] nnthpoints mindB 20 21 connectnetstopoints def
+/mindm31 mindm21 [17 24] nnthpoints mindA 20 21 connectnetstopoints def
+/mindm12 mindA   [19 18] nnthpoints mindB 22 23 connectnetstopoints def
+/mindm22 mindm21 [19 18] nnthpoints mindC 22 23 connectnetstopoints def
+/mindm32 mindm31 [19 18] nnthpoints mindB 22 23 connectnetstopoints def
+/mindm13 mindm12 [19 18] nnthpoints mindA 22 23 connectnetstopoints def
+/mindm23 mindm13 [17 24] nnthpoints mindB 20 21 connectnetstopoints def
+/mindm33 mindm23 [17 24] nnthpoints mindA 20 21 connectnetstopoints def
+
+(8_3_4) begin_page
+mindA   nadd mindm12 nadd mindm13 nadd
+mindm21 nadd mindm22 nadd mindm23 nadd
+mindm31 nadd mindm32 nadd mindm33 nadd
+end_page
+
+end_file

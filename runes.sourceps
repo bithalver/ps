@@ -1,0 +1,41 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 10 def
+
+(/usr/lib/my_ps/net_minta.ps) run
+
+/nth_net { % corners bplane n -> p1 p2 p3
+[/corners /bplane /n] params
+  bplane corners n        nth nth % p1
+  bplane corners n 1 add cnth nth % p2
+  bplane corners n 2 add cnth nth % p3
+end} def
+
+
+begin_file
+(Runes, six sided) begin_page
+
+/minta6 minta 6 nth def
+/elforgatasok [ 0 180 180 0 90 180 180 0 0 0 0 0 ] def
+
+0 1 2 { /i exch def
+  0 1 3 {/j exch def
+    /k  j 3 mul i add  def
+
+    /h 6    elforgatasok k get    basicplane reversearray def
+
+    /h1 h [i 3 mul   3 j 3 mul sub] multippointadd def
+
+    1 1 6 { /m exch def
+      minta6 k get h1 m nth_net padd
+    } for
+
+  }for
+}for
+
+
+end_page end_file

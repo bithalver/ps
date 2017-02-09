@@ -1,0 +1,145 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+% Lovers.pdf: export PS_PAGENAME="(Lovers)" ;  bin/gp net "/PS_RANDOMIZE 1 def" "/PS_RANK 8 def" "/PS_STYLE 9 def" "/PS_SRAND 11524552 def" "/PS_ROTATING 112.5 def"
+% bin/g net "/PS_STYLE 9 def" "/PS_RANK 6 def"
+my_init
+
+/threads 10 def
+
+/rotating (ROTATING) 0 {} GfEoCL def % rotating degree
+/randomize (RANDOMIZE) 0 {} GfEoCL def
+/rank (RANK)  randomize type (arraytype) eq {randomize length} {6} ifelse   {exec cvi} GfEoCL def
+
+/net_pagename (PAGENAME) () {} GfEoCL def % The pagename; if not defined from ENV or CL, has a special built up default
+
+/bb (BIGBOX) 1 {} GfEoCL def % How big the containing box should be
+
+/h rank rotating basicplane reversearray def
+
+% 3 rank eq {/h rank 210 basicplane reversearray def} if
+% 4 rank eq {/h rank 225 basicplane reversearray def} if
+% 5 rank eq {/h rank 162 basicplane reversearray def} if
+% 6 rank eq {/h rank 180 basicplane reversearray def} if
+
+(/usr/lib/my_ps/net_minta.ps) run
+
+/nth_net { % corners bplane n -> p1 p2 p3
+[/corners /bplane /n] params
+  bplane corners n        nth nth % p1
+  bplane corners n 1 add cnth nth % p2
+  bplane corners n 2 add cnth nth % p3
+end} def
+
+begin_file
+
+randomize type (arraytype) eq { 
+  % Typical:  bin/gw net "/PS_STYLE 9 def" "/PS_RANDOMIZE [6 4 2 5 3 1] def"
+  % rank will be overwitten
+  % produces only one page
+
+% 20th lightning is done by:
+% bin/gp net "/PS_STYLE 9 def" "/PS_RANDOMIZE [5 6 4 7 3 8 2 9 1 10 20 11 19 12 18 13 17 14 16 15] def"
+
+% Fat version of the same:
+% export PS_PREDRAW='{ /p2 p2 p1 p3 pointmirror def }'
+% bin/gp net "/PS_STYLE 9 def" "/PS_RANDOMIZE [5 6 4 7 3 8 2 9 1 10 20 11 19 12 18 13 17 14 16 15] def" "/PS_BIGBOX 2 def" "/PS_ROTATING 90 def"
+  
+/an randomize def  % an like ActualNet
+/rank an length def
+
+[[(Net_) rank any2str ] addstrings an any2str ] begin_page
+% (20th lightning, fat version) begin_page
+
+[bb neg bb][bb bb][bb bb neg] <</style -1>> pdadd
+
+  1 1 rank { /j exch def
+    an h j nth_net padd
+  } for
+
+end_page
+} if
+
+
+randomize type (integertype) eq randomize 1 eq and { 
+  % Typical:  bin/gw net "/PS_STYLE 9 def" "/PS_RANK 12 def" "/PS_RANDOMIZE 1 def"
+  % rank can be any number, at least 3
+  % produces only one page
+  % as usual, "PS_SRAND <number> def" can be specified
+/an rank base_integers random_order def  % an like ActualNet
+
+net_pagename () eq {
+  [[(Net_) rank any2str (_) RRAND any2str ] addstrings an any2str ] 
+}{
+  net_pagename
+} ifelse
+
+begin_page
+ 
+[bb neg bb][bb bb][bb bb neg] <</style -1>> pdadd
+
+  1 1 rank { /j exch def
+    an h j nth_net padd
+  } for
+
+end_page
+} if
+
+
+randomize type (integertype) eq randomize 0 eq and {
+  % Typical:  bin/gw net "/PS_STYLE 9 def" "/PS_RANK 6 def"
+  % rank can be between 3 and 8
+  % produces many pages ! (202 for rank 8)
+
+1 1 minta rank nth length { /I exch def
+%   [(Net) rank 1 string cvs (_) I 10 lt {(0)} if I 2 string cvs ] addstrings 
+  [(Net_) 
+    rank any2str 
+   (_)
+   I 10 lt {(0)} if 
+   I 100 lt {(0)} if 
+   I 1000 lt {(0)} if 
+   I 4 string cvs ] addstrings 
+    begin_page
+
+  [bb neg bb][bb bb][bb bb neg] <</style -1>> pdadd
+
+  1 1 rank { /j exch def
+    minta rank nth I nth h j nth_net padd
+  } for
+  end_page
+} for
+
+} if
+
+randomize type (integertype) eq randomize 2 eq and { % Added on 20080411
+  % Typical:  bin/gw net "/PS_STYLE 9 def" "/PS_RANK 6 def"
+  % rank can be 4,6,8
+  % produces many pages ! (202 for rank 8)
+
+(Holes for 6 6 sided on one page) begin_page
+
+/h 6 rotating basicplane reversearray def
+/linewidth 0.2 def
+% /style 1 def /topmargin 4 cm def /leftmargin 3 cm def
+
+/onepattern [ h [
+[1 2 3 << >>][3 4 5 << >>][5 6 1 << >>]
+[1 3 6 << >>][3 5 2 << >>][5 1 4 << >>]
+[2 4 6 << >>][6 2 4 << >>]
+]] def
+
+onepattern nadd
+[2.75 1  ][2.75   -1] onepattern [0 1] [0 -1] connectnetstopoints_2 nadd
+[0 3.5][0 1.5] onepattern [0 1] [0 -1] connectnetstopoints_2 nadd
+[2.75 3.5][2.75 1.5] onepattern [0 1] [0 -1] connectnetstopoints_2 nadd
+[0 6][0 4] onepattern [0 1] [0 -1] connectnetstopoints_2 nadd
+[2.75 6][2.75 4] onepattern [0 1] [0 -1] connectnetstopoints_2 nadd
+
+  end_page
+
+
+} if
+
+end_file

@@ -1,0 +1,467 @@
+/my_rmoveto { % x y -> % CF4
+  [/x /y] params wtf {[x y (rmoveto)] wss} {x y rmoveto} ifelse end } def
+
+/my_moveto { % x y -> % CF4
+  [/x /y] params wtf {[x y (moveto)] wss} {x y moveto} ifelse end } def
+
+/my_lineto { % x y -> % CF4
+  [/x /y] params wtf {[x y (lineto)] wss} {x y lineto} ifelse end } def
+
+/my_curveto { % x1 y1 x2 y2 x3 y3->
+  [/x1 /y1 /x2 /y2 /x3 /y3] params 
+  wtf 
+    {[x1 y1 x2 y2 x3 y3 (curveto)] wss}
+    {x1 y1 x2 y2 x3 y3 curveto} ifelse 
+end } def
+
+/my_show { % (string) -> % CF4
+  [/s] params wtf {[(\050) s (\051 show)] addstrings wol} {s show} ifelse end } def
+
+/my_selectfont { % font size -> % CF4
+  [/f /s] params 
+  wtf { [(/) f 50 string cvs addstring s (selectfont)] wsl} if
+  f s selectfont
+end } def
+
+/my_setrgbcolor { % R G B -> % CF4
+  [/r /g /b] params 
+  blacknwhite not {
+    wtf {[r g b (setrgbcolor)] wss} {r g b setrgbcolor} ifelse
+  } if
+end}def
+
+/my_stroke {wtf {(stroke) wol} {stroke} ifelse } def % CF4
+/my_fill {wtf {(fill) wol} {fill} ifelse } def % CF4
+
+/weight { dup 4 1 roll 1 exch sub pointmul 5 2 roll pointmul pointadd } def % CF4
+
+/nthpart { threads exch sub threads div weight } def % CF4
+
+/pnthpart { % CF4
+  [/p1 /p2 /n] params
+  [ p1 point p2 point n nthpart ]
+end } def
+
+/nthline { % [1] [2] [3] n -> p[n][from] p[n][to] % It is for 3 point nets only !
+  [/p1 /p2 /p3 /n] params
+    [ p1 point p2 point n nthpart ]
+    [ p2 point p3 point n nthpart ]
+end
+} def
+
+    /style10 { % This routine will be used in style 11, too. Taken apart on 20040221 .
+      p3 point my_moveto p2 point my_lineto p1 point my_lineto
+      % p1 point my_moveto
+        p2 point p1 point 2 3 div weight
+        p2 point p3 point 2 3 div weight
+        p3 point
+      my_curveto my_fill my_stroke
+    } def
+
+/ab_pairs { % nths flag -> [a b] % Part of the chessboarding -> only for 3 points nets
+  4 eq
+  {
+    dup 2 nth exch 4 nth threads exch sub [ 3 1 roll ]
+  } {
+    dup 2 nth exch 3 nth threads exch sub [ 3 1 roll ]
+  } ifelse
+} def
+
+/bow { % nths flag -> on or off   Black Or White
+ % Part of the chessboarding -> only for 3 points nets
+  ab_pairs aload pop add even
+} def
+
+% The chessboard functions and subtypes
+% - chessboard: no subtype
+% - border: no subtype
+% - lines: subtype can be an array with 2 or 4 elements
+% - subnets: subtype is a dictionary to lower-level nets
+/cb_func { % points nths flag ->
+ % Part of the chessboarding -> only for 3 points nets
+[/p /n /b] params /t cb_type def /s cb_subtype def
+
+  t (chessboard) eq t (cb) eq or b 3 ge and {
+    n b bow s xor {
+      p 1 nth point my_moveto p 2 nth point my_lineto
+      b 4 eq { p 4 nth point my_lineto } if
+      p 3 nth point my_lineto my_fill my_stroke
+    } if
+  } if
+  t (border) eq b 3 eq b 2 eq or and {
+    p 1 nth point my_moveto p b 3 eq {3} {2} ifelse nth point my_lineto my_stroke
+  } if
+  t (lines) eq {
+    /v s 1 nth def /f s 2 nth def
+    s length 2 eq % The length should be 2 or 4
+      {/c2 v f or def  /c3 v f or def}
+      {/c3 s 3 nth def /c2 s 4 nth def} ifelse
+    /w 0 def
+    b 2 eq c2     and {2 1     /w w 1 add def} if
+    b 3 eq v      and {2 1     /w w 1 add def} if
+    b 3 eq f      and {3 2     /w w 1 add def} if
+    b 3 eq c3     and {3 1     /w w 1 add def} if
+    b 4 eq v      and {3 1     /w w 1 add def} if
+    b 4 eq f      and {4 3     /w w 1 add def} if
+    w { p exch nth point my_moveto p exch nth point my_lineto my_stroke } repeat
+  } if
+  
+  t (subnets) eq t (sn) eq or b 3 ge and { % This should be the last !
+    % 1 dict begin
+      cb_subtype false eq { /cb_subtype <</cb_subtype off>> def } if
+      /tl on def /tr on def /bl on def /br on def /st off def
+      /cb_type () def
+      cb_subtype begin
+        /d << >> def
+        tl b 4 eq and { p 3 nth p 1 nth p 2 nth d netdraw} if
+        tr b 4 eq and { p 1 nth p 2 nth p 4 nth d netdraw} if
+        br b 4 eq and { p 2 nth p 4 nth p 3 nth d netdraw} if
+        bl b 4 eq and { p 4 nth p 3 nth p 1 nth d netdraw} if
+        bl b 3 eq and { p 3 nth p 2 nth p 1 nth d netdraw} if
+  
+        tl b 3 eq and st and { p 2 nth p 1 nth p 3 nth d netdraw} if
+        br b 3 eq and st and { p 1 nth p 3 nth p 2 nth d netdraw} if
+      end
+    % end
+  } if
+  end } def
+  
+/netdraw { % p1 p2 p3 dict ->
+begin [/p1 /p2 /p3] params
+
+  predraw
+  % Color-changing ON 20020401 modified 20021001
+  % Black-n'-white checking added on 20031027
+  % Form changed to use my_setrgbcolors on 20031027
+  % Use colors_temp to run colors only once 20041214
+  /colors_temp colors def
+  blacknwhite not
+  colors_temp 0 get 0 ne  colors_temp 1 get 0 ne  colors_temp 2 get 0 ne  or or and {
+    currentrgbcolor colors_temp aload pop my_setrgbcolor }if
+  linewidth PREVLINEWIDTH ne { % Added on 20031027
+    wtf { % Added on 20030405
+      [linewidth SCALE div (setlinewidth)] wsl
+    } {
+      linewidth SCALE div setlinewidth
+    } ifelse PREVLINEWIDTH linewidth gnv
+  } if
+
+  cb_type () ne {
+    /mpa
+      [ 0 1 threads 1 sub { /i exch def
+        [ i 1 add 1 threads { /j exch def 
+          p1 p2 p3 i nthline p1 p2 p3 j nthline poi
+        } for ]
+      } for
+      ] def
+  
+    /mp {[/i /j] params mpa i get j i sub 1 sub get end} def % i j -> mp[i,j] 
+
+    [ p1 0 1 mp ] [ 0 1 ] 2 cb_func
+    1 1 threads 1 sub { /i exch def
+      /a [ i 1 sub i mp ] def
+      i 1 add 1 threads { /j exch def 
+        /a [ a aload pop i 1 sub j mp i j mp ] def
+        a
+        i 1 add j eq {
+          [ i 1 sub i j ] 3 cb_func
+          /a [ a 2 nth a 3 nth ] def
+        } {
+          [ i 1 sub i j 1 sub j ] 4 cb_func
+          /a [ a 3 nth a 4 nth ] def
+        } ifelse
+      } for
+    } for
+    [ threads 1 sub threads mp p3] [ threads 1 sub threads ] 2 cb_func
+  } { % No chessboarding, 'simple' net
+    style 0 eq % Base net
+    { firstthread 1 lastthread {
+        dup p1 point p2 point 5 -1 roll nthpart my_moveto
+            p2 point p3 point 5 -1 roll nthpart  my_lineto my_stroke
+      } for
+    } if
+    style 1 eq % The ladder (or holeing)
+    { 
+      /p12diff [ p1 point p2 point 1 nthpart p1 point pointsub exch -1 mul ] def
+      /p23diff [ p2 point p3 point 1 nthpart p2 point pointsub exch -1 mul ] def
+
+      /p12diffD p12diff 2 ppointmul def  /p23diffD p23diff 2 ppointmul def
+
+      /ladder {
+        [/pf /pt /pdiffs /pdiffl] params % From point, To point, Small diff, Large diff
+        pf point my_moveto pt point my_lineto my_stroke
+        firstthread 1 lastthread { /i exch def
+          /pdiff i firstthread eq i lastthread eq or 
+            {pdiffl} {pdiffs} ifelse def
+          pf point pt point i nthpart pdiff point pointadd my_moveto
+          pf point pt point i nthpart pdiff point pointsub my_lineto my_stroke
+        } for
+      end } def
+
+      /ladder_check { % pA pB -> pA pB true, if not found;
+                      %       -> false     , if found
+      [/pA /pB] params
+        /r true def
+        LADDERS { /al exch def
+          pA al 1 nth eq pB al 2 nth eq and 
+          pA al 2 nth eq pB al 1 nth eq and or
+            {/r false def exit} if
+        } forall
+        r {/LADDERS LADDERS [[pA pB]] arrayadd gnv  pA pB} if  r
+      end } def
+
+      p1 p2 ladder_check {p12diff p12diffD ladder} if
+      p2 p3 ladder_check {p23diff p23diffD ladder} if
+
+    } if
+    style 2 eq % Parallel
+    { firstthread 1 lastthread {
+        dup p1 point p2 point 5 -1 roll nthpart my_moveto
+            p3 point p2 point 5 -1 roll nthpart my_lineto my_stroke
+      } for
+    } if
+    style 3 eq % Parallel with border
+    { p1 point my_moveto p2 point my_lineto p3 point my_lineto my_stroke
+      firstthread 1 lastthread {
+        dup p1 point p2 point 5 -1 roll nthpart my_moveto
+            p3 point p2 point 5 -1 roll nthpart my_lineto my_stroke
+      } for
+    } if
+    style 4 eq % Border
+    {
+      p1 point my_moveto p2 point my_lineto p3 point my_lineto my_stroke
+    } if
+    style 13 eq % Only the line from p1 to p3
+    {
+      p1 point my_moveto p3 point my_lineto my_stroke
+    } if
+    style 5 eq % Thick Parallel 1
+    { firstthread 1 lastthread { /i exch def
+        i odd {
+        p1 point p2 point i       nthpart my_moveto
+        p1 point p2 point i 1 sub nthpart my_lineto
+        p3 point p2 point i 1 sub nthpart my_lineto
+        p3 point p2 point i       nthpart my_lineto my_fill my_stroke
+        } if
+      } for
+    } if
+    style 6 eq % Thick Parallel 2
+    { firstthread 1 lastthread { /i exch def
+        i even i 0 gt and {
+        p1 point p2 point i       nthpart my_moveto
+        p1 point p2 point i 1 sub nthpart my_lineto
+        p3 point p2 point i 1 sub nthpart my_lineto
+        p3 point p2 point i       nthpart my_lineto my_fill my_stroke
+        } if
+      } for
+    } if
+    style 7 eq % Filled triangle
+    { p1 point my_moveto p2 point my_lineto p3 point my_lineto my_fill my_stroke
+    } if
+    style 8 eq % Triangle outline
+    { p1 point my_moveto p2 point my_lineto 
+      p3 point my_lineto p1 point my_lineto my_stroke
+    } if
+    style 9 eq % Curve  % Added on 20030312
+    % This kind is NOT interested in the value of threads !!!
+    { p1 point my_moveto
+        p2 point p1 point 2 3 div weight
+        p2 point p3 point 2 3 div weight
+        p3 point
+      my_curveto my_stroke
+    } if
+
+    style 10 eq % Filled Curve % Added on 20031021
+    % This kind is NOT interested in the value of threads !!!
+    { style10 } if
+
+    style 11 eq % Filled Curve with firstthread and/or lasthred -controllling  Added on 20040221
+    { % This kind is _interested_ in the value of threads, firstthread, lastthread !
+      0 firstthread eq  threads lastthread eq and {style10} if % If no controll, draw the whole.
+      0 firstthread eq lastthread threads lt and { % Draw to controlled end.
+        (clipsave newpath ) wos  p1 point my_moveto 
+        [p1 point p2 point lastthread nthpart] dup aload pop my_lineto
+        [p2 point p3 point lastthread nthpart]
+        [p1 point p2 point lastthread 0.01 add nthpart]
+        [p2 point p3 point lastthread 0.01 add nthpart] poi aload pop my_lineto
+        ( clip newpath) wol
+        style10
+        ( cliprestore) wol
+      } if
+      0 firstthread lt lastthread threads eq and { % Draw from controlled beginning.
+        (clipsave newpath ) wos 
+        [p1 point p2 point firstthread nthpart] dup aload pop my_moveto
+        [p2 point p3 point firstthread nthpart]
+        [p1 point p2 point firstthread 0.01 add nthpart]
+        [p2 point p3 point firstthread 0.01 add nthpart] poi aload pop my_lineto
+        p3 point my_lineto p2 point my_lineto
+        ( clip newpath) wol
+        style10
+        ( cliprestore) wol
+      } if
+      0 firstthread lt lastthread threads lt and { % Draw from controlled beginning to controlled end.
+        (clipsave newpath ) wos 
+        [p1 point p2 point firstthread nthpart] dup aload pop my_moveto
+        [p2 point p3 point firstthread nthpart]
+        [p1 point p2 point firstthread 0.01 add nthpart]
+        [p2 point p3 point firstthread 0.01 add nthpart] poi aload pop my_lineto
+
+        [p1 point p2 point lastthread nthpart] dup
+        [p2 point p3 point lastthread nthpart]
+        [p1 point p2 point lastthread 0.01 add nthpart]
+        [p2 point p3 point lastthread 0.01 add nthpart] poi aload pop my_lineto  aload pop my_lineto
+        ( clip newpath) wol
+        style10
+        ( cliprestore) wol
+      } if
+    } if
+
+    style 12 eq % Filled Curve with firstthread and/or lasthred -controllling  Added on 20040222
+    lastthread firstthread gt and % In silly situations do nothing
+    { % This kind is _interested_ in the value of threads, firstthread, lastthread !
+      /realfirstthread firstthread def  /reallastthread lastthread def
+      realfirstthread 1 reallastthread 1 sub { /l exch def
+        p1 p2 p3 <</firstthread l /lastthread l 1 add /colors style12colors l 1 add cnth /style 11>> netdraw
+      } for
+      /firstthread realfirstthread def  /lastthread reallastthread def
+    } if
+
+    numbering 2 eq % 20020321 % Modified to numbering on 20020401
+    { % SCALE get its value in the function 'fitto1page'
+      % ANN got its value in the function 'drawallnets'
+
+      /p21diff p2 p1 ppointsub -5 ppointdiv def
+      /p23diff p2 p3 ppointsub -5 ppointdiv def
+  
+      /pa p21diff p23diff 3 ppointdiv ppointadd def
+      /pb p23diff p21diff 3 ppointdiv ppointadd def
+  
+      currentrgbcolor 1 0 1 my_setrgbcolor
+      /Courier 18 SCALE div my_selectfont
+
+      /half (\050 \051) stringwidth pop 9 div neg def
+      /half2 ( ) stringwidth pop 2 mul neg def
+
+      p2 point my_moveto half -5 SCALE div my_rmoveto (2) my_show
+      p2 point my_moveto pa point my_rmoveto half -5 SCALE div my_rmoveto (1) my_show
+      p2 point my_moveto pb point my_rmoveto half -5 SCALE div my_rmoveto (3) my_show
+
+      1 0 0 my_setrgbcolor
+      p1 p3 pointhalve p2 pointhalve point my_moveto half2 -4 SCALE div my_rmoveto [([) ANN 9 le {(0)} if ANN 5 string cvs (])] addstrings my_show
+
+      my_setrgbcolor
+    } if
+  } ifelse
+  
+  % Color-changing OFF 20020401 modified 20021001
+  % Black-n'-white checking added on 20031027
+  % Form changed to use my_setrgbcolors on 20031027
+  % Use colors_temp to run colors only once 20041214
+  blacknwhite not 
+  colors_temp 0 get 0 ne  colors_temp 1 get 0 ne  colors_temp 2 get 0 ne  or or and {
+    my_setrgbcolor }if
+  postdraw
+
+  end end } def
+
+/fitto1page { % -> enoughpoints
+  allnets aload pop pop [/allpoints] params
+  /minx 0 def /maxx 0 def /miny 0 def /maxy 0 def
+  allpoints length 1 ge dup /enoughpoints exch def
+  { allpoints 1 nth point
+    dup /miny exch def /maxy exch def dup /minx exch def /maxx exch def 
+    2 1 allpoints length {
+      allpoints exch nth point /acty exch def /actx exch def
+      minx actx gt {/minx actx def} if   maxx actx lt {/maxx actx def} if
+      miny acty gt {/miny acty def} if   maxy acty lt {/maxy acty def} if
+    } for
+    % minx maxx eq {(X minimum and maximum are the same in net !) = quit} if
+    % miny maxy eq {(Y minimum and maximum are the same in net !) = quit} if
+
+    /rr xPageSize rightmargin sub def % realright
+    /ru yPageSize topmargin sub def   % realtop
+    /rxhf rr leftmargin add 2 div def   % real x halfpoint
+    /ryhf ru bottommargin add 2 div def % real y halfpoint
+    /wxhf maxx minx add 2 div def % wanted x halfpoint
+    /wyhf maxy miny add 2 div def % wanted y halfpoint
+
+    /rxs rr leftmargin sub def % real x size
+    /rys ru bottommargin sub def % real y size
+    /wxs maxx minx sub def % wanted x size
+    /wys maxy miny sub def % wanted y size
+
+    wxs 0 eq {/wxs 1 def} if  wys 0 eq {/wys 1 def} if
+
+    /xscale rxs wxs div def  /yscale rys wys div def
+    /wscale xscale yscale min def
+    rxhf wxhf wscale mul sub   ryhf wyhf wscale mul sub  translate
+    wscale dup scale
+    wtf {[rxhf wxhf wscale mul sub   ryhf wyhf wscale mul sub (translate)] wss } if
+    wtf {[wscale (dup) (scale)] wsl} if
+    /SCALE wscale gnv
+  } {
+    /SCALE 1 gnv
+  } ifelse
+  enoughpoints
+end } def
+
+/drawallnets {
+  allnets aload pop [/enoughpoints /allpoints /allfcls] params
+
+enoughpoints {
+  numbering 1 eq { % Created on 20030325
+    % SCALE got its value in the function 'fitto1page'
+    currentrgbcolor 1 0 0 my_setrgbcolor
+    /Courier 18 SCALE div my_selectfont
+    /half ( ) stringwidth pop neg def
+    1 1 allpoints length { /i exch def 
+      allpoints i nth point my_moveto half -5 SCALE div my_rmoveto 
+      [i 9 le {(0)} if i 5 string cvs] addstrings my_show
+    } for
+    my_setrgbcolor
+  } if
+  numbering 3 eq { % Created on 20030402
+    % SCALE got its value in the function 'fitto1page'
+    currentrgbcolor 1 0 0 my_setrgbcolor
+    /Courier 12 SCALE div my_selectfont
+    1 1 allpoints length { /i exch def 
+      allpoints i nth /ap exch def
+      ap point my_moveto 
+      (X: ) ap 1 nth any2str addstring dup 
+        stringwidth pop 2 div neg  3 SCALE div my_rmoveto  my_show
+      ap point my_moveto 
+      (Y: ) ap 2 nth any2str addstring dup 
+        stringwidth pop 2 div neg -9 SCALE div my_rmoveto  my_show
+    } for
+    my_setrgbcolor
+  } if
+
+  1 1 allfcls length { dup /ANN exch gnv nthnet netdraw } for
+} if
+end } def
+
+/drawbackground { % Fills the page
+  % Black-n'-white checking added on 20031027
+  blacknwhite not {
+  background 0 get 1 ne  background 1 get 1 ne  background 2 get 1 ne  or or  backgrounds length 0 ne or
+  wtf and {
+    [(currentrgbcolor) background aload pop (setrgbcolor)] wsl
+    [0 0 xPageSize yPageSize (rectfill stroke)] wsl
+    1 1 backgrounds length { /i exch def
+      /j backgrounds i nth def  /jcoords j 1 nth def  /jcolors j 2 nth def
+      [jcolors aload pop (setrgbcolor)
+         % Substraction of beginnig X and y coordinates added on 20040620
+         jcoords 1 nth xPageSize mul
+         jcoords 2 nth yPageSize mul
+         jcoords 3 nth jcoords 1 nth sub xPageSize mul
+         jcoords 4 nth jcoords 2 nth sub yPageSize mul
+       (rectfill stroke)
+      ] wsl
+    } for
+    [(setrgbcolor)] wsl
+  } {
+    currentrgbcolor background aload pop setrgbcolor
+    0 0 xPageSize yPageSize rectfill stroke  setrgbcolor
+  } ifelse
+  } if
+}def

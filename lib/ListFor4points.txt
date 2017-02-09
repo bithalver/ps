@@ -1,0 +1,20 @@
+Signs in .ps files:
+
+CF4: Clean For 4 (the function doesn't need any modification for 4 points nets)
+
+Files can be 
+ - CLEAN: the whole file is good for 4 points nets
+ - WORKING: the file is being modified
+
+font.ps CLEAN
+fileop.ps CLEAN
+qsort.ps CLEAN
+sysdef.ps CLEAN
+user.ps CLEAN
+general.ps CLEAN
+pointop.ps CLEAN
+planeop.ps CLEAN
+netop.ps WORKING
+draw.ps WORKING
+ General problems: chessbording is a method desinged only for 3 points nets
+

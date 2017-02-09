@@ -1,0 +1,101 @@
+%!PS-Adobe-2.0
+%%EndComments
+
+my_init
+
+% /style 1 def
+
+/gen_rec { 
+  % net : The original net
+  % a b : The two points we want to connect
+  % [[a1 wa1] [a2 wa2] ... [an wan]] : The weights for new place of point 'a'
+    % The calculation is: (a1*wa1+a2*wa2+...an*wan)/(wa1+wa2+...wan)
+  % [[b1 wb1] [b2 wb2] ... [bn wbn]] : The weights for new place of point 'b'
+  % r : The deepness of the recursion (r>=1). If r=1, just draws the net.
+  % Return parameter: n' : the new constructed net
+[/n /a /b /wa /wb /r] params
+r 1 eq { n } {
+  /newa [0 0] def /newWa 0 def /newb [0 0] def /newWb 0 def
+  wa {
+    aload pop dup newWa add /newWa exch def
+    exch n exch nnthpoint exch ppointmul newa ppointadd /newa exch def
+  } forall /newa newa newWa ppointdiv def
+  wb {
+    aload pop dup newWb add /newWb exch def
+    exch n exch nnthpoint exch ppointmul newb ppointadd /newb exch def
+  } forall /newb newb newWb ppointdiv def
+  n
+  newa newb n a b connectnetstopoints a b wa wb r 1 sub gen_rec
+  netsadd
+} ifelse
+end } def
+
+/h 6 0 basicplane def /n 4 0 basicplane def /h1 3 0 basicplane def
+% h1 == h1 2 3 4 1 2 connectbasicplane ==
+
+/hn1 [ h1 aload pop h1 2 3 4 1 2 connectbasicplane [3 4] nthpoints ] def
+/hn [ h1 aload pop h1 2 3 4 2 1 connectbasicplane [4 3] nthpoints ] def
+
+begin_file
+
+(gen_rec 01) begin_page
+h [1 2 3] nthpoints pcn  h [2 3 4] nthpoints 4 -1 roll paddn
+1 2 [[1 1]] [[1 1] [2 1]] 4 gen_rec nadd end_page
+
+(gen_rec 02) begin_page
+n [1 2 3] nthpoints pcn  n [2 3 4] nthpoints 4 -1 roll paddn
+1 2 [[1 1]] [[1 1] [2 1]] 4 gen_rec nadd end_page
+
+(gen_rec 03) begin_page
+[ n [] ]  n [1 2 3] nthpoints pcn netsadd
+3 2 [[4 1] [2 9]] [[1 9] [3 1]] 8 gen_rec nadd end_page
+
+(gen_rec 04) begin_page
+[ [[0 1][1 1][1 0][2 0]] [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 2 [[2 1]] [[4 1]] 4 gen_rec nadd end_page
+
+(gen_rec 05) begin_page
+[ [[0 1][1 1][1 0][2 0]] [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 3 [[3 1]] [[4 1]] 8 gen_rec nadd end_page
+
+(gen_rec 06) begin_page [ hn1 [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 3 [[3 1]] [[4 1]] 12 gen_rec nadd end_page
+
+(gen_rec 07) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 3 [[3 1]] [[4 1]] 12 gen_rec nadd end_page
+
+(gen_rec 08) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 2 [[3 1]] [[4 1]] 12 gen_rec nadd end_page
+
+(gen_rec 09) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 4 [[4 1]] [[1 1]] 2 gen_rec nadd end_page
+
+(gen_rec 10) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 4 [[4 9][1 1]] [[1 9][4 1]] 12 gen_rec nadd end_page
+
+(gen_rec 11) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 4 [[2 9][1 1]] [[4 1][3 9]] 12 gen_rec nadd end_page
+
+(gen_rec 12) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 4 [[2 9]] [[3 9]] 12 gen_rec nadd end_page
+
+(gen_rec 13) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+2 4 [[1 9]] [[3 9]] 12 gen_rec nadd end_page
+
+(gen_rec 14) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+2 3 [[3 9]] [[4 9]] 4 gen_rec nadd end_page
+
+(gen_rec 15) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 2 [[2 9]] [[3 9]] 3 gen_rec nadd end_page
+
+(gen_rec 16) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+1 3 [[2 9]] [[3 9]] 6 gen_rec nadd end_page
+
+(gen_rec 17) begin_page [ hn [[1 2 3 <<>>] [2 3 4 <<>>] ] ]
+2 1 [[4 9]] [[5 9]] 3 gen_rec nadd end_page
+
+(gen_rec 18) begin_page [ hn [[2 3 4 <<>>] ] ]
+4 5 [[2 9]] [[1 9]] 3 gen_rec nadd end_page
+
+end_file
+

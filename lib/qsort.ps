@@ -1,0 +1,104 @@
+% This program demonstrates a QuickSort algorithm in PostScript.
+% It defines a procedure called QSortArray that takes an array from the 
+% stack and returns the same array, sorted. This will work only with an 
+% array of numbers or strings, since that's all that PostScript can 
+% compare for magnitude.
+
+% Still, it'd be simple to define other procedures to compare other data
+% types. As an example, the end of the file defines a procedure QSortDict
+% that takes a dictionary and returns an array containing all of the keys
+% in that dictionary sorted alphabetically.
+
+/$QSortDict 10 dict def
+
+/QSortArray { % [ array ] => [ array' ]
+  dup qsortrange
+} bind def
+
+
+/qsortrange	{	% [ array ] => ---
+	dup length dup 1 le
+	{ pop pop }		% done
+	{			% else
+		2 eq	% check for simple case
+		{		%   if
+			aload 3 1 roll
+			2 copy gt
+			{ exch 3 -1 roll astore pop }
+			{ pop pop pop }
+			ifelse
+		}
+		{		%   else (not simple)
+			PartitionArray1
+			qsortrange
+			qsortrange
+		}
+		ifelse
+	} ifelse
+} bind def
+
+
+/PartitionArray1 { % [a] => [ a-left ] [ a-right ]
+	//$QSortDict begin
+
+	/a exch def
+	/r a length 1 sub def
+	/v a r get def
+	/i 0 def
+	/j r def		% First time only
+	/firstTime true def
+	
+	{				% Main loop
+		i 1	 j		
+		{	% Left loop
+			a 1 index get
+			v ge 1 index j eq or { exit } if
+			pop
+		} for
+		/i exch def
+		
+		firstTime
+		{ i r eq		% is the target the largest number?
+			{ exit }			 % Yes: leave
+			{ /j r 1 sub def } % No: Reset j
+			ifelse
+		} if
+
+		j -1 i	{	% Right loop
+			a 1 index get
+			v le 1 index i eq or { exit } if
+			pop
+		} for
+		/j exch def
+
+		i j lt
+		{			% if: swap a[i] & a[j]
+			a dup i get
+			a dup j get
+			i exch put
+			j exch put
+		}
+		{ exit }	% else: leave
+		ifelse
+	} loop
+
+	a dup i get		% exch a[i] & a[r]
+	r exch put
+	a i v put
+	
+	a 0 i getinterval		% Leave subarrays on stack
+	i r ne
+	{ a i 1 add r i sub getinterval }
+	{ [ ] }
+	ifelse
+	
+	end			% $QSortDict
+} bind def
+
+
+/QSortDict % dict => [ array' ]
+{
+	[ exch { pop 30 string cvs } forall ] QSortArray
+} bind def
+
+

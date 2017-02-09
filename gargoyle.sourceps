@@ -1,0 +1,88 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/pagenamecolor [0.8 0.8 0.8] def
+/backgrounds [
+[[0 0 1 0.11][0.3 0.3 0.3]]
+[[0 0.11 1 0.23][0.5 0.5 0.5]]
+[[0 0.23 1 0.33][0.566 0.566 0.566]]
+[[0 0.33 1 0.44][0.633 0.633 0.633]]
+[[0 0.44 1 0.55][0.7 0.7 0.7]]
+[[0 0.55 1 0.66][0.766 0.766 0.766]]
+[[0 0.66 1 0.77][0.833 0.833 0.833]]
+[[0 0.77 1 0.88][0.9 0.9 0.9]]
+[[0 0.88 1 1][1 1 1]]
+] def
+
+my_init
+
+/bat_number (BN) 7 {exec cvi} GfEoCL def
+/bat_from (BF) 0.1 {exec cvr} GfEoCL def
+/bat_to (BT) 1 {exec cvr} GfEoCL def
+/bat_distance (BD) 0.65 {exec cvr} GfEoCL def
+/begin_color (CB) [1 0 0] {} GfEoCL def
+/end_color (CE) [0.4 0.4 0.4] {} GfEoCL def
+
+/bat { % percent batdict -> net_for_bat
+[/percent /batdict] params
+  [ 
+    [ [0 0] [0 1]
+      [0 1] -30 percent mul pointrotate dup dup
+      [0 0] pointshift 90 percent mul pointrotate ppointadd
+      [0 1] 30 percent mul pointrotate dup dup
+      [0 0] pointshift -90 percent mul pointrotate ppointadd
+    ] [[4 3 1 batdict][3 1 5 batdict][1 5 6 batdict]]
+  ]
+end}def
+
+begin_file
+
+[(Elemental Blood Gargoyle turns to stone for rest) (\(or awakes from sleep ?\))] begin_page
+  /style 10 def
+  1 1 bat_number {/I exch def
+    [ 0 I bat_distance mul 1 sub] [0 I bat_distance mul] 
+    bat_from bat_to bat_from sub bat_number 1 sub div I mul add 
+    <</colors I 1 sub bat_number 1 sub div  begin_color end_color color_weight >>
+    bat
+    1 2 connectnetstopoints nadd
+  } for
+end_page
+
+[(Evil Gargoyle turns to stone for rest) (\(or awakes from sleep ?\))] begin_page
+  /threads 9 def /style 11 def
+  /begin_colors [[1 0 0][1 0 0][1 0 0][0.5 0.5 0.5][0.4 0.4 0.4][0.3 0.3 0.3][0.2 0.2 0.2][0.1 0.1 0.1][0 0 0]] def
+  1 1 bat_number {/I exch def
+    /w 1 I 1 sub bat_number 1 sub div sub def
+    0 1 threads 1 sub { /J exch def
+      [ 0 I bat_distance mul 1 sub] [0 I bat_distance mul] 
+      bat_from bat_to  bat_from sub bat_number 1 sub div I mul add
+      << /colors w end_color begin_colors J get color_weight /firstthread J /lastthread J 1 add >> bat
+        1 2 connectnetstopoints nadd
+    } for
+  } for
+end_page
+
+/threads 9 def /background [0.8 0.8 0.8] def /backgrounds [] def /pagenamecolor [0 0 0] def
+(Evil gargoyle) begin_page
+1 <</firstthread 0 /lastthread 3 /colors [1 0 0]>>  bat nadd
+1 <</firstthread 3 /lastthread 4 /colors [0.5 0.5 0.5]>>  bat nadd
+1 <</firstthread 4 /lastthread 5 /colors [0.4 0.4 0.4]>>  bat nadd
+1 <</firstthread 5 /lastthread 6 /colors [0.3 0.3 0.3]>>  bat nadd
+1 <</firstthread 6 /lastthread 7 /colors [0.2 0.2 0.2]>>  bat nadd
+1 <</firstthread 7 /lastthread 8 /colors [0.1 0.1 0.1]>>  bat nadd
+1 <</firstthread 8 /lastthread 9 /colors [0 0 0]>>  bat nadd
+end_page
+
+/threads 9 def /background [0.8 0.8 0.8] def /backgrounds [] def
+(Happy gargoyle) begin_page
+1 <</firstthread 0 /lastthread 3 /colors [1 0 0]>>  bat nadd
+1 <</firstthread 3 /lastthread 4 /colors [0.8 0 0.8]>>  bat nadd
+1 <</firstthread 4 /lastthread 5 /colors [0.4 0 0.8]>>  bat nadd
+1 <</firstthread 5 /lastthread 6 /colors [0 0 0.8]>>  bat nadd
+1 <</firstthread 6 /lastthread 7 /colors [0.5 0.5 1]>>  bat nadd
+1 <</firstthread 7 /lastthread 8 /colors [0.6 0.6 1]>>  bat nadd
+1 <</firstthread 8 /lastthread 9 /colors [0.7 0.7 1]>>  bat nadd
+end_page
+end_file
+

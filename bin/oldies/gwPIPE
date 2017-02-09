@@ -1,0 +1,18 @@
+#!/bin/bash
+export PSLIB=/usr/lib/my_ps
+export TEMPFILE=/tmp/meszi_temp.$$.ps
+export ENVFILE=/tmp/meszi_ENV.$$.ps
+
+cat >$TEMPFILE
+make_ENV $ENVFILE
+
+gs -q -sDEVICE=nullpage -sOutputFile=/dev/null \
+	-dwtf=true -scurrentdate=`date +%Y/%m/%d`' '`date +%H:%M:%S` \
+	-smy_file_name=%stdout -f$ENVFILE \
+	-f${PSLIB}/general.ps -f${PSLIB}/pointop.ps \
+	-f${PSLIB}/planeop.ps -f${PSLIB}/netop.ps \
+	-f${PSLIB}/sysdef.ps -f${PSLIB}/draw.ps \
+	-f${PSLIB}/fileop.ps -f${PSLIB}/rgen_engine.ps \
+	-- $TEMPFILE "$@"
+rm $ENVFILE $TEMPFILE
+unset TEMPFILE ENVFILE

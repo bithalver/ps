@@ -1,0 +1,128 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/alllevel 1 def % Ha 0, csak a legmelyebb szint latszik.
+                % Ha 1, mind.
+                % Ha 2, a lista az alllevels-ben van.(A 0 a legmelyebb szint !)
+/alllevels [0 1 2 3 4 5 6 7 8 9] def
+
+/Times-Roman 12 selectfont
+
+/sgen { % from_to_coordinates totalunits parts depth ->
+[/ftc /tu /parts /depth] params
+
+  /parts [
+    1 1 parts length { /i exch def
+      [ parts i nth aload pop 4 { tu div 4 1 roll } repeat ]
+    } for
+  ] def
+  /maxdepth depth def ftc parts depth sgen_1
+end } def
+
+/sgen_1 { % from_to_coordinates parts depth -> 
+[/ftc /parts /depth] params
+  /fx ftc 1 nth def /fy ftc 2 nth def /tx ftc 3 nth def /ty ftc 4 nth def
+
+  0 depth eq 1 alllevel eq 0 alllevel eq or and
+  alllevel 1 eq depth maxdepth ne and or
+  2 alllevel eq  depth alllevels member and or { fx fy tx ty sgen_draw } if
+
+  depth 1 ge {
+    1 1 parts length { /i exch def
+      /ap parts i nth def
+      [ fx tx fx sub ap 1 nth mul add fy ty fy sub ap 2 nth mul add
+        fx tx fx sub ap 3 nth mul add fy ty fy sub ap 4 nth mul add ]
+      parts depth 1 sub sgen_1
+    } for
+  } if
+
+end } def %
+
+/sgen_draw {
+[/fx /fy /tx /ty] params
+  fx fy my_moveto 
+  tx fy my_lineto tx ty my_lineto fx ty my_lineto fx fy my_lineto my_stroke
+end} def 
+
+/sbp { % sgen_begin_page % (pagename) ->
+/PN exch def
+  10.5 cm 2 cm moveto
+  PN dup stringwidth pop neg 2 div 0 rmoveto show
+  gsave 297.638 422.362 translate 241 dup scale
+wtf {
+  () wol (%%Page: ") wos PN wos (" ) wos PN wol
+  [(/Times-Roman 12 selectfont) 10.5 cm 2 cm (moveto)] wsl
+  (\050) wos PN wos (\051 dup stringwidth pop neg 2 div 0 rmoveto show) wol
+  (gsave 297.638 422.362 translate 241 dup scale) wol
+} if
+} def
+
+/sep { % sgen_end_page % No parameters
+  wtf {(showpage grestore) wol (%%EndPage: ") wos PN wos (" ) wos PN wol} 
+      {showpage} ifelse
+  grestore
+} def
+
+begin_file
+
+1 1 7 {/i exch def
+(T14_) i 2 string cvs addstring sbp [-1 -1 1 1] 4 [[0.05 0.1 3.05 3.1][3.95 3.9 0.95 0.9]] i sgen sep
+} for
+(T13) sbp [-1 -1 1 1] 4 [[0.05 0.1 3.4 3.45]] 20 sgen sep
+
+/T12 { /nameplus exch def /T12Pattern exch def
+alllevel /alllevel 0 def  1 0.1 3.01 {/i exch def
+[(T12_) nameplus (_) i 5 string cvs ] addstrings sbp [-1 -1 1 1] i 
+ [T12Pattern 0 get {[0 0 1 1]} if T12Pattern 1 get {[1 1 i i]} if
+  T12Pattern 2 get {[0 1 1 i]} if T12Pattern 3 get {[1 0 i 1]} if] 5 sgen sep
+}for  /alllevel exch def } def
+[true true true true] (TTTT) T12
+[true true false true] (TTFT) T12
+[true false true true] (TFTT) T12
+
+alllevel /alllevel 0 def
+1 1 5 {/i exch def
+(T11_) i 1 string cvs addstring sbp [-1 -1 1 1] 5 
+         [[0.5 0 1.5 0.5][4.5 0.5 5 1.5][3.5 4.5 4.5 5][0 3.5 0.5 4.5]
+         [1.5 1.5 3.5 3.5]
+         [1.5 0.5 4.5 1.5][3.5 1.5 4.5 4.5]
+         [0.5 3.5 3.5 4.5][0.5 0.5 1.5 3.5]] i sgen sep
+} for
+/alllevel exch def
+
+(T10) sbp [-1 -1 1 1] 5 
+         [[0.5 0 1.5 0.5][4.5 0.5 5 1.5][3.5 4.5 4.5 5][0 3.5 0.5 4.5]
+         [1.5 1.5 3.5 3.5]] 5 sgen sep
+
+(T9) sbp [-1 -1 1 1] 3.5 
+         [[0 1.5 3.5 3.5][0 0 3.5 1.5]] 8 sgen sep
+
+1 1 7 {/i exch def
+  (T8_) i 1 string cvs addstring sbp [-1 -1 1 1] 2.5
+           [[0 0 1.5 1] [1.5 0 2.5 1.5] [2.5 2.5 1 1.5] [0 1 1 2.5]] i sgen sep
+} for
+
+1 1 7 {/i exch def
+  (T7_) i 1 string cvs addstring sbp [-1 -1 1 1] 3 
+           [[0 0 1.5 1] [1.5 0 2.5 2] [2.5 3 1.5 2] [1 3 0 1]] i sgen sep
+} for
+
+1 1 7 {/i exch def
+  (T6_) i 1 string cvs addstring sbp [-1 -1 1 1] 3 
+           [[0 0 2 1] [2 0 3 2] [3 3 1 2] [1 3 0 1]] i sgen sep
+} for
+
+(T5) sbp [-1 -1 1 1] 3 
+         [[0 0 2 1] [2 0 3 2] [2 3 0 2]] 5 sgen sep
+(T4) sbp [-1 -1 1 1] 3 
+         [[0 0 1 1] [3 0 2 1] [3 3 2 2] [0 3 1 2] [1 1 2 2]] 5 sgen sep
+(T3) sbp [-1 -1 1 1] 3 
+         [[1 0 2 1] [3 1 2 2] [2 3 1 2] [0 2 1 1] [2 1 1 2]] 5 sgen sep
+(T2) sbp [-1 -1 1 1] 3 
+         [[1 0 2 1] [2 1 3 2] [1 2 2 3] [0 1 1 2]] 5 sgen sep
+(T1) sbp [-1 -1 1 1] 8 [[0 0 4 4] [4 4 8 8]] 2 sgen sep
+
+end_file wtf {quit} if

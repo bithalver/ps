@@ -1,0 +1,60 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/k 3 90 basicplane def
+/p12 k [1 2] nthpoints pointhalve def
+/p13 k [1 3] nthpoints pointhalve def
+/p23 k [2 3] nthpoints pointhalve def
+
+/allpoint [ k [1 2 3] nthpoints p12 p13 p23 ] def
+
+allpoint [1 2 3] nthpoints pcn
+allpoint [2 3 1] nthpoints paddn1
+allpoint [3 1 2] nthpoints paddn1
+allpoint [3 4 1] nthpoints paddn1
+allpoint [3 4 2] nthpoints paddn1
+allpoint [2 5 1] nthpoints paddn1
+allpoint [2 5 3] nthpoints paddn1
+allpoint [1 6 2] nthpoints paddn1
+allpoint [1 6 3] nthpoints paddn1
+allpoint [1 6 1] nthpoints <</threads 20>>pdaddn1
+allpoint [2 5 2] nthpoints <</threads 20>>pdaddn1
+allpoint [3 4 3] nthpoints <</threads 20>>pdaddn1
+/egy exch def
+
+/egy1 allpoint [1 2] nthpoints egy 1 3 connectnetstopoints def
+/egy2 egy1 aload pop pop [1 2] nthpoints egy1 1 3 connectnetstopoints def
+/egy3 egy2 aload pop pop [1 2] nthpoints egy2 1 3 connectnetstopoints def
+/egy4 egy3 aload pop pop [1 2] nthpoints egy3 1 3 connectnetstopoints def
+/egy5 egy4 aload pop pop [1 2] nthpoints egy4 1 3 connectnetstopoints def
+
+/op threads 2 mul 3 div def
+
+/teszt
+allpoint [1 4] nthpoints allpoint [1 6] nthpoints op pnthpart pcn
+allpoint [1 5] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [2 4] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [2 6] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [3 5] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [3 6] nthpoints allpoint [1 6] nthpoints op pnthpart paddn1
+allpoint [1 6 2] nthpoints paddn1
+allpoint [1 6 3] nthpoints paddn1
+def
+
+/teszt1 teszt  aload pop pop [1 5] nthpoints teszt  1 7 connectnetstopoints def
+/teszt2 teszt1 aload pop pop [1 5] nthpoints teszt1 1 7 connectnetstopoints def
+/teszt3 teszt2 aload pop pop [1 5] nthpoints teszt2 1 7 connectnetstopoints def
+/teszt4 teszt3 aload pop pop [1 5] nthpoints teszt3 1 7 connectnetstopoints def
+/teszt5 teszt4 aload pop pop [1 5] nthpoints teszt4 1 7 connectnetstopoints def
+
+begin_file 
+
+% (T1) begin_page egy nadd egy1 nadd egy2 nadd egy3 nadd egy4 nadd egy5 nadd end_page 
+(T2) begin_page 
+teszt nadd teszt1 nadd teszt2 nadd teszt3 nadd teszt4 nadd teszt5 nadd 
+end_page 
+
+end_file 

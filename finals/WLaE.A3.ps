@@ -1,0 +1,306 @@
+%!PS-Adobe-3.0
+%%Creator: poster
+%%DocumentData: Clean7Bit
+%%DocumentMedia: A4 595 842 0 white ()
+%%Pages: 2
+%%DocumentMedia: A4 595 842 0 white ()
+%%BoundingBox: 0 0 595 842
+%%EndComments
+
+% Print poster WLaE.ps in 2x1 tiles with 1.27 magnification
+%%BeginProlog
+/cutmark	% - cutmark -
+{		% draw cutline
+	0.23 setlinewidth 0 setgray
+	clipmargin
+	dup 0 moveto
+	dup neg leftmargin add 0 rlineto stroke
+	% draw sheet alignment mark
+	dup dup neg moveto
+	dup 0 rlineto
+	dup dup lineto
+	0 rlineto
+	closepath fill
+} bind def
+
+% usage: 	row col tileprolog ps-code tilepilog
+% these procedures output the tile specified by row & col
+/tileprolog
+{ 	%def
+	gsave
+       leftmargin botmargin translate
+	do_turn {exch} if
+	/colcount exch def
+	/rowcount exch def
+	% clip page contents
+	clipmargin neg dup moveto
+	pagewidth clipmargin 2 mul add 0 rlineto
+	0 pageheight clipmargin 2 mul add rlineto
+	pagewidth clipmargin 2 mul add neg 0 rlineto
+	closepath clip
+	% set page contents transformation
+	do_turn
+	{	pagewidth 0 translate
+		90 rotate
+	} if
+	pagewidth colcount 1 sub mul neg
+	pageheight rowcount 1 sub mul neg
+	do_turn {exch} if
+	translate
+	posterxl posteryb translate
+	sfactor dup scale
+	imagexl neg imageyb neg translate
+	tiledict begin
+	0 setgray 0 setlinecap 1 setlinewidth
+	0 setlinejoin 10 setmiterlimit [] 0 setdash newpath
+} bind def
+
+/tileepilog
+{	end % of tiledict
+	grestore
+	% print the cutmarks
+	gsave
+       leftmargin botmargin translate
+	pagewidth pageheight translate cutmark 90 rotate cutmark
+	0 pagewidth translate cutmark 90 rotate cutmark
+	0 pageheight translate cutmark 90 rotate cutmark
+	0 pagewidth translate cutmark 90 rotate cutmark
+	grestore
+	% print the page label
+	0 setgray
+	leftmargin clipmargin 3 mul add clipmargin labelsize add neg botmargin add moveto
+	(Grid \( ) show
+	rowcount strg cvs show
+	( , ) show
+	colcount strg cvs show
+	( \)) show
+	showpage
+} bind def
+
+/my_page { % page_to_print my_page -    This holds the content of original pages
+/showpage {} def % To disable user's showpage
+
+/MAP exch def % My Actual Page
+MAP 0 eq {
+
+
+/myencodefont { % /NewName /OldName =>
+  /HUL2 [ % HungarianUmlautLatin2
+    193 /Aacute 201 /Eacute 205 /Iacute 211 /Oacute 213 /Ohungarumlaut
+    214 /Odieresis 218 /Uacute 219 /Uhungarumlaut 220 /Udieresis
+    225 /aacute 233 /eacute 237 /iacute 243 /oacute 245 /ohungarumlaut
+    246 /odieresis 250 /uacute 251 /uhungarumlaut 252 /udieresis
+  ] def
+
+  findfont dup
+  length dict copy /NewFont exch def
+  NewFont /Encoding get 256 array copy /E exch def
+  1 1 HUL2 length 2 div { 
+  /i exch def E HUL2 i 2 mul 2 sub get 
+                HUL2 i 2 mul 1 sub get put
+ } for
+
+  NewFont /Encoding E put  NewFont definefont pop
+
+} bind def
+
+/myTimes /Times-Roman myencodefont
+
+
+/PlayerColors [[0 0 0][0.5 0 1][1 0 0][1 1 0]] def
+
+/myTimes 12 selectfont 297.638 56.6929 moveto 
+(Ki nevet a v\351g\351n) dup stringwidth pop neg 2 div 0 rmoveto show
+38 160 translate 40 dup scale 
+0.9 0.9 0.9 setrgbcolor
+-1 -1 moveto -1 14 lineto 14 14 lineto 14 -1 lineto fill
+0.4 0.4 0.4 setrgbcolor
+
+0.005 setlinewidth % The linewidth for everything except circles
+/LineWidth4Circles 0.02 def % The linewidth for circles
+
+/params { % par1 .. parn [ name1 .. namen ] ->
+1 dict begin /names exch def /l names length def l array astore /pars exch def
+  << 0 1 l 1 sub { dup names 2 -1 roll get pars  3 -1 roll get } for >>
+end begin } def
+  
+/cwp { % x y ->  Circle with lowerleft position
+/y exch def /x exch def
+  newpath
+  currentlinewidth LineWidth4Circles setlinewidth
+  x 0.5 add y 0.5 add 0.45 0 360 arc stroke
+  setlinewidth
+} def
+
+/cwpf { % x y ->  Circle with lowerleft position (filled)
+/y exch def /x exch def
+  newpath
+  currentlinewidth LineWidth4Circles setlinewidth
+  x 0.5 add y 0.5 add 0.45 0 360 arc fill stroke
+  setlinewidth
+} def
+
+/rw {	% unit ->  Rotate the whole playboard
+	% unit can be 0 for 0, 1 for 90, 2 for 180, 3 for 270
+  /u exch def
+  u {90 rotate 0 -13 translate} repeat
+} def
+
+/drawfor { % Proc PlayerNo IfColor ->  Executes Proc for PlayerNo
+	% Actually it rotates the playing field that 
+	% player PlayerNo goes in place of player 0,
+	% and IfColor is 'true', sets the color from PlayerColors.
+	% PlayerNo should be between 0 and 3
+	% Proc can wait data from stack, but should not push anything back.
+[/Proc /PlayerNo /IfColor] params
+  gsave PlayerNo rw /saved_rgb [currentrgbcolor] def
+  IfColor {PlayerColors PlayerNo get aload pop setrgbcolor} if
+  Proc
+  saved_rgb aload pop setrgbcolor
+  grestore
+end}def
+
+gsave
+/house { % The starting point
+[/x /y] params
+  x y cwp
+  x 0.5 add y 0.5 add 0.45 45 315 arc 
+  x 0.5 add y 0.5 add 0.3 315 45 arcn closepath fill
+  x 0.5 add y 0.5 add 0.15 0 360 arc fill
+end} def
+
+/goal { % The ending points
+1 dict begin
+0 1 1 {/i exch def 0 1 1 { /j exch def
+  2.5 i add 9.5 j add 0.45 0 360 arc
+  2.5 i add 9.5 j add 0.3 360 0 arcn closepath fill
+  2.5 i add 9.5 j add 0.15 0 360 arc fill
+}for}for
+end} def
+
+/goright1 { % x y ->  One element of goright
+[/x /y] params
+  x 0.050 add y 0.5 add 0.225 270 90 arc
+    x 0.2 add y 0.575 add  
+    x 0.2 add y 0.425 add  
+    x 0.050 add y 0.275 add 
+  curveto 
+end}def
+
+/goright { % Simple point, just go right
+[/x /y] params
+  x y cwp
+  newpath
+  0 0.225 0.676 { /i exch def  x i add y goright1 fill stroke } for
+  0.1125 0.225 0.5626 {/i exch def x i add y goright1 stroke } for
+end} def
+
+/godown { % x y ->  Simple point, go down
+[/x /y] params gsave x y 1 add translate -90 rotate 0 0 goright grestore end}def
+
+/goup { % x y ->  Simple point, go up
+[/x /y] params gsave x 1 add y translate 90 rotate 0 0 goright grestore end}def
+
+/downright {
+[/x /y] params
+  x y cwp
+  gsave x y 1 add translate -90 rotate 
+    0 0.225 0 { /i exch def  0 i add 0 goright1 fill stroke } for
+    0.1125 0.225 0.3376 {/i exch def 0 i add 0 goright1 stroke } for
+  grestore
+  0.675 0.225 0.676 { /i exch def x i add y goright1 fill stroke } for
+  0.3375 0.225 0.5626 {/i exch def x i add y goright1 stroke } for
+end} def
+
+/rightup { % x y ->  Simple point, go up
+[/x /y] params
+  gsave x 1 add y translate 90 rotate 0 0 downright grestore
+end}def
+
+/upleftright {
+[/x /y] params
+  x y cwp
+  gsave x 1 add y translate 90 rotate 
+    0 0.225 0 { /i exch def  0 i add 0 goright1 fill stroke } for
+    0.1125 0.225 0.3376 {/i exch def 0 i add 0 goright1 stroke } for
+  grestore
+  0 0.225 0 { /i exch def x i add y goright1 fill stroke } for
+  0.675 0.225 0.676 { /i exch def x i add y goright1 fill stroke } for
+  0.1125 0.225 0.5626 {/i exch def x i add y goright1 stroke } for
+end} def
+
+/pointright { % Go right from here, go down thru
+[/x /y] params
+  x y cwp
+  gsave x 0.1 sub y 0.4 add translate -45 rotate 0.5 dup scale
+  0 0.225 1.125 { /i exch def  0 i add 0 goright1 fill stroke } for
+  0.1125 0.225 1.0125 {/i exch def 0 i add 0 goright1 stroke } for
+  grestore
+  0.45 0.225 0.676 { /i exch def  x i add y goright1 fill stroke } for
+  0.3375 0.225 0.5626 {/i exch def  x i add y goright1 stroke } for
+end} def
+
+/gorightempty { % Simple point, just go right
+[/x /y] params
+  x y cwp
+  x y goright1 fill stroke 
+  x 0.675 add y goright1 fill stroke 
+  0.1125 0.1125 0.5626 {/i exch def x i add y goright1 stroke } for
+end} def
+
+/togoal {
+[/x /y] params
+  0.45 0.225 0.676 { /i exch def  x i add y goright1 fill stroke } for
+  0.3375 0.225 0.5626 {/i exch def x i add y goright1 stroke } for
+end}def
+
+0 1 3 {/i exch def 
+  {0 8 cwpf 0 9 cwpf 0 10 cwpf 0 11 cwpf 1 11 house goal 1 10 togoal
+  } i true drawfor 
+  {2 11 goright 3 11 goright 4 11 goright 5 10 godown 6 9 goright 7 10 goup
+  6 11 goright 8 11 goright 9 11 goright 5 9 downright 7 9 rightup
+  7 11 upleftright 5 11 pointright 10 11 gorightempty
+  } i false drawfor 
+}for
+
+showpage grestore
+} if
+} def
+
+%%EndProlog
+
+%%BeginSetup
+% Try to inform the printer about the desired media size:
+/setpagedevice where 	% level-2 page commands available...
+{	pop		% ignore where found
+	3 dict dup /PageSize [ 595 842 ] put
+	dup /Duplex false put
+	setpagedevice
+} if
+/sfactor 1.2719714964 def
+/leftmargin 29 def
+/botmargin 42 def
+/pagewidth 535 def
+/pageheight 757 def
+/imagexl 0 def
+/imageyb 0 def
+/posterxl 0 def
+/posteryb 0 def
+/do_turn true def
+/strg 10 string def
+/clipmargin 6 def
+/labelsize 9 def
+/tiledict 250 dict def
+tiledict begin
+% delay users showpage until cropmark is printed.
+/showpage {} def
+end
+/Helvetica findfont labelsize scalefont setfont
+%%EndSetup
+
+%%Page: (1,1) 1
+1 1 tileprolog 0 my_page tileepilog
+
+%%Page: (1,2) 2
+2 1 tileprolog 0 my_page tileepilog
+%%EOF

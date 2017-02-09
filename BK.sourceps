@@ -1,0 +1,66 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/leftmargin  2 cm def /rightmargin 2 cm def % Valtozik, lasd lejjebb !
+/bottommargin  2 cm def /topmargin   1.5 cm def
+
+/threads 20 def
+
+/n1 3 90 basicplane def
+
+/h1 n1 1 2 6 2 1 connectbasicplane def
+/n2 n1 2 3 3 2 1 connectbasicplane def
+/h2 n2 3 1 6 2 1 connectbasicplane def
+
+/dsz1 
+  <</predraw {0.25 0.25 0.25 setrgbcolor wtf {(0.25 0.25 0.25 setrgbcolor) wol} if} 
+    /postdraw {0 0 0 setrgbcolor wtf{(0 0 0 setrgbcolor) wol} if}>> def
+/dsz2
+  <</predraw {0.75 0.75 0.75 setrgbcolor wtf {(0.75 0.75 0.75 setrgbcolor) wol} if} 
+    /postdraw {0 0 0 setrgbcolor wtf{(0 0 0 setrgbcolor) wol} if}>> def
+
+n1 [1 2 3] nthpoints dsz1 pdcn    h1 [1 2 3] nthpoints dsz1 pdaddn1
+n2 [3 1 2] nthpoints dsz1 pdaddn1 h2 [1 2 3] nthpoints dsz1 pdaddn1 /test exch def
+
+h1 2 3 3 2 1 connectbasicplane [3 1 2] nthpoints dsz2 pdcn
+h2 2 3 3 2 1 connectbasicplane [3 1 2] nthpoints dsz2 pdaddn1 test netsadd
+/oszlop exch def
+
+% oszlop aload pop pop h1 3 nthpoint pointfind {==} if
+% oszlop aload pop pop h2 3 nthpoint pointfind {==} if quit
+
+begin_file
+
+% Eredeti forma
+(BK_1a) begin_page test nadd end_page
+
+% Vegpontok fuggolegesen
+(BK_1b) begin_page [0 0] [0 1] test 6 4 connectnetstopoints nadd end_page
+
+% Utolso szakaszok fuggolegesen
+(BK_1c) begin_page [0 0] [0 1] test 3 4 connectnetstopoints nadd end_page
+
+% Haromszogek vizszintesen
+(BK_1d) begin_page [0 0] [1 0] test 1 2 connectnetstopoints nadd end_page
+
+% A fejlec alapmintaja
+(BK_1e) begin_page oszlop nadd end_page
+
+% Fejlec
+/leftmargin 0.5 cm def /rightmargin 18.5 cm def (BK_fejlec) begin_page
+oszlop dup nadd
+7 { [2 1] nnthpoints oszlop 4 5 connectnetstopoints dup nadd } repeat
+pop end_page /leftmargin 2 cm def /rightmargin 2 cm def
+
+% Vegpontok fuggolegesen, szinezve
+/style 12 def /threads 256 def
+/style12colors [ 1 1 threads {/i exch def  [0 i threads div dup 2 div] } for ] def
+/backgrounds [ [[0 0 1 1][0.5 0.5 0.53]] [[0.4 0 0.6 1][0.8 0.8 0.83]] ] def
+() begin_page [0 0] [0 1] test 6 4 connectnetstopoints nadd end_page
+
+
+
+end_file

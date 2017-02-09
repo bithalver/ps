@@ -1,0 +1,55 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/leftmargin 1 cm def /rightmargin 1 cm def
+
+%/rvn 1 def % Rotate Variation Number
+/rvn (RVN) 1 {exec cvi} GfEoCL def
+
+/rv % Rotating variations
+    % Elements   1 : Name
+    %            2 : (outer) threads
+    %            3 : inner threads
+    %            4 : dict for [  0  10] [0 0] [ 10   0]
+    %            5 : dict for [ 10   0] [0 0] [  0 -10]
+    %            6 : dict for [  0 -10] [0 0] [-10   0]
+    %            7 : dict for [-10   0] [0 0] [  0  10]
+[
+  [ (1010) 10 50 [ /st on /tl off /br off /tr off ] [ /st on /bl off /tr off ]
+                 [ /st on /bl off ] [ /st on ] ]
+  [ (46_1) 4 50 [ /st on /bl off /tr off ] [ /st on /bl off /tr off ]
+                [ /st on /bl off /tr off ] [ /st on /bl off /tr off ] ]
+  [ (46_2) 4 50 [ /st on /bl off /tr off ] [ /st on /tl off /br off ]
+                [ /st on /bl off /tr off ] [ /st on /tl off /br off ] ]
+  [ (46_3) 4 50 [ /st on /tl off /br off ] [ /st on /tl off /br off ]
+                [ /st on /tl off /br off ] [ /st on /tl off /br off ] ]
+  [ (2061) 20 50 [ /st on /bl off /tr off ] [ /st on /bl off /tr off ]
+                 [ /st on /bl off /tr off ] [ /st on /bl off /tr off ] ]
+  [ (2062) 20 50 [ /st on /bl off /tr off ] [ /st on /tl off /br off ]
+                 [ /st on /bl off /tr off ] [ /st on /tl off /br off ] ]
+  [ (2063) 20 50 [ /st on /tl off /br off ] [ /st on /tl off /br off ]
+                 [ /st on /tl off /br off ] [ /st on /tl off /br off ] ]
+] def
+
+/a rv rvn nth def % 'a'-ban vannak az akualis rajz adatai
+
+begin_file
+/threads a 2 nth def
+/it a 3 nth def % inner threads
+0 1 it { /I exch def /fv I def
+% clearallnets
+[ (Rot_)
+  I 10 lt {(0)} if  I 100 lt {(0)} if  I 3 string cvs ] addstrings
+begin_page
+[ 10  10] [0 0] [ 10 -10] <</cb_type (subnets) /cb_subtype <</threads it /firstthread I /lastthread I a 4 nth aload pop >> >> pdadd
+[ 10 -10] [0 0] [-10 -10] <</cb_type (subnets) /cb_subtype <</threads it /firstthread I /lastthread I a 5 nth aload pop >> >> pdadd
+[-10 -10] [0 0] [-10  10] <</cb_type (subnets) /cb_subtype <</threads it /firstthread I /lastthread I a 6 nth aload pop >> >> pdadd
+[-10  10] [0 0] [ 10  10] <</cb_type (subnets) /cb_subtype <</threads it /firstthread I /lastthread I a 7 nth aload pop >> >> pdadd
+
+end_page
+} for
+
+end_file wtf {quit} if

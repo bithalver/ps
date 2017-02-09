@@ -1,0 +1,1 @@
+cat $1 | gs -I/home/meszi/PS/lib -q -sDEVICE=pcxmono -dNOPAUSE -sOutputFile=`basename $1 .out.ps`%03d.pcx

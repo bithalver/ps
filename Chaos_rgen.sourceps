@@ -1,0 +1,78 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/chaos_style (CHAOS_STYLE) 0 {exec cvi} GfEoCL def
+/net_style (NET_STYLE) 0 {exec cvi} GfEoCL def
+/deepness (DEEPNESS) 4 {exec cvi} GfEoCL def
+
+/defaultdict [
+% The base net:
+  << >>
+% Labyrinth style
+  <</cb_type (lines) /cb_subtype {2 random 1 eq {[on off]}{[off on]}ifelse}>>
+% Windmill style
+  <</cb_type (lines) /cb_subtype 2 random 1 eq {[on off]}{[off on]}ifelse>>
+% Labyrinth style, more difficult control
+  <</cb_type (lines) /cb_subtype {[2 random 1 eq  2 random 1 eq  2 random 1 eq  2 random 1 eq]}>>
+% Border styles, slow:
+% <</cb_type (lines) /cb_subtype [off  off  on  on]>>
+%                fastest:
+  <</style 9>>
+] net_style get def
+
+/rand10 { 1000 random 1000 div } def % Gives a random 0 <=x<1
+/rand2 { 111 random 20 add } def % Gives a random 30<=x<=140
+
+begin_file
+
+% 1 dict begin
+% /d <</cb_type (lines) /cb_subtype {[2 random 1 eq  2 random 1 eq  2 random 1 eq  2 random 1 eq]}>> def
+% [(Chaotic dungeon-like)(rank: 20)] begin_page
+% [ 1  1][0 0][-1  1] d pdadd [-1  1][0 0][-1 -1] d pdadd
+% [-1 -1][0 0][ 1 -1] d pdadd [ 1 -1][0 0][ 1  1] d pdadd end_page
+
+% [(Chaotic dungeon-like)(rank: 5)] begin_page /threads 5 def
+% [ 1  1][0 0][-1  1] d pdadd [-1  1][0 0][-1 -1] d pdadd
+% [-1 -1][0 0][ 1 -1] d pdadd [ 1 -1][0 0][ 1  1] d pdadd end_page
+% end
+
+chaos_style 0 eq {
+  (Chaos: 1a kind, random init: ) RRAND 10 string cvs addstring begin_page
+  [rand10 rand10] [rand10 rand10] 140 random 20 add  40 random 80 add
+    [ [{100 random}{100 random}{100 random}{100 random}{rand2}] ] deepness rgen
+  end_page
+} if
+
+chaos_style 1 eq {
+  (Chaos: 1b kind, random init: ) RRAND 10 string cvs addstring begin_page
+  [rand10 rand10] [rand10 rand10] 140 random 20 add  40 random 80 add
+    [ [100 random 100 random 100 random 100 random rand2 ] ] deepness rgen
+  end_page
+} if
+
+chaos_style 2 eq {
+  (Chaos: 2a kind, random init: ) RRAND 10 string cvs addstring begin_page
+  [rand10 rand10] [rand10 rand10] 140 random 20 add  40 random 80 add
+    [
+    [{100 random}{100 random}{100 random}{100 random}{rand2}]
+    [{100 random}{100 random}{100 random}{100 random}{rand2}]
+    ] deepness rgen
+  end_page
+} if
+
+chaos_style 3 eq {
+  (Chaos: 2b kind, random init: ) RRAND 10 string cvs addstring begin_page
+  [rand10 rand10] [rand10 rand10] 140 random 20 add  40 random 80 add
+    [
+    [100 random 100 random 100 random 100 random rand2 ]
+    [100 random 100 random 100 random 100 random rand2 ]
+    ] deepness rgen
+  end_page
+} if
+
+end_file
+
+% g Chaos_rgen.meszi "/PS_CHAOS_STYLE 1 def" "/PS_NET_STYLE 0 def" "/PS_DEEPNESS 20 def" "/PS_SRAND 8030606 def" "/PS_STYLE 0 def" "/PS_THREADS 3 def"

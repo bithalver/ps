@@ -1,0 +1,34 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+% to print the hole-pattern, use:
+%    g 20091111 "/PS_BLACKNWHITE true def" "/PS_STYLE 1 def" "/PS_LINEWIDTH 0.5 def"
+
+/PS_BACKGROUNDS [[ [0 0 0.5 1][0 0 0] ]] def
+
+my_init
+
+begin_file
+
+(20091111 a) begin_page
+
+[-6 2.5] [-1.5 -4.5] [-1.5 4.5] <</colors [1 1 1]>> pdadd
+[-8 3][-6 9.5][0.5 7.5] <</colors [1 1 1]>> pdadd
+
+[6 -2.5] [1.5 4.5] [1.5 -4.5] padd
+[8 -3][6 -9.5][-0.5 -7.5] padd
+
+end_page
+
+(20091111 b) begin_page
+
+[-6 -2.5] [-1.5 4.5] [-1.5 -4.5] <</colors [1 1 1]>> pdadd
+[-8 3][-6 9.5][0.5 7.5] <</colors [1 1 1]>> pdadd
+
+[6 2.5] [1.5 -4.5] [1.5 4.5] padd
+[8 -3][6 -9.5][-0.5 -7.5] padd
+
+end_page
+
+end_file

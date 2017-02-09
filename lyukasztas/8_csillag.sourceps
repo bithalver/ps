@@ -1,0 +1,47 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 10 def
+
+/h 8 22.5 basicplane def
+
+h [1 2 3] nthpoints pcn
+h [2 3 4] nthpoints 4 -1 roll paddn
+h [3 4 5] nthpoints 4 -1 roll paddn
+h [4 5 6] nthpoints 4 -1 roll paddn
+h [5 6 7] nthpoints 4 -1 roll paddn
+h [6 7 8] nthpoints 4 -1 roll paddn
+h [7 8 1] nthpoints 4 -1 roll paddn
+h [8 1 2] nthpoints 4 -1 roll paddn
+/belso81 exch def
+
+/p11 h 1 nthpoint 2 ppointmul def
+/p12 h 2 nthpoint 2 ppointmul def
+/p13 h 3 nthpoint 2 ppointmul def
+/p14 h 4 nthpoint 2 ppointmul def
+/p15 h 5 nthpoint 2 ppointmul def
+/p16 h 6 nthpoint 2 ppointmul def
+/p17 h 7 nthpoint 2 ppointmul def
+/p18 h 8 nthpoint 2 ppointmul def
+
+p11 h [1 2] nthpoints pcn
+p12 h [2 3] nthpoints 4 -1 roll paddn
+p13 h [3 4] nthpoints 4 -1 roll paddn
+p14 h [4 5] nthpoints 4 -1 roll paddn
+p15 h [5 6] nthpoints 4 -1 roll paddn
+p16 h [6 7] nthpoints 4 -1 roll paddn
+p17 h [7 8] nthpoints 4 -1 roll paddn
+p18 h [8 1] nthpoints 4 -1 roll paddn
+/kulso81 exch def
+
+begin_file
+
+(8_1) begin_page
+belso81 nadd
+kulso81 nadd
+end_page
+
+end_file

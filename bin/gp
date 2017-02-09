@@ -1,0 +1,6 @@
+OUT=`dirname $1`/`basename $1 .sourceps`.out.ps
+OUTPDF=`dirname $1`/`basename $1 .sourceps`.pdf
+`dirname $0`/gw "$@"
+ps2pdf14 $OUT $OUTPDF
+rm $OUT
+unset OUT OUTPDF

@@ -1,0 +1,35 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 10 def
+
+% /n 4 0 basicplane def /a 3 0 basicplane def
+% /n1 n [1 2 3] nthpoints pcn def /h1 a [1 2 3] nthpoints pcn def
+% /egy 1 dict begin
+% /h2 n1 aload pop pop [2 3] nthpoints h1 3 2 connectnetstopoints def
+% /n2 h2 aload pop pop [1 2] nthpoints n1 2 1 connectnetstopoints def
+% n1 h2 netsadd n2 netsadd
+% end def
+% /egy [ [ egy aload pop pop [1 2 3 4 8] nthpoints ] dup ==
+%        [[1 2 3 << >>] [4 3 2 << >>] [3 4 5 << >>]] ] def
+
+/egy
+  [ [[1.0 0.0] [0.0 1.0] [-1.0 0.0] [-1.36602545 1.36602545] [-2.7320509 1.0]]
+    [[1 2 3 << >>] [4 3 2 << >>] [3 4 5 << >>]] ] def
+
+begin_file
+
+1 1 16 { /I exch def
+  /h I 90 basiccplane def
+  [(Bat_) I 10 lt {(0)} if I 2 string cvs] addstrings begin_page
+  1 1 I { /j exch def
+    h [I 1 add j] nthpoints egy 1 5 connectnetstopoints nadd
+  } for
+  end_page
+} for
+
+end_file
+

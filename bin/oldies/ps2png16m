@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export PSLIB=/var/www/html/meszi/PS/lib
+
+gs -q -sDEVICE=png16m -sOutputFile=- -dNOPAUSE\
+	-scurrentdate=`date +%Y/%m/%d`' '`date +%H:%M:%S` \
+	-f${PSLIB}/general.ps -f${PSLIB}/pointop.ps \
+	-f${PSLIB}/planeop.ps -f${PSLIB}/netop.ps \
+	-f${PSLIB}/sysdef.ps -f${PSLIB}/draw.ps \
+	-f${PSLIB}/fileop.ps -f${PSLIB}/rgen_engine.ps \
+	-- "$@"
+unset PSLIB

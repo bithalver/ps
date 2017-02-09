@@ -1,0 +1,22 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+begin_file
+
+1 dict begin
+/threads 8 def
+2 1 8 { /o exch def /l o 1 sub def
+
+[ (Subnets_) o 1 string cvs ] addstrings begin_page
+[ 10   0] [0 0] [  0  10] <</cb_type (subnets) /cb_subtype <</threads o /firstthread 1 /lastthread l>> >> pdadd
+[  0  10] [0 0] [-10   0] <</cb_type (subnets) /cb_subtype <</threads o /firstthread 1 /lastthread l>> >> pdadd
+[-10   0] [0 0] [  0 -10] <</cb_type (subnets) /cb_subtype <</threads o /firstthread 1 /lastthread l>> >> pdadd
+[  0 -10] [0 0] [ 10   0] <</cb_type (subnets) /cb_subtype <</threads o /firstthread 1 /lastthread l>> >> pdadd
+
+end_page
+} for
+end
+end_file wtf {quit} if

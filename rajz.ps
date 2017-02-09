@@ -1,0 +1,203 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% /style 3 def
+
+/h 6 90 basicplane def
+/n1 h 2 1 4 1 2 connectbasicplane def /n2 h 3 2 4 1 2 connectbasicplane def
+/n3 h 4 3 4 1 2 connectbasicplane def /n4 h 5 4 4 1 2 connectbasicplane def
+/n5 h 6 5 4 1 2 connectbasicplane def /n6 h 1 6 4 1 2 connectbasicplane def
+
+/p12 [ [h 1] [h 2] [h 3] [h 4] [h 5] [h 6]
+   [n1 3] [n1 4] [n2 3] [n2 4] [n3 3] [n3 4] 
+   [n4 3] [n4 4] [n5 3] [n5 4] [n6 3] [n6 4] ] buildplane [[0 0]] arrayadd def
+
+p12 [1 2 8] nthpoints pcn
+p12 [8 2 9] nthpoints 4 -1 roll paddn
+p12 [3 2 9] nthpoints 4 -1 roll paddn /tal1 exch def
+
+/tal2 p12 [3 4] nthpoints tal1 1 2 connectnetstopoints def
+/tal3 p12 [5 6] nthpoints tal1 1 2 connectnetstopoints def
+
+p12 [ 9 10  3] nthpoints pcn
+p12 [10  3 11] nthpoints 4 -1 roll paddn
+p12 [12 11  3] nthpoints 4 -1 roll paddn /sas1 exch def
+
+/sas2 p12 [14 5] nthpoints sas1 2 3 connectnetstopoints def
+/sas3 p12 [18 1] nthpoints sas1 2 3 connectnetstopoints def
+
+/keret tal1 tal2 netsadd tal3 netsadd 
+       sas1 netsadd sas2 netsadd sas3 netsadd def
+
+p12 [1 2 3] nthpoints pcn
+p12 [3 4 5] nthpoints 4 -1 roll paddn
+p12 [5 6 1] nthpoints 4 -1 roll paddn
+/belso31 exch def
+
+p12 [2 3 4] nthpoints pcn
+p12 [4 5 6] nthpoints 4 -1 roll paddn
+p12 [6 1 2] nthpoints 4 -1 roll paddn
+/belso32 exch def
+
+p12 [1 2 19] nthpoints pcn
+p12 [3 2 19] nthpoints 4 -1 roll paddn
+p12 [3 4 19] nthpoints 4 -1 roll paddn
+p12 [5 4 19] nthpoints 4 -1 roll paddn
+p12 [5 6 19] nthpoints 4 -1 roll paddn
+p12 [1 6 19] nthpoints 4 -1 roll paddn
+/belso61 exch def
+
+/belso62 p12 [2 3] nthpoints belso61 1 2 connectnetstopoints def
+
+%%Page: "12_1" 12_1
+clearallnets keret nadd belso31 nadd
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "12_1" 12_1
+
+%%Page: "12_2" 12_2
+clearallnets keret nadd belso32 nadd
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "12_2" 12_2
+
+%%Page: "12_3" 12_3
+clearallnets keret nadd belso61 nadd
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "12_3" 12_3
+
+%%Page: "12_4" 12_4
+clearallnets keret nadd belso62 nadd
+gsave fitto1page drawallnets showpage grestore
+%%EndPage:"12_4" 12_4
+
+%%Page: "34A1" 34A1
+clearallnets 
+[0 2] [0 0] [2 0] pointsaddallnets [2 0] [4 0] [4 2] pointsaddallnets
+[0 2] [0 4] [2 4] pointsaddallnets [1 3] [1 1] [3 1] pointsaddallnets
+[4 0] [8 0] [8 4] pointsaddallnets [0 4] [0 8] [4 8] pointsaddallnets
+[2 6] [2 2] [6 2] pointsaddallnets
+[8  0] [16 0] [16 8] pointsaddallnets [0 8] [0 16] [8 16] pointsaddallnets
+[4 12] [ 4 4] [12 4] pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "34A1" 34A1
+
+%%Page: "34A2" 34A2
+[16  0] [32  0] [32 16] pointsaddallnets
+[ 0 16] [ 0 32] [16 32] pointsaddallnets
+[ 8 24] [ 8  8] [24  8] pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "34A2" 34A2
+
+1 dict begin 
+%%Page: "34B1" 34B1
+clearallnets
+[0 2] [0 0] [2 0] pcn
+[2 0] [4 0] [4 2] 4 -1 roll paddn
+[0 2] [0 4] [2 4] 4 -1 roll paddn
+[1 3] [1 1] [3 1] 4 -1 roll paddn /elem1 exch def
+
+elem1 nadd
+gsave fitto1page drawallnets showpage grestore
+
+%%EndPage: "34B1" 34B1
+
+%%Page: "34B2" 34B2
+clearallnets 
+[0 4] [4 4] elem1 [4 0] [4 4] connectnetstopoints_2
+[4 0] [4 4] elem1 [0 4] [4 4] connectnetstopoints_2
+[2 2] [6 2] elem1 [0 0] [4 0] connectnetstopoints_2
+elem1 netsadd netsadd netsadd /elem2 exch def
+
+elem2 nadd
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "34B2" 34B2
+
+%%Page: "34B3" 34B3
+clearallnets 
+[0 8] [ 8 8] elem2 [8 0] [8 8] connectnetstopoints_2
+[8 0] [ 8 8] elem2 [0 8] [8 8] connectnetstopoints_2
+[4 4] [12 4] elem2 [0 0] [8 0] connectnetstopoints_2
+elem2 netsadd netsadd netsadd /elem3 exch def
+
+elem3 nadd
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "34B3" 34B3
+
+% %%Page: "34B4" 34B4
+% clearallnets 
+% [ 0 16] [16 16] elem3 [16  0] [16 16] connectnetstopoints_2
+% [16  0] [16 16] elem3 [ 0 16] [16 16] connectnetstopoints_2
+% [ 8  8] [24  8] elem3 [ 0  0] [16  0] connectnetstopoints_2
+% elem3 netsadd netsadd netsadd /elem4 exch def
+% elem4 nadd
+% gsave fitto1page drawallnets showpage grestore
+% % Ez az oldal stackoverflow-t okoz, ezert szerepel megjegyzesek kozt.
+% %%EndPage: "34B4" 34B4
+end
+
+/h1 6 90 basiccplane def
+/h2 h1 1 2 6 1 6 connectbasiccplane def
+/h3 h1 1 6 6 1 2 connectbasiccplane def
+
+%%Page: "36v1" 36v1
+clearallnets
+h1 6 threepointc pointsaddallnets h1 1 threepointc pointsaddallnets h1 2 threepointc pointsaddallnets
+h2 6 threepointc pointsaddallnets h2 1 threepointc pointsaddallnets h2 2 threepointc pointsaddallnets
+h3 6 threepointc pointsaddallnets h3 1 threepointc pointsaddallnets h3 2 threepointc pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "36v1" 36v1
+
+%%Page: "36v2" 36v2
+clearallnets
+h1 1 threepointc pointsaddallnets h1 2 threepointc pointsaddallnets h1 3 threepointc pointsaddallnets
+h2 1 threepointc pointsaddallnets h2 2 threepointc pointsaddallnets h2 3 threepointc pointsaddallnets
+h3 1 threepointc pointsaddallnets h3 2 threepointc pointsaddallnets h3 3 threepointc pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "36v2" 36v2
+
+%%Page: "36v3" 36v3
+clearallnets
+h1 2 threepointc pointsaddallnets h1 3 threepointc pointsaddallnets h1 4 threepointc pointsaddallnets
+h2 2 threepointc pointsaddallnets h2 3 threepointc pointsaddallnets h2 4 threepointc pointsaddallnets
+h3 2 threepointc pointsaddallnets h3 3 threepointc pointsaddallnets h3 4 threepointc pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "36v3" 36v3
+
+%%Page: "36v4" 36v4
+clearallnets
+h1 3 threepointc pointsaddallnets h1 4 threepointc pointsaddallnets h1 5 threepointc pointsaddallnets
+h2 3 threepointc pointsaddallnets h2 4 threepointc pointsaddallnets h2 5 threepointc pointsaddallnets
+h3 3 threepointc pointsaddallnets h3 4 threepointc pointsaddallnets h3 5 threepointc pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "36v4" 36v4
+
+%%Page: "36v5" 36v5
+clearallnets
+h1 1 threepointc pointsaddallnets h1 2 threepointc pointsaddallnets
+h2 1 threepointc pointsaddallnets h2 2 threepointc pointsaddallnets
+h3 1 threepointc pointsaddallnets h3 2 threepointc pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "36v5" 36v5
+
+%%Page: "36vFull" 36vFull
+clearallnets
+h1 1 threepointc pointsaddallnets h1 2 threepointc pointsaddallnets h1 3 threepointc pointsaddallnets
+h2 1 threepointc pointsaddallnets h2 2 threepointc pointsaddallnets h2 3 threepointc pointsaddallnets
+h3 1 threepointc pointsaddallnets h3 2 threepointc pointsaddallnets h3 3 threepointc pointsaddallnets
+h1 4 threepointc pointsaddallnets h1 5 threepointc pointsaddallnets h1 6 threepointc pointsaddallnets
+h2 4 threepointc pointsaddallnets h2 5 threepointc pointsaddallnets h2 6 threepointc pointsaddallnets
+h3 4 threepointc pointsaddallnets h3 5 threepointc pointsaddallnets h3 6 threepointc pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "36vFull" 36vFull
+
+%%Page: "3" 3
+clearallnets
+/threads 50 def 
+h1 1 threepointc pointsaddallnets
+h2 1 threepointc pointsaddallnets
+h3 1 threepointc pointsaddallnets
+gsave fitto1page drawallnets showpage grestore
+/threads 20 def
+%%EndPage: "3" 3

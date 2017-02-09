@@ -1,0 +1,40 @@
+% Set page size to A4
+[{
+%%BeginFeature: PageSize A4
+<</PageSize[595 842]/ImagingBBox null>>setpagedevice
+%%EndFeature
+} stopped cleartomark
+
+% Set input tray to 'default'
+[{
+%%BeginFeature: InputSlot Default
+%%EndFeature
+} stopped cleartomark
+
+% Set resolution to 600 dpi in both direction
+[{
+%%BeginFeature: Resolution 600dpi
+<</HWResolution[600 600]>>setpagedevice
+%%EndFeature
+} stopped cleartomark
+
+% Set duplex on long edge
+[{
+%%BeginFeature: Duplex DuplexNoTumble
+<</Duplex true/Tumble false>>setpagedevice
+%%EndFeature
+} stopped cleartomark
+
+% Set duplex on short edge
+[{
+%%BeginFeature: Duplex DuplexTumble
+<</Duplex true/Tumble true>>setpagedevice
+%%EndFeature
+} stopped cleartomark
+
+% Set duplex off (print to one side only)
+[{
+%%BeginFeature: Duplex None
+<</Duplex false>>setpagedevice
+%%EndFeature
+} stopped cleartomark

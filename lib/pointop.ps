@@ -1,0 +1,78 @@
+% x y n pointmul x*n y*n
+/pointmul { dup 3 1 roll mul 3 1 roll mul exch } def
+% x1 y1 x2 y2 pointadd x1+x2 y1+y2
+/pointadd { 3 1 roll 4 3 roll add 3 1 roll add } def
+% x1 y1 x2 y2 pointsub x1-x2 y1-y2
+/pointsub { 4 -1 roll 3 -1 roll sub 3 1 roll sub } def
+
+% p1 n ppointmul p1*n
+/ppointmul { [/p1 /n] params [ p1 point n pointmul ] end} def
+% p1 p2 ppointadd p1+p2
+/ppointadd { [/p1 /p2] params [ p1 point p2 point pointadd ] end} def
+% p1 p2 ppointsub p1-p2
+/ppointsub { [/p1 /p2] params [ p1 point p2 point pointsub ] end} def
+% p1 n ppointdiv [p1x/n p1y/n]           20020321
+/ppointdiv { [/p1 /n] params [ p1 point n div exch n div exch ] end} def
+
+%  [p1 p2 ...pn] p -> [p1+p p2+p ... pn+p]       20071227
+/multippointadd 
+{ [/parray /p1] params
+[ 0 1 parray length 1 sub {
+  parray exch get p1 ppointadd
+} for ]
+end } def
+
+% p1 p2 p3 pointmirror p1'  Tukrozi p1-et a p2-p3 felezopontjara
+/pointmirror { [/p1 /p2 /p3] params 
+  p2 p1 ppointsub 
+  p3 p1 ppointsub ppointadd p1 ppointadd
+end } def
+
+% p1 p2 pointshift p1'  Tukrozi p1-et a p2-re
+/pointshift { [/p1 /p2] params 
+  p2 p1 ppointsub 
+  p2 ppointadd
+end } def
+
+% p1 p2 pointhalve p  A p1 - p2 szakasz felezopontjat adja
+/pointhalve { ppointadd 0.5 ppointmul } def
+
+/point {aload pop} def /p {aload pop} def % point -> x y
+/pointdef { [ 4 2 roll ] def } def        % x y name ->
+
+/pointeq { % p1 p2 -> true, if x1=x2 and y1=y2
+           %       -> false, otherwise
+[/p1 /p2] params
+  p1 point [/x1 /y1] params 
+  p2 point [/x2 /y2] params 
+  x1 x2 sub abs 0.00001 le  y1 y2 sub abs 0.00001 le  and
+%  x1 x2 eq y1 y2 eq and
+end end end
+} def
+
+/cogpoint { % [p1 p2 p3 ...] -> p'  Center of gravity point
+[/points] params
+  /l points length def
+  /px 0 def /py 0 def
+  1 1 l { /i exch def 
+    /px px points i nth 1 nth add def
+    /py py points i nth 2 nth add def
+  } for
+  [ px l div
+    py l div
+  ]
+end } def
+
+% /k 3 90 basiccplane def
+% k cogpoint == [ k [1 2 3] nthpoints ] cogpoint == quit
+
+/pointmatrixmul { % point matrix -> point
+[/p /matrix] params
+  p point [/x /y] params % /y exch def /x exch def
+  matrix aload pop [/a /b /c /d /e /f] params
+  [ a x mul c y mul e add add   b x mul d y mul f add add ]
+end end end
+} def
+% [0 0] [5 0] [0 0] [4 3] fitmatrix dup dup dup dup ==
+% [ 4  3] exch pointmatrixmul == [-3  4] exch pointmatrixmul ==
+% [-4 -3] exch pointmatrixmul == [ 3 -4] exch pointmatrixmul ==

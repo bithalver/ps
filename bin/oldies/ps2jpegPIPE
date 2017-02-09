@@ -1,0 +1,11 @@
+#!/bin/bash
+# This script waits an .out.ps file on stdin, and writes a jpeg file to stdout.
+
+export TEMPFILE=/tmp/temp.$$.out.ps
+
+cat >$TEMPFILE
+GEOM=-g`grep BoundingBox $TEMPFILE|sed -e"s/%%BoundingBox: [0-9]* [0-9]* //;s/ $//"|tr " " x`
+echo $GEOM >&2
+gs -q -sDEVICE=jpeg -dNOPAUSE -sOutputFile=- $GEOM -- $TEMPFILE
+rm $TEMPFILE
+unset GEOM

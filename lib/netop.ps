@@ -1,0 +1,229 @@
+/emptynet [ [] [] ] def
+/clearallnets { /allnets [[] []] def /LADDERS [] gnv} def % CF4
+% allnets: [ points netfcls ]
+
+/allnets_init { % no parameters, no return value
+  /allnets defaultallnets dup length array copy gnv
+  /defaultallnets emptynet gnv
+  /LADDERS [] gnv % Added on 20030402
+} def
+
+/connectnetstopoints { 
+% to_point1 to_point2 fittingnet nthfit_1 nthfit_2 -> net
+[/topoint1 /topoint2 /fittingnet /fit1 /fit2] params
+  fittingnet aload pop [/fittingplane /fittingfcl] params
+  [ topoint1 topoint2
+    fittingplane fit1 nthpoint fittingplane fit2 nthpoint
+    fitmatrix fittingplane exch planematrixmul
+    fittingfcl dup length array copy ]
+end end
+} def
+
+/connectnetstopoints_2 { 
+% to_point1 to_point2 fittingnet from_point1 from_point2 -> net
+[/topoint1 /topoint2 /fittingnet /from1 /from2] params
+  fittingnet aload pop [/fittingplane /fittingfcl] params
+  [ topoint1 topoint2 from1 from2
+    fitmatrix fittingplane exch planematrixmul
+    fittingfcl dup length array copy ]
+end end
+} def
+
+/pointfind { % corners point -> n true, if found % CF4
+             %               -> false, if the corners doesn't contain the point
+[/corners /p1] params
+  corners length 0 eq {false} {
+    0
+    1 1 corners length {dup corners exch nthpoint p1 pointeq {dup} if pop} for
+    dup 0 eq {pop false} {exch pop true} ifelse
+  } ifelse
+end
+} def
+
+/pointfindadd { % CF4
+% corners point ->           n' true  , if point is in corners
+%               -> corners' n1  false , else ( n1 = length(corners+1) )
+% 1 dict begin /p exch def /corners exch def
+[/corners /p] params
+  corners p pointfind {true} {
+    corners length 1 add
+    [ corners aload pop p ] exch false
+  } ifelse
+end
+} def
+
+% [ [1 2] [3 4] [5 6] ] [3 4] pointfindadd == == () =
+% [ [1 2] [3 4] [5 6] ] [3 5] pointfindadd == == == () =
+% [ ] [3 5] pointfindadd == == == () =
+
+/cn_1 { % n [ [convert_from convert_to]+ ] ->n'
+% 1 dict begin /table exch def /n exch def
+[/n /table] params
+  1 1 table length { table exch nth aload pop exch n ne {pop} if } for
+end
+} def
+
+/convertfcls { % [ netfcl+ ] [ [convert_from convert_to]+ ] -> [ netfcl+ ]
+% 1 dict begin /converts exch def /fcls exch def
+[/fcls /converts] params
+  [
+  1 1 fcls length {
+    [ exch
+    fcls exch nth /nthfcl exch def
+    nthfcl 0 get converts cn_1 % First point
+    nthfcl 1 get converts cn_1 % Center point
+    nthfcl 2 get converts cn_1 % Last Point
+    nthfcl 3 get ]             % Dictionary
+  } for
+  ]
+end
+} def
+
+/pointsfindadd { % corners points fcls -> corners' fcls'
+[/corners /points /fcls] params
+  [
+  1 1 points length {
+    dup corners points 3 -1 roll nth pointfindadd 
+    { [ 3 1 roll ] } { exch /corners exch def [ 3 1 roll ] } ifelse
+  } for
+  ] fcls exch convertfcls
+  corners exch
+end
+} def
+
+% [ [1 2] [3 4] [5 6] [7 8] ] 
+% [ [1 3] [3 4] [5 8] ] 
+% [ [1 2 3 {a} ] [2 3 1 {b} ] ]
+% pointsfindadd == ==
+
+/pcn { % p1 p2 p3 -> nets     from Points Create Nets
+[ /p1 /p2 /p3] params
+%  [ [p1 p2 p3] [[1 2 3 << >>]] ]
+  [ [p1 p2 p3] [[1 2 3 defaultdict]] ]
+end
+} def
+
+/pdcn { % p1 p2 p3 d -> nets     from Points and Dict Create Nets
+[ /p1 /p2 /p3 /d ] params
+  [ [p1 p2 p3] [[1 2 3 d]] ]
+end
+} def
+
+/pointsaddtonets { % p1 p2 p3 nets -> nets'
+aload pop
+[/p1 /p2 /p3 /corners /fcls] params
+%  [ corners [ p1 p2 p3 ] [ [1 2 3 << >>] ] pointsfindadd
+  [ corners [ p1 p2 p3 ] [ [1 2 3 defaultdict] ] pointsfindadd
+    fcls exch arrayadd ]
+end
+} def
+/paddn {pointsaddtonets} def
+
+/pointsaddtonets1 { % nets p1 p2 p3 -> nets'
+[/nets /p1 /p2 /p3] params 
+nets aload pop /fcls exch def /corners exch def
+%  [ corners [ p1 p2 p3 ] [ [1 2 3 << >>] ] pointsfindadd
+  [ corners [ p1 p2 p3 ] [ [1 2 3 defaultdict] ] pointsfindadd
+    fcls exch arrayadd ]
+end
+} def
+/paddn1 {pointsaddtonets1} def
+
+% [1 0] [0 0] [0 1] [[] []] pointsaddtonets dup == /n1 exch def
+% [0 1] [0 0] [-1 0] n1 pointsaddtonets == quit
+
+/pdaddtonets { % p1 p2 p3 d nets -> nets'
+aload pop
+[/p1 /p2 /p3 /d /corners /fcls] params
+  [ corners [ p1 p2 p3 ] [ [1 2 3 d] ] pointsfindadd
+    fcls exch arrayadd ]
+end
+} def
+/pdaddn {pdaddtonets} def
+
+/pdaddtonets1 { % nets p1 p2 p3 d -> nets'
+[/nets /p1 /p2 /p3 /d] params 
+nets aload pop /fcls exch def /corners exch def
+  [ corners [ p1 p2 p3 ] [ [1 2 3 d] ] pointsfindadd
+    fcls exch arrayadd ]
+end
+} def
+/pdaddn1 {pdaddtonets1} def
+
+/pointsaddallnets { % point1 point2 point3 ->
+[/p1 /p2 /p3] params
+  allnets aload pop /allfcls exch def /allcorners exch def
+
+  [
+%   allcorners [ p1 p2 p3 ] [ [1 2 3 << >>] ] pointsfindadd
+  allcorners [ p1 p2 p3 ] [ [1 2 3 defaultdict] ] pointsfindadd
+  allfcls exch arrayadd
+  ]
+end
+/allnets exch def
+} def
+/padd {pointsaddallnets} def
+
+% [0 0] [ 1  0] [ 0  1] pointsaddallnets
+% [0 0]         [ 0  1] [-1  0] pointsaddallnets
+% [0 0]                 [-1  0] [ 0 -1] pointsaddallnets
+% [0 0]                         [ 0 -1] [ 1  0] pointsaddallnets
+
+/pdadd { % point1 point2 point3 dict ->
+[/p1 /p2 /p3 /d] params
+  allnets aload pop /allfcls exch def /allcorners exch def
+
+  [
+  allcorners [ p1 p2 p3 ] [ [1 2 3 d] ] pointsfindadd
+  allfcls exch arrayadd
+  ]
+end
+/allnets exch def
+} def
+
+/netsadd { % nets1 nets2 -> nets3   Osszefesuli a ket nets-et
+exch aload pop 3 2 roll aload pop
+[/points1 /fcls1 /points2 /fcls2] params
+  [ points1 points2 fcls2 pointsfindadd
+    fcls1 exch arrayadd ]
+end
+} def
+
+% [[] []] [ [[1 0] [0 0] [ 0 1]] [[1 2 3 {a}]] ] netsadd dup ==
+%         [ [[0 1] [0 0] [-1 0]] [[1 2 3 {b}]] ] netsadd ==
+
+/netsaddallnets { % nets ->
+aload pop [/points /fcls] params
+  allnets aload pop /allfcls exch def /allcorners exch def
+
+  [ allcorners points fcls pointsfindadd allfcls exch arrayadd ]
+end
+/allnets exch def
+} def
+/nadd {netsaddallnets} def
+
+% clearallnets
+% [ [ [0 0] [3 -2] [0 2] ] [ [1 2 3 << /a {1} >>] ] ] netsaddallnets 
+% allnets == quit
+
+/nthnet { % n -> p1 p2 p3 dict
+allnets aload pop [/n /allcorners /allfcls] params
+
+  % ORDER inserted on 20020321 deleted on 20030325
+  allfcls n nth  aload pop 
+  4 1 roll /n3 exch def /n2 exch def /n1 exch def
+  allcorners n1 nth allcorners n2 nth allcorners n3 nth
+  4 -1 roll
+end} def
+
+% 1 nthnet pstack
+
+/phase { % net start_thread end_thread -> net'
+[/net /ST /ET] params net aload pop /fcls exch def /points exch def
+
+  [ points
+    [ fcls { 
+      [ exch aload pop /d exch def d /firstthread ST put d /lastthread ET put d ]
+    } forall ]
+  ]
+end} def

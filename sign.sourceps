@@ -1,0 +1,53 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/d << >> def % /d <</cb_type (border)>> def
+/threads 12 def /style 0 def
+
+begin_file
+
+(Sign1) begin_page
+[1 0] [0 2] [2 1] d pdadd [1 2] [2 0] [0 1] d pdadd
+[3 2] [2 4] [4 3] d pdadd [3 4] [4 2] [2 3] d pdadd
+
+[4 1] [2 0] [3 2] d pdadd [2 1] [4 2] [3 0] d pdadd
+[2 3] [0 2] [1 4] d pdadd [0 3] [2 4] [1 2] d pdadd
+end_page
+
+(Sign1.5) begin_page
+[1 4] [0 6] [2 5] d pdadd [1 6] [2 4] [0 5] d pdadd
+[3 2] [2 4] [4 3] d pdadd [3 4] [4 2] [2 3] d pdadd
+
+[4 1] [2 0] [3 2] d pdadd [2 1] [4 2] [3 0] d pdadd
+[2 3] [0 2] [1 4] d pdadd [0 3] [2 4] [1 2] d pdadd
+end_page
+
+(Sign2) begin_page
+[1 4] [0 6] [2 5] d pdadd [1 6] [2 4] [0 5] d pdadd
+[3 2] [2 4] [4 3] d pdadd [3 4] [4 2] [2 3] d pdadd
+
+[4 5] [2 4] [3 6] d pdadd [2 5] [4 6] [3 4] d pdadd
+[2 3] [0 2] [1 4] d pdadd [0 3] [2 4] [1 2] d pdadd
+end_page
+
+(Sign3) begin_page
+[1 4] [0 6] [2 5] d pdadd [1 6] [2 4] [0 5] d pdadd % 1   1 2 3
+[4 5] [2 4] [3 6] d pdadd [2 5] [4 6] [3 4] d pdadd % 2   4 5 6
+[5 4] [4 6] [6 5] d pdadd [5 6] [6 4] [4 5] d pdadd % 3   7 8 9
+[2 3] [0 2] [1 4] d pdadd [0 3] [2 4] [1 2] d pdadd % 4
+[6 3] [4 2] [5 4] d pdadd [4 3] [6 4] [5 2] d pdadd % 6
+[1 0] [0 2] [2 1] d pdadd [1 2] [2 0] [0 1] d pdadd % 7
+[4 1] [2 0] [3 2] d pdadd [2 1] [4 2] [3 0] d pdadd % 8
+[5 0] [4 2] [6 1] d pdadd [5 2] [6 0] [4 1] d pdadd % 9
+/allnetssave allnets def
+[3 2] [2 4] [4 3] d pdadd [3 4] [4 2] [2 3] d pdadd % 5 
+end_page
+
+(Sign3.1) begin_page
+/allnets allnetssave def
+end_page
+
+end_file wtf {quit} if

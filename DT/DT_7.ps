@@ -1,0 +1,37 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/leftmargin    2 cm def /rightmargin 1 cm def
+/bottommargin  2 cm def /topmargin   1.5 cm def
+
+/threads 10 def % /style 1 def
+
+begin_file
+
+1 1 4 { /k1 exch def 1 1 4 { /k2 exch def
+1 1 3 { /b1 exch def 1 1 3 { /b2 exch def 0 1 1 { /style exch def
+  k1 k2 ne b1 b2 ne and {
+    [ (DT_7_) k1 1 string cvs (_) k2 1 string cvs (_) 
+              b1 1 string cvs (_) b2 1 string cvs style 1 eq {(_ly)} if
+    ] addstrings begin_page
+
+    /n 4 15 basicplane def
+
+    1 1 12 { /i exch def
+      n [4 1 2] nthpoints pcn nadd
+      /h n 4 1 3 2 1 connectbasicplane def 
+      h [1 2 3] nthpoints pcn nadd
+      /n h b1 b2 4 k1 k2 connectbasicplane def
+    %  /h1 h 3 1 3 2 1 connectbasicplane def h1 [2 3 1] nthpoints pcn nadd
+    } for
+
+    end_page
+  } if
+} for
+} for } for
+} for } for
+
+end_file wtf {quit} if

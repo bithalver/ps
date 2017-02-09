@@ -1,0 +1,57 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init 
+/r (RANK) 4 {exec cvi} GfEoCL def
+/begin_color (BEGIN) [0 0 0] {} GfEoCL def
+/end_color (END) [0 0 0] {} GfEoCL def
+/pagename (PAGENAME) (Pyramid based on 3) {} GfEoCL def
+
+/3coords { % x y -> x' y' % Both should be integer
+[/x /y] params
+  x y 2 div add
+  3 sqrt 2 div y mul
+end}def
+
+/3pyramid { % rank begin_color end_color-> net
+[/rank /begin_color end_color] params emptynet 
+  1 1 rank { /i exch def i
+    rank 1 eq {
+      end_color
+    }{
+      /w i 1 sub rank 1 sub div def
+      [
+        1 1 3 {
+          /j exch def end_color j nth 1 w sub mul begin_color j nth w mul add
+        } for
+      ]
+    } ifelse
+    3lines netsadd
+  } for
+end}def
+
+/3lines { % rank color-> net
+[/rank /color] params
+  /j [
+    /x 0 def /y rank def
+    0 1 rank 2 mul { /i exch def
+      [x y 3coords]
+      i even {/y y 1 sub def}{/x x 1 add def} ifelse
+    } for
+  ] def
+  emptynet
+  1 1 rank 2 mul 1 sub {/i exch def j [i i 1 add i 2 add] nthpoints <</colors color>> pdcn netsadd} for
+end}def
+
+begin_file
+
+pagename begin_page
+r begin_color end_color 3pyramid nadd
+end_page
+
+end_file
+
+% for ((i=20;i-1;i--)); do gp 3.ps "/PS_RANK $i def" "/PS_STYLE 10 def" "/PS_END [1 0 0] def" "/PS_BEGIN [0 0.8 0] def" "/PS_BACKGROUND [0.5 0.5 0.5] def" "/PS_PAGENAME (Green and red, rank $i) def"; mv 3{,_GRr$i}.pdf ; done
+% gp 3.ps "/PS_RANK 7 def" "/PS_STYLE 10 def" "/PS_END [-1 0 1.5] def" "/PS_BEGIN [1.5 0 -1] def" "/PS_BACKGROUND [0.5 0.5 0.5] def" "/PS_PAGENAME (Water and fire) def"
+% for ((i=20;i-1;i--)); do gp 3.ps "/PS_RANK $i def" "/PS_STYLE 9 def" "/PS_BACKGROUND [0.75 0.75 0.75] def" "/PS_PAGENAME [(3pyramid) (Style 9, rank $i)] def"; mv 3{,_9r$i}.pdf ; done

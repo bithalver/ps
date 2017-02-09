@@ -1,0 +1,23 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/colors [0.25 0.25 .025] def /threads 20 def
+/backgrounds [[[0.5 0 1 1][1 1 0]][[0 0 0.5 1][0 0 1]]] def
+
+my_init
+/curtain_length (CL) 5 {exec cvi} GfEoCL def
+/curtain_distance (CD) 2 {exec cvi} GfEoCL def
+/curtain_pieces (CP) 3 {exec cvi} GfEoCL def
+
+begin_file
+(Curtains) begin_page
+1 1 curtain_length {/i exch def
+  /j i 2 mul def
+  0 1 curtain_pieces 1 sub { /k exch def /l k curtain_distance mul def
+    i 1 gt {[l 1 add j 1 sub] [l j] [l 1 add j 1 add] pcn nadd} if
+    [l j] [l 1 add j 1 add] [l j 2 add] pcn nadd
+  } for
+} for
+end_page
+end_file

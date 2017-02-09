@@ -1,0 +1,20 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+% Number of phases can be changed with modifying threads !
+
+/threads 16 def /background [0.8 0.8 0.8] def
+/style 12 def /pagenamecolor [0.2 0.2 0.4] def
+
+my_init
+
+begin_file
+0 1 threads {/I exch def  /oc1 [0.2 0.6 1] def  /oc2 [0.82 0.82 0.82] def % oc like Outer Color
+  /style12colors [I {oc1} repeat  [0.3 0.7 1]  threads I sub {oc2} repeat] def
+  (Blue Floyd, phase: ) I any2str addstring begin_page 
+  [0 1][0 0][1 0] pcn nadd [0 1][0 0][-1 0] pcn nadd 
+  [0 -1][0 0][1 0] pcn nadd [0 -1][0 0][-1 0] pcn nadd 
+  end_page
+} for
+end_file

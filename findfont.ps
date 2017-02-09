@@ -1,0 +1,48 @@
+/$mmff_origfindfont where {
+pop save { restore } { pop pop }
+} { {} { def } } ifelse
+/setshared where { pop true } { false } ifelse
+/findfont where pop dup systemdict eq {
+pop { currentshared {{}} { true setshared { false
+setshared } } ifelse shareddict
+} {{} userdict } ifelse begin
+} { begin { currentdict scheck } { false } ifelse {
+currentshared {{}} { true setshared { false setshared
+} } ifelse
+} { {} } ifelse } ifelse
+/$mmff_origfindfont /findfont load 3 index exec
+/findfont {
+dup FontDirectory exch known
+{ dup FontDirectory exch get /FontType get 3 ne}
+{ dup SharedFontDirectory exch known
+{ dup SharedFontDirectory exch get /FontType get 3
+ne}
+{ false} ifelse} ifelse
+{$mmff_origfindfont} { dup dup length string cvs (_)
+search {
+cvn dup dup FontDirectory exch known exch
+SharedFontDirectory exch known or {
+true} {dup length 7 add string dup 0 (%font%)
+putinterval
+dup 2 index 6 exch dup length string cvs putinterval
+{ status } stopped { pop false } if {
+pop pop pop pop true} {false} ifelse} ifelse {
+$mmff_origfindfont begin pop
+[ exch { (_) search { { cvr } stopped { pop pop } {
+exch pop exch } ifelse
+} { pop exit } ifelse } loop false /FontInfo where {
+pop FontInfo /BlendAxisTypes 2 copy known {
+get length counttomark 2 sub eq exch pop
+} { pop pop } ifelse } if {
+NormalizeDesignVector
+ConvertDesignVector
+] currentdict exch makeblendedfont
+2 copy exch /FontName exch put
+definefont} { cleartomark $mmff_origfindfont }
+ifelse end
+} { pop pop pop $mmff_origfindfont } ifelse
+} { pop $mmff_origfindfont } ifelse } ifelse
+} bind 3 index exec
+/SharedFontDirectory dup where { pop pop } { 0 dict
+3 index exec } ifelse
+end exec pop exec

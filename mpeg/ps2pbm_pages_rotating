@@ -1,0 +1,7 @@
+cat $1.ps | \
+gs -I/home/meszi/PS/lib \
+  -q \
+  -sDEVICE=pbm \
+  -dNOPAUSE \
+  -dps_param=$2 \
+  -sOutputFile=$1%03d.pbm

@@ -1,0 +1,41 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/background [0.7 0.7 0.75] def
+/threads 20 def
+
+/style 10 def
+
+my_init
+
+begin_file
+
+/d 0.3 def /dd d 2 mul def  /df 0.3 def
+
+(Up or Down ?) begin_page
+
+[1 d add 0 df add] [2 0 df add] [2 1 df add] <</colors [0 0 0]>> pdcn nadd
+[1 d add 0 df add] [0 dd add 0 df add] [0 dd add 1 df add] <</colors [0 0 0]>> pdcn nadd
+
+[2 d sub 2] [1 2] [1 1] <</colors [1 1 1]>> pdcn nadd
+[2 d sub 2] [3 dd sub 2] [3 dd sub 1] <</colors [1 1 1]>> pdcn nadd
+
+[0 dd add 1 df add] [1 d add 2 df add] [2 1 df add] <</colors [0 0 0]>> pdcn nadd
+[3 dd sub 1] [2 d sub 0] [1 1] <</colors [1 1 1]>> pdcn nadd
+
+end_page
+
+
+% () begin_page
+
+% [1 0] [2 1] [1 2] <</colors [0 0 0]>> pdcn nadd
+% [1 3] [0 2] [1 1] <</colors [0 0 0]>> pdcn nadd
+
+% [2 0] [2 1] [1 1] <</colors [1 1 1]>> pdcn nadd
+% [0 3] [0 2] [1 2] <</colors [1 1 1]>> pdcn nadd
+
+
+% end_page
+
+end_file

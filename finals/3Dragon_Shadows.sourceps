@@ -1,0 +1,54 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/leftmargin    1 cm def /rightmargin 1    cm def
+/bottommargin  4 cm def /topmargin   3    cm def
+
+/threads 20 def /style 10 def
+/colors [1 0.3 0.3] def
+/background [0.3 0.3 0.3] def
+
+my_init
+
+/op threads 2 mul 3 div def
+
+/k 3 90 basiccplane def
+
+/p12 k [1 2] nthpoints pointhalve def
+/p13 k [1 3] nthpoints pointhalve def
+/p23 k [2 3] nthpoints pointhalve def
+
+/allpoint [ k [1 2 3] nthpoints p12 p13 p23 ] def
+
+allpoint [1 6 3] nthpoints pcn
+allpoint [1 4 5] nthpoints pointshift allpoint 3 nthpoint paddn1
+/f1 exch def
+
+/f_1 { % Az eggyel melyebb deltoid csucsait adja az elozo csucsaibol
+[/p1] params
+[ p1 1 nthpoint
+  p1 [1 3] nthpoints pointhalve
+  p1 [1 4] nthpoints op pnthpart
+  p1 [1 3 4] nthpoints pointshift pointhalve
+]
+end } def
+
+/f123
+1 dict begin
+f1
+/p2 f1 aload pop pop f_1 def 
+p2 [1 2 3] nthpoints paddn1 p2 [1 4 3] nthpoints paddn1
+/p3 p2 f_1 def
+p3 [1 2 3] nthpoints paddn1 p3 [1 4 3] nthpoints paddn1
+end def
+
+begin_file 
+(Three Dragon and their shadows) begin_page 
+k [4 1] nthpoints f123 1 3 connectnetstopoints nadd
+k [4 2] nthpoints f123 1 3 connectnetstopoints nadd
+k [4 3] nthpoints f123 1 3 connectnetstopoints nadd
+end_page 
+end_file 
+
+wtf {quit} if

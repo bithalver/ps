@@ -1,0 +1,60 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+% rn.ps - Rombusz-negyzet
+
+my_init
+
+/threads 10 def
+
+/h 3 0 basicplane def
+
+/n1 h 1 2 4 2 1 connectbasiccplane def
+/n2 h 3 1 4 2 1 connectbasiccplane def
+
+/h1 [h [1 2 3] nthpoints pointmirror h [2 3] nthpoints ] def
+
+/n3 h1 1 2 4 1 2 connectbasiccplane def
+/n4 h1 3 1 4 1 2 connectbasiccplane def
+
+/r [ h [3 1 2] nthpoints h [1 2 3] nthpoints pointmirror ] def
+
+begin_file
+
+(rn_4) begin_page
+
+n1 [4 1 2] nthpoints padd n2 [1 2 3] nthpoints padd
+n1 4 nthpoint h1 2 nthpoint n3 3 nthpoint padd
+
+r [1 2 3] nthpoints padd r [3 4 1] nthpoints padd
+
+end_page
+
+(rn_3) begin_page
+
+r [1 2 3] nthpoints padd
+n1 [4 1 2] nthpoints padd n2 [1 2 3] nthpoints padd
+r [3 4 1] nthpoints padd
+n3 [1 2 3] nthpoints padd n4 [4 1 2] nthpoints padd
+
+n2 3 nthpoint h  3 nthpoint n4 4 nthpoint padd
+n1 4 nthpoint h1 2 nthpoint n3 3 nthpoint padd
+
+end_page
+
+(rn_2) begin_page
+
+h 1 threepoint padd
+n1 [4 1 2] nthpoints padd n2 [1 2 3] nthpoints padd
+n1 [2 3 4] nthpoints padd n2 [3 4 1] nthpoints padd
+h1 [3 1 2] nthpoints padd
+n3 [1 2 3] nthpoints padd n4 [4 1 2] nthpoints padd
+n3 [3 4 1] nthpoints padd n4 [2 3 4] nthpoints padd
+
+n2 3 nthpoint h  3 nthpoint n4 4 nthpoint padd
+n1 4 nthpoint h1 2 nthpoint n3 3 nthpoint padd
+
+end_page
+
+end_file

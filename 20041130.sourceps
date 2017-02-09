@@ -1,0 +1,30 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/style 10 def
+/background [0.8 0.8 0.8] def
+
+/d1 <</colors [0.3 0.3 0.3]>> def
+/d2 <</colors [0.3 0.3 0.8]>> def
+
+/h 3 210 basicplane def
+
+/p1 h 1 nth def
+/p2 h 2 nth def
+/p3 h 3 nth def
+
+/p12 h [1 2] nthpoints pointhalve def
+/p23 h [2 3] nthpoints pointhalve def
+/p31 h [3 1] nthpoints pointhalve def
+
+p12 p1 p31 d1 pdcn
+p2 p12 p23 d1 pdaddn1
+p23 p31 p3 d1 pdaddn1
+p31 p3 p23 d2 pdaddn1
+p1 p31 p12 d2 pdaddn1
+p12 p23 p2 d2 pdaddn1 /test exch def
+
+begin_file () begin_page  test nadd  end_page end_file

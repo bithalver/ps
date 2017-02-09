@@ -1,0 +1,92 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/leftmargin    2 cm def /rightmargin 2   cm def
+/bottommargin  1 cm def /topmargin   1.5 cm def
+
+/style 7 def
+/background [0.8 0.8 0.8] def
+
+my_init
+
+/colorA [0 0 0] def
+/colorB [0 0.5 0] def
+/colorC [1 1 1] def
+
+% /my_colors [
+%   [colorA colorA colorB colorB colorC colorC]
+%   [colorB colorB colorC colorC colorA colorA]
+%   [colorC colorC colorA colorA colorB colorB]
+%   [colorA colorA colorB colorB colorC colorC]
+%   [colorB colorB colorC colorC colorA colorA]
+%   [colorC colorC colorA colorA colorB colorB]
+% ] def
+
+ /my_colors [
+   [colorA colorA colorC colorC colorC colorC]
+   [colorB colorB colorA colorA colorA colorA]
+   [colorC colorC colorB colorB colorB colorB]
+   [colorA colorA colorC colorC colorC colorC]
+   [colorB colorB colorA colorA colorA colorA]
+   [colorC colorC colorB colorB colorB colorB]
+ ] def
+
+% /my_colors [
+%   [colorA colorA colorB colorB colorC colorC]
+%   [colorA colorA colorB colorB colorC colorC]
+%   [colorA colorA colorB colorB colorC colorC]
+%   [colorA colorA colorB colorB colorC colorC]
+%   [colorA colorA colorB colorB colorC colorC]
+%   [colorA colorA colorB colorB colorC colorC]
+% ] def
+
+% /style 3 def
+%/my_colors [
+%  [colorA colorA colorA colorA colorC colorA]
+%  [colorB colorB colorB colorB colorC colorB]
+%  [colorA colorA colorA colorA colorC colorA]
+%  [colorB colorB colorB colorB colorC colorB]
+%  [colorA colorA colorA colorA colorC colorA]
+%  [colorB colorB colorB colorB colorC colorB]
+%] def
+
+/mci [0 0 0 0 0 0] def % my color internal
+
+/my_color { 
+[/which_part] params
+
+/order mci which_part nth 1 add def 
+order 6 gt {/order order 6 sub def} if
+
+mci which_part order putnth
+
+my_colors order nth which_part cnth
+end } def
+
+/bt 3 0 basiccplane def
+
+/bt  [ bt [1 2 3 4] nthpoints 
+  bt [1 2] nthpoints pointhalve
+  bt [2 3] nthpoints pointhalve
+  bt [3 1] nthpoints pointhalve
+] def
+
+/bp 
+bt [7 1 5] nthpoints <</colors {1 my_color}>> pdcn
+bt [5 4 7] nthpoints <</colors {2 my_color}>> pdaddn1
+bt [5 2 6] nthpoints <</colors {3 my_color}>> pdaddn1
+bt [6 4 5] nthpoints <</colors {4 my_color}>> pdaddn1
+bt [6 3 7] nthpoints <</colors {5 my_color}>> pdaddn1
+bt [7 4 6] nthpoints <</colors {6 my_color}>> pdaddn1
+def
+
+/h 6 30 basiccplane def
+
+begin_file () begin_page  
+
+1 1 6 { /outer_for exch def
+  h [outer_for 7] nthpoints bp 2 5 connectnetstopoints nadd
+} for
+allnets aload pop exch pop
+end_page end_file

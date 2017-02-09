@@ -1,0 +1,83 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/leftmargin    3 cm def /rightmargin 2   cm def
+/bottommargin  1 cm def /topmargin   1.5 cm def
+/xPageSize      21 cm def /yPageSize    29.3 cm def
+
+% /style 1 def
+
+/threads 10 def
+
+/d << >> def
+% /d <</cb_type (border)>> def
+
+[4 8] [2 8] [2 6] d pdcn             [2 6] [2 4] [4 4] d 5 -1 roll pdaddn
+[4 0] [6 0] [6 2] d 5 -1 roll pdaddn [6 2] [6 4] [4 4] d 5 -1 roll pdaddn
+/egya exch def
+
+[4 0] [2 0] [2 2] d pdcn             [2 2] [2 4] [4 4] d 5 -1 roll pdaddn
+[4 8] [6 8] [6 6] d 5 -1 roll pdaddn [6 6] [6 4] [4 4] d 5 -1 roll pdaddn
+/egyb exch def
+
+[4 8] [0 8] [0 4] d pdcn             [0 4] [0 0] [4 0] d 5 -1 roll pdaddn
+[4 0] [8 0] [8 4] d 5 -1 roll pdaddn [8 4] [8 8] [4 8] d 5 -1 roll pdaddn
+/keret exch def
+
+[4 8] [3 8] [3 7] d pdcn             [3 7] [3 6] [4 6] d 5 -1 roll pdaddn
+[4 0] [5 0] [5 1] d 5 -1 roll pdaddn [5 1] [5 2] [4 2] d 5 -1 roll pdaddn
+/kettoa exch def
+
+[4 6] [3 6] [3 5] d pdcn             [3 5] [3 4] [4 4] d 5 -1 roll pdaddn
+[4 2] [5 2] [5 3] d 5 -1 roll pdaddn [5 3] [5 4] [4 4] d 5 -1 roll pdaddn
+/kettob exch def
+
+[4 4] [3 4] [3 3] d pdcn             [3 3] [3 2] [4 2] d 5 -1 roll pdaddn
+[4 4] [5 4] [5 5] d 5 -1 roll pdaddn [5 5] [5 6] [4 6] d 5 -1 roll pdaddn
+/kettoc exch def
+
+[4 2] [3 2] [3 1] d pdcn             [3 1] [3 0] [4 0] d 5 -1 roll pdaddn
+[4 6] [5 6] [5 7] d 5 -1 roll pdaddn [5 7] [5 8] [4 8] d 5 -1 roll pdaddn
+/kettod exch def
+
+% %%Page: "yinyang1" yinyang1
+% clearallnets egya nadd keret nadd
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "yinyang1" yinyang1
+% 
+% %%Page: "yinyang2" yinyang2
+% clearallnets egya nadd egyb nadd keret nadd
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "yinyang2" yinyang2
+% 
+% %%Page: "yinyang3" yinyang3
+% clearallnets egya nadd kettoa nadd keret nadd
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "yinyang3" yinyang3
+% 
+% %%Page: "yinyang4" yinyang4
+% clearallnets egya nadd egyb nadd
+% kettoa nadd kettob nadd kettoc nadd kettod nadd 
+% keret nadd
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "yinyang4" yinyang4
+
+begin_file
+(yinyang5) begin_page
+/threads 10 def
+clearallnets
+/s 0.9 def % Variable parameter 0<s<1
+/k 1 def
+0 1 16 { /i exch def
+  /l 1 k sub def
+  i even {
+    [ l 2 div  0 ] [ l 2 div  1 l sub ] [ 1 l 2 div sub  1 l sub ] pcn nadd
+  } {
+    [ 1 l 2 div sub  0 ] [ 1 l 2 div sub  1 l sub ] [ l 2 div  1 l sub ] pcn nadd
+  } ifelse
+  /k k s mul def
+} for
+end_page end_file

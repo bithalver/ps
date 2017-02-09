@@ -1,0 +1,40 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+/r (REC_DEPTH) 2 {exec cvi} GfEoCL def
+
+% (/usr/lib/my_ps/rgen_engine.ps) run
+
+begin_file
+
+() begin_page
+[0 0] [0 1] 60 6 [[1 1 0 0 60] [4 1 6 0 60] [1 4 0 6 60] 
+                  [2 2 3 3 60] [2 2 3 0 60] [2 2 0 3 60] ] r rgen
+end_page
+
+end_file wtf {quit} if
+
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 1 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 1 def" "/PS_REC_DEPTH 1 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 2 def" "/PS_REC_DEPTH 1 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 3 def" "/PS_REC_DEPTH 1 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 4 def" "/PS_REC_DEPTH 1 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 0 def" "/PS_REC_DEPTH 1 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 5 def" "/PS_REC_DEPTH 1 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 1 def" "/PS_REC_DEPTH 1 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 1 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 1 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 2 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 3 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 4 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 5 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 6 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 0 def" "/PS_RGEN_STYLE 5 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 10 def" "/PS_RGEN_STYLE 5 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 10 def" "/PS_RGEN_STYLE 0 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 10 def" "/PS_RGEN_STYLE 0 def" "/PS_REC_DEPTH 2 def"
+% g rgen_test.ps "/PS_STYLE 10 def" "/PS_RGEN_STYLE 0 def" "/PS_REC_DEPTH 3 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 0 def" "/PS_REC_DEPTH 3 def"
+% g rgen_test.ps "/PS_STYLE 9 def" "/PS_RGEN_STYLE 0 def" "/PS_REC_DEPTH 4 def"

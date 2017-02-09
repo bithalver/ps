@@ -1,0 +1,18 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% (/usr/lib/my_ps/rgen_engine.ps) run
+
+/d << >> def  
+% /d <</cb_type (border)>> def
+
+begin_file
+
+(Test4) begin_page
+[0 0] [0 1] 60 90 [[35 35 22 22 60]] 6 rgen
+end_page
+
+end_file

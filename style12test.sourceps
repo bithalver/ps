@@ -1,0 +1,13 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/threads 9 def /background [0.8 0.8 0.8] def
+/style 12 def  /style12colors [[1 0 0][1 0 0][0 0 0][0.8 0.8 0.8][0.7 0.7 0.7][0.6 0.6 0.6][0.5 0.5 0.5][0.4 0.4 0.4][0.3 0.3 0.3]] def
+/pagenamecolor [0.2 0.2 0.2] def
+
+my_init
+
+begin_file
+(1st test for style 12) begin_page [0 1][0 0][1 0] pcn nadd [1 1][1 0][0 0] pcn nadd end_page
+(2nd test for style 12) begin_page [1 0][0 0][0 1] pcn nadd [0 0][1 0][1 1] pcn nadd end_page

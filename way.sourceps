@@ -1,0 +1,64 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/d << >> def % /d <</cb_type (border)>> def
+/threads 10 def /style 0 def
+
+/alllevel 1 def % Ha 0, csak a legmelyebb szint latszik.
+                % Ha 1, mind.
+                % Ha 2, a lista az alllevels-ben van.(A 0 a legmelyebb szint !)
+/alllevels [0 1 2 3 4 5 6 7 8 9] def
+
+/rgen { dup /maxdepth exch def rgen_1 } def
+
+/rgen_1 { % centerpoint middlepoint angle totalweight parts depth -> 
+[/cp /mp /angle /tw /parts /depth] params
+  /cv cp mp ppointsub def % centervector
+  /fp cp cv    angle     pointrotate ppointadd def % firstpoint
+  /lp cp cv -1 angle mul pointrotate ppointadd def % lastpoint
+
+  /fv fp mp ppointsub def % firstvector
+  /lv lp mp ppointsub def % lastvector
+
+  0 depth eq 1 alllevel eq 0 alllevel eq or and
+  alllevel 1 eq depth maxdepth ne and or
+  2 alllevel eq  depth alllevels member and or { fp mp lp d pdadd } if
+
+  depth 1 ge {
+    1 1 parts length { /J exch def
+      /pi parts J nth def
+      /cx pi 1 nth def /cy pi 2 nth def
+      /mx pi 3 nth def /my pi 4 nth def /iangle pi 5 nth def
+
+      /icp fv cx tw div ppointmul 
+           lv cy tw div ppointmul ppointadd 
+           mp ppointadd def
+      /imp fv mx tw div ppointmul 
+           lv my tw div ppointmul ppointadd 
+           mp ppointadd def
+
+      icp imp iangle tw parts depth 1 sub rgen_1
+
+    } for
+  } if
+
+  allnets end /allnets exch def
+} def % 
+
+/r {
+  /I exch def
+  [(Way_) I 100 lt {(0)} if I 3 string cvs ] addstrings begin_page
+  % /lastthread {threads 2 idiv} def
+  /a1 I def /a2 a1 -1 mul def
+  [0 0] [1 1] a1 20 [[11 10 2 19 {depth even {a1}{a2} ifelse}]] 5 rgen
+  end_page
+} def
+
+begin_file
+ 10 10  80 {r} for
+ 82  2  98 {r} for
+100 10 160 {r} for
+end_file wtf {quit} if

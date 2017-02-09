@@ -1,0 +1,66 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/leftmargin    -1 cm def /rightmargin 0   cm def
+/bottommargin  2 cm def /topmargin   1.5 cm def
+/xPageSize      15 cm def /yPageSize    13 cm def
+
+systemdict /ps_param known not {/ps_param 1 def} if
+/rvn ps_param def
+% /rvn 1 def % Rotate Variation Number
+
+/rv % Rotating variations
+    % Elements   1 : Name
+    %            2 : (outer) threads
+    %            3 : inner threads
+    %            4 : dict for [  0  10] [0 0] [ 10   0]
+    %            5 : dict for [ 10   0] [0 0] [  0 -10]
+    %            6 : dict for [  0 -10] [0 0] [-10   0]
+    %            7 : dict for [-10   0] [0 0] [  0  10]
+[
+  [ (1010) 10 250 [ /st on /tl off /br off /tr off ] [ /st on /bl off /tr off ]
+                 [ /st on /bl off ] [ /st on ] ]
+  [ (46_1) 4 250 [ /st on /bl off /tr off ] [ /st on /bl off /tr off ]
+               [ /st on /bl off /tr off ] [ /st on /bl off /tr off ] ]
+  [ (46_2) 4 250 [ /st on /bl off /tr off ] [ /st on /tl off /br off ]
+               [ /st on /bl off /tr off ] [ /st on /tl off /br off ] ]
+  [ (46_3) 4 250 [ /st on /tl off /br off ] [ /st on /tl off /br off ]
+               [ /st on /tl off /br off ] [ /st on /tl off /br off ] ]
+  [ (2061) 10 250 [ /st on /bl off /tr off ] [ /st on /bl off /tr off ]
+                [ /st on /bl off /tr off ] [ /st on /bl off /tr off ] ]
+  [ (2062) 10 250 [ /st on /bl off /tr off ] [ /st on /tl off /br off ]
+                [ /st on /bl off /tr off ] [ /st on /tl off /br off ] ]
+  [ (2063) 10 250 [ /st on /tl off /br off ] [ /st on /tl off /br off ]
+                [ /st on /tl off /br off ] [ /st on /tl off /br off ] ]
+] def
+
+begin_file
+
+% 5 1 7 { /rvn exch def
+/a rv rvn nth def % 'a'-ban vannak az akualis rajz adatai
+
+/threads a 2 nth def
+/it a 3 nth def % inner threads
+0 1 it { /i exch def /fv i def
+  % clearallnets
+  [ (Rot_)
+    i 10 lt {(0)} if
+    i 100 lt {(0)} if
+    i 3 string cvs ] addstrings
+  begin_page
+  [  0  10] [0 0] [ 10   0] <</cb_type (subnets) /cb_subtype <</threads it /firstthread i /lastthread i a 4 nth aload pop >> >> pdadd
+  [ 10   0] [0 0] [  0 -10] <</cb_type (subnets) /cb_subtype <</threads it /firstthread i /lastthread i a 5 nth aload pop >> >> pdadd
+  [  0 -10] [0 0] [-10   0] <</cb_type (subnets) /cb_subtype <</threads it /firstthread i /lastthread i a 6 nth aload pop >> >> pdadd
+  [-10   0] [0 0] [  0  10] <</cb_type (subnets) /cb_subtype <</threads it /firstthread i /lastthread i a 7 nth aload pop >> >> pdadd
+
+  % gsave fitto1page drawallnets showpage grestore
+  end_page
+} for
+
+% } for
+
+end_file wtf {quit} if
+quit

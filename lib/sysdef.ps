@@ -1,0 +1,158 @@
+/my_init { 
+/usedfonts [ [/TimesNew /TextFont 12] ] def % Used in fonts.ps
+
+% systemdict /style known not {/style 0 def} if
+% systemdict /numbering known not {/numbering 0 def} if
+systemdict /wtf known not {/wtf off def} if % write to file
+% Next line added on 20040214
+systemdict /WINDOWS known not {/WINDOWS off def} if % if it runs under windows (no /dev/urandom)
+systemdict /currentdate known not {/currentdate () def} if
+% systemdict /epsfile known not {/epsfile off def} if
+systemdict /my_file_name known not {
+  /my_file_name (default) def
+} {
+  my_file_name (.ps) search { exch pop exch pop /my_file_name exch def} {pop}ifelse
+} ifelse
+
+% Read the ENV file (contains the environment) added on 20030319
+systemdict /ENV_FILE known {
+  ENV_FILE status { pop pop pop pop ENV_FILE run } if
+} if
+
+% If there are any commandline arguments, execute all of them.
+userdict /ARGUMENTS known {ARGUMENTS {cvx exec} forall} if
+
+% Usually there is no function definition in this file, 
+% but it strongly belongs to here
+/get_from_env_or_commandline { 
+  % PS_ENVNAME default_value_if_not_found post_process_for_env_or_cl 
+  %  -> value
+% This function tries to get a variable from the environment or commandline
+% with post-processing, or, 
+% if the needed environment variable doesn't exist, 
+% gives back the given default.
+% There is no return value from this function.
+
+1 dict begin
+  /p exch def /d exch def /e exch (PS_) exch addstring def
+  e where          % If the given environment variable _or_ command line parameter exists,
+    {pop e cvx p   % then get it, make it executable and run the post-processing 
+    /FOUND true gnv}
+    {d p}          % else give the default value and run the post-processing.
+  ifelse
+end } def
+/GfEoCL {get_from_env_or_commandline} def
+
+/GfEoCL_cm_inch {
+% PS_ENVNAME default_value_if_not_found
+[/p /d] params
+  /FOUND false def
+                 p (_INCH) addstring d {exec inch 0.5 add cvi} GfEoCL
+  FOUND not {pop p (_CM)   addstring d {exec cm   0.5 add cvi} GfEoCL} if  
+  FOUND not {pop p                   d {}                      GfEoCL} if  
+end} def
+
+% The initial values can be set from the file _before_ calling my_init.
+% Added on 20040220
+
+% How much thread the net has (how dense is it)
+% The number should be integer and greater than zero
+/threads (THREADS) /threads where {pop threads}{20} ifelse {} GfEoCL def
+
+% What is the style
+% 0<= <=9
+/style (STYLE) /style where {pop style}{0} ifelse {} GfEoCL def
+
+% Numbering is only for those people who want to build.
+% It is usually just for debugging.
+% 0<= <=2
+/numbering (NUMBERING) /numbering where {pop numbering}{0} ifelse {} GfEoCL def
+
+% The first thread in the net
+% The 'normal' begining is 0.
+/firstthread (FIRSTTHREAD) 0 {} GfEoCL def
+
+% The last thread in the net
+% The 'normal' ending is the actual number of threads.
+/lastthread (LASTTHREAD) {threads} cvlit {cvx} GfEoCL def
+
+% This function is called BEFORE drawing every net
+% Usually it is empty.
+/predraw (PREDRAW) {} cvlit {cvx} GfEoCL def
+
+% This function is called AFTER drawing every net
+% Usually it is empty.
+/postdraw (POSTDRAW) {} cvlit {cvx} GfEoCL def
+
+% The size of the page (all lines define A4):
+% /xPageSize 8.26 inch def /yPageSize 11.7 inch def
+% /xPageSize 21 cm def /yPageSize 29.7 cm def
+% /xPageSize 595 def /yPageSize 842 def
+
+/xPageSize (XSIZE) /xPageSize where {pop xPageSize}{595} ifelse GfEoCL_cm_inch def
+/yPageSize (YSIZE) /yPageSize where {pop yPageSize}{842} ifelse GfEoCL_cm_inch def
+
+% The margins:
+/leftmargin   (LEFTMARGIN)   2.5 cm GfEoCL_cm_inch def
+/rightmargin  (RIGHTMARGIN)  2.5 cm GfEoCL_cm_inch def
+/bottommargin (BOTTOMMARGIN) 2.5 cm GfEoCL_cm_inch def
+/topmargin    (TOPMARGIN)    2.5 cm GfEoCL_cm_inch def
+
+% What is the default dictionary for _all_ nets
+/defaultdict (DEFAULTDICT) <<>> {} GfEoCL def
+
+% The width of the line in pixels, if it's 0, then it is the thinnest posible
+/linewidth (LINEWIDTH) 0 {} GfEoCL def
+% 0 setlinewidth 
+
+% What is the background color
+/background (BACKGROUND) /background where {pop background}{[1 1 1]} ifelse {} GfEoCL def
+
+% If you want multiple colored background, you can specify rectangles with different color
+% The syntax is: [elem+], elem is : [[x1 y1 x2 y2] [r g b]]
+% [x1 y1] and [x2 y2] are the corners, given in parts of the whole 
+% (example: [0 0] is the lower left corner, [0 0.5] is the halfpoint of the left side, etc)
+% Example: [[[0.5 0 1 1][1 0 0]]] paints the right half red
+/backgrounds (BACKGROUNDS) /backgrounds where {pop backgrounds}{[]} ifelse {} GfEoCL def
+
+% What is the default color for nets.
+/colors (COLOR) /colors where {pop colors}{[0 0 0]} ifelse {} GfEoCL def % The Red, Green, Blue components
+
+% What is the color of the pagename, default is black. Added on 20040222
+/pagenamecolor (PAGENAMECOLOR) /pagenamecolor where {pop pagenamecolor}{[0 0 0]} ifelse {} GfEoCL def
+
+% These are the color used only in style 12. Added on 20040222
+% The default is use black for odd and white for even pieces.
+/style12colors (STYLE12COLORS) /style12colors where {pop style12colors}{[[0 0 0][1 1 1]]} ifelse {} GfEoCL def
+
+% Added on 20031027
+% Maybe we want a black-n'-white drawing (for example, to print)
+% The background will be white, all drawings and the pagename will be black.
+/blacknwhite (BLACKNWHITE) /blacknwhite where {pop blacknwhite}{false} ifelse {exec any2bool} GfEoCL def
+% blacknwhite any2str == blacknwhite type any2str ==
+
+/defaultallnets (ALLNETS) emptynet {} GfEoCL def
+
+/rgen_style (RGEN_STYLE) 0 {} GfEoCL def
+
+% The cb_* things are for chessboard
+/cb_type (CB_TYPE) () {} GfEoCL def
+/cb_subtype (CB_SUBTYPE) off {} GfEoCL def
+
+% Init the random number generator
+% If the user doesn't give a number (or gives 0),
+% then initialize from /dev/urandom with the function initrand.
+/my_srand (SRAND) 0 {} GfEoCL def
+my_srand 0 eq {initrand} {my_srand srand} ifelse
+
+% Printing allnets to .out.ps is disabled by default. Added on 20071225.
+% Even if it is enabled, it will be a comment, and will not be part of created pdf when converted.
+/print_allnets (ALLNETSPRINTING) false {exec any2bool} GfEoCL def
+
+% Place-holders (for global values):
+/ANN 0 def % Actual Net Number, used in draw.ps.
+/SCALE 0 def % Used in draw.ps
+/LADDERS [] def % Used in draw.ps only for style 1 (the ladder)
+/PREVLINEWIDTH linewidth def % Used in draw.ps to minimize the setlinewidth statements in output
+/RRAND rrand def % To have the real init number for random, added on 20071122
+} def % end of my_init

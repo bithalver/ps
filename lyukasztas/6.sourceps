@@ -1,0 +1,47 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 10 def
+
+/h 6 90 basicplane def
+/n1 h 2 1 4 1 2 connectbasicplane def /n2 h 3 2 4 1 2 connectbasicplane def
+/n3 h 4 3 4 1 2 connectbasicplane def /n4 h 5 4 4 1 2 connectbasicplane def
+/n5 h 6 5 4 1 2 connectbasicplane def /n6 h 1 6 4 1 2 connectbasicplane def
+
+/p12 [ [h 1] [h 2] [h 3] [h 4] [h 5] [h 6]
+   [n1 3] [n1 4] [n2 3] [n2 4] [n3 3] [n3 4] 
+   [n4 3] [n4 4] [n5 3] [n5 4] [n6 3] [n6 4] ] buildplane [[0 0]] arrayadd def
+
+h [1 2 3] nthpoints pcn
+h [2 3 4] nthpoints 4 -1 roll paddn
+h [3 4 5] nthpoints 4 -1 roll paddn
+h [4 5 6] nthpoints 4 -1 roll paddn
+h [5 6 1] nthpoints 4 -1 roll paddn
+h [6 1 2] nthpoints 4 -1 roll paddn
+/belso61 exch def
+
+/p11 h 1 nthpoint 2 ppointmul def
+/p12 h 2 nthpoint 2 ppointmul def
+/p13 h 3 nthpoint 2 ppointmul def
+/p14 h 4 nthpoint 2 ppointmul def
+/p15 h 5 nthpoint 2 ppointmul def
+/p16 h 6 nthpoint 2 ppointmul def
+
+p11 h [1 2] nthpoints pcn
+p12 h [2 3] nthpoints 4 -1 roll paddn
+p13 h [3 4] nthpoints 4 -1 roll paddn
+p14 h [4 5] nthpoints 4 -1 roll paddn
+p15 h [5 6] nthpoints 4 -1 roll paddn
+p16 h [6 1] nthpoints 4 -1 roll paddn
+/kulso61 exch def
+
+begin_file
+
+(12_1) begin_page
+belso61 nadd kulso61 nadd
+end_page
+
+end_file

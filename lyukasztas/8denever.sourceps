@@ -1,0 +1,76 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 10 def
+
+/h 8 22.5 basiccplane def
+
+/n1 h 9 1 4 2 1 connectbasicplane def
+/n2 h 9 2 4 2 1 connectbasicplane def
+/n3 h 9 3 4 2 1 connectbasicplane def
+/n4 h 9 4 4 2 1 connectbasicplane def
+/n5 h 9 5 4 2 1 connectbasicplane def
+/n6 h 9 6 4 2 1 connectbasicplane def
+/n7 h 9 7 4 2 1 connectbasicplane def
+/n8 h 9 8 4 2 1 connectbasicplane def
+
+n1 [2 1 4] nthpoints pcn
+n2 [2 1 4] nthpoints 4 -1 roll paddn
+n3 [2 1 4] nthpoints 4 -1 roll paddn
+n4 [2 1 4] nthpoints 4 -1 roll paddn
+n5 [2 1 4] nthpoints 4 -1 roll paddn
+n6 [2 1 4] nthpoints 4 -1 roll paddn
+n7 [2 1 4] nthpoints 4 -1 roll paddn
+n8 [2 1 4] nthpoints 4 -1 roll paddn
+/belso81 exch def
+
+/h1 n1 4 1 3 2 1 connectbasicplane def
+/h2 n2 4 1 3 2 1 connectbasicplane def
+/h3 n3 4 1 3 2 1 connectbasicplane def
+/h4 n4 4 1 3 2 1 connectbasicplane def
+/h5 n5 4 1 3 2 1 connectbasicplane def
+/h6 n6 4 1 3 2 1 connectbasicplane def
+/h7 n7 4 1 3 2 1 connectbasicplane def
+/h8 n8 4 1 3 2 1 connectbasicplane def
+
+h1 [1 2 3] nthpoints pcn
+h2 [1 2 3] nthpoints 4 -1 roll paddn
+h3 [1 2 3] nthpoints 4 -1 roll paddn
+h4 [1 2 3] nthpoints 4 -1 roll paddn
+h5 [1 2 3] nthpoints 4 -1 roll paddn
+h6 [1 2 3] nthpoints 4 -1 roll paddn
+h7 [1 2 3] nthpoints 4 -1 roll paddn
+h8 [1 2 3] nthpoints 4 -1 roll paddn
+/kozep81 exch def
+
+/k1 h1 3 2 4 1 2 connectbasicplane def
+/k2 h2 3 2 4 1 2 connectbasicplane def
+/k3 h3 3 2 4 1 2 connectbasicplane def
+/k4 h4 3 2 4 1 2 connectbasicplane def
+/k5 h5 3 2 4 1 2 connectbasicplane def
+/k6 h6 3 2 4 1 2 connectbasicplane def
+/k7 h7 3 2 4 1 2 connectbasicplane def
+/k8 h8 3 2 4 1 2 connectbasicplane def
+
+k1 [4 1 2] nthpoints pcn
+k2 [4 1 2] nthpoints 4 -1 roll paddn
+k3 [4 1 2] nthpoints 4 -1 roll paddn
+k4 [4 1 2] nthpoints 4 -1 roll paddn
+k5 [4 1 2] nthpoints 4 -1 roll paddn
+k6 [4 1 2] nthpoints 4 -1 roll paddn
+k7 [4 1 2] nthpoints 4 -1 roll paddn
+k8 [4 1 2] nthpoints 4 -1 roll paddn
+/kulso81 exch def
+
+begin_file
+
+(8 bats) begin_page
+belso81 nadd
+kozep81 nadd
+kulso81 nadd
+end_page
+
+end_file

@@ -1,0 +1,85 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% n ly3 plane   n-melysegu szabalyos haromszog kulso-belso csucsait kesziti el
+/ly3 { [/n] params
+  /k 3 90 basicplane def
+  % /k [ [0 4] [4 0] [0 0] ] def
+  /gy [] def
+  0 1 n { /i exch def
+    /gy [ gy aload pop i k [1 2 3] nthpoints ly3_1 aload pop ] def
+  } for
+  gy
+end} def
+
+
+% n p1 p2 p3 ly3_1  Alrutin
+/ly3_1 { [/n /p1 /p2 /p3] params 
+  /ve [ p1 p2 p3 ] def
+  n 1 ge { /ve [ ve aload pop of ] def } if
+  n 2 eq {
+    /ve [
+    1 p1 ve [1 3] nthpoints ly3_1 aload pop
+    1 ve [1] nthpoints p2 ve [2] nthpoints ly3_1 aload pop
+    1 ve [3 2] nthpoints p3 ly3_1 aload pop
+    ] def
+  } if
+  ve
+end} def
+
+% p1 p2 p3 of k12 k23 k31  Az oldalfelezopontokat adja
+/of { [ p1 p2 p3 ] params
+  p1 p2 pointhalve
+  p2 p3 pointhalve
+  p3 p1 pointhalve
+end } def
+
+/bp 2 ly3 def
+
+
+%         01
+%       09  07
+%     06  08  04
+%   15  13  12  10
+% 03  14  05  11  02
+
+/p0108 bp [ 1  8] nthpoints pointhalve def
+/p1008 bp [10  8] nthpoints pointhalve def
+/p1508 bp [15  8] nthpoints pointhalve def
+
+/p0407 bp [ 4  7] nthpoints pointhalve def
+/p0609 bp [ 6  9] nthpoints pointhalve def
+/p1213 bp [12 13] nthpoints pointhalve def
+
+bp [ 7  1  9] nthpoints pcn
+bp [ 7  9  8] nthpoints 4 -1 roll paddn
+bp [ 9  6  8] nthpoints 4 -1 roll paddn
+bp [ 8  4 10] nthpoints 4 -1 roll paddn
+bp [ 6 15 13] nthpoints 4 -1 roll paddn
+bp [ 6 13 15] nthpoints 4 -1 roll paddn
+bp [ 4 10 12] nthpoints 4 -1 roll paddn
+bp [ 4  7  8] nthpoints 4 -1 roll paddn
+bp [10 12  4] nthpoints 4 -1 roll paddn
+bp [12  8 13] nthpoints 4 -1 roll paddn
+bp [13 12  8] nthpoints 4 -1 roll paddn
+
+bp  8 nthpoint p0108 bp  7 nthpoint 4 -1 roll paddn
+bp  1 nthpoint p0108 bp  9 nthpoint 4 -1 roll paddn
+bp  8 nthpoint p1008 bp 12 nthpoint 4 -1 roll paddn
+bp 10 nthpoint p1008 bp  4 nthpoint 4 -1 roll paddn
+bp  8 nthpoint p1508 bp 13 nthpoint 4 -1 roll paddn
+bp 15 nthpoint p1508 bp  6 nthpoint 4 -1 roll paddn
+
+bp  8 nthpoint p0609 bp  6 nthpoint 4 -1 roll paddn
+bp  8 nthpoint p0609 bp  9 nthpoint 4 -1 roll paddn
+bp  8 nthpoint p0407 bp  4 nthpoint 4 -1 roll paddn
+bp  8 nthpoint p0407 bp  7 nthpoint 4 -1 roll paddn
+bp  8 nthpoint p1213 bp 12 nthpoint 4 -1 roll paddn
+bp  8 nthpoint p1213 bp 13 nthpoint 4 -1 roll paddn
+/mind exch def
+
+
+begin_file (3) begin_page mind nadd end_page end_file

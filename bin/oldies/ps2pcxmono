@@ -1,0 +1,5 @@
+#!/bin/bash
+FN=$1
+shift
+cat $FN | gs -q -sDEVICE=pcxmono -dNOPAUSE -sOutputFile=${FN}.pcx $@
+unset FN

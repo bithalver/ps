@@ -1,0 +1,178 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/leftmargin    2   cm def /rightmargin 1   cm def
+/bottommargin  4   cm def /topmargin   3   cm def
+/xPageSize      21   cm def /yPageSize    29.3 cm def
+
+/threads 10 def
+% /style 4 def
+
+/k 3 90 basicplane def
+/k1 k 1 nthpoint def
+/k2 k 2 nthpoint def
+/k3 k 3 nthpoint def
+
+/k4 k1 k2 k3 pointmirror def
+/k5 k2 k3 pointhalve def
+
+/k12 k1 k2 pointhalve def
+/k24 k2 k4 pointhalve def
+/k34 k4 k3 pointhalve def
+/k13 k3 k1 pointhalve def
+
+begin_file
+
+(R1) begin_page
+
+1 1 10 { /i exch def
+  [ k4 point k2 point i nthpart ]
+  [ k4 point k1 point i nthpart ]
+  [ k4 point k3 point i nthpart ] << /threads i 2 mul >> pdcn nadd
+} for
+
+end_page
+
+% %%Page: "R2" R2
+% clearallnets 
+% 
+% 1 1 10 { /i exch def
+%   [ k2 point k1 point i nthpart ]
+%   [ k2 point k3 point i nthpart ]
+%   [ k2 point k4 point i nthpart ] << /threads i 2 mul >> pdcn nadd
+% } for
+% 
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "R2" R2
+% 
+% %%Page: "R3" R3
+% clearallnets 
+% 
+% 1 1 10 { /i exch def
+%   [ k2 point k1 point i nthpart ]
+%   [ k2 point k3 point i nthpart ]
+%   [ k2 point k4 point i nthpart ] << /threads i 2 mul >> pdcn nadd
+%   [ k3 point k1 point i nthpart ]
+%   [ k3 point k2 point i nthpart ]
+%   [ k3 point k4 point i nthpart ] << /threads i 2 mul >> pdcn nadd
+% } for
+% 
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "R3" R3
+
+(R4) begin_page
+
+/be [ [k1 k2 k3 k4] 
+    [[1 1 1 << >>] [2 2 2 << >>] [3 3 3 << >>] [4 4 4 << >>] ] ] def
+1 1 5 { /i exch def
+  [ k2 point k1 point i nthpart ]
+  [ k2 point k3 point i nthpart ]
+  [ k2 point k4 point i nthpart ] << /threads i 2 mul >> pdcn
+  [ k3 point k1 point i nthpart ]
+  [ k3 point k2 point i nthpart ]
+  [ k3 point k4 point i nthpart ] << /threads i 2 mul >> pdcn
+  [ k4 point k2 point i nthpart ]
+  [ k4 point k1 point i nthpart ]
+  [ k4 point k3 point i nthpart ] << /threads i 2 mul >> pdcn
+  [ k1 point k2 point i nthpart ]
+  [ k1 point k4 point i nthpart ]
+  [ k1 point k3 point i nthpart ] << /threads i 2 mul >> pdcn
+  be netsadd netsadd netsadd netsadd /be exch def
+} for
+% be aload pop pop k1 pointfind pop == % 114
+% be aload pop pop k2 pointfind pop == % 115
+% be aload pop pop k3 pointfind pop == % 116
+% be aload pop pop k4 pointfind pop == % 117
+
+be nadd
+end_page
+
+% %%Page: "R5" R5
+% clearallnets 
+% /ki [ [] []] def
+% 1 1 5 { /i exch def
+%   [ k5 point k13 point i nthpart ]
+%   [ k5 point k3  point i nthpart ]
+%   [ k5 point k34 point i nthpart ] << /threads i 2 mul >> pdcn
+%   [ k5 point k12 point i nthpart ]
+%   [ k5 point k2  point i nthpart ]
+%   [ k5 point k24 point i nthpart ] << /threads i 2 mul >> pdcn
+%   [ k5 point k12 point i nthpart ]
+%   [ k5 point k1  point i nthpart ]
+%   [ k5 point k13 point i nthpart ] << /threads i 2 mul >> pdcn
+%   [ k5 point k24 point i nthpart ]
+%   [ k5 point k4  point i nthpart ]
+%   [ k5 point k34 point i nthpart ] << /threads i 2 mul >> pdcn
+%   ki netsadd netsadd netsadd netsadd /ki exch def
+% } for
+% ki aload pop pop k1 pointfind pop == % 7
+% ki aload pop pop k2 pointfind pop == % 5
+% ki aload pop pop k3 pointfind pop == % 2
+% ki aload pop pop k4 pointfind pop == % 8
+% 
+% ki nadd
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "R5" R5
+
+(R6) begin_page
+/be [ [k1 k2 k3 k4] 
+    [[1 1 1 << >>] [2 2 2 << >>] [3 3 3 << >>] [4 4 4 << >>] ] ] def
+1 1 5 { /i exch def
+  [ k2 point k1 point i nthpart ]
+  [ k2 point k3 point i nthpart ]
+  [ k2 point k4 point i nthpart ] << /threads i 2 mul >> pdcn
+  [ k3 point k1 point i nthpart ]
+  [ k3 point k2 point i nthpart ]
+  [ k3 point k4 point i nthpart ] << /threads i 2 mul >> pdcn
+  [ k4 point k2 point i nthpart ]
+  [ k4 point k1 point i nthpart ]
+  [ k4 point k3 point i nthpart ] << /threads i 2 mul >> pdcn
+  [ k1 point k2 point i nthpart ]
+  [ k1 point k4 point i nthpart ]
+  [ k1 point k3 point i nthpart ] << /threads i 2 mul >> pdcn
+  be netsadd netsadd netsadd netsadd /be exch def
+} for
+
+% be aload pop pop k1 pointfind pop == % 114
+% be aload pop pop k2 pointfind pop == % 115
+% be aload pop pop k3 pointfind pop == % 116
+% be aload pop pop k4 pointfind pop == % 117
+% be aload pop pop length == quit
+
+/be12 be   aload pop pop [54 55] nthpoints be   56 57 connectnetstopoints def
+/be21 be   aload pop pop [54 56] nthpoints be   55 57 connectnetstopoints def
+/be22 be21 aload pop pop [54 55] nthpoints be21 56 57 connectnetstopoints def
+
+be nadd 
+be12 nadd  be21 nadd be22 nadd
+end_page
+
+% %%Page: "R7" R7
+% clearallnets 
+% /ki [ [] []] def
+% 1 1 5 { /i exch def
+%   [ k5 point k13 point i nthpart ]
+%   [ k5 point k3  point i nthpart ]
+%   [ k5 point k34 point i nthpart ] << /threads i 2 mul >> pdcn
+%   [ k5 point k12 point i nthpart ]
+%   [ k5 point k2  point i nthpart ]
+%   [ k5 point k24 point i nthpart ] << /threads i 2 mul >> pdcn
+%   [ k5 point k12 point i nthpart ]
+%   [ k5 point k1  point i nthpart ]
+%   [ k5 point k13 point i nthpart ] << /threads i 2 mul >> pdcn
+%   [ k5 point k24 point i nthpart ]
+%   [ k5 point k4  point i nthpart ]
+%   [ k5 point k34 point i nthpart ] << /threads i 2 mul >> pdcn
+%   ki netsadd netsadd netsadd netsadd /ki exch def
+% } for
+% 
+% /ki12 ki   aload pop pop [7 5] nthpoints ki   2 8 connectnetstopoints def
+% /ki21 ki   aload pop pop [7 2] nthpoints ki   5 8 connectnetstopoints def
+% /ki22 ki21 aload pop pop [7 5] nthpoints ki21 2 8 connectnetstopoints def
+% 
+% ki nadd ki12 nadd ki21 nadd ki22 nadd
+% gsave fitto1page drawallnets showpage grestore
+% %%EndPage: "R7" R7

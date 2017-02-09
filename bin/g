@@ -1,0 +1,6 @@
+#!/bin/bash
+OUT=`basename ${1} .sourceps`.out.ps
+`dirname $0`/gw "$@"
+xdg-open $OUT
+# rm $OUT
+unset OUT

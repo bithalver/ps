@@ -1,0 +1,3 @@
+./gw DT_2.ps
+cat DT_2.out.ps |./uniq.pl >DT_2.opt.ps
+diff DT_2.out.ps DT_2.opt.ps 

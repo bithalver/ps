@@ -1,0 +1,52 @@
+%!PS-Adobe-3.0                                                                  
+%%DocumentData: Clean7Bit                                                       
+%%EndComments                                                                   
+
+2.8346457 dup scale
+.1 setlinewidth
+
+/ch { % x, y (crosshair) -> 
+rmoveto -2 0 rmoveto 4 0 rlineto -2 -2 rmoveto 0 4 rlineto 0 -2 rmoveto } def
+
+10 10 moveto
+.1 setgray
+ 190    0 rlineto
+   0  171 rlineto
+-190    0 rlineto
+   0 -171 rlineto
+  95    0 rmoveto
+   0  171 rlineto
+stroke
+16.75 29 moveto
+
+currentpoint
+newpath
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 19 add
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 19 add
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 51 add
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 19 add
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 19 add
+2.75 0 360 arc stroke
+111.75 29
+newpath
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 19 add
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 19 add
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 51 add
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 19 add
+2.75 0 360 arc -2.75 0 rmoveto currentpoint stroke 19 add
+2.75 0 360 arc stroke
+
+0 setgray
+.4 setlinewidth
+%23 173 moveto 74 0 rlineto stroke
+%/Helvetica findfont 6 scalefont setfont 
+%23 168 moveto (Jegyzet) dup stringwidth pop neg 74 add 2 div 0 rmoveto show
+%23 166 moveto 74 0 rlineto stroke
+.1 setlinewidth
+[.5 .5] 0 setdash
+173 -8 21 { 24 exch moveto 72 0 rlineto } for
+24 4 98 { 21 moveto 0 152 rlineto } for stroke
+
+173 -8 21 { 119 exch moveto 72 0 rlineto } for
+119 4 193 { 21 moveto 0 152 rlineto } for stroke
+showpage

@@ -1,0 +1,37 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/rotatelist { %  firstpoint [list of angles] -> [list of points]
+[/firstvector /angles] params
+  /angles_length angles length def /actual_angle 0 def
+  [ firstvector 
+  1 1 angles_length { 
+    /a exch def
+	/actual_angle  actual_angle angles a nth sub def 
+	firstvector actual_angle  pointrotate
+  } for ]
+end
+} def 
+
+/page_name (PS_PAGE_NAME) () {} GfEoCL def
+
+begin_file page_name begin_page 
+
+/szog 60 def
+
+/elsov [0 1] 15 pointrotate def
+
+/szogek elsov [szog 2 div szog dup szog 3 mul 2 div] rotatelist [[0 0]] arrayadd def
+
+
+szogek [1 6 2] nthpoints padd
+szogek [2 6 3] nthpoints padd
+szogek [3 6 4] nthpoints padd
+szogek [4 6 5] nthpoints padd
+
+
+
+end_page end_file

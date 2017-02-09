@@ -1,0 +1,19 @@
+#!/bin/bash
+#PS to MPEG converter by Bithalver 20000706
+#The parameter is the name of the PostSript file, without extension.
+#The output file name will be the same, with mpg extension
+#This version uses PBM files
+export FILENAME=$1
+export RVN=$2
+
+echo "$FILENAME: 1st phase start `date`" >>ps2mpg.log
+./ps2pbm_pages_rotating $FILENAME $RVN 1>/dev/null
+
+echo "$FILENAME: 2nd phase start `date`" >>ps2mpg.log
+convert -crop 352x288+24-48 \
+`ls -1 ${FILENAME}[0-9][0-9][0-9].pbm` \
+mpg:${FILENAME}${RVN}.mpg 2>/dev/null
+
+echo "$FILENAME: cleaning up `date`" >>ps2mpg.log
+rm ${FILENAME}[0-9][0-9][0-9].pbm
+echo "$FILENAME: stop `date`" >>ps2mpg.log

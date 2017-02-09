@@ -1,0 +1,62 @@
+% Adatstrukturak :
+% corner  : x y , ahol x es y int vagy real
+% point   : [ corner ]
+% plane   : [ point(1) .. point(n) ]
+% cplane  : [ point(1) point(n) centerpoint ]
+% netfcl  : [ first center last dict] , az elso 3 egesz
+% netfcl2 : [ firstpoint centerpoint lastpoint ]
+% nets    : [ [ point(1) .. point(n) ] [ netfcl(1) .. netfcl(m) ] ]
+
+Lehetseges stilusok :
+
+/style  0 def % "Hagyomanyos" iv, vonalakbol
+/style  1 def % Lyukasztas-rajz
+/style  2 def % Parhuzamos vonalak
+/style  3 def % Parhuzamos vonalak + keret
+/style  4 def % Csak keret
+/style 13 def % a 4 "inverze", csak a p1 -> p3 vonal
+/style  5 def % Vastag parhuzamos paratlan
+/style  6 def % Vastag parhuzamos paros
+/style  7 def % Kitoltott haromszog
+/style  8 def % Keret, teljes haromszog
+/style  9 def % Iv, thread-figgetlen (bezier-gorbe)
+/style 10 def % Mint 9, csak kitoltve
+/style 11 def % Iv, szabalyozott kezdo es vegpontokkal
+/style 12 def % Kitoltott iv, szabalyozott kezdo es vegpontokkal
+
+
+
+ChessBoard tipusok (cb_type) es altipusok (cb_subtype):
+
+(chessboard) (cb)
+  true : fekete-feher
+  false: feher-fekete
+
+(border) Megegyezik a style 9-cel, csak darabosabb es lassabb ... ertelmet vesztette
+  nincs altipus
+
+(lines)
+  [a b]
+    a: ha true, vannak vizszintes vonalak
+    b: ha true, vannak fuggoleges vonalak
+  VAGY
+  [a b c d]
+    a: ha true, vannak vizszintes vonalak
+    b: ha true, vannak fuggoleges vonalak
+    c: ha true, vannak a haromoldaluaknak zaro darabjai
+    d: ha true, vannak a ketoldaluak
+
+(subnets)
+  az altipus dictionary, melynek elemei lehetnek:
+        tl (Top Left) : 
+          ha true, akkor van top left sarok
+        tr (Top Right) : 
+          ha true, akkor van top right sarok
+        bl (Bottom Left) : 
+          ha true, akkor van bottom left sarok (es haromszog)
+        br (Bottom Right) : 
+          ha true, akkor van bottom right sarok
+        st (Sides of the Three) : 
+          ha true, akkor a haromszognek lehet 'tl' es 'br' sarka is
+  ezen felul tetszoleges, a subnet-re vonatkozo definicio
+  megadhato, akar cb_type es cb_subtype is !

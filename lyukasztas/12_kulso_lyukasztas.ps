@@ -1,0 +1,33 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+% This is the original, it doesn't work anymore.
+quit
+
+my_init
+
+/style 1 def
+
+/oa { add dup 12 gt {12 sub} if } def /kv { sub dup  1 lt {12 add} if } def
+
+/threads 18 def
+
+/k 12 0 basicplane def
+
+1 1 4 { /rit exch def
+  1 1 1 { /minta exch def
+    clearallnets 
+    1 1 12 { /so exch def
+      so 1 eq
+        { k [ so dup rit oa dup rit oa ] nthpoints pcn }
+        { 
+          so 1 sub minta mod 0 eq 
+          { k [ so dup rit oa dup rit oa ] nthpoints 4 -1 roll paddn } if 
+        } ifelse
+    } for
+%     /tn exch def tn nadd
+    nadd
+    gsave fitto1page drawallnets showpage grestore
+  } for
+} for

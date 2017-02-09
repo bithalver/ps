@@ -1,0 +1,62 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% Test run is done by:
+%  gw twist "/PS_RANK 8 def" "/PS_FT 1 def" "/PS_ST 5 def" "/PS_TICKS 100 def" "/PS_SRAND 5200638 def" "/PS_STYLE 10 def" "/PS_ROTATING 22.5 def" ; cat twist.out.ps | gs -q -sDEVICE=pbm -dNOPAUSE -sOutputFile=twist%03d.pbm -g595x842 ; convert *.pbm mpg:test.mpg ; open -a "quicktime player" test.mpg
+
+/threads 10 def
+
+/rotating (ROTATING) 0 {} GfEoCL def % rotating degree
+/rank (RANK) 6 {exec cvi} GfEoCL def
+/firsttwist (FT) 1 {} GfEoCL def
+/secondtwist (ST) 2 {} GfEoCL def
+/ticks (TICKS) 50 {} GfEoCL def
+
+firsttwist secondtwist eq {(Twist points can not be the same !) == quit} if
+
+/bb (BIGBOX) 1 {} GfEoCL def % How big the containing box should be
+
+/h rank rotating basicplane def
+/hbase h def
+
+/nth_net { % corners bplane n -> p1 p2 p3
+[/corners /bplane /n] params
+  bplane corners n        nth nth % p1
+  bplane corners n 1 add cnth nth % p2
+  bplane corners n 2 add cnth nth % p3
+end} def
+
+begin_file
+
+  % rank can be any number, at least 3
+  % as usual, "PS_SRAND <number> def" can be specified
+
+/an rank base_integers random_order def  % an like ActualNet
+
+0 1 ticks { /at exch def % at like actualtick
+
+/FP hbase firsttwist nth def
+/SP hbase secondtwist nth def
+
+/h hbase def
+
+h firsttwist  [ FP point SP point at ticks div weight ] putnth
+h secondtwist [ SP point FP point at ticks div weight ] putnth
+
+
+[[(Twist_) rank any2str (_) at any2str (_) RRAND any2str ] addstrings an any2str ]  begin_page
+ 
+[bb neg bb][bb bb][bb bb neg] <</style -1>> pdadd
+
+  1 1 rank { /j exch def
+    an h j nth_net padd
+  } for
+
+end_page
+
+} for
+
+end_file

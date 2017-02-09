@@ -1,0 +1,154 @@
+/nthcorner { 1 sub get aload pop } def    % plane n -> x y
+/nthpoint  { 1 sub get } def              % plane n -> point
+
+/nthcorners { % plane [a b .. n] -> x[a] y[a] x[b] y[b].. x[n] y[n]
+[/plane /numbers] params
+  1 1 numbers length { plane exch numbers exch nth nthcorner } for
+end
+} def
+
+/nthpoints { % plane [a b .. n] -> p[a] p[b] .. p[n]
+[/plane /numbers] params
+  1 1 numbers length { plane exch numbers exch nth nthpoint } for
+end
+} def
+% [ [0 0] [0 1] [1 0] [0 2] ] [2 4 3] nthpoints pstack
+
+/nnthpoint { % nets n -> p[n]
+  exch aload pop pop exch 1 sub get
+} def
+
+/nnthpoints { % nets [a b .. n] -> p[a] p[b] .. p[n]
+[/fromnet /numbers] params
+  1 1 numbers length { fromnet exch numbers exch nth nnthpoint } for
+end
+} def
+
+/plane { % centerpoint firstpoint sides
+1 dict begin
+  /sides exch def /first pointdef /angle 360 sides div def
+  /center pointdef /firstvector { first point center point pointsub} def
+  [
+  0 1 sides 1 sub {
+    [1 0 0 1 firstvector]
+    2 -1 roll angle mul 
+    [1 0 0 1 0 0] rotate
+    [1 0 0 1 0 0] concatmatrix [ exch
+    aload pop 6 2 roll pop pop pop pop center point pointadd]
+  } for
+  ]
+end
+} def
+
+/cornerrotate { % x y angle -> x' y'
+[/x /y /angle] params
+  [1 0 0 1 x y] angle [1 0 0 1 0 0] rotate [1 0 0 1 0 0] concatmatrix
+  aload pop 6 2 roll pop pop pop pop
+end
+} def
+
+/pointrotate { % p angle -> p'
+[/p /angle] params [ p point angle cornerrotate ] end } def
+
+/basicplane { % sides beginningangle -> plane
+[/sides /bangle] params
+  /firstvector [1 0] bangle pointrotate def
+  /angle 360 sides div def
+  [ firstvector 1 1 sides 1 sub {firstvector exch angle mul pointrotate} for ]
+end
+} def
+
+% [0.707107 0.707107] 90 pointrotate == 4 45 basicplane ==
+
+/basiccplane { % sides beginningangle -> centeredplane
+[/sides /bangle] params
+  /firstvector [1 0] bangle pointrotate def /angle 360 sides div def
+  [ firstvector 1 1 sides 1 sub {firstvector exch angle mul pointrotate} for
+  [0 0] ]
+end
+} def
+
+/threecorner { % plane n -> x[n-1] y[n-1] xn yn x[n+1] y[n+1]
+% 1 dict begin /n exch def /plane exch def
+[/plane /n] params
+  /l plane length def
+  plane n 1 eq {l} {n 1 sub} ifelse nthcorner
+  plane n nthcorner
+  plane n l eq {1} {n 1 add} ifelse nthcorner
+end
+} def
+
+/threepoint { % plane n -> p[n-1] p[n] p[n+1]
+% 1 dict begin /n exch def /plane exch def
+[/plane /n] params
+  /l plane length def
+  plane n 1 eq {l} {n 1 sub} ifelse nthpoint
+  plane n nthpoint
+  plane n l eq {1} {n 1 add} ifelse nthpoint
+end
+} def
+
+/threepointc { % centeredplane n -> p[n-1] p[n] p[n+1]
+% 1 dict begin /n exch def /plane exch def
+[/plane /n] params
+  /l plane length 1 sub def
+  plane n 1 eq {l} {n 1 sub} ifelse nthpoint
+  plane n nthpoint
+  plane n l eq {1} {n 1 add} ifelse nthpoint
+end
+} def
+
+/connectbasicplane { 
+% to_plane to_nth_1 to_nth_2 fittingplanesides fit_1 fit_2 -> plane
+[/toplane /to1 /to2 /fps /fit1 /fit2] params
+  /fittingplane fps 0 basicplane def
+  toplane to1 nthpoint toplane to2 nthpoint
+  fittingplane fit1 nthpoint fittingplane fit2 nthpoint
+  fitmatrix fittingplane exch planematrixmul
+end
+} def
+% /proba 4 45 basicplane def proba ==
+% proba 1 4 4 1 2 connectbasicplane
+%       4 3 4 1 2 connectbasicplane dup == /proba1 exch def
+
+/connectbasiccplane { 
+% to_plane to_nth_1 to_nth_2 fittingplanesides fit_1 fit_2 -> centeredplane
+[/toplane /to1 /to2 /fps /fit1 /fit2] params
+  /fittingplane fps 0 basiccplane def
+  toplane to1 nthpoint toplane to2 nthpoint
+  fittingplane fit1 nthpoint fittingplane fit2 nthpoint
+  fitmatrix fittingplane exch planematrixmul
+end
+} def
+% /proba 4 0 basiccplane def proba ==
+% proba 2 1 4 1 2 connectbasiccplane
+%       4 3 4 1 2 connectbasiccplane dup == /proba1 exch def
+
+/buildplane { % array of [plane nth] pairs -> plane
+[/fromarray] params
+  [ 0 1 fromarray length 1 sub { fromarray exch get aload pop nthpoint } for ]
+end
+} def
+% /proba 4 0 basiccplane def
+% [ [proba 4] [proba 2] [proba1 3] [proba1 1] ] buildplane ==
+
+/connectplane { 
+% to_plane to_nth_1 to_nth_2 fittingplane fit_1 fit_2 -> plane
+[/toplane /to1 /to2 /fittingplane /fit1 /fit2] params
+  toplane to1 nthpoint toplane to2 nthpoint
+  fittingplane fit1 nthpoint fittingplane fit2 nthpoint
+  fitmatrix fittingplane exch planematrixmul
+end
+} def
+% /proba 0 0 5 5 4 plane def proba ==
+% proba 1 4 0 0 5 0 4 plane 1 2 connectplane
+%       4 3 0 0 5 0 4 plane 1 2 connectplane dup == /proba1 exch def
+
+/planematrixmul { % plane matrix -> plane'
+% 1 dict begin /matrix exch def /plane exch def
+[/plane /matrix] params
+  [ 1 1 plane length {plane exch nth matrix pointmatrixmul} for ]
+end
+} def
+% /proba 0 0 5 0 4 plane def proba dup ==
+% [1 1] [5 4] [0 0] [5 0] fitmatrix planematrixmul ==

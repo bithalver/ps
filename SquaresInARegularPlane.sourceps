@@ -1,0 +1,58 @@
+%!PS-Adobe-2.0
+%%EndComments
+
+my_init
+
+begin_file
+
+% /inside true def /outside true def
+
+3 1 12 { /sides exch def % The for-cycle about sides
+  1 1 3 { /i exch def /inside i odd def /outside i 2 ge def 
+  % The order is: inside, outside, inside+outside
+    [ sides 2 string cvs
+      inside {( Inside)} if
+      inside outside and {( +)} if
+      outside {( Outside)} if ] addstrings
+    begin_page /HP sides 90 basicplane def % HP like Holding Plane
+    1 1 sides { /i exch def
+      HP i i 1 add sides mod 1 add 4 3 1 connectbasicplane 
+      inside  {dup [1 2 3] nthpoints pcn nadd} if
+      outside {dup [3 4 1] nthpoints pcn nadd} if
+      pop
+    } for
+    end_page
+  } for
+} for
+
+% The are the specific (and older) ones.
+% (5 Inside) begin_page /ot 5 18 basicplane def
+% ot 1 3 4 3 1 connectbasicplane [1 2 3] nthpoints pcn nadd
+% ot 2 4 4 3 1 connectbasicplane [1 2 3] nthpoints pcn nadd
+% ot 3 5 4 3 1 connectbasicplane [1 2 3] nthpoints pcn nadd
+% ot 4 1 4 3 1 connectbasicplane [1 2 3] nthpoints pcn nadd
+% ot 5 2 4 3 1 connectbasicplane [1 2 3] nthpoints pcn nadd
+% end_page
+% 
+% (5 Outside) begin_page /ot 5 18 basicplane def
+% ot 1 3 4 1 3 connectbasicplane [1 2 3] nthpoints pcn nadd
+% ot 2 4 4 1 3 connectbasicplane [1 2 3] nthpoints pcn nadd
+% ot 3 5 4 1 3 connectbasicplane [1 2 3] nthpoints pcn nadd
+% ot 4 1 4 1 3 connectbasicplane [1 2 3] nthpoints pcn nadd
+% ot 5 2 4 1 3 connectbasicplane [1 2 3] nthpoints pcn nadd
+% end_page
+% 
+% (5 Inside + Outside) begin_page /ot 5 18 basicplane def
+% ot 1 3 4 1 3 connectbasicplane dup [1 2 3] nthpoints pcn nadd
+%                                    [3 4 1] nthpoints pcn nadd
+% ot 2 4 4 1 3 connectbasicplane dup [1 2 3] nthpoints pcn nadd
+%                                    [3 4 1] nthpoints pcn nadd
+% ot 3 5 4 1 3 connectbasicplane dup [1 2 3] nthpoints pcn nadd
+%                                    [3 4 1] nthpoints pcn nadd
+% ot 4 1 4 1 3 connectbasicplane dup [1 2 3] nthpoints pcn nadd
+%                                    [3 4 1] nthpoints pcn nadd
+% ot 5 2 4 1 3 connectbasicplane dup [1 2 3] nthpoints pcn nadd
+%                                    [3 4 1] nthpoints pcn nadd
+% end_page
+
+end_file wtf {quit} if

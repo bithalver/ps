@@ -1,0 +1,26 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+(/usr/lib/my_ps/qsort.ps) run 
+
+/net_pieces (NP) 8 {exec cvi} GfEoCL def
+/net_order (NO) false {exec any2bool} GfEoCL def
+/angles (NA) [net_pieces {361 random} repeat] {} GfEoCL def
+/net_pieces angles length def
+
+begin_file
+
+[(Random Circle) [(Random init: ) RRAND any2str (, Pieces:) net_pieces any2str] addstrings ]begin_page
+net_order {/angles angles QSortArray def} if
+/angles [ angles aload pop angles 1 nth ] def
+1 1 net_pieces { /I exch def
+  [1 0] angles I nth pointrotate [0 0] [1 0] angles I 1 add nth pointrotate pcn nadd
+} for
+
+end_page
+end_file
+
+% See rcr.bat !

@@ -1,0 +1,332 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%Pages: 1     
+%%Creator: <Laszlo Meszaros>meszi@poison.hu
+%%CreationDate: 2003/01/01 17:36:02
+%%DocumentMedia: A4 595 842 0 white ()
+%%BoundingBox: 0 0 595 842
+%%EndComments
+
+%%BeginSetup
+0.02 setlinewidth 
+/smallcircles false def /bigcircles true def
+/clock_style 0 def % style can be:
+  % 0 : plain lines
+  % 1 : ladder
+  % 2 : net
+  % 3 : double
+  % 4 : neg exch neg exch
+/threads 10 def % Only for style 1 and 2
+%%EndSetup
+
+%%BeginProlog
+/odd  {2 mod 1 eq} def %n -> true, if odd,  false, if even
+
+/params { % par1 .. parn [ name1 .. namen ] ->
+1 dict begin /names exch def /l names length def l array astore /pars exch def
+  << 0 1 l 1 sub { dup names 2 -1 roll get pars  3 -1 roll get } for >>
+end begin } def
+
+/cornerrotate { % x y angle -> x' y'
+[/x /y /angle] params
+  [1 0 0 1 x y] angle [1 0 0 1 0 0] rotate [1 0 0 1 0 0] concatmatrix
+  aload pop 6 2 roll pop pop pop pop
+end
+} def
+
+/point {aload pop} def
+% x y n pointmul x*n y*n
+/pointmul { dup 3 1 roll mul 3 1 roll mul exch } def
+% x1 y1 x2 y2 pointadd x1+x2 y1+y2
+/pointadd { 3 1 roll 4 3 roll add 3 1 roll add } def
+% x1 y1 x2 y2 pointsub x1-x2 y1-y2
+/pointsub { 4 -1 roll 3 -1 roll sub 3 1 roll sub } def
+
+% p1 n ppointmul p1*n
+/ppointmul { [/p1 /n] params [ p1 point n pointmul ] end} def
+% p1 p2 ppointadd p1+p2
+/ppointadd { [/p1 /p2] params [ p1 point p2 point pointadd ] end} def
+% p1 p2 ppointsub p1-p2
+/ppointsub { [/p1 /p2] params [ p1 point p2 point pointsub ] end} def
+% p1 n ppointdiv [p1x/n p1y/n]           20020321
+/ppointdiv { [/p1 /n] params [ p1 point n div exch n div exch ] end} def
+
+/pointhalve { [/p1 /p2] params
+  p1 p2 pointadd 0.5 pointmul end}def
+
+/pointrotate { % p angle -> p'
+[/p /angle] params [ p point angle cornerrotate ] end } def
+
+/weight { dup 4 1 roll 1 exch sub pointmul 5 2 roll pointmul pointadd } def
+/nthpart { threads exch sub threads div weight } def
+
+/basiccplane { % sides -> plane
+[/sides] params
+  /bangle  sides odd {0} {180 sides div} ifelse  180 add def
+  /firstvector [0.4 0] bangle pointrotate def
+  /angle 360 sides div neg def
+  [ firstvector
+    1 1 sides 1 sub {firstvector exch angle mul pointrotate } for 
+    [0 0] ]
+end} def
+
+/printone { % [p1 p2 .. pn ] -> 
+[/pattern] params
+
+  /sides pattern length def
+  smallcircles {newpath 0 0 0.45 0 360 arc stroke} if
+%  currentrgbcolor 1 1 1 setrgbcolor
+  sides 0 ne {
+    /Apoints [] def /Bpoints [] def
+    /plane  sides basiccplane  def  newpath
+    1 1 sides {/i exch def
+      /p1  plane  pattern i 2 sub sides add sides mod get  1 sub get  def
+      /p2  plane  pattern i 1 sub                     get  1 sub get  def
+      /p3  plane  pattern i sides mod                 get  1 sub get  def
+      0 clock_style eq {
+        p2 aload pop  1 i eq {newpath moveto} {lineto} ifelse
+      } if
+      1 clock_style eq {
+        newpath p1 aload pop moveto  p2 aload pop lineto
+        1 1 threads {/j exch def
+          /p23diff [ p2 point p3 point 1 nthpart p2 point pointsub exch -1 mul ] def
+
+          p2 point p3 point j nthpart p23diff point pointadd moveto
+          p2 point p3 point j nthpart p23diff point pointsub lineto stroke
+        } for
+      } if
+      2 clock_style eq {
+        1 1 threads {
+          dup p1 point p2 point 5 -1 roll nthpart moveto
+              p2 point p3 point 5 -1 roll nthpart lineto stroke
+        } for
+      } if
+      3 clock_style eq {
+        /Apoints [Apoints aload pop [0 0 p2 point -0.05 weight] ] def
+        /Bpoints [Bpoints aload pop [0 0 p2 point 0.2 weight] ] def
+      } if
+      4 clock_style eq {
+        /Apoints [Apoints aload pop p2 ] def
+        /Bpoints [Bpoints aload pop [p2 point neg exch neg exch] ] def
+      } if
+    } for closepath stroke
+    3 clock_style eq 4 clock_style eq or {
+      % Apoints == Bpoints ==
+      1 1 sides {/i exch def
+        Apoints i 1 sub get aload pop 1 i eq {newpath moveto} {lineto} ifelse
+      } for closepath stroke
+      1 1 sides {/i exch def
+        Bpoints i 1 sub get aload pop 1 i eq {newpath moveto} {lineto} ifelse
+      } for closepath stroke
+    } if
+  } if
+%  setrgbcolor
+end}def
+
+/printall { % whichcircle [ [p1 p2 .. pn ] .. ] ->
+% whichcircle can be 0 (for center), 1, 2, or 3.
+[/wc /all] params
+  /pieces all length def
+
+1 1 pieces { /i exch def gsave 
+  270 360 pieces div i 1 sub mul sub rotate
+  wc neg 0 translate
+  all i 1 sub get printone
+grestore} for
+end}def
+
+/inch { 72 mul } def /cm { 28.34645 mul } def
+
+/namethepage { % [(pagenameline1) (pagenameline2) ... ] ->
+[/PN] params % like PageNames
+  /Times-Roman 12 selectfont
+  1 1 PN length { /i exch def
+    10.5 cm 2 cm moveto 0 PN length i sub 12 mul rmoveto
+    PN i 1 sub get dup stringwidth pop neg 2 div 0 rmoveto show
+  } for
+end}def
+
+%%EndProlog
+
+%%Page: "SCT" SCT
+gsave
+[(SpecialClock: Testpage for one)] namethepage
+297.638 422.362 translate 490 dup scale
+
+/smallcircles true def
+newpath 0 0 0.5 0 360 arc stroke
+
+0 [[1 5 9 3 7 2 8 4 10 6]] printall
+showpage grestore
+%%EndPage: "SCT" SCT
+
+%%Page: "SpecialClock_1" SpecialClock_1
+gsave
+[(SpecialClock: The base for 4,5,6)] namethepage
+297.638 422.362 translate 70 dup scale
+% The previous line makes the [-3.5 -3.5] - [3.5 3.5] square 
+
+/smallcircles false def /bigcircles true def
+newpath
+bigcircles {0.5 1 3.51 {/i exch def 0 0 i 0 360 arc stroke}for} if
+
+% 0 0 0.5 0 360 arc stroke 0 0 1.5 0 360 arc stroke
+% 0 0 2.5 0 360 arc stroke 0 0 3.5 0 360 arc stroke
+
+0 [[1 2 3]] printall
+1 [[1 2 3 4][1 2 4 3]] printall
+2 [[1 2 3 4 5][5 1 2 4 3] [1 3 2 5 4] [1 3 5 2 4]] printall
+3 [[1 2 3 4 5 6][6 1 2 3 5 4][5 6 1 4 3 2][1 5 2 4 3 6]
+   [1 5 4 2 3 6][1 3 6 2 4 5][1 2 3 6 4 5][1 2 6 4 5 3]
+   [1 4 5 2 3 6][1 3 6 2 5 4][1 3 4 2 6 5][1 3 5 2 6 4]] printall
+showpage grestore
+%%EndPage: "SpecialClock_1" SpecialClock_1
+
+%%Page: "SpecialClock_2" SpecialClock_2
+gsave
+[(SpecialClock: The base for 4,5,6,7)] namethepage
+297.638 422.362 translate 41.2312 dup scale
+
+newpath
+/smallcircles false def /bigcircles true def
+bigcircles {0.5 1 6.51 {/i exch def 0 0 i 0 360 arc stroke}for} if
+
+0 [[1 2 3]] printall
+1 [[1 2 3 4][1 2 4 3]] printall
+2 [[1 2 3 4 5][5 1 2 4 3] [1 3 2 5 4] [1 3 5 2 4]] printall
+3 [[1 2 3 4 5 6][6 1 2 3 5 4][5 6 1 4 3 2][1 5 2 4 3 6]
+   [1 5 4 2 3 6][1 3 6 2 4 5][1 2 3 6 4 5][1 2 6 4 5 3]
+   [1 4 5 2 3 6][1 3 6 2 5 4][1 3 4 2 6 5][1 3 5 2 6 4]] printall
+6 [[1 2 3 4 5 6 7][6 7 1 2 3 5 4][1 2 3 4 6 7 5][1 2 3 4 7 6 5][1 2 3 5 4 7 6]
+   [1 2 3 5 6 7 4][1 2 3 5 7 4 6][1 2 3 5 7 6 4][1 2 3 6 4 7 5][1 2 3 6 5 7 4]
+   [1 2 3 6 7 4 5][1 2 3 6 7 5 4][1 2 3 7 5 6 4][1 2 4 3 5 7 6][1 2 4 3 6 7 5]
+   [1 2 4 3 7 5 6][1 2 4 5 7 3 6][1 2 4 6 3 7 5][1 2 4 6 5 7 3][1 2 4 6 7 3 5]
+   [1 2 4 6 7 5 3][1 2 4 7 3 6 5][1 2 4 7 5 3 6][1 2 4 7 5 6 3][1 2 4 7 6 3 5]
+   [1 2 5 3 6 7 4][1 2 5 4 7 6 3][1 2 5 6 3 7 4][1 2 5 6 4 7 3][1 2 5 7 3 6 4]
+   [1 2 5 7 4 6 3][1 2 6 3 5 7 4][1 2 6 4 7 5 3][1 2 6 7 4 5 3][1 3 5 2 7 4 6]
+   [1 3 5 7 2 4 6][1 3 6 2 4 7 5][1 3 6 2 5 7 4][1 4 7 3 6 2 5] ]printall
+showpage grestore
+%%EndPage: "SpecialClock_2" SpecialClock_2
+
+%%Page: "SpecialClock_3" SpecialClock_3
+gsave
+[(SpecialClock: 7-sided)] namethepage
+297.638 422.362 translate 70 dup scale
+
+/smallcircles false def /bigcircles true def
+newpath
+bigcircles {1.5 1 3.51 {/i exch def 0 0 i 0 360 arc stroke}for} if
+
+1 [[1 2 3 4 5 6 7][6 7 1 2 3 5 4][1 2 3 4 6 7 5]
+   [1 2 3 4 7 6 5][1 2 3 5 4 7 6][1 2 3 5 6 7 4] ] printall
+2 [[1 2 3 5 7 4 6][1 2 3 5 7 6 4][1 2 3 6 4 7 5][1 2 3 6 5 7 4][1 2 3 6 7 4 5]
+   [1 2 3 6 7 5 4][1 2 3 7 5 6 4][1 2 4 3 5 7 6][1 2 4 3 6 7 5][1 2 4 3 7 5 6]
+   [1 2 4 5 7 3 6][1 2 4 6 3 7 5][1 2 4 6 5 7 3] ] printall
+3 [[1 2 4 6 7 3 5][1 2 4 6 7 5 3][1 2 4 7 3 6 5][1 2 4 7 5 3 6][1 2 4 7 5 6 3]
+   [1 2 4 7 6 3 5][1 2 5 3 6 7 4][1 2 5 4 7 6 3][1 2 5 6 3 7 4][1 2 5 6 4 7 3]
+   [1 2 5 7 3 6 4][1 2 5 7 4 6 3][1 2 6 3 5 7 4][1 2 6 4 7 5 3][1 2 6 7 4 5 3]
+   [1 3 5 2 7 4 6][1 3 5 7 2 4 6][1 3 6 2 4 7 5][1 3 6 2 5 7 4][1 4 7 3 6 2 5]
+   ] printall
+
+showpage grestore
+%%EndPage: "SpecialClock_3" SpecialClock_3
+
+%%Page: "SpecialClock_4" SpecialClock_4
+gsave
+/Times-Roman 12 selectfont 
+% [(Bat brings to Hell, fish brings to Heaven in this left-twisted World.)
+% (Maybe you search for something and feel three state for you which is only one normal \050and two mad\051,)
+% (but if you find yourself, there is only one, a really simple one.)]
+%   namethepage
+297.638 422.362 translate 70 dup scale
+
+/smallcircles false def /bigcircles true def
+newpath
+bigcircles {2.5 1 3.51 {/i exch def 0 0 i 0 360 arc stroke}for} if
+
+0 [[1 2 3]] printall
+2 [[1 2 3 4 ][1 2 4 3] [4 1 3 2] ] printall
+3 [[1 2 3 4 5][1 4 3 2 5][1 2 3 5 4]
+   [1 2 4 3 5][1 3 2 4 5][1 2 5 4 3]
+   [1 3 5 2 4][1 2 4 5 3][1 3 4 2 5]
+   [1 3 2 5 4][1 2 5 3 4][1 4 2 3 5]] printall
+showpage grestore
+%%EndPage: "SpecialClock_4" SpecialClock_4
+
+%%Page: "SpecialClock_5" SpecialClock_5
+gsave
+/Times-Roman 12 selectfont 
+[(SpecialClock: 8-sided)]  namethepage
+297.638 422.362 translate 38 dup scale
+
+/smallcircles false def
+newpath
+
+/net8 
+[
+[1 2 3 4 5 6 7 8][1 2 3 4 5 6 8 7][1 2 3 4 5 7 8 6][1 2 3 4 5 8 7 6]
+[1 2 3 4 6 5 8 7][1 2 3 4 6 7 8 5][1 2 3 4 6 8 5 7][1 2 3 4 6 8 7 5]
+[1 2 3 4 7 5 8 6][1 2 3 4 7 6 8 5][1 2 3 4 7 8 5 6][1 2 3 4 7 8 6 5]
+[1 2 3 4 8 6 7 5][1 2 3 4 8 7 6 5][1 2 3 5 4 6 8 7][1 2 3 5 4 7 8 6]
+[1 2 3 5 4 8 6 7][1 2 3 5 4 8 7 6][1 2 3 5 6 8 4 7][1 2 3 5 6 8 7 4]
+[1 2 3 5 7 4 8 6][1 2 3 5 7 6 8 4][1 2 3 5 7 8 4 6][1 2 3 5 7 8 6 4]
+[1 2 3 5 8 4 7 6][1 2 3 5 8 6 4 7][1 2 3 5 8 6 7 4][1 2 3 5 8 7 4 6]
+[1 2 3 5 8 7 6 4][1 2 3 6 4 7 8 5][1 2 3 6 4 8 7 5][1 2 3 6 5 7 8 4]
+[1 2 3 6 5 8 7 4][1 2 3 6 7 4 8 5][1 2 3 6 7 5 8 4][1 2 3 6 7 8 4 5]
+[1 2 3 6 7 8 5 4][1 2 3 6 8 4 7 5][1 2 3 6 8 5 7 4][1 2 3 6 8 7 4 5]
+[1 2 3 6 8 7 5 4][1 2 3 7 4 6 8 5][1 2 3 7 4 8 6 5][1 2 3 7 5 6 8 4]
+[1 2 3 7 5 8 6 4][1 2 3 7 6 5 8 4][1 2 3 7 6 8 4 5][1 2 3 7 6 8 5 4]
+[1 2 3 7 8 5 6 4][1 2 3 7 8 6 4 5][1 2 3 8 5 6 7 4][1 2 3 8 5 7 6 4]
+[1 2 3 8 6 7 5 4][1 2 4 3 5 6 8 7][1 2 4 3 5 7 8 6][1 2 4 3 5 8 6 7]
+[1 2 4 3 6 5 8 7][1 2 4 3 6 8 5 7][1 2 4 3 6 8 7 5][1 2 4 3 7 5 8 6]
+[1 2 4 3 7 6 8 5][1 2 4 3 7 8 5 6][1 2 4 3 7 8 6 5][1 2 4 3 8 5 7 6]
+[1 2 4 3 8 6 5 7][1 2 4 3 8 6 7 5][1 2 4 3 8 7 5 6][1 2 4 5 3 7 8 6]
+[1 2 4 5 3 8 6 7][1 2 4 5 7 3 8 6][1 2 4 5 7 8 3 6][1 2 4 5 8 3 7 6]
+[1 2 4 6 3 7 8 5][1 2 4 6 3 8 5 7][1 2 4 6 3 8 7 5][1 2 4 6 5 8 3 7]
+[1 2 4 6 5 8 7 3][1 2 4 6 7 3 8 5][1 2 4 6 7 5 8 3][1 2 4 6 8 3 5 7]
+[1 2 4 6 8 3 7 5][1 2 4 6 8 5 3 7][1 2 4 6 8 5 7 3][1 2 4 6 8 7 3 5]
+[1 2 4 6 8 7 5 3][1 2 4 7 3 5 8 6][1 2 4 7 3 6 8 5][1 2 4 7 3 8 5 6]
+[1 2 4 7 3 8 6 5][1 2 4 7 5 3 8 6][1 2 4 7 5 6 8 3][1 2 4 7 5 8 3 6]
+[1 2 4 7 5 8 6 3][1 2 4 7 6 3 8 5][1 2 4 7 6 8 3 5][1 2 4 7 6 8 5 3]
+[1 2 4 7 8 3 5 6][1 2 4 7 8 3 6 5][1 2 4 7 8 5 3 6][1 2 4 7 8 5 6 3]
+[1 2 4 7 8 6 3 5][1 2 4 8 3 5 7 6][1 2 4 8 3 6 7 5][1 2 4 8 3 7 5 6]
+[1 2 4 8 5 3 7 6][1 2 4 8 5 6 3 7][1 2 4 8 5 7 3 6][1 2 4 8 5 7 6 3]
+[1 2 4 8 6 3 7 5][1 2 4 8 6 5 3 7][1 2 4 8 6 5 7 3][1 2 4 8 6 7 3 5]
+[1 2 4 8 6 7 5 3][1 2 4 8 7 3 5 6][1 2 4 8 7 3 6 5][1 2 5 3 4 7 8 6]
+[1 2 5 3 6 8 7 4][1 2 5 3 7 4 8 6][1 2 5 3 7 6 8 4][1 2 5 3 7 8 4 6]
+[1 2 5 3 7 8 6 4][1 2 5 3 8 4 7 6][1 2 5 3 8 6 7 4][1 2 5 3 8 7 4 6]
+[1 2 5 4 6 8 7 3][1 2 5 4 7 6 8 3][1 2 5 4 7 8 3 6][1 2 5 4 7 8 6 3]
+[1 2 5 4 8 3 7 6][1 2 5 4 8 6 7 3][1 2 5 4 8 7 3 6][1 2 5 6 3 7 8 4]
+[1 2 5 6 3 8 7 4][1 2 5 6 4 8 7 3][1 2 5 7 3 6 8 4][1 2 5 7 3 8 4 6]
+[1 2 5 7 3 8 6 4][1 2 5 7 4 6 8 3][1 2 5 7 4 8 3 6][1 2 5 7 4 8 6 3]
+[1 2 5 7 6 3 8 4][1 2 5 7 6 8 3 4][1 2 5 8 3 6 7 4][1 2 5 8 4 7 3 6]
+[1 2 5 8 6 3 7 4][1 2 5 8 6 4 7 3][1 2 5 8 6 7 3 4][1 2 5 8 7 3 6 4]
+[1 2 6 3 7 4 8 5][1 2 6 3 7 5 8 4][1 2 6 3 7 8 4 5][1 2 6 3 8 4 7 5]
+[1 2 6 3 8 5 7 4][1 2 6 4 7 5 8 3][1 2 6 4 8 3 7 5][1 2 6 4 8 5 7 3]
+[1 2 6 4 8 7 3 5][1 2 6 5 7 3 8 4][1 2 6 5 7 4 8 3][1 2 6 5 8 3 7 4]
+[1 2 6 5 8 7 3 4][1 2 6 7 3 5 8 4][1 2 6 7 4 8 5 3][1 2 6 8 3 5 7 4]
+[1 2 6 8 4 7 3 5][1 2 6 8 4 7 5 3][1 2 6 8 5 3 7 4][1 2 6 8 5 7 3 4]
+[1 2 7 3 5 8 6 4][1 2 7 3 6 5 8 4][1 2 7 3 8 5 6 4][1 2 7 4 6 5 8 3]
+[1 2 7 4 6 8 5 3][1 2 7 5 3 8 6 4][1 2 7 5 6 4 8 3][1 2 7 5 8 3 6 4]
+[1 2 7 5 8 4 6 3][1 2 7 5 8 6 3 4][1 2 7 8 5 6 3 4][1 2 7 8 6 4 5 3]
+[1 2 8 4 6 5 7 3][1 2 8 5 7 4 6 3][1 2 8 6 4 7 5 3][1 3 5 2 6 8 4 7]
+[1 3 5 2 7 4 8 6][1 3 5 2 8 6 4 7][1 3 5 7 2 4 8 6][1 3 5 8 2 7 4 6]
+[1 3 5 8 4 7 2 6][1 3 6 2 7 4 8 5][1 3 6 2 7 5 8 4][1 3 6 2 8 4 7 5]
+[1 3 6 2 8 5 7 4][1 3 6 4 8 2 7 5][1 3 6 8 4 2 7 5][1 3 6 8 4 7 2 5]
+[1 3 6 8 5 2 7 4][1 3 6 8 5 7 2 4][1 3 7 2 6 4 8 5][1 3 7 5 8 6 2 4]
+[1 4 7 2 5 8 3 6][1 4 7 2 6 3 8 5]
+]
+ def
+/net8l net8 length def
+0 1 11 { /i exch def
+  0 1 17 {/j exch def
+    /k  j 12 mul i add  def
+    k net8l lt { 
+      gsave i 5.5 sub 8 j sub translate -90 rotate
+      net8 k get printone grestore
+    } if
+  }for
+}for
+
+showpage grestore
+%%EndPage: "SpecialClock_5" SpecialClock_5

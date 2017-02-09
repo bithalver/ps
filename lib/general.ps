@@ -1,0 +1,280 @@
+/on true def /off false def
+
+/params { % par1 .. parn [ name1 .. namen ] -> 
+1 dict begin /names exch def /l names length def l array astore /pars exch def
+  << 0 1 l 1 sub { dup names 2 -1 roll get pars  3 -1 roll get } for >>
+end begin } def
+
+% 4 array dictstack length ==
+% 1 2 3 [/a /b /c] params pstack % a == b == c ==
+% 4 array dictstack length == end 4 array dictstack length ==
+
+/give_new_value { % /name value ->
+% Give new value for /name.
+% It differs from def that it pushes back the value in the original dictionary,
+% if it can, but makes a 'normal' def if it can not find previous definition.
+% If the value is a proc, use the form
+%  /name {any proc} cvlit give_new_value
+% , and the cvx makes the work right !
+
+  /_v exch def /_n exch def
+  _n where {_n _v put} {_n _v def} ifelse
+%  _n where {_n _v cvx put} {_n _v cvx def} ifelse % This kind is good for '{ }' .
+% _n == _v ==
+} def
+/gnv {give_new_value} def
+
+% /a 1 def  1 dict begin /a 2 gnv a == end  a == quit
+
+/min { % a b -> a, if a<b; b otherwise
+[/a /b ] params a b lt {a} {b} ifelse end } def
+
+/max { % a b -> a, if a>b; b otherwise
+[/a /b ] params a b gt {a} {b} ifelse end } def
+
+/sign { % n -> -1|0|1
+[/n] params n 0 eq {0} if n 0 lt {-1} if n 0 gt {1} if end } def
+% 0 sign == -2 sign == 3 sign == quit
+
+/compare { % n m ->   0: n=m, -1:n<m, 1: n>m
+sub sign } def
+% 1 2 compare == 4 4 compare == 9 8 compare == quit
+
+/even {2 mod 0 eq} def %n -> true, if even, false, if odd
+/odd  {2 mod 1 eq} def %n -> true, if odd,  false, if even
+
+/newround { % n p -> n'  p tizedesjegyre kerekiti n-t
+[/n /p] params /t 1 p { 10 mul } repeat def n t mul round t div} def
+
+/rounds { % [n1 .. nm] p -> [n1' nm'] p tizedesjegyre kerekiti a szamokat
+[/a /p] params
+  /t 1 p { 10 mul } repeat def
+  [ 0 1 a length 1 sub {a exch get t mul round t div} for ]
+end } def
+
+% [0.50 0.49] 1 rounds == 
+% [0.001 0.01 0.1 1] 2 rounds == [0.001 0.01 0.1 1] 1 rounds == quit
+
+/nth { 1 sub get } def % array n -> array[n]  like get, but index start with 1 !!!
+/putnth { 3 1 roll  1 sub 3 -1 roll  put } def % like put, just count from 1
+% array index any
+
+% intirand modified on 20040214 for windows because it does not have /dev/urandom !
+/initrand {
+WINDOWS {
+  3829 srand
+} {
+  (/dev/urandom) (r) file dup dup
+  read pop 3 1 roll read pop 2 1 roll read pop 256 mul add 256 mul add srand 
+} ifelse
+} def
+
+/random {rand exch mod 10 {rand pop} repeat } def % n -> random in [0 .. n-1]
+% initrand [ 20 {256 random} repeat ] ==
+
+/inch { 72 mul } def /cm { 28.34645 mul } def
+
+/arrayadd { % array1 array2 -> array3  
+            % a3 contains elements from a1 and a2, in this order
+[/a1 /a2] params [ a1 aload pop a2 aload pop ] end
+} def
+
+/vectorsize { dup mul exch dup mul add sqrt } def % x y -> size
+
+/reversearray { % array -> reversed array
+[/a] params
+  [a length 1 sub -1 0 {a exch get} for]
+end } def
+
+/memberpos { % member array -> 0, if not found
+             %                 position, if found
+[/m /a] params
+  /pos 0 def
+  1 1 a length { /i exch def
+    a i nth m eq {/pos i def exit} if
+  } for
+  pos
+end } def
+
+/member { % member array -> True, if found, false, if not
+memberpos 0 ne } def
+
+/addstring { % str1 str2 -> str1.str2
+[/s1 /s2] params
+  s1 length s2 length add string /s3 exch def
+  s3 0 s1 putinterval
+  s3 s1 length s2 putinterval
+  s3
+end } def
+
+/addstrings { % [ str1 str2 ... strn] -> str1.str2. ... .strn
+% The strings will be concatenated directly (without any delimiter)
+[/ss] params
+  /tl 0 def
+  0 1 ss length 1 sub { /i exch def
+    /tl tl ss i get length add def
+  } for
+  tl string /gs exch def  /p 0 def
+  0 1 ss length 1 sub { /i exch def
+    gs p ss i get putinterval
+    /p p ss i get length add def
+  } for
+  gs
+end } def
+
+/addstringsdelim { % [ str1 str2 ... strn] (d)-> str1."d".str2."d". ... "d".strn % 20020423
+% The delimiter can be any string (even more than one character long)
+[/ss /delim] params
+  /tl 0 def
+  0 1 ss length 1 sub { /i exch def
+    /tl tl ss i get length add def
+  } for /tl tl ss length 1 sub delim length mul add def
+  /gs tl string def  /p 0 def
+  0 1 ss length 1 sub { /i exch def
+    i 0 ne {gs p delim putinterval /p p delim length add def} if
+    gs p ss i get putinterval
+    /p p ss i get length add def
+  } for
+  gs
+end } def
+
+/nths { % array [a b .. n] -> array[a] array[b] .. array[n]
+[/t /numbers] params
+  1 1 numbers length { t exch numbers exch nth nthpoint } for
+end
+} def
+
+/cnth { % array n -> array(n)  circular: n can be any integer
+[/a /n] params
+  /l a length def
+  n 1 lt n l gt or {/n n 1 sub l mod 1 add def} if
+  n 1 lt {/n n l add def} if
+  a n nth
+end} def
+% 12 -1 -11 { [1 2 3 4 5 6] exch cnth == } for quit
+
+/fitmatrix { % p1 p2 p3 p4 -> matrix
+% Visszaadja azt a matrixot, ami p3-at p1-be, es p4-et p2-be viszi at
+[/p1 /p2 /p3 /p4] params
+  /mp3 { 0 0 p3 point pointsub} def
+  /fromvector {p4 point p3 point pointsub} def
+  /tovector {p2 point p1 point pointsub} def
+  /magnify {tovector vectorsize fromvector vectorsize div} def
+  /rotangle {tovector exch atan fromvector exch atan sub} def
+  [1 0 0 1 mp3]
+  rotangle [1 0 0 1 0 0] rotate [1 0 0 1 0 0] concatmatrix
+  magnify dup [1 0 0 1 0 0] scale [1 0 0 1 0 0] concatmatrix
+  [ 1 0 0 1 p1 point] [1 0 0 1 0 0] concatmatrix
+end
+} def
+% [2 5] [3 9] [1 2] [3 6] fitmatrix ==
+% [0 0] [5 0] [0 0] [4 3] fitmatrix ==
+
+/poi_1 { % x3 y3 x4 y4 -> x' a [0 0] [1 0] es a [x3 y3] [x4 y4] metszespontja
+[ 5 1 roll ] 6 rounds aload pop
+[/x3 /y3 /x4 /y4] params
+  y3 y4 eq y3 0 ne and {(Parhuzamos egyeneseknek nincs metszespontja !) = quit} if
+  y3 y4 eq y3 0 eq and {x3} {
+    /m y4 y4 y3 sub div def m x3 mul 1 m sub x4 mul add
+  } ifelse
+end} def
+% 0 0.5 1 -0.5 poi_1 == 0 0.5 2 -0.5 poi_1 ==
+% 0 0.5 1 -1   poi_1 == 0 0.5 0  1   poi_1 == quit
+
+% p1 p2 es p3 p4 szakaszok metszespontja
+% poi: Point Of Intersection
+% parhuzamos szakaszokra elszall !
+/poi { % p1 p2 p3 p4 -> p' 
+[/p1 /p2 /p3 /p4] params
+  /matrix1 [0 0] [1 0] p1 p2 fitmatrix def
+  p3 matrix1 pointmatrixmul point p4 matrix1 pointmatrixmul point poi_1
+  [ exch 0 ] p1 p2 [0 0] [1 0] fitmatrix pointmatrixmul
+end} def
+% [0 0] [10 10] [7 10] [ 9 6] poi == [0 0] [10 10] [0 10] [10 0] poi ==
+% [0 0] [10 10] [4  4] [ 8 8] poi ==
+% [0 0] [10 10] [3  4] [ 7 8] poi == quit % Ez kilovi !
+
+/any2str { % any_data -> string_representation
+dup xcheck exch cvlit
+[/e /any] params % e is like executable
+  /stringtype { [ exch (\050) exch (\051)] addstrings} def
+  /nametype {dup length string cvs (/) exch addstring} def
+  /operatortype {200 string cvs} def
+  /integertype {20 string cvs} def  /realtype {50 string cvs} def
+  /booleantype {{(true)}{(false)}ifelse} def
+
+  /fonttype {(FONT)} def      /marktype {(mark)} def
+  /filetype {(FILE)} def      /nulltype {(null)} def
+  /savetype {(SAVETYPE)} def  /gstatetype {(GSTATETYPE)} def  
+
+  /arraytype {array2str} def  /packedarrytype {array2str} def
+  /dicttype {dict2str} def
+
+  any e {cvx} if dup type exec
+end}def
+
+/array2str { % array -> string_representatiton
+dup xcheck exch cvlit
+[/e /a] params % e is like executable
+  /first true def
+  [ e {({)}{([)} ifelse a {
+    any2str  first {/first false def} {( ) exch} ifelse
+  } forall e {(})} {(])} ifelse ] addstrings
+end}def
+
+/dict2str { % dict -> string_representatiton
+[/d] params
+  [(<< ) d {any2str exch any2str exch ( ) exch ( )} forall (>>)] addstrings
+end}def
+
+% Added on 20031027
+/any2bool { % any_data -> true_or_false
+dup xcheck exch cvlit
+[/e /any] params % e is like executable
+  /stringtype { (true) eq} def
+  /integertype {0 ne} def  /realtype {0 ne} def
+  /booleantype {} def
+
+  /arraytype {length 0 ne} def  /packedarrytype {length 0 ne} def
+  /dicttype {length 0 ne} def
+
+  any e {cvx} if dup type exec
+end}def
+
+% Added on 20040221
+/color_weight { % weight begin_color end_color -> weighted_color
+[/w /bc /ec] params
+  [1 1 3 {
+%    /j exch def ec j nth 1 w sub mul bc j nth w mul add
+    dup ec exch nth 1 w sub mul exch bc exch nth w mul add
+  } for ]
+end } def
+% 0.2 [0 0 0.5] [1 1 1] color_weight == quit
+
+% Added on 20071126
+/minus_nth { % array nth -> array' member   "skips" the nth member from array, gives back the skipped array and that element
+[/ia /pos] params
+/foundmember false def
+  [
+    1 1 ia length { 
+	  dup ia exch nth exch  pos eq {
+	    /foundmember exch def
+	  } {
+	  } ifelse
+	} for
+  ] foundmember
+end } def
+
+% Added on 20071126
+/random_order { % array1 -> array2   makes the input array elements to random order
+[/ia] params % input array
+  [
+    ia length -1 1 { random 1 add ia exch minus_nth exch /ia exch def} for
+  ]
+end}def
+
+% Added on 20071126
+/base_integers { % n -> array     output contains numbers 1..n
+[/n] params
+  [ 1 1 n { } for ]
+end}def

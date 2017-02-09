@@ -1,0 +1,45 @@
+/usr/share/ghostscript/5.10/Fontmap: Plus lines:
+/AlexandriaBold         (alexb___.pfb)  ;
+/AlexandriaBold-Ital    (alexbi__.pfb)  ;
+/Alexandria-Ital        (alexi___.pfb)  ;
+/Alexandria             (alexm___.pfb)  ;
+/ArialBold              (ariab___.pfb)  ;
+/ArialBold-Ital         (ariabi__.pfb)  ;
+/Arial-Ital             (ariai___.pfb)  ;
+/Arial                  (ariam___.pfb)  ;
+/CourierNew             (cournm__.pfb)  ;
+/CourierNewBold         (cournb__.pfb)  ;
+/CourierNewBold-Ital    (cournbi_.pfb)  ;
+/CourierNew-Ital        (courni__.pfb)  ;
+/DublinBold             (dublb___.pfb)  ;
+/DublinBold-Ital        (dublbi__.pfb)  ;
+/Dublin-Ital            (dubli___.pfb)  ;
+/Dublin                 (dublm___.pfb)  ;
+/GatsbyBold             (gatsb___.pfb)  ;
+/GatsbyBold-Ital        (gatsbi__.pfb)  ;
+/Gatsby-Ital            (gatsi___.pfb)  ;
+/Gatsby                 (gatsm___.pfb)  ;
+/Gazelle                (gazem___.pfb)  ;
+/GoodCityModern         (goodcmm_.pfb)  ;
+/Meath                  (meatm___.pfb)  ;
+/MicroExtendBold        (micreb__.pfb)  ;
+/MicroExtendBold-Ital   (micrebi_.pfb)  ;
+/MicroExtend-Ital       (micrei__.pfb)  ;
+/MicroExtend            (micrem__.pfb)  ;
+/MoulinRouge            (moulrm__.pfb)  ;
+/PreludeBold            (prelb___.pfb)  ;
+/PreludeBold-Ital       (prelbi__.pfb)  ;
+/Prelude-Ital           (preli___.pfb)  ;
+/Prelude                (prelm___.pfb)  ;
+/TimesNew               (timenrm_.pfb)  ;
+/TimesNew-Ital          (timenri_.pfb)  ;
+/TimesNewBold           (timenrb_.pfb)  ;
+/TimesNewBold-Ital      (timenrbi.pfb)  ;
+/VerdanaBold            (verdb___.pfb)  ;
+/VerdanaBold-Ital       (verdbi__.pfb)  ;
+/Verdana-Ital           (verdi___.pfb)  ;
+/Verdana                (verdm___.pfb)  ;
+
+/var/spool/lpd/lp/postscript.cfg: Modify: (For printing)
++EXTRA_GS_OPTIONS="-I/usr/share/fonts/ISO8859-2/Type1"
+-EXTRA_GS_OPTIONS=""

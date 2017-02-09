@@ -1,0 +1,136 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/n [[-10 10] [10 10] [10 -10] [-10 -10]] def
+/d << >> def
+% /d <</cb_type (border)>> def
+/threads 20 def
+
+/style 0 def
+
+/alllevel 1 def % Ha 0, csak a legmelyebb szint latszik.
+                % Ha 1, mind.
+                % Ha 2, a lista az alllevels-ben van.(A 0 a legmelyebb szint !)
+/alllevels [0 1] def
+
+/c9 { % p1 p2 p3 p4 -> array % Calculates the main 9 points
+[/p1 /p2 /p3 /p4] params
+  
+  /p5 p1 p2 pointhalve def
+  /p6 p2 p3 pointhalve def
+  /p7 p3 p4 pointhalve def
+  /p8 p4 p1 pointhalve def
+  /p9 p6 p8 pointhalve def
+
+  [p1 p2 p3 p4 p5 p6 p7 p8 p9] end } def
+
+/r4 { dup /maxdepth exch def r4_1 } def
+
+/r4_1 {
+   [/p1 /p2 /p3 /p4 /pattern /depth] params
+%  /depth exch def /pattern exch def /p3 exch def /p2 exch def /p1 exch def
+  depth == 
+  0 depth eq 
+  alllevel 1 eq depth maxdepth ne and or 
+  2 alllevel eq  depth alllevels member and or {
+    p4 p1 p2 d pdadd
+  } if
+  depth 1 ge {
+
+    % /p1o p1 p2 p3 pointmirror def
+    % /p2o p2 p3 p1 pointmirror def
+    % /p3o p3 p1 p2 pointmirror def
+
+    /ips p1  p2  p3  p4  c9 
+    %     p1o p3  p2  c9 arrayadd
+    %     p3  p2o p1  c9 arrayadd
+    %     p2  p1  p3o c9 arrayadd 
+    def
+
+    1 1 pattern length { /i exch def
+
+      /pi pattern i nth def  pi aload pop /pi2 exch def /pi1 exch def
+
+      pi1 10 mod 01 eq {[  1  5  9  8]} if
+      pi1 10 mod 02 eq {[  2  6  9  5]} if
+      pi1 10 mod 03 eq {[  3  7  9  6]} if
+      pi1 10 mod 04 eq {[  4  8  9  7]} if
+
+      /pi2f pi2 5 ge pi2 8 le and def
+      pi2 2 eq pi2 6 eq or { [ exch aload pop 4 1 roll ] } if
+      pi2 3 eq pi2 7 eq or { [ exch aload pop 4 2 roll ] } if
+      pi2 4 eq pi2 8 eq or { [ exch aload pop 4 3 roll ] } if
+
+      pi2f { [ exch [1 4 3 2] nths ] } if
+
+      % /pi 0 def
+      % pi1 10 ge pi1 19 le and {/pi 15 def} if
+      % pi1 20 ge pi1 29 le and {/pi 30 def} if
+      % pi1 30 ge pi1 39 le and {/pi 45 def} if
+
+      % pi 0 gt {
+      %   [ exch aload pop  pi add 3 1 roll pi add 3 1 roll pi add 3 1 roll ]
+      % } if 
+      % dup ==
+      ips exch nthpoints pattern depth 1 sub r4_1
+
+    } for
+  } if
+  allnets
+  end
+  /allnets exch def
+} def
+
+%   1 5 2
+%   8 9 6
+%   4 7 3
+
+%     8X  1X  5X
+%     4X  0X  2X
+%     7X  3X  6X
+
+%%Page: "Base1" Base1
+clearallnets 
+n [1 2 3 4] nthpoints [ [01 1] ] 3 r4
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "Base1" Base1
+
+%%Page: "Base2" Base2
+clearallnets 
+n [1 2 3 4] nthpoints [ [02 2] ] 3 r4
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "Base2" Base2
+
+%%Page: "T1" T1
+clearallnets 
+n [1 2 3 4] nthpoints [ [01 1] [01 3] [01 7] ] 3 r4
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "T1" T1
+
+%%Page: "T2" T2
+clearallnets 
+n [1 2 3 4] nthpoints [ [01 1] [01 3] [01 7] [02 4] [02 2] [02 6] ] 2 r4
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "T2" T2
+
+%%Page: "T3" T3
+1 dict begin
+clearallnets 
+/threads 100 def
+n [1 2 3 4] nthpoints [ [01 1] [01 3]
+                        [02 4] [02 2]
+                        [03 1] [03 3]
+                        [04 4] [04 2]
+                      ] 2 r4
+gsave fitto1page drawallnets showpage grestore
+end
+%%EndPage: "T3" T3
+
+%%Page: "Stars" Stars
+clearallnets 
+n [1 2 3 4] nthpoints [ [01 3] [02 3] [03 3] [04 3] ] 3 r4
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "Stars" Stars

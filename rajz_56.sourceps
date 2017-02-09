@@ -1,0 +1,97 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 20 def
+/d1 <</style {bly}>> def
+
+/h 6 90 basicplane def
+/n1 h 2 1 4 1 2 connectbasicplane def /n2 h 3 2 4 1 2 connectbasicplane def
+/n3 h 4 3 4 1 2 connectbasicplane def /n4 h 5 4 4 1 2 connectbasicplane def
+/n5 h 6 5 4 1 2 connectbasicplane def /n6 h 1 6 4 1 2 connectbasicplane def
+
+/p12 [ [h 1] [h 2] [h 3] [h 4] [h 5] [h 6]
+   [n1 3] [n1 4] [n2 3] [n2 4] [n3 3] [n3 4] 
+   [n4 3] [n4 4] [n5 3] [n5 4] [n6 3] [n6 4] ] buildplane [[0 0]] arrayadd def
+
+p12 [1 2 8] nthpoints pcn
+p12 [8 2 9] nthpoints 4 -1 roll paddn
+p12 [3 2 9] nthpoints 4 -1 roll paddn /tal1 exch def
+
+/tal2 p12 [3 4] nthpoints tal1 1 2 connectnetstopoints def
+/tal3 p12 [5 6] nthpoints tal1 1 2 connectnetstopoints def
+
+p12 [ 9 10  3] nthpoints d1 pdcn
+p12 [10  3 11] nthpoints 4 -1 roll paddn
+p12 [12 11  3] nthpoints d1 5 -1 roll pdaddn /sas1 exch def
+
+/sas2 p12 [14 5] nthpoints sas1 2 3 connectnetstopoints def
+/sas3 p12 [18 1] nthpoints sas1 2 3 connectnetstopoints def
+
+/keret tal1 tal2 netsadd tal3 netsadd 
+       sas1 netsadd sas2 netsadd sas3 netsadd def
+
+p12 [1 2 3] nthpoints pcn
+p12 [3 4 5] nthpoints 4 -1 roll paddn
+p12 [5 6 1] nthpoints 4 -1 roll paddn
+/belso31 exch def
+
+p12 [2 3 4] nthpoints d1 pdcn
+p12 [4 5 6] nthpoints d1 5 -1 roll pdaddn
+p12 [6 1 2] nthpoints d1 5 -1 roll pdaddn
+/belso32 exch def
+
+p12 [1 2 19] nthpoints pcn
+p12 [3 2 19] nthpoints 4 -1 roll paddn
+p12 [3 4 19] nthpoints 4 -1 roll paddn
+p12 [5 4 19] nthpoints 4 -1 roll paddn
+p12 [5 6 19] nthpoints 4 -1 roll paddn
+p12 [1 6 19] nthpoints 4 -1 roll paddn
+/belso61 exch def
+
+p12 [2 1 19] nthpoints d1 pdcn
+p12 [2 3 19] nthpoints d1 5 -1 roll pdaddn
+p12 [4 3 19] nthpoints d1 5 -1 roll pdaddn
+p12 [4 5 19] nthpoints d1 5 -1 roll pdaddn
+p12 [6 5 19] nthpoints d1 5 -1 roll pdaddn
+p12 [6 1 19] nthpoints d1 5 -1 roll pdaddn
+/belso62 exch def
+
+% /belso62 p12 [2 3] nthpoints belso61 1 2 connectnetstopoints def
+
+begin_file
+
+/style 4 def /bly 4 def
+(12_1_4) begin_page keret nadd belso31 nadd end_page
+
+/style 1 def /bly 1 def
+(12_1_1) begin_page keret nadd belso31 nadd end_page
+(12_3_1) begin_page keret nadd belso61 nadd end_page
+
+/style 0 def /bly 0 def
+(12_1_0) begin_page keret nadd belso31 nadd end_page
+(12_2_0) begin_page keret nadd belso32 nadd end_page
+(12_3_0) begin_page keret nadd belso61 nadd end_page
+(12_4_0) begin_page keret nadd belso62 nadd end_page
+
+% /style 3 def /bly 3 def
+% (12_1_3) begin_page keret nadd belso31 nadd end_page
+% (12_2_3) begin_page keret nadd belso32 nadd end_page
+% (12_3_3) begin_page keret nadd belso61 nadd end_page
+% (12_4_3) begin_page keret nadd belso62 nadd end_page
+
+/style 2 def /bly 2 def
+(12_1_2) begin_page keret nadd belso31 nadd end_page
+(12_2_2) begin_page keret nadd belso32 nadd end_page
+(12_3_2) begin_page keret nadd belso61 nadd end_page
+(12_4_2) begin_page keret nadd belso62 nadd end_page
+
+/style 5 def /bly 6 def
+(12_1_5) begin_page keret nadd belso31 nadd end_page
+(12_2_5) begin_page keret nadd belso32 nadd end_page
+(12_3_5) begin_page keret nadd belso61 nadd end_page
+(12_4_5) begin_page keret nadd belso62 nadd end_page
+
+end_file

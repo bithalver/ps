@@ -1,0 +1,58 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% (/usr/lib/my_ps/rgen_engine.ps) run
+
+/d << >> def  
+% /d <</cb_type (border)>> def
+
+begin_file
+
+1 dict begin
+(TheWay) begin_page % Test9
+/alllevel 1 def % /style 1 def
+[0 0] [1 -1] 92 20 [[11 10 2 19 {depth even {92}{-92} ifelse}]] 14 rgen
+end_page 
+end
+
+1 dict begin
+(Test8) begin_page
+/alllevel 2 def /alllevels [0 1 2 3]
+[0 0] [1 1] 90 20 [[10 12 19 2 90]] 4 rgen
+end_page end
+
+% Disabled: too difficult for tests
+%(Test7) begin_page
+%[0 0] [0 1] 60 6 [[1 1 0 0 60] [4 1 6 0 60] [1 4 0 6 60] 
+%                  [2 2 3 3 60] [2 2 3 0 60] [2 2 0 3 60] ] 3 rgen
+%end_page
+
+(Test6) begin_page
+[0 0] [0 1] 60 6 [[1 1 0 0 60] [4 1 6 0 60] [1 4 0 6 60] [2 2 3 3 60] ] 3 rgen
+end_page
+
+(Test5) begin_page
+[0 0] [0 1] 60 6 [[1 1 0 0 60] [4 1 6 0 60] [1 4 0 6 60]] 3 rgen
+end_page
+
+(Test4) begin_page
+[0 0] [0 1] 60 90 [[40 40 30 30 60]] 3 rgen
+end_page
+
+(Test1) begin_page
+[0 0] [0 1] 90 80 [[20 20 0 0 90] [60 20 80 0 -90]] 2 rgen
+end_page
+
+(Test2) begin_page
+[0 0] [0 1] 90 80 [[20 20 0 0 90] [60 60 80 80 90]] 2 rgen
+end_page
+
+(Test3) begin_page
+[0 0] [0 1] 90 80 [[20 20  0  0 90] [60 20 80  0 90] 
+                   [60 60 80 80 90] [20 60  0 80 90]] 2 rgen
+end_page
+
+end_file wtf {quit} if

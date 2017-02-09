@@ -1,0 +1,20 @@
+/FullName
+(Nimbus Mono L Regular)
+/version
+(1.05)
+/UnderlinePosition
+-100
+/ItalicAngle
+0.0
+/FamilyName
+(Nimbus Mono L)
+/Notice
+(\(URW\)++,Copyright 1999 by \(URW\)++ Design & Development. See the file COPYING \(GNU General Public License\) for license conditions. As a special exception, permission is granted to include this font pro...)
+/UnderlineThickness
+50
+/Weight
+(Regular)
+/Copyright
+(Copyright \(URW\)++,Copyright 1999 by \(URW\)++ Design & Development)
+/isFixedPitch
+false

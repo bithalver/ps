@@ -1,0 +1,38 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/threads 50 def
+/style 0 def
+% /numbering 2 def
+
+/h 6 0 basicplane def
+
+/n00 h [1 2 3] nthpoints pcn def
+/n01 n00 aload pop pop [2 3] nthpoints n00 2 1 connectnetstopoints def
+/n02 n00 aload pop pop [1 2] nthpoints n00 2 1 connectnetstopoints def
+/n03 n02 aload pop pop [2 3] nthpoints n00 3 2 connectnetstopoints def
+/n04 n03 aload pop pop [1 2] nthpoints n00 3 2 connectnetstopoints def
+/n05 n04 aload pop pop [1 2] nthpoints n00 2 1 connectnetstopoints def
+/n06 n05 aload pop pop [2 3] nthpoints n00 3 2 connectnetstopoints def
+/n07 n06 aload pop pop [1 2] nthpoints n00 2 1 connectnetstopoints def
+/n08 n07 aload pop pop [2 3] nthpoints n00 3 2 connectnetstopoints def
+
+/n09 n01 aload pop pop [2 3] nthpoints n00 3 2 connectnetstopoints [ exch aload pop pop [[1 2 3 <</colors [0.5 0 0]>>]] ] def
+/n10 n09 aload pop pop [2 1] nthpoints n00 2 3 connectnetstopoints [ exch aload pop pop [[1 2 3 <</colors [0.5 0 0]>>]] ] def
+/n11 n10 aload pop pop [2 1] nthpoints n00 1 2 connectnetstopoints def
+/n12 n11 aload pop pop [3 2] nthpoints n00 1 2 connectnetstopoints def
+/n13 n12 aload pop pop [3 2] nthpoints n00 2 3 connectnetstopoints def
+/n14 n13 aload pop pop [2 1] nthpoints n00 1 2 connectnetstopoints def
+
+begin_file
+
+(Eyes of SpiderMan) begin_page
+n00 nadd n01 nadd n02 nadd n03 nadd n04 nadd n05 nadd n06 nadd n07 nadd n08 nadd 
+n09 nadd n10 nadd n11 nadd n12 nadd n13 nadd n14 nadd
+end_page
+
+end_file
+wtf{quit}if

@@ -1,0 +1,145 @@
+% %!PS-Adobe-2.0 EPSF-1.2
+% %%Title: t1.ps
+% %%Creator: Ghostscript ps2epsi from t1.ps
+% %%CreationDate: Oct 28 20:23
+% %%Pages: 1
+% %%DocumentFonts:
+% %%BoundingBox: 0 0 595 830
+% %%DocumentMedia: A4 595 842 0 white ()
+% %%EndComments
+% %%BeginProlog
+% %%BeginResource:
+% %%EndResource
+% %%EndProlog
+% %%BeginSetup
+% %%EndSetup
+% Here comes the file
+
+% %%Page: 1 1
+% %%BeginPageSetup
+% %%EndPageSetup
+% %%PageTrailer
+
+% %%Trailer
+% %%EOF
+
+% write one (data converted to) string to file FH
+/wos { FH exch 500 string cvs writestring } def 
+% write one string to file FH (without trying to convert it)
+/wos_ { FH exch  writestring } def 
+/wnl { FH 10 write } def % write a new line to file FH
+/wol { wos wnl } def % write one line to file FH
+/woi { 20 string cvs wos } def % write one integer to file FH
+/ws { FH 32 write } def % write a space to file FH
+/wss { % write space-separated string (no line-feed)
+{ 50 string cvs wos ws} forall} def
+/wsl % write space-separated line
+{ wss wnl } def
+
+/begin_file { 
+  /STDOUT true def
+  my_file_name dup (%stdout) ne {
+%    WINDOWS {(.ps) addstring} if
+    (.out.ps) addstring  /STDOUT false def
+  } if
+  named_begin_file
+} def
+
+/named_begin_file { % (filename) ->
+wtf {
+  (w) file /FH exch def
+  (%!PS-Adobe-3.0) wol
+  (%%DocumentData: Clean7Bit) wol
+  STDOUT not WINDOWS not and { % WINDOWS condition added on 20030214
+    (%%Pages:       ) wol % The many space are needed for end_file to write to
+  } if
+  (%%Creator: <Laszlo Meszaros>meszi@poison.hu) wol
+  currentdate () ne { (%%CreationDate: ) wos currentdate wol} if
+%  (%%DocumentMedia: A4 595 842 0 white \050\051) wol
+%  (%%BoundingBox: 0 0 595 842) wol
+  [(%%BoundingBox: 0 0) xPageSize 0.5 add cvi  yPageSize 0.5 add cvi] wsl
+  (%%EndComments) wol
+  () wol
+%  [0 (setlinewidth)] wsl % Removed on 20031027
+%  [(<</PageSize [) xPageSize yPageSize (]>> setpagedevice)]wsl % Removed on 20080406
+  /PAGES 0 def
+} { pop
+  0 setlinewidth
+  <</PageSize [xPageSize yPageSize]>> setpagedevice
+} ifelse
+} def
+
+/end_file { % No parameters
+wtf {
+  STDOUT not WINDOWS not and { % WINDOWS condition added on 20030214
+    FH 50 setfileposition % If the header changed, this should be changed too !
+    PAGES woi
+  } if
+  FH closefile
+} if } def
+
+/begin_page { % (pagename) -> !OR! [(pagenameline1) (pagenameline2) ... ] ->
+  /stringtype {[ exch ] multinamed_begin_page} def
+  /arraytype {multinamed_begin_page} def
+  dup type exec
+} def
+
+/multinamed_begin_page { % [(pagenameline1) (pagenameline2) ... ] -> % 20020423
+/PN exch def % like PageNames
+  % clearallnets gsave
+  allnets_init gsave % Modified on 20030330
+  /Times-Roman 12 selectfont 
+  1 1 PN length { /i exch def
+    10.5 cm 2 cm moveto 0 PN length i sub 12 mul rmoveto
+    PN i nth dup stringwidth pop neg 2 div 0 rmoveto show
+  } for
+  wtf {
+    /CPN PN (_) addstringsdelim def % like Concatenated PageNames % Delimiter changed to "_" from " " on 20071126
+    () wol
+    % The next line modified on 20030214 to include "PAGES 1 add"
+    (%%Page: ") wos CPN wos (" ) wos PAGES 1 add wol
+    (gsave) wol
+    drawbackground % Added on 20030405, place modified on 20031027
+    % Here comes the pagename-writing to the FILE 20020321
+    (/Times-Roman 12 selectfont) wol
+
+    % Coloured pagename-writing added on 20040222
+    blacknwhite not pagenamecolor 0 get 0 ne  pagenamecolor 1 get 0 ne  pagenamecolor 2 get 0 ne  or or and {
+      [(currentrgbcolor) pagenamecolor aload pop (setrgbcolor)] wsl
+    } if
+    1 1 PN length { /i exch def
+      [10.5 cm 1.4 cm PN length i sub 12 mul add (moveto)] wss
+      (\050) wos PN i nth wos (\051 dup stringwidth pop neg 2 div 0 rmoveto show) wol
+    } for
+    blacknwhite not pagenamecolor 0 get 0 ne  pagenamecolor 1 get 0 ne  pagenamecolor 2 get 0 ne  or or and {
+      [(setrgbcolor)] wsl
+    } if
+    /PN CPN def % This is for end_page (because it waits a string)
+  } if
+} def
+
+/end_page { % No parameters, no return value
+% Allnets printing added on 20030327
+% Allnets priting is controled by "print_allnets" (default value: false) added on 20071225
+  wtf print_allnets and { (% /allnets ) wos allnets any2str wos_ ( def) wol } if
+
+  fitto1page 
+
+  wtf { % Added on 20031027
+    [linewidth SCALE div (setlinewidth)] wsl
+  }{
+    linewidth SCALE div setlinewidth
+  } ifelse PREVLINEWIDTH linewidth gnv
+
+  drawallnets
+
+  wtf {
+    (showpage grestore) wol
+    % The next line modified on 20030214 to include "PAGES 1 add"
+    (%%EndPage: ") wos PN wos (" ) wos PAGES 1 add wol
+    /PAGES PAGES 1 add gnv  % To increase the _global_ value
+  } {
+    showpage
+  } ifelse
+    grestore
+} def

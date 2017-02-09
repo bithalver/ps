@@ -1,0 +1,79 @@
+my_init 
+
+1000 { rand dup 2000000000 ge {==} {pop} ifelse } repeat quit
+
+/test (TEST) [0 1] {} GfEoCL def test dup == type == quit
+
+14 base_integers random_order == quit
+
+[9 8 7 6 5 4 3 2 1] random_order == quit
+
+[9 8 7 6 5 4 3 2 1] 10 minus_nth exch == == quit
+
+[0 0 0 0 0  0 0 0 0 0 0] random_order quit
+
+10 {1000000 random ==} repeat quit
+
+(%stdout) (w) file /FH exch def FH (abc\012) writestring FH closefile quit
+
+[] {= (XX) =} forall
+/a [] def  0 1 a length 1 sub {a exch get = (XX) = } for quit
+
+(\() = (\)) = quit
+
+% mark any2str =  [ any2str =  { any2str =  quit % They don't work !
+
+<</abc 123 /ghi <</a {2 1 add}>>>> any2str =
+<</abc 123 /def 345>> any2str = quit
+
+{1 2 3 (abc)} array2str = quit
+
+% (xx) =  /a {1 = exit 2 =} def  a (xx) = quit % Doesn't work !
+
+{1 2 add} type == quit % It is 'arraytype'
+
+% /b mark 2 add ] cvx def 1 b == 2 b == quit
+
+% [ 1 2 add true { ] cvx } if exec == quit
+
+% gw t.ps "/b { (XX) == 1 } def" "/a { b } def"
+/a 1 def
+ARGUMENTS dup == {cvx exec} forall
+a a a a  a type ==  a == quit
+
+/a (1 2 add ==) def a cvx exec quit
+
+/a {2} cvlit cvx def a == quit
+
+systemdict /ENV_FILE known {
+  ENV_FILE status { pop pop pop pop ENV_FILE run} if
+} if
+
+% (/usr/lib/my_ps/general.ps) run
+% initrand [20 {4 random } repeat ] == quit
+
+ENV {exch 50 string cvs print 
+     ( = ) print 
+     dup 50 string cvs print 
+         ( ) print type 50 string cvs print 
+     (\012) print} forall quit
+
+(1) 2 add == quit
+
+<< /abc 1 >> (abc) get == quit
+
+/a {
+/b exch def
+(11) ==
+b
+(22) ==
+} def
+
+
+{(aa) ==} a
+
+1 1 0{ /i exch def
+i == 
+} for
+
+0 {(xx) ==} repeat

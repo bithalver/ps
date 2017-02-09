@@ -1,0 +1,97 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+% /style 1 def
+% /numbering 1 def
+% /threads 10 def
+
+/color1 <</colors [0 0 1] >> def /color2 <</colors [0.5 0.5 0] >> def % This line is for color
+% /color1 <</colors [0 0 0] >> def /color2 <</colors [0 0 0] >> def % This line is for black
+
+/3racsy { 3 sqrt 2 div mul } def % y -> yreal
+
+% 0 3racsy ==  1 3racsy == 2 3racsy == quit
+
+/c_l { % x_rel y_abs dict_for_net -Cross_Left_side-> net
+[/x_rel /y_abs /dfn] params
+  [0 x_rel add 0 y_abs add 3racsy] [2 x_rel add 0 y_abs add 3racsy] [3 x_rel add 2 y_abs add 3racsy] dfn pdcn
+  [2 x_rel add 0 y_abs add 3racsy] [3 x_rel add 2 y_abs add 3racsy] [5 x_rel add 2 y_abs add 3racsy] dfn pdaddn1
+end} def
+
+/c_r { % x_rel y_abs dict_for_net -Cross_Right_side-> net
+[/x_rel /y_abs /dfn] params
+  [0 x_rel add 2 y_abs add 3racsy] [2 x_rel add 2 y_abs add 3racsy] [3 x_rel add 0 y_abs add 3racsy] dfn pdcn
+  [2 x_rel add 2 y_abs add 3racsy] [3 x_rel add 0 y_abs add 3racsy] [5 x_rel add 0 y_abs add 3racsy] dfn pdaddn1
+end} def
+
+/kax { % x_A_rel x_B_rel y_abs -> net  Cross A kind, different modifiable x_relative for sides
+[/xA /xB /yABS] params xA yABS color1 c_l xB yABS color2 c_r netsadd end } def
+
+/kbx { % x_A_rel x_B_rel y_ABS -> net  Cross B kind, different modifiable x_relative for sides
+[/xA /xB /yABS] params xA yABS color2 c_l xB yABS color1 c_r netsadd end } def
+
+/EoSv_1 { % pattern stype -> net
+  % The pattern should be pairs of x_rel
+  % Examples:
+  %   [[0 0] [0 0] [0 0] [0 0] [0 0]] : The default s2
+  % The stype is '1' for switching look, and '2' for wave look 
+[/pattern /stype] params
+  [[][]] % The collected net is on the stack
+
+  0 1 pattern length 1 sub { /i exch def
+    pattern i get aload pop % x_rel for kax or kbx
+    i 2 mul                 % y for kax or kbx
+       stype 1 eq {kax} if
+       stype 2 eq {i odd {kbx}{kax} ifelse } if
+    netsadd % Add the actual net to collected, and leave the new collected on the stack
+  } for
+
+end}def
+
+/EoSv { % x_rel_from x_rel_to tags variant wave ->
+  % Eyes of Spiderman variants
+  % x_rel_from, x_rel_to : begin and end of relative 'x' shift
+  % x_step : incrementation for  'x' shift
+  % tags: how many tags needed
+  % variant: 1 for Pisa, 2 for Horn, 3 for Dome
+  % wave: 2 for wave (switching pieces), 1 for same piece
+[/x_rel_f /x_rel_t /x_step /tags /variant /wave] params
+x_rel_f x_step x_rel_t 0.000001 add {/I exch def % The add is here only because of round problems
+  [(Eyes of Spiderman variant: ) 
+    variant 1 eq {(Pisa)} if
+    variant 2 eq {(Horn)} if
+    variant 3 eq {(Dome)} if
+    wave 2 eq {( wave)} if
+    ( ) I 10 string cvs] addstrings begin_page
+  [ 0 1 tags 1 sub { /J exch def
+    [ I  J mul dup 
+      variant 2 eq {neg} if
+      variant 3 eq {neg exch} if
+    ]
+    } for ]
+  wave EoSv_1 nadd end_page
+} for
+% PAGES 
+end 
+% /PAGES exch def % The trick is for correct page numbering
+} def
+
+begin_file
+
+0 1 0.2 6 1 1 EoSv
+0 1 0.2 6 1 2 EoSv
+0 1 0.2 6 2 1 EoSv
+0 1 0.2 6 3 1 EoSv
+
+threads /threads 10 def % Change threads temporariliy to 10, because this one is more dense
+(Twin towers: 8 floor) begin_page 
+[5 0] [5 2 3racsy] 
+  [[0 0] [0 0] [0 0] [0 0] [0 0] [0 0] [0 0] [0 0]] 2 EoSv_1 dup nadd
+  1 5 connectnetstopoints nadd
+end_page
+/threads exch def
+
+end_file

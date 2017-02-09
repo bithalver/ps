@@ -1,0 +1,3714 @@
+                              -- PostScript -- 
+
+                            Answers to Questions 
+
+                    (the comp.lang.postscript FAQ v2.3) 
+
+                               Jon Monsarrat 
+
+                              jgm@cs.brown.edu 
+
+
+
+
+
+
+                     This FAQ is formatted as a digest. 
+
+                Most news readers can skip from one question 
+
+                to the next by pressing control-G. GNUs uses 
+
+                   C-c C-n to skip to the next question. 
+
+
+    Changes since the last version are marked with a '|' in the table 
+    of contents and in the sections in the text-only format of the FAQ. 
+
+    Now that there is Linux and NetBSD and BSD 386 UNIX IBM PC (and 
+    clone) users can run any of the X-windows and UNIX programs in the 
+    utilities section. See any of comp.os.linux.{ 
+    admin,development,help,misc}. Also, there is now GhostScript for 
+    the Macintosh. 
+
+    Many thanks to Dan Carrigan for reformatting the books and 
+    publishers section. 
+
+    The utilities index from the comp.sources.postscript FAQ will be 
+    posted in comp.lang.postscript now too. 
+
+    Please help fix the FAQ! All comments should be mailed to 
+    jgm@cs.brown.edu. My favorite way to receive a change suggestion is 
+    when it is accompanied by a section of the FAQ that is edited and 
+    mailed to me verbatim as an example. If you would like to 
+    contribute, please read the section ``about the FAQ'' first. Thank 
+    you! 
+
+    Books and programs are referred to by name only. See the book 
+    sections for book information, and the comp.sources.postscript FAQ 
+    for a full list of all PostScript related programs. I have archived 
+    a number of the small utilities in 
+    wilma.cs.brown.edu:pub/postscript. You can get the 
+    comp.sources.postscript FAQ from 
+    wilma.cs.brown.edu:pub/comp.sources.postscript. 
+
+    Related FAQs: comp.text, comp.text.tex, comp.fonts, comp.graphics, 
+    comp.sys.mac.apps, comp.sources.postscript. 
+
+    Table of Contents 
+
+
+    This FAQ has 11 sections. It is available by anonymous ftp to 
+    wilma.cs.brown.edu:pub/comp.lang.postscript/FAQ.txt in ASCII, and 
+    there are also LaTeX, DVI, and PostScript formats. 
+
+  
+      1 General Questions 
+         1.1 What is PostScript? 
+         1.2 How can I tell how many pages my document will have? 
+         1.3 How can I print just one page or a few pages from a big 
+         1.4 How can I print more than one page per sheet of paper? 
+         1.5 How can I edit a PostScript picture? 
+         1.6 How can I print PostScript on a non-PostScript printer? 
+         1.7 How do I print a file containing 8-bit characters? 
+         1.8 What other graphics languages are there? 
+      2 Printers 
+         2.1 How can I get my printer to talk back to me? 
+         2.2 Should I leave my printer on? 
+         2.3 How do you print double-sided on a single-sided printer? 
+         2.4 How do I suppress the power-on start page? 
+         2.5 How do I make a downloaded font ``persistent''? 
+         2.6 How do I remove a persistent (``permanent'') downloaded font? 
+         2.7 How do I reset the printer without power-cycling? 
+         2.8 About saving files 
+         2.9 What's the control-D business? 
+         2.10 Why does the printer say ``still busy'' when my document is 
+         2.11 How should I set up my spoolers? 
+         2.12 What are PPD files? 
+         2.13 What's a timeout error? 
+         2.14 Can I tell if my printer is color or black/white? 
+      3 Formats and Conversions 
+         3.1 How can I convert PostScript to some other graphics format? 
+         3.2 How can I convert PostScript to a bitmap or pixmap? 
+         3.3 How can I convert HPGL to PostScript? 
+         3.4 How can I convert DVI to PostScript? 
+         3.5 How can I convert HP Laserjet language (PCL) to PostScript? 
+         3.6 How can I convert TeX PK format font to PostScript? 
+         3.7 How do I embed PostScript into troff? 
+         3.8 How do I embed PostScript into LaTeX or TeX? 
+         3.9 How can I convert an image to PostScript? 
+         3.10 How can I convert ASCII text to PostScript? 
+         3.11 How can I convert PostScript to ASCII? 
+         3.12 How do I convert between PFB, PFA, Mac, PFM, and AFM? 
+      4 Fonts  
+         4.1 What are .PFB and .PFA files? 
+         4.2 How does Macintosh Store PostScript Fonts?
+         4.3 How can I convert a PostScript font to TeX's PK format? 
+         4.4 Why are Adobe fonts hidden? 
+         4.5 How do I get bitmap representations of Adobe fonts? 
+         4.6 What are some good ftp sites for fonts? 
+         4.7 How can I re-encode a font? 
+         4.8 What's the difference between a Type 1 and a Type 3 font? 
+         4.9 What vendors sell fonts for PostScript printers? 
+         4.10 What are ATM fonts? 
+         4.11 What are Multiple Master Fonts? 
+         4.12 Do I need a Level Two printer to use Multiple Master Fonts? 
+         4.13 What are Type 4 fonts? 
+         4.14 What are Type 5 fonts? 
+         4.15 Is there an editor for Type 1 Fonts? 
+      5 Books 
+         5.1 Books 
+         5.2 Publishers 
+      6 About Adobe 
+         6.1 How do I get in touch with Adobe? 
+         6.2 What can Adobe do for me? 
+      7 Programming in PostScript 
+         7.1 What is PostScript level 2? 
+         7.2 Should I learn level 2 PostScript? 
+         7.3 Where can I find examples of PostScript code? 
+         7.4 What is the physical size of the page? 
+         7.5 What is the Imagable Area of the page 
+         7.6 Why can't I do a pathforall after a charpath ? 
+         7.7 How do I center a string of text around a point? 
+         7.8 How can I concatenate two strings together? 
+         7.9 What do I do when I get stack overflow/underflow? 
+         7.10 How can I print in landscape mode? 
+      8 Computer-specific PostScript 
+         8.1 Sun Workstations 
+         8.2 IBM PC 
+         8.3 Apple Macintosh 
+      9 Encapsulated PostScript 
+         9.1 What is Encapsulated PostScript? 
+         9.2 What are EPSI and EPSF? 
+         9.3 How do I convert PostScript to EPS? 
+         9.4 How do I get the bounding box of a PostScript picture? 
+      10 About The Comp.Lang.PostScript FAQ 
+         10.1 The PostScript FAQ: What is it? 
+         10.2 How to get the FAQ files 
+         10.3 How to write a FAQ answer 
+         10.4 The FAQ can contain LaTeX and PostScript inserts 
+         10.5 Revising the FAQ 
+         10.6 How to submit new information 
+         10.7 How to add a program description to the FAQ index 
+         10.8 How to add a book description to the FAQ 
+         10.9 Questions that need answers 
+      11 About PostScript 2 
+         11.1 What printers support Level 2 PostScript? 
+         11.2 What is PostScript Level 2? 
+         11.3 [ Color Extensions ] 
+         11.4 [ Composite Font Extensions ] 
+         11.5 [ Display PostScript Extensions ] 
+         11.6 [ Overview of Level 2 Features ] 
+         11.7 Filters 
+         11.8 Binary Encoding 
+         11.9 Optimized graphics operators 
+         11.10 Optimized text operators 
+         11.11 Forms 
+         11.12 Patterns 
+         11.13 Images 
+         11.14 Composite Fonts 
+         11.15 New Color Spaces 
+         11.16 New screening/halftoning technology 
+         11.17 Improved printer support features 
+         11.18 Interpreter parameters 
+         11.19 Resources 
+         11.20 Dictionaries 
+         11.21 When did Level 2 products come available? 
+         11.22 Are Level 1 and Level 2 implementations compatible? 
+  
+
+
+------------------------------
+
+Subject: 1 General Questions 
+
+
+------------------------------
+
+Subject: 1.1 What is PostScript? 
+
+    PostScript is a page description programming language. 
+
+    It is perhaps the most versatile and loved language for printers, 
+    being used in printers world-wide. It is capable of drawing to 
+    computer screens and any kind of drawing device. PostScript is 
+    interpreted, stack based and has latent typing. It somewhat 
+    resembles the computer language FORTH. 
+
+    A number of programmers write PostScript programs directly for a 
+    variety of drawing applications. The NeXTSTEP Operating System, 
+    running on Intel-486 and Motorola machines, uses Display PostScript 
+    Level II to manage the display. However, PostScript programs are 
+    usually documents meant to be printed that have been generated by a 
+    program written in some compiled language. 
+
+
+------------------------------
+
+Subject: 1.2 How can I tell how many pages my document will have? 
+
+    The easiest way to count pages is view your document on-line with a 
+    PostScript previewer. Some previewers like Ghostview and GSPreview 
+    count the pages for you. (See the comp.sources.postscript FAQ, 
+    which has a section ``PostScript Interpreters and Utilities''.) 
+
+    If your document is generated by a program compliant with the 
+    Document Structuring Conventions, you should be able to just count 
+    the number of ``%%Page:'' comments imbedded in the document. 
+    With UNIX you can type 
+  
+  grep -c %%Page: document.ps
+  
+    to do this counting. (See Section 9, ``Encapsulated PostScript''.) 
+
+    You could use the program pspages posted to 
+    comp.sources.postscript, volume 2, issue 5, by Kevin Grover. 
+
+    The only completely reliable way to count pages is to ask the 
+    printer after the job is printed. PostScript printers maintain a 
+    page counter that can be queried before and and after the job is 
+    printed, and the page count is a simple subtraction. This tends to 
+    require rather sophisticated spooling systems and a communications 
+    channel that is bidirectional. However, some printers allow you to 
+    submit jobs on one port, and issue queries on another. 
+
+    Send this PostScript through a bidirectional I/O port and you'll 
+    get back the page count, nominally the total number of pages 
+    printed since manufacture: 
+
+    statusdict begin pagecount == end flush 
+
+    Experts using a level 2 printer can use the SerialOff.PS and 
+    SerialEHandlder.ps programs to communicate bidirectionally to the 
+    printer. 
+
+
+------------------------------
+
+Subject: 1.3 How can I print just one page or a few pages from a big 
+    document? How can I print pages in reverse order? 
+
+    Try using a host-specific program, like the UNIX command psrev, 
+    which is part of the TranScript suite of software from Adobe 
+    Systems. Or use the more general utilities Ghostview, psutils or 
+    psxlate. 
+
+    There is no guarantee that a given PostScript document can be split 
+    in such a manner. The reason is that some programs which generate 
+    PostScript code don't conform to the Adobe Document Structuring 
+    Conventions (DSC). (See Section 9, ``Encapsulated PostScript''.) A 
+    notable example of this is Microsoft Word. 
+
+
+------------------------------
+
+Subject: 1.4 How can I print more than one page per sheet of paper? 
+
+    Use psnup or pstext or enscript. 
+
+    These programs redefine the PostScript ``showpage'' command to do 
+    multiple PostScript pages per physical page. If one program doesn't 
+    work with a complex document, try out other ones. 
+
+    Some PostScript programs can't work with these programs because 
+    they break the EPS conventions (See Section 9, ``Encapsulated 
+    PostScript''.). The reason is that some Postscript operators (such 
+    as initgraphics, the list is in the Red book) change the printer 
+    state so "violently", that software trying to do things like n-up 
+    will get confused. Theoretically, an EPS shouldn't have any of 
+    these operators, but it may not really be an EPS, or there may be a 
+    weird interaction between TeX, the EPS and the inclusion mechanism 
+    that breaks psnup. 
+
+
+------------------------------
+
+Subject: 1.5 How can I edit a PostScript picture? 
+
+    If you know the PostScript programming language, just use any text 
+    editor to edit the code directly. 
+
+    If you want to do it visually, you can use Canvas on the Macintosh. 
+    Arts & Letters software package from Computer Support Corporation 
+    is supposed to be able to read arbitrary EPS files, using a 
+    software converter called Decipher. Also, Island Graphics has a 
+    trio of software packages called, appropriately, Island 
+    Draw/Paint/Write. This is also supposed to include a full-blown 
+    PostScript interpreter, and be able to read and edit arbitrary 
+    PostScript files. 
+
+
+------------------------------
+
+Subject: 1.6 How can I print PostScript on a non-PostScript printer? 
+
+    You need a tool that converts to something that your printer knows 
+    how to print. Use Freedom of Press, GhostScript, pageview, TScript, 
+    or UltraScript PC. Or, use a printer cartridge if your printer 
+    manufacturer sells one. 
+
+
+------------------------------
+
+Subject: 1.7 How do I print a file containing 8-bit characters? 
+
+    If you only have Transcript you just don't. Transcript uses 
+    "enscript" to convert a "text" file to a PostScript file and 
+    "enscript" is not able to deal with 8-bit characters. 
+
+    You have to use one of the many programs that convert text to 
+    PostScript, like a2ps, which not only handles the 8-bit characters 
+    in a very nice way using the standard ISO Latin 1 character 
+    encoding, but it also produces outputs in a series of very well 
+    set, nice an paper saving formats, much nicer than the ones 
+    produced by enscript. 
+
+
+------------------------------
+
+Subject: 1.8 What other graphics languages are there? 
+
+    HPGL is for pen plotters. PCL is for HP Laser printers (and 
+    compatibles). Both are by HP, and PCL5 is supposed to allow 
+    inclusion of HPGL commands, preceded by an appropriate escape code, 
+    however I have found this to give errors and abort even for simple 
+    HPGL code that plots fine on a plotter. 
+
+------------------------------
+
+Subject: 2 Printers 
+
+
+------------------------------
+
+Subject: 2.1 How can I get my printer to talk back to me? 
+
+    Experts using a level 2 printer can use the SerialOff.PS and 
+    SerialEHandlder.ps programs to communicate bidirectionally to the 
+    printer. 
+
+    If you just need the error returns from the printer, you can spawn 
+    a 
+  
+  cat < port >> logfile&
+  
+    in your system startup. Then you will get a log of everything the 
+    printer says. This works on any serial-port connected printer. 
+
+
+------------------------------
+
+Subject: 2.2 Should I leave my printer on? 
+
+    Most laser printers consume several hundred watts while idle in 
+    order to keep the fuser warm. A few models shut down automatically 
+    after a while, and this feature seems to be the wave of the future. 
+
+    Wear-and-tear due to power cycling is no longer the problem it once 
+    was. The advice in the FAQ would have been appropriate in the 
+    1970s, but no longer. A good modern rule of thumb is to turn off 
+    electronic equipment if it won't be used for a few hours (overnight 
+    or weekends), otherwise to leave it on. 
+
+
+------------------------------
+
+Subject: 2.3 How do you print double-sided on a single-sided printer? 
+
+    The biggest problem comes in jamming when you feed the document 
+    through the second time to print the backside. To minimize this 
+    problem, you want to minimize the curl that the paper acquires in 
+    passing through the printer. So, if your printer normally stacks 
+    face down (to make the page order come out right) rearrange it 
+    (often this involves flipping out a plastic paper catcher on the 
+    end) so the pages feed straight through and stack face up. Then 
+    acquire and build psutils, and run your document through the 
+    following commands: 
+
+  
+       pstops '2:0'           <original.ps >odd.ps
+       pstops '2:1U@1(1w,1h)' <original.ps >even.ps
+  
+    This puts the even and odd pages in different files, and rotates 
+    the even pages 180 degrees so the top and bottom are reversed. This 
+    lets you feed the paper back through with the old trailing edge at 
+    the front; since pages get the most severe curl at the leading edge 
+    this also helps reduce jamming. Print odd.ps, flip the output pile 
+    face down and backwards, put it back in the input magazine, and 
+    print even.ps. 
+
+    If the printer is fed by a shared print queue, you can leave the 
+    paper magazine out after you put the first pass pages into it, 
+    before you submit the second half, then make sure your job is at 
+    the front of the queue (waiting for you to replace the paper tray) 
+    before you reinsert the tray. 
+
+    Alternatively, particularly with serially-interfaced printers, 
+    there's a long enough delay to pull the paper tray out between two 
+    print jobs, so you can submit them both, then pull the tray out as 
+    soon as the last page of the first job finishes. The ``pstops'' 
+    invocations report how many pages they emit, so you can count pages 
+    to determine when the first one is done. 
+
+
+------------------------------
+
+Subject: 2.4 How do I suppress the power-on start page? 
+
+    Disabling the start page is described in your printer's PostScript 
+    supplement. The most common sequence is ``serverdict begin 0 
+    exitserver statusdict begin false setdostartpage end''. 
+
+
+------------------------------
+
+Subject: 2.5 How do I make a downloaded font ``persistent''? 
+
+  
+  %!PS-Adobe-2.0 ExitServer
+  %%BeginExitServer: 0
+  serverdict begin 0 exitserver
+  %%EndExitServer
+  % Test for existence of font, abort if present.
+  % This won't work on a printer with a hard disk!
+  /str 32 string def
+  /Eurostile dup FontDirectory exch known
+  { str cvs print ( is already loaded!\n) print flush quit }
+  { (loading font ) print str cvs print (\n) print flush }
+  ifelse
+  %% Font follows...
+  
+    The part following ``%%EndExitServer'' is optional. If you use 
+    it, change Eurostile to the name of the font. The default PFA 
+    behavior is to use up additional VM for the new copy if another 
+    copy has already been downloaded. 
+
+
+------------------------------
+
+Subject: 2.6 How do I remove a persistent (``permanent'') downloaded font? 
+
+    In PostScript Level 2, you can use the undefinefont operator to 
+    remove fonts selectively. 
+
+    The only reliable method in PostScript Level 1 is to restart the 
+    printer, for example with: 
+
+  
+    serverdict begin 0 exitserver
+    systemdict /quit get exec
+  
+    Of course, the real solution is just to not download persistent 
+    fonts unless you really want them to persist indefinitely. If you 
+    want them only for one job, download them as part of the job. 
+
+
+------------------------------
+
+Subject: 2.7 How do I reset the printer without power-cycling? 
+
+    Most printers can be reset by issuing ``serverdict begin 0 
+    exitserver systemdict /quit get exec''. 
+
+
+------------------------------
+
+Subject: 2.8 About saving files 
+
+    Adobe recommends that driver writers do not put EOT (control-D) 
+    into files when saving to disk. Normally, the EOT is a part of the 
+    protocol for parallel and serial ports and never hits the 
+    PostScript interpreter. 
+
+    Drivers that do embed EOD can create problems for devices that 
+    allow other communication methods (e.g. AppleTalk, Ethernet, and 
+    SCSI) where the EOT is not part of the communications protocol. It 
+    is useful to redefine EOT in these instances so that the 
+    interpreter does not generate an error. The recommended 
+    redefinition is: 
+
+  
+                   (\004) cvn {} def
+  
+    This should convert any stand-alone embedded EOTs into a null 
+    procedure. This definition does not cause all 004 characters to be 
+    consumed, it just prevents an "undefined" error if you try to 
+    execute one. 
+
+
+------------------------------
+
+Subject: 2.9 What's the control-D business? 
+
+    PostScript printers communicating over serial lines use control-D 
+    as an end of job indicator. The host computer should then wait for 
+    the printer to send a control-D back to indicate that the job has 
+    finished. Managing the serial protocol between host and printer 
+    should be done by some form of print service, but if you're unsure 
+    whether your print service is doing it, it's an idea to send one 
+    yourself. 
+
+    PC type computers frequently do not have any kind of printer 
+    manager and applications end up sending control-D characters to the 
+    printer, sometimes before and after a job. PC applications 
+    frequently embed a control-D as the first character in the print 
+    file, presumably to flush out any other jobs, and thereby breaking 
+    the Adobe Document Structuring Conventions. There is a way to turn 
+    off generation off the control-D in Windows (anybody know it?). 
+
+    According to the PRINTERS.WRI file that is included with MS Windows 
+    3.x and up, you can place a line 
+
+  
+                  CtrlD=0
+  
+    in the WIN.INI sections for any postscript printers for which you 
+    wish to supress the Control-D generation. This usually works as 
+    long as you're using a specific printer, i.e. Apple LaserWriter, 
+    QMS820, etc ] . However if you use the generic ``PostScript 
+    printer'' driver, it does not work. There is a freeware program 
+    called ctrld that will let users select if a given ps driver should 
+    output control-D's or not. It can be found at ftp.cica.indiana.edu 
+    in the file ftp/pub/pc/win3/misc/ctrld10.zip. 
+
+    The shareware package WLPRSPL (an LPR spooler for Windows) includes 
+    a convenient utility program for listing the relevant printers and 
+    turning the option off or on. 
+
+    If you want to prevent applications from doing this, you could use 
+    a spooler which would look at the end of every outgoing file and 
+    drop the control-D on the end if there happened to be one. 
+
+    If you want a spooler, check out lprps. 
+
+
+------------------------------
+
+Subject: 2.10 Why does the printer say ``still busy'' when my document is 
+    done printing? 
+
+    Sometimes when you finish a print job, the printer ``Ready'' light 
+    keeps flashing for a minute or so. Somehow, the printer has 
+    received some character(s) after the control-D which was sent 
+    immediately after the PostScript file. The most common is that a 
+    newline has been inserted after the control-D. The printer took 
+    these character(s) to be another program, and eventually timed-out 
+    while waiting for the rest of it. This can happen because of the 
+    host not waiting for the printer to finish. 
+
+
+------------------------------
+
+Subject: 2.11 How should I set up my spoolers? 
+
+    Since PostScript usually is prefixed with ``%!'', it's easy to 
+    educate your spooler to autoselect between passing raw PostScript 
+    through to the printer or doing an ``ASCII-to-PostScript'' 
+    conversion first. There are many packages that will do this, 
+    including Transcript and psxlate. 
+
+    Unfortunately, many PostScript applications generate PostScript 
+    without a proper ``%!'' magic cookie. 
+
+    The spooler should be responsible for transmitting the ``job 
+    termination code'' (a control-D on serially-connected printers) to 
+    the printer, not the application. Do yourself a favor and disable 
+    (or filter out) control-Ds in your applications and generate them 
+    in the spooler. This will be far more reliable in the face of 
+    arbitrary input. 
+
+
+------------------------------
+
+Subject: 2.12 What are PPD files? 
+
+    Adobe Postscript Printer Description (PPD) files describe how to 
+    use the special features for a specific Postscript printer. They 
+    are suppose to be human-readable, but they are really only readable 
+    by PostScript gurus. It is the responsibility of the printer 
+    manufacturer to supply PPD files. However, the Adobe mail server 
+    has many of them. (see the Section 6, ``About Adobe'') 
+
+    Adobe Technical Document 5003 - PPD Specification describes how to 
+    read and parse PPD files. You can find it on the Adobe mail server, 
+    or by anonymous ftp to ftp.adobe.com:/pub/adobe/Documents/5003.PPD 
+    _Spec.ps. 
+
+
+------------------------------
+
+Subject: 2.13 What's a timeout error? 
+
+    The wait timeout is the maximum time the PostScript interpreter 
+    will wait for input before aborting. The timeout interval begins 
+    when the interpreter finishes executing everything it has received 
+    so far and starts waiting for the host to send it more data. If 
+    this timeout expires and no more data arrives, a timeout occurs. 
+
+    In particular, a compute-bound job (or one that goes into an 
+    infinite loop) will not encounter a wait timeout, since it is not 
+    waiting. The long diatribe about the need to "keep sending stuff" 
+    and problems with long compute-bound jobs is totally off the mark. 
+    The data channel may stop due to flow control, and may stay stopped 
+    for long periods if the printer is very busy. This is perfectly OK 
+    and won't cause a timeout. 
+
+    Don't disable the wait timeout. The whole point of the wait timeout 
+    is to prevent the interpreter from being indefinitely tied up by a 
+    host application that has crashed, a communication channel that has 
+    been disconnected, or whatever. This is particularly important for 
+    networked printers. The only situation in which disabling timeouts 
+    is appropriate is when debugging applications or drivers, since you 
+    don't want the printer timing out while the host is at a breakpoint 
+    or something. 
+
+
+------------------------------
+
+Subject: 2.14 Can I tell if my printer is color or black/white? 
+
+    If you tried testing for the presence of ``colorimage'', your 
+    application will fail on PostScript level 2 printers. Several 
+    applications make this mistake, simply testing for the presence of 
+    a color operator (``colorimage'', ``setcmykcolor'', etc.). This is 
+    not sufficient -- some level 1 PostScript black and white devices 
+    and all level 2 devices include the color operators. 
+
+    However, before you do this, you should ask yourself *why* you want 
+    to know. There are really two reasons an application might care 
+    about the color capabilities of a printer. 
+
+    1. To determine if the printer will accept PostScript language 
+    programs using the color extensions (colorimage, setcmykcolor, 
+    etc.) 
+
+    2. To determine if the printer, as currently configured, will 
+    actually produce color output. This is what processcolors tells 
+    you. 
+
+    These are entirely different questions, and developers should make 
+    sure they are asking the right one. (1) is a language compatibility 
+    question, similar to the issue of Level 1 versus Level 2 (see red 
+    book, appendices A and D). (2) is a device dependent query, which 
+    is essentially independent of (1). 
+
+    In particular, it makes sense to ask (2) only if the application 
+    intends to take different actions depending on the outcome. For 
+    example, a CAD application might paint objects with stipple 
+    patterns on a monochrome device but true color on a color device. 
+    Or a prepress application might want to query and/or change the 
+    many Level 2 page device parameters dealing with production of 
+    separations (see PostScript Language Supplement for version 2012 or 
+    greater). 
+
+    On the other hand, if an application is not going to do such 
+    things, it should ask only question (1). If the printer will accept 
+    the color extensions, the application should sent it color output, 
+    whether or not the printer will actually produce color. That way, 
+    the PostScript language file captures the application's intent, and 
+    color will be produced if the file is later diverted to a color 
+    printer. 
+
+    Some times it's sensible to make such a test, though. For example, 
+    an application might want to display red and green on a color 
+    device, but a varying fill pattern on a black and white device 
+    since red and green are difficult to distinguish when rendered as 
+    gray. 
+
+    In ``statusdict'', the ``processcolors'' operator, if present, 
+    returns the number of device colors. Black and white level 2 
+    devices I have tested (TI microLaser Turbo, Apple LaserWriter IIg) 
+    omit ``processcolors''. Level 2 Color devices (such as the 
+    Tektronix Phaser III PXi) include it, and it returns the number of 
+    device colors. 
+
+    So, on both level 1 and level 2, the correct technique is to test 
+    for the presence of ``processcolors'' in ``statusdict'' and assume 
+    black and white if it is not present. If it is present, execute it 
+    and test the result for a ``1'', indicating black and white. 
+
+  
+          % returns true for black & white, false otherwise
+   
+          /black-and-white-device
+          {       statusdict begin
+                  /processcolors where
+                  { pop processcolors } { 1 } ifelse
+                  end
+                  1 eq
+          } def
+  
+
+------------------------------
+
+Subject: 3 Formats and Conversions 
+
+    This section describes formats that can be converted to and from 
+    PostScript, and how to convert them. Encapsulated PostScript and 
+    Fonts have their own sections. 
+
+
+------------------------------
+
+Subject: 3.1 How can I convert PostScript to some other graphics format? 
+
+    Since PostScript is not just a picture-description language, but in 
+    fact a complete programming language, you will need a complete 
+    PostScript interpreter to convert or display a PostScript graphic. 
+    See the comp.sources.postscript FAQ for an index of all PostScript 
+    related programs. 
+
+    Try using Ghostscript. 
+
+
+------------------------------
+
+Subject: 3.2 How can I convert PostScript to a bitmap or pixmap? 
+
+    Use Ghostscript, and build the devices under gs pbmraw, pbm.dev, 
+    etc. (See devs.mak under the sources for gs) The following converts 
+    file.ps in file.ppm: 
+
+    gs -sDEVICE=ppmraw -sOutputFile=file.ppm file.ps 
+
+    Or try using the Ghostscript tools ps2image.ps or pstoppm.ps. Or 
+    use the NETPBM tool pstopnm. Netpbm (a descendant of the PBMPLUS 
+    utilities) can then convert that image into whatever format you 
+    want. 
+
+    You can also use the ImageMagick-tools program ``convert''. Try 
+    ftp.x.org in contrib/ImageMagick.tar.Z. 
+
+    If you have the new xv installed, it can now read PostScript files, 
+    and it stores them to any format. 
+
+
+------------------------------
+
+Subject: 3.3 How can I convert HPGL to PostScript? 
+
+    Use hp2ps. 
+
+
+------------------------------
+
+Subject: 3.4 How can I convert DVI to PostScript? 
+
+    Use dvips. 
+
+
+    3.5 How can I convert HP Laserjet language (PCL) to PostScript? 
+
+    Use lj2ps for simple PCL. Alternatively, another lj2ps, from 
+    psroff3.0, is a little more complete. 
+
+    hp2pbm can convert all of PCL4 (up to and including rasters, 
+    downloaded fonts and macros) into PostScript, G3 and any other 
+    PBM-supposed format. 
+
+
+------------------------------
+
+Subject: 3.6 How can I convert TeX PK format font to PostScript? 
+
+    Psroff3.0 contains programs that can convert TeX PK format or HP 
+    SFP format fonts into PostScript bitmap fonts along with 
+    rearranging encoding, etc. While bitmap bfonts scale poorly, this 
+    is sometimes of use in special circumstances. 
+
+
+------------------------------
+
+Subject: 3.7 How do I embed PostScript into troff? 
+
+    Most troffs can be ``coerced'' into including PostScript figures. 
+    The best approach is a configuration that takes EPS PostScript and 
+    can automatically scale it, or tell troff how big the picture is. 
+    Groff and DWB 3 have this built in. 
+
+    psfig is an add-on EPS inclusion handler that can add this 
+    capability to other versions of troff, provided that a compatible 
+    PostScript driver is used (Psroff 3.0 for ditroff or CAT troff, 
+    Transcript for ditroff). See the comp.text FAQ for more detail. 
+
+
+------------------------------
+
+Subject: 3.8 How do I embed PostScript into LaTeX or TeX? 
+
+    You should use an add-on program for seamless PostScript inclusion. 
+
+    Use psfig. 
+
+    If your LaTeX is simple, but your PostScript is fancy, try using 
+    LameTeX. 
+
+    If you need a good compromise, use pstricks. 
+
+    See the comp.text.tex FAQ. 
+
+
+------------------------------
+
+Subject: 3.9 How can I convert an image to PostScript? 
+
+    First determine what format your images are in. PBMPLUS will have 
+    converters for most image formats. 
+
+    To convert an image to PostScript with the X Window System, you can 
+    display the image on the screen, and grab it with xv, which can 
+    save the image in a PostScript file. 
+
+    A more general alternative in X Window System would be to use the 
+    PPM, PGM and PBM utilities in the X11R4 and X11R5 distributions. 
+
+
+------------------------------
+
+Subject: 3.10 How can I convert ASCII text to PostScript? 
+
+    Unless your printer is smart about raw ASCII, you can't just send 
+    the ASCII to a PostScript printer, because the printer will attempt 
+    to interpret your ASCII file as PostScript code. You need a program 
+    which will wrap some PostScript code around your ASCII file. 
+
+    Try any of the following programs: asciiprint.ps, ato2pps, cz, 
+    ETSR, i2ps, lpp, lwf, POSTPRN, printer, psf, psfx80, PSR, ps2txt, 
+    pstext, swtext, text2ps, TranScript, spike.ps, enscript, nenscript, 
+    a2ps, asc2ps, ascii2ps, crossword.ps, double.ps, landscape.ps, 
+    numbered.ps, portrait.ps, or wide.ps. 
+
+    If you want to make something fancy, why not use a word processor? 
+    Most of them can ``include'' ASCII directly from a file and produce 
+    PostScript. 
+
+
+------------------------------
+
+Subject: 3.11 How can I convert PostScript to ASCII? 
+
+    In general, when you say ``I want to convert PostScript to ASCII'' 
+    what you really mean is ``I want to convert MacWrite (which makes 
+    PostScript output) to ASCII'' or ``I want to convert somebody's TeX 
+    document (which I have in PostScript) to ASCII''. 
+
+    Unfortunately, programs like these (if they're smart) do a lot of 
+    fancy stuff like kerning, which means that where they would 
+    normally execute the postscript command for 
+
+  
+      ``print water fountain''
+  
+    instead they execute the postscript command for 
+
+  
+      ``print wat''      (move a little to get the spacing *just* right)
+      ``print er''       (move a little to get the spacing *just* right)
+      ``print foun''     (move a little to get the spacing *just* right)
+      ``print tain''     (move a little to get the spacing *just* right)
+  
+    So if I write a program to look through a PostScript file for 
+    strings, like ps2ascii.pl, It can't tell where the words really 
+    end. Here my program would see 4 strings 
+
+  
+  ``wat'' ``er'' ``foun'' ``tain''
+  
+    And it doesn't see any difference between the spacing between 
+    ``found'' and ``tain'' (not a word break) and the spacing between 
+    ``er'' and ``foun'' (a real word break). 
+
+    The problem is that PostScript for text formatting is usually 
+    produced machine generated by a text formatter. A PostScript 
+    generator like dvips might have a special command like ``boop'' 
+    that differentiates between a real world break and a fake one. But 
+    every text formatter that generates PostScript has their own name 
+    for the ``boop'' command. 
+
+    So you really want a ``PostScript to ASCII converter for dvips 
+    output''. 
+
+    The only general solution I can see would be to redefine the show 
+    operator to print out the currentpoint for every letter being 
+    printed, like gs2asc, and then make up an ASCII page based on this 
+    by sticking ASCII characters where they go in a two-dimensional 
+    array. That would convert PostScript to ASCII ``formatted''. 
+
+    But even that wouldn't solve the problem, because special bitmap 
+    fonts and and standard fonts like Symbol don't always print a ``P'' 
+    when you say the letter ``P''. Sometimes they print the greek Pi 
+    symbol or a chess piece or a ZapfDingBat. 
+
+    Use ps2a, ps2ascii, ps2txt, ps2ascii.ps or ps2ascii.pl. 
+
+
+------------------------------
+
+Subject: 3.12 How do I convert between PFB, PFA, Mac, PFM, and AFM? 
+
+    Write or call Y and Y Software, listed in the fonts section as a 
+    vendor. For NEXTSTEP systems, write or call Trilithon Software, 
+    also listed in the fonts section as a vendor. 
+
+
+------------------------------
+
+Subject: 4 Fonts 
+
+    This section answers questions about fonts as they pertain to 
+    PostScript. See the comp.fonts FAQ for more information about 
+    fonts. 
+
+
+------------------------------
+
+Subject: 4.1 What are .PFB and .PFA files? 
+
+    ``PFB'' stands for Printer Font Binary, and is a STORAGE FORMAT in 
+    which Adobe Type 1 font programs are usually distributed for IBM PC 
+    and compatibles. Many application programs support fonts in PFB 
+    format, and refer to them as ``downloadable''. 
+
+    Macintosh uses a radically different binary storage format than PC. 
+    See below for some details. 
+
+    PFB files usually appear in several sections, each section preceded 
+    by a binary header containing the type of the section (ASCII, 
+    binary, or end of file) and the length of the section. Because of 
+    the presence of the binary section headers, and the possible 
+    presence of binary data sections, PFB files cannot in general be 
+    sent directly to a PostScript printer. Application programs like 
+    dvips which use fonts in PFB format unpack the font into ASCII 
+    format before sending it to the printer. If you would like to use a 
+    font which is in PFB format, you must unpack the font to make a PFA 
+    (Printer Font ASCII) file. Adobe Systems supply a font downloader 
+    for PC's which turns the PFB format into PFA format on the fly as 
+    it's being downloaded. 
+
+    ``PFA'' stands for Printer Font ASCII, which is the unpacked 
+    version of a PFB file. In PFB, the data is stored as-is. In a PFA, 
+    any binary data present in a former PFB file is stored as ``ascii 
+    hex''--meaning each byte of binary data is turned into two ASCII 
+    characters representing the hexdecimal value. 
+
+    Once you have the PFA file, just send it to the printer ahead of 
+    your file, and use the font like any other. There are several 
+    programs which can do the conversion from PFB to PFA for you. Try 
+    t1utils. 
+
+    Details of the PFB format can be found in Adobe Technical Note # 
+    5040, ``Supporting Downloadable PostScript Fonts''. 
+
+
+------------------------------
+
+Subject: 4.2 How does Macintosh Store PostScript Fonts? 
+
+    To start off understanding how Macintosh stores PostScript fonts, 
+    first you need to know that a Macintosh file consists of two 
+    different parts, called ``forks''. The two forks of a Macintosh 
+    file are called the ``resource fork'' and the ``data fork''. 
+
+    The data fork normally contains the data of the file. In the case 
+    of a text editor, for instance, the data fork contains the text. 
+
+    The resource fork contains system (resource) information about the 
+    file: who owns the file, its icon maybe, and other information. The 
+    various bits of information in the resource fork are contained in a 
+    complex structure. One of the items is a resource map, detailing 
+    the different kinds of resources and their positions in the 
+    resource fork. 
+
+    The reason you need to know all this is because PostScript Type 1 
+    fonts are stored in the resource fork of Macintosh files. Why this 
+    was done is a historical mystery now, because the information could 
+    just as easily have been stored in the data fork in a format 
+    similar to PFB, and unpacking fonts would have been a whole lot 
+    easier. 
+
+    PostScript Type 1 fonts are stored in resources with the name 
+    POST''. If you aren't familiar with the layout of resource forks, 
+    study the ``Resource Manager'' chapter of the Inside Macintosh 
+    books. Details of Macintosh PostScript Type 1 storage format can be 
+    found in Adobe Technical Note # 5040, ``Supporting Downloadable 
+    PostScript Fonts''. The information in the Adobe Technical Note is 
+    incomplete in the sense that you need to understand the layout of 
+    Macintosh resource forks to make sense of the information. 
+
+    In the majority of cases, you can assume that the POST resources 
+    are stored contiguously in the resource fork. Unfortunately, there 
+    are a few cases where this isn't true, and the resulting PFA file 
+    will be incorrect. 
+
+    POST resources occur in five types. Type 0 are comments. Type 1 are 
+    ASCII data. Type 2 are binary data. Type 3 are end of this font 
+    program. Type 4 means that the remainder of this font appears in 
+    the data fork of the file! Type 5 means end of file. 
+
+    Having talked about PostScript Type 1 fonts being stored in the 
+    resource fork, why is there a case where the font comes out of the 
+    data fork? Some PostScript Type 3 fonts are stored in this manner. 
+
+
+------------------------------
+
+Subject: 4.3 How can I convert a PostScript font to TeX's PK format? 
+
+    Use ps2pk or try out the GNU font utilities in fontutils. 
+
+
+------------------------------
+
+Subject: 4.4 Why are Adobe fonts hidden? 
+
+    In PostScript level 1, Adobe's fonts were hidden because they 
+    didn't want people pirating copies instead of paying for them. 
+    That's why you can't do a pathforall on a charpath. 
+
+    PostScript Level Two has removed the restriction, in the words of 
+    the new Red Book, ``for most fonts''. There will still be some 
+    vendors who will want to restrict access. Japanese font vendors, 
+    for example, are concerned about piracy -- given the work that goes 
+    into an 8,000-character Kanji font. 
+
+
+------------------------------
+
+Subject: 4.5 How do I get bitmap representations of Adobe fonts? 
+
+    On the IBM PC, use the Font Foundry program included with the font. 
+    If you don't have it, contact Adobe for an upgrade. 
+
+
+------------------------------
+
+Subject: 4.6 What are some good ftp sites for fonts? 
+
+  
+  ftp.cs.umb.edu
+  sumex-aim.stanford.edu
+  archive.umich.edu
+  ftp.cica.indiana.edu    /pub/pc/win3/fonts
+  colonsay.dcs.ed.ac.uk   /pub/postscript/fonts
+  
+  
+  For the NeXT platform, fonts are available on the NeXT-FTP-archives,
+          sonata.cc.purdue.edu :/pub/next/graphics/fonts
+          fiasko.rz-berlin.mpg.de :/pub/next/fonts
+  
+    For Macintosh, look in sumex-aim.stanford.edu, 
+    mac.archive.umich.edu, and ftp.cs.umb.edu (192.12.26.23), in 
+    pub/tex/ps-screenfonts.tar.Z. 
+
+    Color PostScript samples and many other PostScript programs are 
+    available from irisa.irisa.fr. 
+
+
+------------------------------
+
+Subject: 4.7 How can I re-encode a font? 
+
+    See ddev.ps for an example for code that does this. You can find it 
+    by ftp to wilma.cs.brown.edu:pub/postscript/ddev.ps. 
+
+
+------------------------------
+
+Subject: 4.8 What's the difference between a Type 1 and a Type 3 font? 
+
+    The Type 1 font format is a compact way of describing a font 
+    outline using a well-defined language that can be quickly 
+    interpreted. The language contains operations to provide the 
+    rasterizer with additional information about a character, known as 
+    hints. The hints are additional information which describes how to 
+    adjust the representation of the character to make it look good 
+    when the font size is small compared to the device resolution. The 
+    Type 1 font format is defined in the book ``The Adobe Type 1 Font 
+    Format'', also known as the black book, for the colors on its 
+    cover. 
+
+    The Type 1 font format has nothing to do with TrueType, which is 
+    another font format defined by Apple. The Type 1 font format has 
+    been around quite a while, and is used on a wide variety of 
+    platforms to obtain scalable fonts. 
+
+    Most clone interpreters will not have Adobe's proprietary rendering 
+    technology which interprets font hints to improve the appearance of 
+    fonts shown at small sizes on low-resolution devices. The 
+    exceptions (PowerPage and UltraScript) have their own hint 
+    interpreters. 
+
+    The Type 3 font format is a way of packaging up PostScript 
+    descriptions of characters into a font, so that the PostScript 
+    interpreter can rasterize them. 
+
+    It is easier to create a Type 3 font program by hand than to create 
+    the corresponding Type 1 font program. Type 3 font programs have 
+    access to the entire PostScript language to do their imaging, 
+    including the 'image' operator. They can be used for bitmapped 
+    fonts, although that is certainly not a requirement. The Type 3 
+    font format contains no provisions for 'hinting', and as such Type 
+    3 font programs cannot be of as high a quality at low resolutions 
+    as the corresponding Type 1 font program. 
+
+    Both formats are scalable formats, and both can be run on any 
+    PostScript interpreter. However, because of the requirement that a 
+    Type 3 font program have a full PostScript interpreter around, Type 
+    3 font programs cannot be understood by the Adobe Type Manager. 
+    Only Type 1 font programs can. 
+
+    Why bother making a font that's just made up of bitmaps? Once a 
+    character from a font has been rendered, the bitmap will be saved 
+    in a cache, and another instance of the same character at the same 
+    size and orientation can be quickly drawn without recalculation. 
+
+    Because of Adobe Type Manager's wide availability on a large number 
+    of platforms (PC, Mac, and Unix), the Type 1 font format makes an 
+    excellent cross-platform scalable font standard. 
+
+
+------------------------------
+
+Subject: 4.9 What vendors sell fonts for PostScript printers? 
+
+    PostScript font vendors are many and varied. Here is a partial 
+    list. 
+
+
+
+    Adobe Systems 
+      sells a variety of fonts. With the huge number of third-party 
+      Type 1 vendors, in recent years Adobe have specialized in 
+      creating their own ``Adobe Originals'' -- high-quality fonts, 
+      some of which are their renditions of classic faces (Adobe 
+      Garamond) and some of their own devising (Stone, Utopia, ...). 
+      Adobe Systems, 1585 Charleston Road, Mountain View, CA 94039. 
+      (415) 961-4400 
+
+
+    AGFA Compugraphic, 
+      90 Industrial Way, Wilmington, Massachusetts 01887. (508) 
+      658-5600. 
+
+
+    Bear Rock Technologies 
+      specializes in bar code fonts. 4140 Mother Lode Drive, Suite 100, 
+      Shingle Springs California 95682. 
+
+
+    Bitstream, 
+      Athenaeum House, Cambridge, MA 02142. (617) 497-6222. 
+
+
+    Callifonts 
+      has a really nice looking set of calligraphy typefaces. P.O. Box 
+      224891, Dallas, TX 75222. (214) 504-8808. 
+
+
+    Casady and Greene, 
+      22734 Portola Drive, Salinas, CA 93908. (408) 484-9228. 
+
+
+    Ecological Linguistics, 
+      specializes in non-Roman alphabets. Ecological Linguistics, P. O. 
+      Box 15156, Washington D. C. 20003. 
+
+
+    Emigre Graphics 
+      4475 ``D'' Street / Sacramento CA 95819 (800) 944 9021 ] Over 70 
+      faces, all PostScript Type 1 ATM compatible, including the 
+      omnipresent Modula and infamous Template Gothic. Almost all faces 
+      are ``must haves'' for graphic designers. Call for free catalog. 
+
+
+    The Font Company 
+      12629 North Tatum Boulevard, Suite 210, Phoenix Arizona 85032. 
+      (602) 998-9711. 
+
+
+    Image Club, 
+      # 5 1902 11th St Southeast, Calgary, Alberta T2G 2G2, Canada. 
+      (403) 262-8008. 
+
+
+    Lanston 
+      specializes in display faces. 
+
+
+    Letraset 
+      specializes in fancy kinds of script fonts, Letraset, 40 
+      Eisenhower Drive, Paramus, New Jersey 07652. (201) 845-6100 
+
+
+    Linguists Software 
+      specializes in non-Roman alphabets (Farsi, Greek, Hangul, Kanji, 
+      etc.) Linguists Software, P. O. Box 580, Edmonds, Washington 
+      98020-0580. (206) 775-1130. 
+
+
+    Monotype, 
+      53 West Jackson Boulevard, Suite 504, Chicago, IL 60604. 
+
+
+    Page Studio Graphics, 
+      Chandler, Arizona, specialize in symbols fonts such as Mac icons, 
+      keyboards, and others, Page Studio Graphics, 3175 North Price 
+      Road, # 1050, Chandler, Arizona 85224. (602) 839-2763. 
+
+
+    Software Complement 
+      specializes in creating logo fonts. 8 Penn Avenue, Metamoras, 
+      Pennsylvania 18366 USA. 
+
+
+    The Font Company 
+
+
+    TreacyFaces 
+
+
+    Trilithon Software, 
+      Portola Valley, California can supply fonts from the Adobe Type 
+      library for NEXTSTEP. If you're working on NEXTSTEP, getting 
+      fonts in the correct form with ancillary information and 
+      downloaders and such is important. You can convert Mac fonts to 
+      NEXTSTEP (PFA) format, but NEXTSTEP demands AFM files as well, 
+      and many Mac/PC font vendors omit AFM files because Mac/PC apps 
+      don't use them. For Adobe fonts for NEXTSTEP, save yourself a lot 
+      of hassle by getting the fonts from Trilithon. 
+
+      If you want non-Adobe fonts for NEXTSTEP, Trilithon Software can 
+      supply font conversion tools to go from Macintosh or PC format to 
+      NEXTSTEP format. The conversion tools generate AFM files if none 
+      are supplied with the fonts, and sanity check AFM files for 
+      correctness when they are supplied. 
+
+      Two Ohlone, Portola Valley, California 94028 USA. Telephone: 
+      (415) 325-0767, FAX: (415) 325-0768. E-Mail: info@trilithon.com. 
+
+
+    URW 
+      supplies high-quality fonts at low prices. They are also the 
+      creators of the top of the line font creation and editing 
+      software called Ikarus. URW, 4 Manchester Street, Nashua, New 
+      Hampshire 03060. (603) 882-7445. 
+
+
+    Y and Y Software 
+      , 106 Indian Hill, Carlisle Massachusetts 10741 USA. (508) 
+      371-3286. Sells a Font Metric Manipulation Package for DOS with 
+      lots of interesting utilities. 
+
+    Many more font vendors exist. Look in magazines and other sources. 
+    Check the Usenet newsgroup comp.fonts. Look in U & lc, published by 
+    ITC, for long lists of vendors. 
+
+
+------------------------------
+
+Subject: 4.10 What are ATM fonts? 
+
+    There has been a rash of misunderstanding about the nature of Type 
+    1 fonts and what people call ATM fonts. ATM fonts are Adobe Type 1 
+    fonts. ATM stands for Adobe Type Manager -- a utility to render 
+    smooth characters on Macintosh and PC screens, from font outlines 
+    (Type 1 fonts) instead of using bitmap fonts. In one sense, there's 
+    no such thing as an ``ATM font'' -- ATM interprets Type 1 fonts, so 
+    there's no need to create a new name. A correctly constructed Type 
+    1 font can be interpreted by ATM. 
+
+
+------------------------------
+
+Subject: 4.11 What are Multiple Master Fonts? 
+
+    Multiple Master Fonts are an extension to the Adobe font format. 
+    providing the ability to interpolate smoothly between several 
+    ``design axes'' from a single font. Design axes can include weight, 
+    size, and even some whacko notions like serif to sans serif. 
+    Adobes' first Multiple Master Font was Myriad -- a two-axis font 
+    with WEIGHT (light to black) on one axis, and WIDTH (condensed to 
+    expanded) along the other axis. In the case of Myriad, there are 
+    four ``polar'' designs at the ``corners'' of the design space. The 
+    four designs are light condensed, black condensed, light expanded, 
+    and black expanded. 
+
+    Given polar designs, you can set up a ``weight vector'' which 
+    interpolates to any point within the design space to produce a 
+    unique font for a specific purpose. So you can get a ``more or less 
+    condensed, somewhat black face''. 
+
+
+------------------------------
+
+Subject: 4.12 Do I need a Level Two printer to use Multiple Master Fonts? 
+
+    No -- Multiple Master Fonts can be used on any PostScript printer. 
+    Multiple Master Fonts need a new PostScript operator known as 
+    makeblendedfont. The current crop of Multiple Master Fonts supply 
+    an emulation of this operator so the printer doesn't need this 
+    operator. 
+
+    A short tutorial on Multiple Master Fonts and makeblendedfont 
+    appears in PostScript by Example, by Henry McGilton and Mary 
+    Campione, published by Addison-Wesley. 
+
+
+------------------------------
+
+Subject: 4.13 What are Type 4 fonts? 
+
+    Type 4 fonts are actually Type 3 fonts which contains a Type 1 
+    font. They're stored on hard disk in a special way to save space 
+    when they're loaded into printer RAM by findfont. Your interpreter 
+    must have the extra PostScript operator CCrun to handle Type 4 
+    fonts. They are usually used for Kanji (Japanese) characters. 
+
+
+------------------------------
+
+Subject: 4.14 What are Type 5 fonts? 
+
+    Type 5 fonts are actually Type 1 fonts, but stored in printer ROM 
+    in a special compressed format. They're also known as CROM fonts 
+    (for Compressed ROM fonts). The contents of the CharStrings entries 
+    in Type 5 will probably be different from Type 1. 
+
+
+------------------------------
+
+Subject: 4.15 Is there an editor for Type 1 Fonts? 
+
+    Fontographer for the Macintosh and MS-Windows under DOS is 
+    available from Altsys Corporation, 269 West Renner Road, 
+    Richardson, Texas 75080 USA. (214) 680-2060. 
+
+    Ikarus-M is availble for the Macintosh from URW, Harksheider 
+    Strasse 102, 2000 Hamburg 65, GERMANY. (040) 60 60 50 Or URW 
+    Software and Type, 4 Manchester Street, Nashua, New Hampshire 
+    03060. (800) 229-8791 in USA. (603) 882-7445 otherwise. 
+
+------------------------------
+
+Subject: 5 Books 
+
+    There are many good books on PostScript language programming. 
+    Descriptions of all known books are listed below. A listing of 
+    publisher information follows. 
+
+    The most commonly known books are the ``blue book'', ``big red 
+    book'', and ``green book'' from Adobe, to be read in that order. 
+    They are nicknamed according for their jacket colors. 
+
+    Other books recommended to me include Thinking in PostScript, 
+    which allows its examples to be freely distributed, and PostScript 
+    by Example. 
+
+
+------------------------------
+
+Subject: 5.1 Books 
+
+  
+   Adobe Illustrator - The Expert Advisor Series
+        Author        Diane Burns, S. Venit, David Smith
+        Publisher     Addison-Wesley, 1989
+        ISBN:         0-201-14397-6  $22.95
+  
+
+  
+   Adobe illustrator 3 complete.
+        Author        Venit, Sharyn ; et al.
+        Publisher     Reading, MA ; Wokingham : Addison-Wesley, c1991 
+        Description   ix, 412 p. : [4] p. of plates : ill. (some col.) ;
+                      24 cm.
+        ISBN          0-201-57756-9 (pbk.)     $22.45
+        Library #     006.6765
+  
+
+  
+   Adobe illustrator 3.0 : the official handbook for designers. 3rd. ed. 
+        Author        Bove, Tony ; Fred Davis, Cheryl Rhodes 
+        Publisher     New York : Bantam Books, 1991
+        Description   xvi, 420 [8] p. of plates : ill. ; 24 cm. 
+        ISBN:         0-553-35385-3 (pbk.)    $24.95 ($31.95 Can.)
+        Library #     Z286. .D47 B66 1991
+  
+
+  
+   The Adobe Illustrator 3.2 : designer's guide 
+   (Sybex Macintosh library series)
+        Author        Holzgang, David A.
+        Publisher     San Francisco : Sybex, c1992
+        Description   xviii, 358 p. : ill. ; 23 cm.
+        ISBN          0-7821-1002-9     $24.95
+        Library #     T385 .H674 1992
+  
+
+  
+   Adobe type 1 font format.
+   [The Black Book] 
+        Author        Adobe Systems Incorporated.
+        Publisher     Reading, MA : Addison-Wesley, c1990.
+        Description   iii, 103 p. : ill. ; 24 cm.
+        ISBN          0-201-57044-0     $14.95 (18.95 Can.)
+        Library #     QA76.73 P67 A36 1990
+   
+        This is the specification for the Type 1 font format. Type 1 
+        fonts are the standard outline format found in Adobe PostScript 
+        printers, implementations of the Display PostScript system, and 
+        available as download able fonts from the Adobe Type Library. 
+        This document describes the syntax of the Adobe Type 1 font  
+        format, including complete information regarding hints, encoding 
+        of character outlines, and the charstring and eexec encryption 
+        algorithms. 
+  
+
+  
+   Apple LaserWriter reference : for the LaserWriter, LaserWriter Plus, 
+   LaserWriter IINT and IINTX.
+        Author        Apple Computer 
+        Publisher     Reading, MA : Addison-Wesley, c1988 
+        Description   xv, 167 p. ; 24 cm.
+        ISBN          0-201-19258-6     $19.95 
+        Library #     TK7887.7 .A66 1988
+  
+
+  
+   Build your own PostScript laser printer and save a bundle. 2nd ed.
+        Author        LaBadie, Horace W.
+        Publisher     Blue Ridge Summit, PA : TAB Books, 1993
+        Description   xviii, 149 p. : ill. ; 25 cm.
+        ISBN          0-8306-4306-0     $19.60
+        Library #     TK7887.7 .L33 1993
+  
+  
+   Creating special effects on the Macintosh.
+        Author        Holzgang, David A.
+        Publisher     Reading, MA : Addison-Wesley, c1992
+        Description   xx, 471 p. : ill. ; 24 cm.
+                      + one computer disk (3 1/2 in.)
+        ISBN          0-201-57779-8     $28.95 ($37.95 Can.)
+        Library #     Z52.5 M28 H64 1991
+  
+
+  
+   Design essentials.
+        Author        Cohen, Luanne Seymour ; et al.
+        Publisher     Mountain View, CA : Adobe Press, c1992
+        Description   vii, 102 p. : ill. (some col.) 23 x 31 cm.
+                      + 3-D viewing glasses inserted. 
+                      At head of title: Professional studio techniques.
+        ISBN          0-672-48538-9     $39.95 ($49.95 Can.)
+        Library #     T385 .D473 1992.
+  
+  
+   Design Techniques with Adobe Illustrator
+        Author        Linda Miles, Betty Wilson
+        Publisher     Sams, 1992
+        ISBN          0-672-30205-5      $39.95
+  
+
+  
+   Display PostScript programming.
+        Author        Holzgang, David A.
+        Publisher     Reading, MA : Addison Wesley, c1990 
+        Description   x, 406 p. : ill. 24 cm.
+        ISBN          0-201-51814-7     $24.95
+        Library #     QA76.73 .P67 H63 1990
+  
+
+  
+   Encapsulated PostScript : application guide for the
+   Macintosh and PC's.
+        Author        Vollenweider, Peter
+        Publisher     New York ; London : Prentice Hall 1990 
+        Description   xvii, 226 p. : ill. ; 24 cm.
+                      Translated from German
+        ISBN          0-13-275-843-1 (pbk.)     $16.95
+        Library #     QA76.73 .P67 V65 1990
+   
+        The book's focus is EPS. However, it is an excellent book full 
+        of actual real life PostScript and Encapsulated PostScript 
+        applications on Macs, PCs, UNIX, IBM mainframe, and other 
+        computer systems. 
+  
+
+  
+   Expert advisor : Adobe Illustrator.
+   (The Addison-Wesley expert advisor series)
+        Author        Burns, Diane ; S. Venit, David Smith 
+        Publisher     Reading, MA : Addison-Wesley, c1988
+        Description   ix, 350 p., [4] p. of plates : ill. (some col.) ;
+                      24 cm. 
+        ISBN          0-201-14397-6     $22.95 
+        Library #     T385 .B864 1989
+  
+
+  
+   Graphic design with PostScript.
+        Author        Kunkel, Gerard 
+        Publisher     Glenview, IL :Scott, Foresman, c1990 
+        Description   
+        ISBN          0-673-38794-1     $29.95
+        Library #     Z286 .D47 K87 1990
+  
+
+  
+   Halftoning with Adobe Accurate Screens
+        Author        Peter Fink
+        Publisher     Hayden, 1992
+        ISBN          ???    $29.95
+  
+  
+   Hands-on PostScript.
+        Author        Spring, Michael B. ; David S. Dubin 
+        Publisher     Carmel IN, : Hayden Books, c1992 
+        Description   xx, 431 p. ; 24 cm.
+                      + one computer disk (3 1/2 in.)
+        ISBN          0-672-30185-7     $29.95 ($37.95 Can.)
+        Library #     QA76.73 .P67 S67 1992
+   
+        This is an introduction to PostScript for the novice or casual 
+        user. PostScript programming principles are introduced in the 
+        context of useful projects (e.g. greeting cards, letterhead, 
+        multi-page posters). The book includes five PostScript driver 
+        projects in Basic, Pascal, and C. A 3.5" DOS formatted diskette 
+        is included with all the source code. It does not cover 
+        PostScript level 2. 
+  
+
+  
+   Illustration techniques with Adobe illustrator for windows.
+        Author        Miles, Linda ; Betty Wilson
+        Publisher     Carmel, IN : Hayden, c1992
+        Description   xxviii, 323 p., [16] p. of plates : ill. 
+                      (some col.) ; 23 cm.
+                      + one computer disk (3 1/2 in.)
+        ISBN          0-672-30205-5     $39.95
+        Library #     006.6869
+  
+
+  
+   Inside the Apple LaserWriter 
+        Author        Hart, Roger
+        Publisher     Glenview, IL : Scott, Foresman, c1989 
+        Description   xvii, 293 p. : ill. ; 24 cm.
+        ISBN          0-673-38064-5 
+        Library #     TK7887.7 .H38 1989
+  
+
+  
+   Inside PostScript.
+        Author        Braswell, Frank Merritt
+        Publisher     Berkeley, CA : Peachpit Press c1989 
+        Description   various pagings ; 23 cm. 
+        ISBN          0-938151-10-X     $37.50
+        Library #     QA76.73 .P67 B73 1989
+        
+        Inside PostScript essentially takes one on a tour of the
+        standardinternal PostScript code in most printers. The author 
+        has worked extensively with an interpreter. (in PostScript 
+        terms, no low-level hardware stuff here like cexec and 
+        internaldict). 
+  
+
+  
+   Laserwriter Reference
+        Author        Apple Computer
+        Publisher     Addison-Wesley, 1988
+        ISBN          0-201-19258-6   $19.95
+  
+
+  
+   Learning PostScript : a visual approach. 
+        Author        Smith, Ross
+        Publisher     Berkeley, CA : Peachpit Press, 1990
+        Description   various pagings
+        ISBN          0-938151-12-6     $ 22.95 
+        Library #     QA76.73 .P67 S55 1990
+   
+        Learning PostScript is a tutorial on the PostScript language.
+        It is very appealing, very easy to follow and filled with
+         examples. Each example occupies two pages. A brief explanation 
+        and source code is on the left page, and the resultant print-out
+        is on the facing right page. The book starts off very simply for 
+        beginners, and covers a lot of material at the end for experts.
+        It was written before level 2 PostScript. In the later half of
+        the book, a few examples can executed only if an additional disk
+        is purchased. The code for LPAVA is $ 20 from Smith Consultants,
+        834 Third St., Suite B, Santa Rosa, CA 95404, U.S.A. fax number:
+       415-524-9775 
+  
+
+  
+   Linotronic imaging handbook : the desktop publisher's
+   guide to high-quality text and images.
+        Author        Cavuoto, James ; Stephen Beale 
+        Publisher     Torrance, CA : Micro Publishing Press, 1990 
+        Description   vi, 217 p. : ill. (some col.) ; 23 cm.
+        ISBN          0-941845-06-0     $27.95
+        Library #     Z253.4 .L56 C387 1990
+  
+
+  
+   Mastering Adobe illustrator.
+        Author        Holzgang, David A.
+        Publisher     San Francisco : Sybex, c1988
+        Description   xviii, 330 p. : ill. ; 23 cm.
+        ISBN          0895884631 (pbk.)
+        Library #     Z286 .D4 H67 1988
+  
+
+  
+   Mastering Adobe Illustrator 88.
+        Author        McClelland, Deke ; Craig Danuloff 
+        Publisher     [Boulder, CO] : Publishing Resources Inc. ;
+                      [Homewood, IL] : Dow Jones Irwin, c1989
+        Description   xii, 298, [21] p. : ill ; 24 cm.
+        ISBN          1-55623-157-1 (Dow Jones Irwin)     $24.95
+        Library #     Z286 .D47 M375 1989
+  
+
+  
+   The official Adobe Photoshop handbook.
+        Author        Biedny, David ; Bert Monroy
+        Publisher     Toronto ; New York : Bantam Books, 1991 
+        Description   xxxviii, 423 p. : ill. (some col.) ; 24 cm.
+        ISBN          0-553-34876-0     $26.95 ($33.95 Can.)
+        Library #     QA76.8 .M3  B52 1991
+  
+
+  
+   Portable Document Format Reference Manual
+        Author        Adobe Systems Incorporated
+        Publisher     Reading, MA : Addison Wesley, 1993
+        ISBN          0-201-62628-4 (pbk.)    $24.95
+        Library #     QA76.9.F5P67 1993
+  
+
+  
+   PostScript by example.
+        Authors        McGilton, Henry ; Mary Campione 
+        Publisher      Reading, MA : Addison-Wesley, c1992.
+        Description    xviii, 620 p. : ill. (some col.) ; 24 cm.
+        ISBN           0-201-63228-4     $29.95 ($38.95 Can.)
+        Library #      QA76.73 .P67 M34 1992
+   
+        PostScript by example is a tutorial for PostScript people at
+        all levels. It covers level 2 PostScript. The book starts
+        at novice level and works through to Level Two composite fonts,
+        patterns, forms, color, halftones, Display PostScript rectangle
+        operators and text operators. It contains a chapter on practical
+        issues of downloading fonts, talking to printers, and error 
+        handling. 620 pages containing over 500 fragments of PostScript
+        code and over 750 illustrations. A long-awaited ``upgrade''
+        to the Blue Book. 
+        Henry McGilton can be reached by email as henry@trilithon.com. 
+        Mary Campione can be reached by email as mem@taranis.com. 
+        A disk containing 13,000 lines of PostScript code from the book 
+        can be ordered separately for $ 20 from: Trilithon Software, Two 
+        Ohlone, Portola Valley, CA 94028, U.S.A. 
+   
+        Or, send email to info@trilithon.mpk.ca.us. 
+  
+
+  
+   A postscript cookbook.
+        Author        Thomas; Barry 
+        Publisher     New York : Van Nostrand Reinhold, 1988. 
+        Description   vii, 144 p. : ill. ; 24 cm.
+        ISBN          0-442-23686-7     $9.98
+        Library #     QA76.73 .P67 T48 1988
+  
+
+  
+   PostScript screening : Adobe accurate screens.
+        Author        Fink, Peter
+        Publisher     Mountain View, CA : Adobe Press, c1992.
+        Description   xvi, 175 p. : ill. ; 25 cm.
+        ISBN          0-672-48544-3 (pbk.)
+        Library #     T385 .F55 1992
+   
+        Explains in detail all the issues and specifically covers Adobe 
+        Accurate Screens -- Adobes' own screening technology. Peter Fink 
+        is an expert on the subject of halftone screens as they relate
+        to color issues. 
+  
+
+  
+   PostScript, Eine Umfassende Einfuhrung in die Programmierung
+        Author        Wilfred Soker
+        Publisher     Vieweg & Sohn Verlag GmbH, Postfach 5829,
+                      D-6200, Wiesbaden 1, Germany
+        ISBN          3-528-14711-3
+  
+
+  
+   PostScript font handbook - a directory of type 1 fonts. Rev. ed.
+        Authors       Grosvenor, Jonathan editor ; Kaye Morrison,
+                      Alexandia Pim 
+        Publisher     Reading, MA : Addison-Wesley, c1992. 
+        Description   x, 425 p. : ill ; 24 cm.
+        ISBN          0-201-56893-4     $24.95 ($31.95 Can.)
+        Library #     Z250.7 .P67 1992
+  
+
+  
+   PostScript fuer Workstations 
+        Author        Vollenweider, Peter  (rzuvo@rzu.unizh.ch) 
+        Publisher     Reading, MA : Addison-Wesley, 1992. 
+        ISBN          3-89319-459-2 
+   
+        Dieses Buch ist in Deutsche geschrieben. Es beschreibt
+        PostScript fuer Workstations, mit Display PostScript, PostScript 
+        2, und Farben. 
+        This book is written in German. It describes using PostScript on 
+        workstations. It covers Display PostScript, PostScript Level 2, 
+        and colors. 
+  
+  
+   PostScript Language Program Design.
+   [The Green Book]
+        Author        Adobe Systems Incorporated ; Glenn Reid
+        Publisher     Reading , MA : Addison-Wesley, c1988 
+        Description   xii, 224 p. ; 23 cm.
+        ISBN          0-201-14396-8 (pbk.)     $22.95
+        Library #     QA76.73 .P67 R45 1988 
+       
+        PostScript Language Program Design is intended to teach the
+        fundamentals of designing PostScript language programs and
+        to show how the language works, so the your programs will be
+        fast, well-behaved, easy to understand, and portable. 
+        Code Examples: $ 15 from the developer support hotline. Free
+        from the Adobe mail server (see Section 6, ``About Adobe''). 
+  
+  
+   PostScript Language Reference Manual. 1st ed. 
+   [The Old Red Book] 
+        Author        Adobe Systems Inc. 
+        Publisher     Reading, MA : Addison-Wesley, 1985. 
+        Description   ix, 299 p. : ill. ; 24 cm.
+        ISBN          0-201-10174-2 
+        Library #     QA76.73 .P67 P67 1986
+   
+        The first edition of the reference manual. It describes 
+        PostScript level 1 only. It is a subset of the PostScript level 
+        2 book, and is now out of print.
+  
+  
+   PostScript language reference manual. 2nd ed.
+   [The Big Red Book] 
+        Author        Adobe Systems Incorporated ; [authors, Ed Taft,
+                      Jeff Walden ; editing, Jeff Walden, Paul Engstrom
+                      ; illustration Carl Yoshihara, Wendy Ball,
+                      Dayna Portfield]
+        Publisher     Reading, MA : Addison-Wesley, c1990 
+        Description   viii 764 p. : ill. 24 cm.
+        ISBN          0-201-18127-4     $26.95
+        Library       QA76.73 .P67 P67 1990 
+   
+        PostScript language reference manual is the book that defines
+        the PostScript language. The second edition not only defines 
+        Level 1 PostScript, but also encompasses the color, composite
+        font, file system, and DPS extensions and the PostScript 
+        language Level 2. 
+  
+  
+   PostScript language tutorial and cookbook.
+   [The Blue book]
+        Author        Adobe Systems Incorporated 
+        Publisher     Reading, MA : Addison Wesley, 1985
+        Description   x, 243 p. : ill. ; 24 cm.
+        ISBN          0-201-10179-3 (pbk.)      $16.95
+        Library #     QA76.73 .P67 P68 1985 
+   
+        PostScript language tutorial and cookbook is the most common
+        tutorial book on PostScript. It provides an easy, informal
+        introduction to the PostScript language and graphics primitives.
+        The cookbook is a collection of programs that are offered as 
+        examples of PostScript usage. These samples have been chosen 
+        both as illustrations of the functional range of PostScript
+        and as useful ingredients for inclusion in application packages. 
+        Code Examples: $ 15 from the developer support hotline. Free 
+        from the Adobe mail server (see Section 6, ``About Adobe''). 
+  
+  
+   PostScript programmer's reference guide : featuring PhoenixPage.
+        Author        Holzgang, David A.
+        Publisher     Glenview, IL : Scott, Foresman, c1989
+        Description   x, 486 p. : ill. ; 23 cm.
+        ISBN          0-673-38574-4     $24.95 
+        Library #     QA76.73 .P67 H64 1989
+   
+        An authoritative guide for programmers, developers, or 
+        anyone who wants to get the most out of PostScript. It offers 
+        clear instructions, a complete language reference section, and a 
+        cookbook of hands-on sample routines. (avail for $ 20 extra on 
+        disk) ... It includes complete information on PhoenixPage/PS, 
+        Phoenix Technologies' fully PostScript-compatible language. 
+  
+  
+   Programming the display PostScript system with NeXTSTEP. 
+   [The Purple Book] 
+        Author        Adobe Systems Incorporated ; [author Ken Fromm] 
+        Publisher     Reading, MA : Addison-Wesley, c1992
+        Description   xxvii, 380 p. ill. ; 22 cm.
+        ISBN          0-201-58135-3     $26.95 ($34.95)
+        Library #     QA76.73 .P67 P76 1991
+   
+        Written for the NeXT programming environment; however, much of 
+        the information it contains applies to all Display PostScript 
+        developers. The book explains the language extensions commonly 
+        used within applications, describes many of the key aspects of 
+        the PostScript language imaging model, and provides a framework 
+        for creating Display PostScript language applications. 
+  
+
+  
+   Programming the Display PostScript System with X.
+        Author: Adobe Systems Inc. 
+        Publisher: Addison-Wesley 
+        Cost: $ 26.95 
+   
+        Written specifically for developers using the X Window System. 
+        It is intended to help X application developers improve quality, 
+        optimize performance, and minimize development cost. Featuring a 
+        Programming Guide with advice on how to write robust, efficient 
+        Display PostScript applications, the book also contains a new 
+        Toolkit manual and the standard Display PostScript reference 
+        manuals. 
+  
+  
+   Programming the LaserWriter 
+   (Macintosh inside out series)
+        Author        Holzgang, David A.
+        Publisher     Reading, MA : Addison-Wesley, c1991 
+        Description   xxv, 439 p. ill. ; 23 cm.
+        ISBN          0-201-57068-8     $24.95
+        Library #     TK7887.7 .H65 1991
+  
+  
+   Rapid reference guide to System 7, the LaserWriter Family, 
+   and Hypercard. (Business One Irwin rapid reference series)
+        Author        Fraase, Michael  
+        Publisher     Homewood, IL : Business One Irwin, c1993
+        Description   xx, 282 p. : ill. ; 22 cm.
+        ISBN          1556239025     $24.95 
+        Library #     QA76.76 .O63 F375 1993
+  
+  
+   Real world PostScript : techniques from PostScript professionals.
+   [The Orange Book]
+        Author        Roth, Stephen F., editor
+        Publisher     Reading, MA : Addison-Wesley, c1988. 
+        Description   xiv, 383 p. [4] p. of plates : ill. (some col.) ; 
+                      24 cm.
+        ISBN          0-201-06663-7 (pbk.)     $22.95 
+        Library #     Z286 .D47 R4 1988 
+   
+        A collection of articles dealing with ``real world'' PostScript 
+        language issues and specific applications such as font creation,
+        color separation, kerning, halftoning, various other topics. 
+        It contains a text formatter written in PostScript, and 
+        concentrates on doing very sophisticated things with fonts and 
+        dictionaries. 
+   
+        Short overview of chapters: 
+   
+        PostScript As A Design Tool; PostScript As A Programming 
+        Language; Writing Device Independent PostScript; Kerning, 
+        Tracking And Letterspacing, Precise Character Bounding Boxes; 
+        Building Fonts; Building Smart Fonts; Font Encoding Vector 
+        Compatibility; Building A PostScript Typeface; PostScript Color 
+        Operations; PostScript Color Separations; A Spread From Graphic 
+        Perspective; A PostScript Four-Color Poster; Graphing And 
+        Typesetting With PostScript; The Evolution Of A Complex 
+        Geometric Logo 
+  
+  
+   Running PostScript from MS-DOS. 1st ed.
+        Author        Glover, Gary
+        Publisher     Blue Ridge Summit, PA : Windcrest, c1989. 
+        Description   ix, 209 p. : ill. ; 28 cm.
+        ISBN          0-8306-2998-X     $21.60
+        Library #     QA76.73 .P67 G56 1989
+   
+        Provides a good and brief introduction to PostScript and has 
+        lots of useful information on printing PostScript from PCs. 
+  
+
+  
+   Taking advantage of PostScript.
+        Author        Sherman, John F. 
+        Publisher     Dubuque, IA : Wm. C. Brown Publishers, c1992
+        Description   ix, 326 p. : ill. ; 28 cm.
+        ISBN          0-697-14032-6      
+        Library #     QA76.73 .P67 S54 1992
+   
+        Graphically and visually oriented and includes a section 
+        on PostScript Level 2. 
+  
+
+  
+   Terminal Buch, PostScript Fonts und Programmiertechnik
+        Author        Thomas Merz
+        Publisher     R. Oldenburg Verlag, Munchen, Germany
+        ISBN          3-486-21674-0
+  
+
+  
+   Thinking in PostScript.
+        Author        Reid, Glenn C.
+        Publisher     Reading, MA : Addison-Wesley, c1990
+        Description   xiii, 221 p. : ill. ; 24 cm.
+        ISBN          0-201-52372-8     $22.95 ($29.95 Can.)
+        Library #     QA76.73 .P67 R46 1990
+   
+        Guide to developing programming techniques and to learning 
+        how to use the PostScript tool kit. In this book you can find 
+        some useful techniques even if you think of yourself as an 
+        expert PS programmer. It overlaps very little with existing 
+        material. You can find there numerous practical examples in all 
+        areas of PS language programming, including the Display PS 
+        system. In this volume you will also find: (a) never-before-
+        published information on the PS language (b) useful algorithms 
+        for loops, conditionals, and I/O (c) detailed coverage of files, 
+        strings, and dictionaries (d) simple and elegant programming 
+        techniques 
+   
+        The books comes recommended by many. There are also exercises 
+        after each Chapter with the results at the end of the book. You 
+        can really find examples how to define new useful operators or 
+        procedures which you cannot find in the Adobe books. 
+   
+        To get the examples from the book for free, send email to the 
+        author, glenn@rightbrain.com. 
+  
+
+  
+   Understanding PostScript. 3rd ed.
+        Author        Holzgang, David A. 
+        Publisher     San Francisco : Sybex, c1992 
+        Description   xxxiii, 515 p. : ill. 23 cm.
+                      "For PostScript levels 1 & 2"--Cover p. [1]
+        ISBN          0-7821-1059-2     $29.95
+        Library #     QA76.73 .P67 H65 1992
+  
+  
+   Understanding PostScript Programming. 2nd ed.
+        Author        Holzgang, David A.
+        Publisher     San Francisco : Sybex, 1988
+        Description   xxxii, 472 p. : ill. ; 23 cm.
+        ISBN          0-89588-566-2 
+        Library #     QA76.73 .P67 H65 1988
+  
+
+  
+   The Verbum book of PostScript illustration. 1st ed.
+   (The Verbum electronic art & design series.)
+        Author        Gosney, Michael ; Linnea Dayton, Janet Ashford
+        Publisher     Redwood City, CA : M&T Books, 1990 
+        Description   vii, 213 p. : ill. (some col.) ; 28 cm.
+        ISBN          1-55851-089-3     $29.95
+        Library #     QA76.73 .P67 G57 1990
+  
+
+------------------------------
+
+Subject: 5.2 Publishers 
+
+    Most of the above books should be available in any big bookstore 
+    that has a computer section. Or contact the publishers: 
+
+
+
+    Addison-Wesley, 
+      Retail Sales Group, Addison-Wesley Publishing Company, Inc., One 
+      Jacob Way, Reading, MA 01867, U.S.A. Phone 800-447-2226 or 
+      617-944-3700, Fax 617-942-1117. 
+
+
+    Addison-Wesley Publishing Company, 
+      2200 Powell Street, Emeryville, California 94608 U.S.A. Phone 
+      (510) 601-4000 
+
+
+    Adobe Press 
+      , Adobe Systems, Inc. 1585 Charleston Road, Mountain View, CA 
+      94039, Phone 415-961-4400. Toll free 800-833-6687. Adobe Press is 
+      partially a misnomer, it is not a independent publishing unit but 
+      more like a customer or documentation service of Adobe Systems, 
+      Inc. The Red, Blue, Green, and Black Books can be purchased from 
+      Adobe Systems by calling toll free, 800-83-FONTS (800-833-6687). 
+
+
+    Busn One Irvin 
+      , Business 1 Irvin, Division of Richard D. Irvin, Inc. 1818 Ridge 
+      Road, Homewood IL, 60430. Phone 708-798-6000. Toll free 
+      800-634-3966. Imprint: Pub. by Dow Jones (Dow Jones Books). 
+
+
+    Bantam 
+      , Bantam Books, Inc. Division of Bantam Doubleday Dell. 666 Fifth 
+      Avenue, New York, NY 10103. Phone 212-765-6500. Toll free 
+      800-223-6834. 
+
+
+    Dow Jones Irvin 
+      See Busn One Irvin. 
+
+
+    Hayden Books, 
+      Imprint of Sams. 
+
+
+    M & T Bks, 
+      M & T Books. 501 Galveston Drive, Redwood City, CA 94063-4728. 
+      Phone 415-366-3600. Toll free 800-533-4372 ; 800-356-2002. 
+
+
+    Micro Publishing Press 
+      21150 Hawthorne Boulevard, Suite 104, Torrance, California 90503 
+      U.S.A. Phone 213-371-5787. 
+
+
+    Peachpit Press, 
+      1085 Keith Ave., Berkeley, CA 94708, U.S.A. Phone 415-527-8555. 
+      Toll free 800-283-9444. 
+
+
+    Prentice Hall, 
+      Prentice Hall Press. Division of Simon & Schuster, Inc. 15 
+      Columbus Circle, New York, NY 10023. Phone 201-767-5937. Toll 
+      free 800-223-2348. Orders to: 200 Old Tappan Road, Old Tappan, NJ 
+      07675. 
+
+
+    Sams, 
+      Division of Macmillan Computer Publishing. 11711 North College 
+      Avenue, Suite 140, Carmel, IN 46032. Phone 317-573-2500. Toll 
+      free 800-257-5755. Orders to Macmillan Computer Publishing, 8219 
+      Northwest Boulevard, Indianapolis, IN 46278. Imprint: Hayden 
+      Books 
+
+
+    Scott, Foresman and Company, 
+      Subsidiary of HarperCollins Publishing Co. 1900 East Lake Avenue, 
+      Glenview, IL 60025. Phone 708-729-3000. 
+
+
+    Sybex, Inc. 
+      2021 Challenger Drive, Alameda, CA 94501. Phone 415-523-8223. 
+      Toll free 800-227-2346. Imprint: Sybex Computer Books 
+
+
+    TAB Books, 
+      Division of McGraw-Hill Inc. P.O. Box 40, Blue Ridge Summit, PA 
+      17294-0850. Phone 717-794-2191. Toll free 800-822-8138 ; 
+      800-233-1128. Imprint: Windcrest Books 
+
+
+    Windcrest Books 
+      Imprint of TAB Books. 
+
+
+    Van Nostrand Reinhold, 
+      Division of Thomson Publishing Corp. 115 Fifth Avenue, New York, 
+      NY, 10003. Phone 212-254-3232. Toll free 800-926-2664. Orders to: 
+      7625 Empire Dr., Florence, KY 41022. Phone 606-525-6600 
+
+
+    Wm C Brown, 
+      Brown, William C. Publishing. 2460 Kerper Boulevard, Dubuque, IA 
+      52001. Phone 319-588-1451. Toll free 800-338-5578. 
+
+
+------------------------------
+
+Subject: 6 About Adobe 
+
+    PostScript was created by Adobe Systems Incorporated, which offers 
+    information and sells programs pertaining to PostScript. 
+
+    Currently the only large PostScript company that I have information 
+    on is Adobe. I would be happy to include information about others. 
+
+
+------------------------------
+
+Subject: 6.1 How do I get in touch with Adobe? 
+
+  
+  Adobe Systems Incorporated      Main phone: +1-415-961-4400
+  1585 Charleston Road            Main FAX:   +1-415-961-3769
+  P.O. Box 7900
+  Mountain View, CA 94039-7900
+  
+
+    If you want technical help using Adobe retail products (e.g. ATM, 
+    Adobe Illustrator, Adobe Fonts): Adobe forum on CompuServe, call 
+    1-408-986-6500 (for Macintosh) or 1-408-986-6530 (for Windows, 
+    Unix) Also use this number to report bugs in retail products. Adobe 
+    also has an automated tech support line, which will fax technical 
+    notes and product literature to you, and attempt to answer common 
+    questions via a menu-driven system. That number is 1-800-235-0078. 
+
+    For sales information on Adobe retail products (prices, catalogues, 
+    etc.), call +1-800-235-0078 (fax-back brochures) or +1-800-833-6687 
+    (applications sales only). For books call 800-852-3623. 
+
+    The Developer's Hotline is +1-415-961-4111 (Voicemail) (note: 
+    members have priority, but they'll take questions from general 
+    public.) Also use this number for information about the ADA or 
+    Adobe SDK's. 
+
+    To suggest product enhancements, write or fax to ``Product Manger, 
+    product name' at address above. 
+
+    In Europe: Adobe Systems BV, Europlaza, Hoogoorddreef 51a, 1101 BE 
+    Amsterdam Z-O, NETHERLANDS. TEL +31-20-65-11-200. FAX 
+    +31-20-65-11-300. 
+
+    In the eastern United States: Adobe Sys. Inc., 24 New England 
+    Executive Park, Burlington MA 01803. TEL +1-617-273-2120. FAX 
+    +1-617-273-2336. 
+
+    In Japan: Adobe Systems Japan, Swiss Bank House, 4-1-8 Toranomon, 
+    Minato ku, Tokyo 105 JAPAN. TEL +81-3-3437-8950. FAX 
+    +81-3-3437-8968. 
+
+
+------------------------------
+
+Subject: 6.2 What can Adobe do for me? 
+
+    Adobe is just one of many companies producing products for 
+    PostScript, but it does produce a lot of the best. 
+
+    Adobe offers two resources for software developers. 
+
+   1. Membership in the Adobe Developers Association (ADA) ( $ 
+      195/year) 
+
+   2. PostScript Language Software Development Kit (SDK) ( $ 500, $ 250 
+      for ADA) 
+
+    The Developer's Association is Adobe's way of knowing who has a 
+    serious interest in technical information. Membership includes 
+    monthly technical newsletter, phone technical support, discounts on 
+    software and hardware. Membership is $ 195/year for each 
+    individual. 
+
+    The PostScript Language Software Development Kits collect all 
+    Adobe's technical literature for a given platform into a single 
+    package. There are four versions, for the Mac, MS-DOS/Windows, 
+    NeXTStep, and X/Windows. Each SDK is $ 500 list, $ 250 for ADA 
+    members. 
+
+    A selection of free technical documents is available from Adobe's 
+    file server and anonymous ftp archive (ftp.adobe.com). It includes 
+    specs (including the aforementioned EPS specification), some tech 
+    notes, sample programs, a large collection of AFM files and PPD 
+    files. For more information on the file server, send the one-word 
+    message ``help'' to ps-file-server@adobe.com. These documents are 
+    also available by mail, although they are not necessarily free; 
+    call the Developers Line and ask for the documents catalog. 
+
+    The contents of both ps-file-server and the ftp archive are 
+    nominally the same, although they are currently maintained on two 
+    separate machines. 
+
+------------------------------
+
+Subject: 7 Programming in PostScript 
+
+
+------------------------------
+
+Subject: 7.1 What is PostScript level 2? 
+
+    (See the Section 11, ``About PostScript 2''.) 
+
+
+------------------------------
+
+Subject: 7.2 Should I learn level 2 PostScript? 
+
+    Yes, because Level Two will soon become the standard. Application 
+    developers using PostScript need to become aware of the new 
+    capabilities and how to take advantage of them. 
+
+    There are many good books on PostScript 2. (See Section 5, 
+    ``Books''.) 
+
+
+------------------------------
+
+Subject: 7.3 Where can I find examples of PostScript code? 
+
+    Many other books on PostScript make example PostScript code 
+    available. ``Thinking in PostScript'', by Glenn Reid, is the only 
+    book I know of that allows its examples to be freely distributed. 
+    (See Section 5, ``Books''.) 
+
+    All the examples in ``the blue book'' are available from the Adobe 
+    file server (See Section 5, ``Books''.) 
+
+    See the question ``How can I browse through PostScript programs?'' 
+    in the comp.sources.postscript FAQ. 
+
+
+------------------------------
+
+Subject: 7.4 What is the physical size of the page? 
+
+    This depends on what print medium you are using. Paper comes in a 
+    number of standard sizes: 
+
+  
+          Paper Size                      Dimension (in points)
+          ------------------------------  ---------------------
+          Comm #10 Envelope               297 x 684
+          C5 Envelope                     461 x 648
+          DL Envelope                     312 x 624
+          Folio                           595 x 935
+          Executive                       522 x 756
+          Letter                          612 x 792
+          Legal                           612 x 1008
+          Ledger                          1224 x 792
+          Tabloid                         792 x 1224
+          A0                              2384 x 3370
+          A1                              1684 x 2384
+          A2                              1191 x 1684
+          A3                              842 x 1191
+          A4                              595 x 842
+          A5                              420 x 595
+          A6                              297 x 420
+          A7                              210 x 297
+          A8                              148 x 210
+          A9                              105 x 148
+          B0                              2920 x 4127
+          B1                              2064 x 2920
+          B2                              1460 x 2064
+          B3                              1032 x 1460
+          B4                              729 x 1032
+          B5                              516 x 729
+          B6                              363 x 516
+          B7                              258 x 363
+          B8                              181 x 258
+          B9                              127 x 181 
+          B10                             91 x 127
+  
+    To determine what print mediums are available, check the PPD file 
+    for your printer, under the PageSize keyword. 
+
+
+------------------------------
+
+Subject: 7.5 What is the Imagable Area of the page 
+
+    The initial clipping path gives you the size of the imagable area. 
+    Use ``clippath pathbbox'' to get these coordinates. If you must 
+    know the size of the device's imageable area, use the sequence 
+    ``gsave initclip clippath pathbbox grestore'', but this will 
+    prevent an enclosing application from using the clippath to achieve 
+    some special effects (such as multiple pages per page). 
+
+    PPD files (see section 2 of the FAQ, printers) contain information 
+    on what paper sizes, as well as the Imagable Area for each, 
+    specific to each printer. A Postscript code fragment (called 
+    ``?ImageableArea'') is described in a PPD file, which determines 
+    the current Imageable Area for that printer. 
+
+
+------------------------------
+
+Subject: 7.6 Why can't I do a pathforall after a charpath ? 
+
+    (See Section 4, ``Fonts'', question ``Why are Adobe fonts 
+    hidden?''.) 
+
+
+------------------------------
+
+Subject: 7.7 How do I center a string of text around a point? 
+
+    Level 1 PostScript has two operators that can extract information 
+    about the metrics of characters: ``stringwidth'' and ``charpath''. 
+
+    The ``stringwidth'' operator returns the advance width of its 
+    string operand. This is the distance the current point would be 
+    moved by a ``show'' operation on the same string. ``stringwidth'' 
+    returns two numbers on the stack, representing the x and y 
+    components of the advance width. Usually the y component is zero 
+    because most fonts are displayed along a horizontal line, moving 
+    the current point only in the x direction. 
+
+    Also note that the ``stringwidth'' usually does not give an exact 
+    measure of the area of the page that will be touched by its 
+    operand. The letters can either project a little over the 
+    boundaries or fall a little within (leaving a touch of whitespace). 
+
+    If all that an application requires is horizontal centering of a 
+    long string of text, the result returned by ``stringwidth'' is 
+    sufficient. A common technique is 
+
+  
+          x y moveto
+          (string) dup stringwidth pop 2 div neg 0 rmoveto show
+  
+    (This code makes the assumption that the y component of advance 
+    width is irrelevant.) 
+
+    The ``charpath'' operator extracts the graphic shapes of its string 
+    operand and appends them to the current path in the graphic state. 
+    These shapes can then be processed by other PostScript operators. 
+    To get the actual size of the area touched by a character a simple 
+    approach is 
+
+  
+          gsave
+          newpath
+          0 0 moveto
+          (X) false charpath flattenpath pathbbox
+          grestore
+  
+    This code places four numbers on the stack, representing the 
+    coordinates of the lower left and upper right corners of the 
+    bounding box enclosing the character ``X'' rendered with the 
+    current point at (0,0). Leaving the flattenpath out will cause it 
+    to be less accurate, but it will take up less memory and be faster. 
+
+    There are two things to be careful about when using the code shown 
+    above: 
+
+
+
+   1. There are severe limits on the size of the string operand, 
+      related to the limit on the number of elements in a graphic path. 
+      The PostScript Language Reference Manual recommends taking 
+      ``charpath''s one character at a time. 
+
+
+   2. If user space is rotated or skewed with respect to device space, 
+      the result from ``pathbbox'' may be larger than expected; 
+      ``pathbbox'' returns a rectangle oriented along the user space 
+      coordinate axes, which fully encloses a (possibly smaller) 
+      rectangle oriented along the coordinate axes of device space. If 
+      user space is rotated at an integer multiple of 90 degrees these 
+      two rectangles will be the same, otherwise the rectangle in user 
+      space will be larger. 
+
+    So, to center text vertically one must get the bounding boxes of 
+    all the characters in the string to be displayed, find the minimum 
+    and maximum y coordinate values, and use half the distance between 
+    them to displace the text vertically. This still may not do a very 
+    good job, since this provides centering based on extrema, not on 
+    the optical center of the string (which is more related to a sort 
+    of ``center of mass'' of the text). 
+
+    If an application does this repeatedly, it would be wise to store 
+    the bounding boxes in an array indexed by character code, since 
+    ``charpath'' is a slow operation. 
+
+    Font metric information is available outside of a PostScript 
+    printer in font metrics files, available from the font vendor. A 
+    program generating PostScript output can obtain metrics from these 
+    files rather than extracting the metrics in the printer. 
+
+
+------------------------------
+
+Subject: 7.8 How can I concatenate two strings together? 
+
+  
+  %% string1 string2 append string
+  % Function: Concatenates two strings together.
+  /append {
+           2 copy length exch length add  % find the length of the new.
+           string dup     % string1 string2 string string
+           4 2 roll       % string string string1 string2
+           2 index 0 3 index
+           % string string string1 string2 string 0 string1
+           putinterval    % stuff the first string in.
+           % string string string1 string2
+           exch length exch putinterval
+  } bind def
+  
+
+------------------------------
+
+Subject: 7.9 What do I do when I get stack overflow/underflow? 
+
+    These errors are among the most common in PostScript. 
+
+    When I get a stack overflow, that is usually a sign that a routine 
+    is leaving an object on the stack. If this routine gets called 2000 
+    times, it leaves 2000 objects on the stack, which is too many. 
+
+    When I get a stack underflow, that is a sign that either: (A) one 
+    of the routines in the program doesn't work, and never has or (B) 
+    one of the routines in the program works, but expects to be called 
+    with some arguments left on the stack. 
+
+    There is no such thing as a PostScript debugger right now. For now, 
+    the best that you can do to debug your program is to put in lots of 
+    print statements. Learn to use the PostScript pstack command, and 
+    use an online interpreter so you don't have to run to the printer 
+    for each debugging cycle. 
+
+    Use an error handler to learn more about what exactly is happening 
+    when your program crashes. (see the comp.sources.postscript FAQ for 
+    a list of all PostScript related programs.) 
+
+    If your code has never worked yet (i.e. you are still writing it) 
+    then I find that it helps to put little comments in the margin 
+    about the state of the stack. Like this: 
+
+  
+         Heart pathbbox             % lowerx lowery upperx uppery
+         exch 4 -1 roll             % lowery uppery upperx lowerx
+  
+  
+    I generally put these comments in originally, and then take them 
+    out when the program works. Maybe this is a bad practice, in case I 
+    ever want to go back and look at the code to modify it!! 
+
+
+------------------------------
+
+Subject: 7.10 How can I print in landscape mode? 
+
+    Landscape (the opposite of portrait) means that the page is turned 
+    on its side. You can redefine showpage in terms of the current 
+    definition of showpage. 
+
+    Do something like: 
+
+  
+  /oldshowpage /showpage load def
+  
+  90 rotate llx neg ury neg translate   % for the first page
+  /showpage
+  {
+          oldshowpage
+          90 rotate llx neg ury neg translate
+  } def
+  
+    This won't work if the PostScript file you're editing uses 
+    initgraphics or grestoreall. Also note that the method described 
+    (redefining showpage) does not conform to the document structuring 
+    conventions. The Adobe recommended method involves performing the 
+    transformaton as part of the setup for each page. 
+
+
+------------------------------
+
+Subject: 8 Computer-specific PostScript 
+
+    This section describes PostScript information specific to a 
+    particular type of computer or operating system. 
+
+
+------------------------------
+
+Subject: 8.1 Sun Workstations 
+
+    What is NeWS? 
+
+    NeWS (R.I.P.) was Sun Microsystems PostScript-based window system 
+    for the Sun Workstation. NeWS was a project within Sun (started 
+    around 1985) to create a window system to supplant SunView (a very 
+    successful kernel-based window system). NeWS was a client-server 
+    model window system (like X) but among many of NeWS novel features 
+    was the use of PostScript as the language to describe the 
+    appearance of objects on the screen. NeWS had many features in 
+    common with Display PostScript, but NeWS predates Adobe Display 
+    PostScript and was neither connected with Adobe Display PostScript 
+    nor endorsed by Adobe. NeWS was not an Adobe product, nor was it a 
+    Sun/Adobe joint venture. 
+
+    As of October 1992, Sun management signed a deal with Adobe to 
+    adopt Display PostScript for the Sun. In 1993, Sun finally dropped 
+    NeWS altogether. The Sun window system is supposed to start 
+    shipping a Display PostScript environment in late 1993. 
+
+    And how does PostScript run on them? 
+
+    PostScript runs on NeWS, although NeWS was not a fully-compliant 
+    PostScript interpreter. There were incompatibilities between the 
+    NeWS PostScript interpreter and ``official'' PostScript 
+    interpreters as defined by Adobe and the Apple LaserWriter family 
+    of printers, such that many PostScript files which would print fine 
+    on a LaserWriter would not render under NeWS. The most critical 
+    incompatibility was lack of support for Adobe Type 1 fonts, Sun 
+    having gone with their own font format known as F3. F3 fonts have 
+    now gone the way of the zumbooruk and will be supplanted by Type 1 
+    fonts. 
+
+
+------------------------------
+
+Subject: 8.2 IBM PC 
+
+    You can find nenscript for OS/2 1.x--2.0 and MSDOS on 
+    ftp-os2.nmsu.edu in pub/uploads/nensc113.zip. 
+
+    Microsoft Word for Windows can produce files with incorrect DSC 
+    comments. To fix this, from the Control Panel, select Printers, 
+    Options..., Advanced, and then check 'Conform to Adobe Document 
+    Structuring conventions'. This is not enough to produce a valid DSC 
+    document - you also need to remove the leading Ctrl-D as documented 
+    in PRINTERS.WRI. 
+
+    There are rumors that Word Perfect and Microsoft Word don't produce 
+    ``clean'' PostScript that follows the DSC conventions (See Section 
+    9, ``Encapsulated PostScript''). This means that a lot of 
+    PostScript utilities like Ghostview and psnup, etc., that require 
+    the DSC conventions, will not work on them. 
+
+    Creating a PostScript file from MS Word 
+
+    Install the LaserWriter driver that comes with Windows.In the 
+    printer setup, select a PostScript printer. Then click on the setup 
+    button to get that pop-up. Then clik the Options button. Then 
+    select the print to Encapsulated PostScript File. If you don't 
+    specify a file name, Word will prompt you for one when you tell it 
+    to print. 
+
+    When printing Microsoft Windows files that have been captured on a 
+    PC's LPT port, you mostly need to define two ctrl-d's in a row as 
+    well to remove all of them in the document: 
+
+  
+  (\004\004) cvn {} def
+  
+
+------------------------------
+
+Subject: 8.3 Apple Macintosh 
+
+    For more details about printing with the Macintosh, read the 
+    comp.sys.mac.apps FAQ. 
+
+    How can I convert a PostScript file created with a UNIX program to 
+    the Mac? 
+
+    A way that is clumsy, but works, is this: 
+
+
+
+   1. Display the UNIX-based PostScript file on screen 
+
+
+   2. Use window dumping facility to get a bitmap file 
+
+
+   3. Convert the above bitmap file to TIFF format and then export it 
+      to Adobe Illustrator on the Mac. 
+
+    The PostScript section of the FAQ for the Macintosh newsgroup 
+    comp.sys.mac.apps (maintained by Elliotte Harold) answers the 
+    following questions: 
+
+
+
+    * How do I make a PostScript file? 
+
+
+    * How do I print a PostScript file? 
+
+
+    * Why won't my PostScript file print on my mainframe's printer? 
+
+      Full documentation of this process provided with a utility called 
+      macps. 
+
+
+    * Why are my PostScript files so big? 
+
+
+------------------------------
+
+Subject: 9 Encapsulated PostScript 
+
+
+------------------------------
+
+Subject: 9.1 What is Encapsulated PostScript? 
+
+    Encapsulated PostScript (EPS) is a standard format for importing 
+    and exporting PostScript language files in all environments. It is 
+    usually a single page PostScript language program that describes an 
+    illustration. The purpose of the EPS file is to be included as an 
+    illustration in other PostScript language page descriptions. The 
+    EPS file can contain any combination of text, graphics, and images. 
+    An EPS file is the same as any other PostScript language page 
+    description, with some restrictions. 
+
+    EPS files can optionally contain a bitmapped image preview, so that 
+    systems that can't render PostScript directly can at least display 
+    a crude representation of what the graphic will look like. There 
+    are three preview formats: Mac (PICT), IBM (tiff), and a platform 
+    independent preview called EPSI. 
+
+    An EPS file must be a conforming file, that is, it must conform to 
+    the Adobe Document Structuring Conventions (DSC). At a minimum, it 
+    must include a header comment,%!PS-Adobe-3.0 EPSF-3.0, and a 
+    bounding box comment,%%BoundingBox: llx lly urx ury, that 
+    describes the bounds of the illustration. 
+
+    (The specification does not require the EPSF version, but many 
+    programs will reject a file that does not have it.) 
+
+    The EPS program must not use operators that initialize or 
+    permanently change the state of the machine in a manner that cannot 
+    be undone by the enclosing application's use of save and restore 
+    (eg. the operators starting with ``init'' like initgraphics). As a 
+    special case, the EPS program may use the showpage operator. The 
+    importing application is responsible for disabling the normal 
+    effects of showpage. 
+
+    The EPS program should make no environment-sensitive decisions (the 
+    importing application may be trying to attain some special effect, 
+    and the EPS program shouldn't screw this up), although it can use 
+    some device-dependent tricks to improve appearance such as a 
+    snap-to-pixel algorithm. 
+
+    The complete EPS specification is available from Adobe (see the 
+    section on Adobe). Read Appendix G (Document Structuring 
+    Conventions, V3.0) and Appendix H (Encapsulated PostScript File 
+    Format, V3.0) in the new PostScript red book: PostScript Language 
+    Reference Manual, Second Edition. 
+
+    An optional component of an EPS file is a ``preview'' image of the 
+    file's content. The preview image is a bitmapped representation of 
+    the image which may be displayed by programs using the EPS file 
+    without having to actually interpret the PostScript code. 
+
+    The recommended form for a preview image is ``Interchange'' format 
+    and is described fully in the ``red book'', second edition. 
+    Interchange format represents the image as a series of hex strings 
+    placed in the EPS file as PostScript comments. The entire file 
+    remains an ASCII file. 
+
+    That book contains all of the information that you need to fix your 
+    program to correctly output EPS. It is what I use for our software. 
+
+    A variation of EPS embeds the preview image and PostScript text in 
+    a binary file which contains a header and the preview image in 
+    either a TIFF or MetaFile format. The header defines where in the 
+    file each section (EPS, TIFF, or MetaFile) starts and ends. On the 
+    Macintosh, the preview is stored as a PICT in the file's resource 
+    fork. 
+
+
+------------------------------
+
+Subject: 9.2 What are EPSI and EPSF? 
+
+    EPSI is EPS with a device independent bitmap preview. EPSI is an 
+    all ASCII (no binary data or headers) version of EPS. EPSI provides 
+    for a hexadecimal encoded preview representation of the image that 
+    will be displayed or printed. EPSI files were documented by Adobe 
+    as a means of providing a preview for EPS files which would be 
+    cross-platform. In reality though DOS machines and Windows favour 
+    embedding TIFF or even Windows Metafiles in the PostScript. I don't 
+    know of any Mac packages that support EPSI files. 
+
+    The Macintosh has always favoured EPSF files with the data fork of 
+    the file containing the PostScript code, and the resource fork 
+    containing a PICT preview of the file. This is how typically when 
+    you import an EPSF file into a program (Quark, Persuasion etc.) you 
+    get to see the PICT preview from the file. It is still possible to 
+    have an EPSF file without a preview though, in this case the 
+    imported artwork is displayed usually as a box with diagonal lines 
+    running through it. Note the term EPSF really means that the image 
+    is independant of an output device, in other words the image would 
+    need to be embedded inside other PostScript code to be usable 
+    (printable). The old command-lk files from the PS driver on the Mac 
+    are not EPSF files as they are produced for a specific output 
+    device (LaserWriter). Therefore they cannot be imported into other 
+    applications for printing. ESPF must be given resource number 256. 
+
+
+------------------------------
+
+Subject: 9.3 How do I convert PostScript to EPS? 
+
+    Use pstoepsi, or do it by hand. GhostScript's program ps2epsi does 
+    this also, as does LaserWriter 8 for the Mac. GhostScript on the 
+    Mac can output EPS also, I believe. 
+
+    To convert from PostScript to EPS, one must guarantee that the 
+    PostScript file meets the above requirements. If the actual program 
+    conforms to the programming requirements, then one can simply add 
+    the required comments at the top of the file saying that the file 
+    is EPS and giving its BoundingBox dimensions. 
+
+    Optional comments include font usage (%%DocumentFonts: or%% 
+    DocumentNeededResources: font), EPSI preview comments (%% 
+    Begin(End)Preview:) extensions (%%Extensions:) and language 
+    level (%%LanguageLevel:). 
+
+    There are some operators that should not be used within an EPS 
+    file: 
+
+  
+          banddevice     cleardictstack   copypage     erasepage
+          exitserver     framedevice      grestoreall  initclip
+          initgraphics   initmatrix       quit         renderbands
+          setglobal      setpagedevice    setshared    startjob
+  
+    These also include operators from statusdict and userdict operators 
+    like legal, letter, a4, b5, etc. 
+
+    There are some operators that should be carefully used: 
+  
+          nulldevice     setgstate        sethalftone  setmatrix
+          setscreen      settransfer      undefinefont
+  
+    To convert a PostScript file to EPS format, you must edit the file 
+    using a text editor or word processor to add lines that will define 
+    the file as an EPS-format file. 
+
+
+
+   1. Using your normal method of printing, print the PostScript file 
+      to a PostScript printer. You can choose to view it on the screen 
+      instead, but keep in mind that all the below distance 
+      measurements assume that you are printing on a normal-sized piece 
+      of paper. 
+
+      NOTE: If the PostScript image does not get displayed properly, it 
+      probably will not work either once you have converted it to EPS 
+      format. Correct the PostScript program so that it works before 
+      you convert it to EPS format. 
+
+
+   2. Use a tool (see below) to find the bounding box, which shows how 
+      much space the PostScript image occupies when printed. You 
+      specify the dimensions of the bounding box when you convert the 
+      PostScript file to EPS format. 
+
+
+   3. If you don't have a bounding box tool, you can just use a ruler 
+      and draw one on your printout. With two horizontal lines and two 
+      vertical lines, draw a box around the image that includes the 
+      entire image while minimizing white space. 
+
+      This box represents your bounding box. You may want to leave a 
+      small amount of white space around the image as a precautionary 
+      measure against minor printing problems, such as paper stretching 
+      and paper skewing. 
+
+
+   4. Measure distance ``a'' from the lower-left corner of the image to 
+      the left edge of the paper. 
+
+
+   5. Write the measurement in points. If your ruler does not show 
+      points, calculate the total number of points: 1 inch = 72 points, 
+      1 cm = 28.3 points, and 1 pica = 12 points. Designate this 
+      measurement as ``measurement a.'' 
+
+
+   6. Measure distance ``b'' from the lower-left corner of the image to 
+      the bottom edge of the paper. 
+
+      Designate this measurement in points as ``measurement b.'' 
+
+
+   7. Measure distance ``c'' from the upper-right corner of the image 
+      to the left edge of the paper. 
+
+      Designate this measurement in points as ``measurement c.'' 
+
+
+   8. Measure distance ``d' from the upper-right corner of the image to 
+      the bottom edge of the paper. 
+
+      Designate this measurement in points as ``measurement d.'' 
+
+
+   9. Using any text editor, open the PostScript file for editing. 
+
+      You'll see several lines of text. These lines are the PostScript 
+      description of the image. The lines at the top of the file are 
+      the header. 
+
+
+  10. Add these lines to, or modify existing lines in, the header (the 
+      first group of lines in any PostScript file): 
+
+    
+            %!PS-Adobe-2.0 EPSF-2.0
+            %%Creator: name
+            %%CreationDate: date
+            %%Title: filename
+            %%BoundingBox: a b c d
+    
+
+      Note: Make sure that the first line in the file is ``% 
+      !PS-Adobe-2.0-EPSF-2.0''. Also, do not separate the header lines 
+      with a blank line space. The first blank line that PostScript 
+      encounters tells it that the the next line begins the body of the 
+      program. 
+
+      For ``name,'' type your name or initials. For ``date,'' type 
+      today's date using any format (for example, MM-DD-YY, MM/DD/YY, 
+      July 5, 1987, and so on). For ``filename,'' type the name of the 
+      PostScript file. After ``BoundingBox: ,'' type the measurements 
+      you took in steps 3, 4, 5, and 6, separating each with a space: 
+      ``a'' is the measurement from Step 3, ``b'' is the measurement 
+      from Step 4, ``c'' is the measurement from Step 5, and ``d'' is 
+      the measurement from Step 6. 
+
+
+  11. Save the file in text-only format. 
+
+    If you are interested in learning how to further edit your 
+    PostScript files, these books are available at most bookstores: 
+
+    Understanding PostScript Programming and the green book. 
+
+    The Document Structuring Conventions (DSC), version 1.0, are 
+    discussed in Appendix C of the old red book. The new red book has a 
+    lot of information about Encapsulated PostScript. 
+
+    There will be a technical note available from Adobe called 
+    ``Guidelines for Specific Operators'' that will talk about why some 
+    operators are prohibited and how to use the others. 
+
+
+------------------------------
+
+Subject: 9.4 How do I get the bounding box of a PostScript picture? 
+
+    Use bbfig or epsinfo.ps. 
+
+    Or if you would rather construct the bounding box by hand, use 
+    Ghostview, which has a continuous readout of the mouse cursor in 
+    the default user coordinate system. You simply place the mouse in 
+    the corners of the figure and read off the coordinates. 
+
+------------------------------
+
+Subject: 10 About The Comp.Lang.PostScript FAQ 
+
+
+------------------------------
+
+Subject: 10.1 The PostScript FAQ: What is it? 
+
+    The PostScript FAQ is a set of answers to frequently asked 
+    questions (FAQs) that have appeared on the Usenet newsgroup 
+    comp.lang.postscript. It is broken into many useful sections. 
+
+    There is a companion file which is not posted to USENET called 
+    ``Exactly What Does a Transformation Matrix Do?''. You can get it 
+    from wilma.cs.brown.edu:pub/comp.lang.postscript/transform.tex. 
+
+    I need help writing and revising answers for common questions 
+    relating to PostScript. Almost all of the information in the 
+    documents has been written by kind volunteers. The answers will be 
+    published in either or both documents. A very long answer in the 
+    Usenet Guide may be summarized, referred to briefly, or not 
+    mentioned at all in the FAQ. 
+
+
+------------------------------
+
+Subject: 10.2 How to get the FAQ files 
+
+    The FAQ is available by anonymous ftp to 
+    wilma.cs.brown.edu:pub/comp.lang.postscript/ You can get it 
+    formatted in plain text ASCII, LaTeX, or PostScript. 
+
+    I would be happy to email a copy of the FAQ in any format to you if 
+    you do not have FTP. 
+
+
+------------------------------
+
+Subject: 10.3 How to write a FAQ answer 
+
+    I greatly appreciate your time and effort to help improve the 
+    quality of the FAQ. Thank you for being willing to contribute! 
+
+
+    * Please check to see if the topic is already in an FAQ. Perhaps 
+      you really mean to submit a revision to an existing section. 
+
+    * Start with a clear statement about what problem you are solving. 
+
+    * Write for novice users, in ``tutorial format'', even if the 
+      answer is meant for experienced programmers. 
+
+    * Be specific when you make references. 
+
+    * Be complete, and take the time to look over your draft and 
+      revise. 
+
+    * Answers should not be too wordy, unless you intend to write a 
+      long answer for the Usenet Guide and have a shorter summary or a 
+      pointer to the description placed in the FAQ. If you want to 
+      write the summary yourself, thanks! 
+
+    * Obviously, I cannot accept copyrighted material without 
+      permission. Don't write the FAQ by paraphrasing from a 
+      copyrighted book! 
+
+
+------------------------------
+
+Subject: 10.4 The FAQ can contain LaTeX and PostScript inserts 
+
+    The FAQ is actually written with LaTeX, so feel free to submit with 
+    that text formatting language. There is a PostScript version of the 
+    FAQ also, so feel free to send along PostScript pictures to 
+    include. 
+
+
+------------------------------
+
+Subject: 10.5 Revising the FAQ 
+
+    Suggestions and comments are welcomed. My favorite way of receiving 
+    a change suggestion is if you make a copy of the FAQ, edit the 
+    copy, and mail me the modification, or a context diff (include the 
+    version number). 
+
+
+------------------------------
+
+Subject: 10.6 How to submit new information 
+
+    If you know something that you think is worthwhile to be put in a 
+    FAQ, definitely send it to me! 
+
+    Don't hold back if your information is very specific. If there's 
+    too much information to post I will archive it at an ftp site and 
+    place a pointer to it in the FAQ. 
+
+
+------------------------------
+
+Subject: 10.7 How to add a program description to the FAQ index 
+
+    If the program is original, please send it to me, or tell me where 
+    I can get it. Please put your name and email address at the top of 
+    each file. Your program will be doubly useful if you clean up the 
+    program so that other people can use it as an example to learn. 
+
+    If the program was written by someone else, please send me just the 
+    title, description, and where to get it. I may already have it. 
+
+    For programs the FAQ needs to know: 
+
+
+    * What is the name of the program? 
+
+    * What does it claim to do, and does it do it well? Is it worth 
+      using? 
+
+    * Where is it available? What ftp sites can I get it from? 
+
+    * How much does it cost? Is it free? 
+
+    * What kinds of computers does it run on? 
+
+    * Who is the author and does the author give an email address? 
+
+    * Does it handle PostScript 2? 
+
+    * What packages does it rely on? 
+
+    If the program is a PostScript interpreter, then the FAQ also needs 
+    to know: 
+
+
+    * Does it let you go backwards one page? 
+
+    * Does it display the number of pages in the document? 
+
+    * Does it let you print PostScript to a non-PostScript printer? 
+
+    * What formats can it convert to? 
+
+
+------------------------------
+
+Subject: 10.8 How to add a book description to the FAQ 
+
+    For books the FAQ needs to know: 
+
+
+    * What is the name of the book or document? 
+
+    * What does it claim to do, and does it do it well? Is it worth 
+      using? 
+
+    * Can I get it on-line? 
+
+    * Who wrote it? Does the author give an email address? 
+
+    * Who is the publisher, and what is the copyright date? 
+
+    * Does the publisher list an address and phone number or fax 
+      number? 
+
+    * What is the ISBN number of the book? 
+
+    * What is the library call number of the book? 
+
+    * How much does the book cost? 
+
+    * Does it cover PostScript 2? 
+
+    * Are coding examples from the book available by email or anonymous 
+      ftp? 
+
+    * Do the authors sell the coding examples on a diskette? 
+
+
+------------------------------
+
+Subject: 10.9 Questions that need answers 
+
+
+
+   1. Where are ftp sites that have PostScript freeware? 
+
+
+   2. What vendors sell fonts for PostScript printers? Where are the 
+      free ftp sites for them? 
+
+
+   3. Are there any free encapsulated PostScript converters? 
+
+
+   4. What is the charter for comp.lang.postscript? 
+
+
+   5. What questions should the FAQ have? 
+
+
+   6. What book information is wrong or missing in the FAQ? 
+
+
+   7. What program information is wrong or missing in the FAQ? 
+
+
+   8. What ftp site have good examples of PostScript code? 
+
+
+------------------------------
+
+Subject: 11 About PostScript 2 
+
+
+------------------------------
+
+Subject: 11.1 What printers support Level 2 PostScript? 
+
+
+
+    * Apple LaserWriter IIf 
+
+
+    * Apple LaserWriter IIg 
+
+
+    * Apple LaserWriter Pro 600 (with ram upgrade to get 600 DPI) 
+
+
+    * Apple LaserWriter Pro 630 (True 600 DPI) 
+
+
+    * Apple Personal LaserWriter NTR 
+
+      Apple sells an upgrade to the IINTX to turn it into a IIf/IIG for 
+      instance. 
+
+
+    * Compaq PAGEMARQ 20 
+
+
+    * Compaq PAGEMARQ 15 
+
+
+    * Data Products LZR 960 
+
+
+    * Data Products LZR 1560 
+
+
+    * DEClaser 1152 
+
+
+    * Hewlett-Packard PostScript CartridgePlus, which works with the HP 
+      Laserjet III, IIID, and IIIP. 
+
+
+    * Hewlett-Packard LaserJet 4M 
+
+
+    * NEC SilentWriter 95 
+
+
+    * QMS 1725 Print System 
+
+
+    * QMS 860 ``Hammerhead'' 
+
+
+    * QMS ColorScript 210 and 230 
+
+
+    * Tektronix Phaser III PXi 
+
+
+    * Tektronix Phaser II (all models) 
+
+
+    * Tektronix Phase 200e 
+
+
+    * Texas Instruments microLaser Turbo 
+
+
+    * Texas Instruments microLaser XL Turbo 
+
+    This rest of file contains a description of PostScript 2 written by 
+    Carl Orthlieb from Adobe. The text has not been changed, but some 
+    paragraphs have been deleted for brevity. Comments by me are in 
+    square brackets, and these were not written by Adobe. 
+
+
+------------------------------
+
+Subject: 11.2 What is PostScript Level 2? 
+
+    Since its introduction in 1985, the PostScript language has been 
+    considerably extended for greater programming power, efficiency, 
+    and flexibility. 
+
+    Typically, these language extensions have been designed to adapt 
+    the PostScript language to new imaging technologies or system 
+    environments. While these extensions have introduced new 
+    functionality and flexibility to the language, the basic imaging 
+    model remains unchanged. 
+
+    PostScript Level 2 integrates the original PostScript language, all 
+    previous language extensions, and new language features into the 
+    core PostScript language imaging model. 
+
+
+------------------------------
+
+Subject: 11.3 [ Color Extensions ] 
+
+    The color extensions were added to the language in 1988 to provide 
+    more complete color functionality. With the original PostScript 
+    language, color could be specified using the red-green-blue (RGB) 
+    and hue-saturation-brightness (HSB) color models. 
+
+    The color extensions include cyan-magenta-yellow-black (CMYK) color 
+    model, black generation and undercolor removal functions, screen 
+    and transfer functions for four separate color components, and a 
+    colorimage operator for rendering color sampled images. The color 
+    extensions are currently found in PostScript color printers from 
+    Canon, QMS, Oce, and NEC as well as all implementations of the 
+    Display PostScript system. 
+
+
+------------------------------
+
+Subject: 11.4 [ Composite Font Extensions ] 
+
+    The composite font technology is a general solution that extends 
+    the basic PostScript language font mechanism to enable the encoding 
+    of very large character sets and handle non-horizontal writing 
+    modes. 
+
+    A Type 1 PostScript font has room for encoding only 256 distinct 
+    characters. A typical Japanese font has over 7,000 Kanji, katakana 
+    and hiragana characters. The composite font technology allows you 
+    to create one ``composite'' font that is made up from any number of 
+    ``base'' fonts. In addition, the composite font technology allows 
+    you to include two sets of metrics (character spacing details) in 
+    the font: one for a horizontal-writing mode, and one for a 
+    vertical-writing mode. 
+
+
+------------------------------
+
+Subject: 11.5 [ Display PostScript Extensions ] 
+
+    The Display PostScript extensions address the needs of using the 
+    PostScript language imaging model in a display environment. It 
+    includes extensions to deal specifically with displays and 
+    windowing systems as well as many optimized operators to increase 
+    performance which is critical in an interactive display environment 
+    [ (and printers) ] . 
+
+
+------------------------------
+
+Subject: 11.6 [ Overview of Level 2 Features ] 
+
+
+------------------------------
+
+Subject: 11.7 Filters 
+
+
+
+    * A filter transforms data as it is being read from or written to a 
+      file. The language supports filters for ASCII encoding of binary 
+      data, compression and decompression, and embedded subfiles. 
+      Properly used, these filters reduce the storage and transmission 
+      cost of page descriptions, especially ones containing sampled 
+      images. Benefits: Reduced storage requirements, greater 
+      performance. 
+
+
+    * ASCII encoding of binary data: ASCII/85 (represent binary data in 
+      ASCII format with only a 125 % expansion of data), and ASCII/HEX 
+      (current method of representing binary data in ASCII format but 
+      with a 200 % expansion of data). Benefits: Compact representation 
+      of binary data in a portable ASCII representation. 
+
+
+    * Compression and decompression filters: CCITT Group 3 & 4 
+      (monochrome images), run-length encoding (monochrome and 
+      grayscale images), LZW ( 2:1 compression of text files), DCT 
+      (20-200:1 compression of color images using the proposed JPEG 
+      standard). Benefits: Improved performance due to reduced 
+      transmission times. PostScript files on disk can also be made 
+      much smaller, saving disk space. 
+
+
+------------------------------
+
+Subject: 11.8 Binary Encoding 
+
+    In addition to the standard ASCII encoding, the language syntax 
+    includes two binary-encoded representations. These binary encodings 
+    improve efficiency of generation, representation, and 
+    interpretation. However, they are less portable than the ASCII 
+    encoding and are suitable for use only in controlled environments. 
+    Benefits: performance, compactness. 
+
+
+------------------------------
+
+Subject: 11.9 Optimized graphics operators 
+
+
+
+    * Rectangle operators. New operators for filling, clipping and 
+      stroking rectangles; all highly optimized. For example, rectfill 
+      is 3 times faster than an equivalent moveto, lineto, lineto, 
+      lineto, closepath, fill. Benefits: performance and convenience. 
+
+
+    * Graphics state objects provide a fast way to switch between 
+      graphics states, which define the current line weight, color, 
+      font, etc. In existing printers, graphics states are stored on a 
+      stack, so accessing an arbitrary graphics state is somewhat 
+      cumbersome. With graphics state objects, the graphics state can 
+      be associated with a name, and retrieved by simply requesting the 
+      name. Benefits: Performance, convenience. 
+
+
+    * Halftone specification. New halftone dictionaries provide a more 
+      precise way of specifying the halftone dots, and makes switching 
+      between halftone screens faster. (The spot function is not 
+      reinterpreted.) Benefits: Performance, convenience, enhanced 
+      functionality. 
+
+
+    * User paths are self-contained procedures that consists entirely 
+      of path construction operators and their coordinate operands. 
+      User path operators perform path construction and painting as a 
+      single operation; this is both convenient and efficient. There is 
+      a user path cache to optimize interpretation of user paths that 
+      are invoked repeatedly. Benefits: Performance, convenience. 
+
+
+    * Stroke adjustment. For very thin lines, there is a trade-off 
+      between perfect positioning and consistent line width. Depending 
+      on the placement of such a line, it could end up being rendered 
+      as either 1 or 2 pixels wide, which is a noticeable difference. 
+      To account for this, PostScript language programs often include 
+      logic to slightly alter the coordinates of lines for consistent 
+      rendering. With automatic stroke adjustment the interpreter 
+      performs this adjustment to ensure consistent widths. Doing it in 
+      the interpreter rather than in the PostScript language program is 
+      20 - 30 % faster. Benefits: Performance, convenience, improved 
+      quality. 
+
+
+------------------------------
+
+Subject: 11.10 Optimized text operators 
+
+
+
+    * The xyshow operator provides a more natural way for applications 
+      to deal with individual character positioning. Allows 
+      simultaneous track kerning, pair kerning, and justification. 
+      Benefits: Performance, convenience. 
+
+
+    * The selectfont operator optimizes switching between fonts. It 
+      does the work of 3 Level 1 operators: findfont, scalefont, and 
+      setfont and has been optimized by using a caching mechanism. 
+      Benefits: Performance, convenience. 
+
+
+------------------------------
+
+Subject: 11.11 Forms 
+
+
+
+    * A form is a self-contained description of any arbitrary graphics, 
+      text, and sampled images that are to be painted multiple times on 
+      each of several pages or several times at different locations on 
+      a single page. 
+
+
+    * With the new forms feature, you can define a base form whose 
+      representation stays cached between pages, so only information 
+      that changes between forms will need to be interpreted for each 
+      page. The representation used to cache the form may vary from 
+      device to device depending on the available resources, such as 
+      memory and/or hard disk space. In some cases, the actual 
+      rasterized form will be saved, in other cases, an intermediate 
+      representation (such as a display list) may be saved. Benefits: 
+      End-users will benefit by improved performance. 
+
+
+    * This makes forms processing faster and provide a natural 
+      framework for ISVs implementing a forms functionality in their 
+      application. Benefits: Convenience for ISVs. 
+
+
+    * Besides the traditional concept of ``forms,'' some other examples 
+      of forms include: Letterhead, stationary, overhead presentation 
+      backgrounds, repetitive symbols in a CAD drawing such as screws 
+      (mechanical drawing) or windows (architectural drawing), complex 
+      background blends in 35mm slides. Benefits: Enhanced 
+      functionality and application of PostScript printers in a variety 
+      of different environments. 
+
+
+------------------------------
+
+Subject: 11.12 Patterns 
+
+
+
+    * The new pattern color space provides the ability to establish a 
+      pattern as the current color. Subsequent use of operators such as 
+      fill, stroke, and show apply ``paint'' that is produced by 
+      replicating (or tiling) a small graphical figure called a pattern 
+      cell at fixed intervals in x and y to cover the areas to be 
+      painted. The appearance of a pattern cell is defined by a 
+      PostScript language procedure, which can include any arbitrary 
+      graphics, text, and sampled images. The shape of the pattern cell 
+      need not be rectangular, and the spacing of tiles can differ from 
+      the size of the pattern cell. Benefits: Enhanced functionality, 
+      performance, convenience. 
+
+
+    * For efficiency, the representation of the pattern cell may be 
+      cached. When cached, the execution of the procedure that defines 
+      the pattern need be done only once for the current pattern. The 
+      pattern cache is similar to the font cache. Benefits: 
+      Performance. 
+
+
+    * Multiple colors can be specified in the pattern or the pattern 
+      can be used as a mask to paint a color defined in some other 
+      color space. Benefits: Enhanced functionality 
+
+
+    * For display environments, this feature will allow patterns to be 
+      represented in a resolution independent manner. Until now, 
+      patterns have typically been represented by arrangements of 
+      pixels. This resolution-dependent representation does not work 
+      well when trying to image the pattern at a variety of different 
+      resolutions. 
+
+
+------------------------------
+
+Subject: 11.13 Images 
+
+    There are several enhancements to the facilities for painting 
+    sampled images: use of any color space, 12-bit component values, 
+    direct use of files as data sources, and additional decoding and 
+    rendering options. Benefits: Convenience, performance, quality. 
+
+
+------------------------------
+
+Subject: 11.14 Composite Fonts 
+
+
+
+    * Provides the basic machinery for non-Roman character sets. 
+      Enables the encoding of very large character sets and 
+      non-horizontal writing modes. Benefits: Enhanced functionality. 
+
+
+    * Provides a page description language for international business. 
+      Composite font technology makes printers more international. The 
+      same font technology can be used worldwide, and will provide 
+      support for companies that must work in today's international 
+      business environment. Benefits: Enhanced functionality. 
+
+
+    * Advantages not limited to foreign languages - also useful for 
+      strictly Roman printers: allows the creation of a single 
+      composite font that combines two or more fonts. For example, you 
+      may wish to combine a textual font (such as Times-Roman) with a 
+      graphical font (such as Zapf-Dingbats), and have all characters 
+      at their disposal within a single font. Other uses of composite 
+      fonts: IBM extended character set, and expert sets (such as Adobe 
+      Garamond). Benefits: Enhanced functionality and increased 
+      performance by minimizing switching between fonts. 
+
+
+------------------------------
+
+Subject: 11.15 New Color Spaces 
+
+
+
+    * CMYK color model and support for color images. Enhanced 
+      functionality. This will encourage more ISVs to use the color 
+      operators, because the operators will be widely available (The 
+      printer itself may not be able to print in color, but the 
+      PostScript language program won't generate errors when the 
+      operators for CMYK color are used.) 
+
+
+    * PostScript Level 2 supports several device-independent color 
+      spaces based on the CIE 1931 (XYZ)-space. CIE-based color 
+      specification enables a page description to specify color in a 
+      way that is related to human visual perception. The goal of the 
+      CIE standard is that a given CIE-based color specification should 
+      produce consistent results on different color output devices, 
+      independent of variations in marking technology, ink colorants, 
+      or screen phosphors. True device-independent color specification. 
+      Improved color matching between devices. 
+
+
+    * PostScript Level 2 supports three classes of color spaces: device 
+      independent, special, and device dependent. 
+
+    The following device independent color spaces are standard: 
+
+    The CIEBasedABC color space is defined in terms of a two-stage, 
+    non- linear transformation of the CIE 1931 (XYZ)-space. The 
+    formulation of the CIEBasedABC color space models a simple zone 
+    theory of color vision, consisting of a non-linear trichromatic 
+    first stage combined with a non-linear opponent color second stage. 
+    This formulation allows colors to be digitized with minimum loss of 
+    fidelity; this is important in sample images. 
+
+    Special cases of CIEBasedABC include a variety of interesting and 
+    useful color spaces, such as the CIE 1931 (XYZ)-space, a class of 
+    calibrated RGB spaces, a class of opponent color spaces such as the 
+    CIE 1976 (L*a*b*)-space and the NTSC, SECAM, and PAL television 
+    spaces. 
+
+    The CIEBased A color space is a one-dimensional and usually 
+    achromatic analog of CIEBasedABC. 
+
+    The following special color spaces are standard: 
+
+
+
+    * The Pattern color space enables painting with a ``color'' defined 
+      as a pattern, a graphical figure used repeatedly to cover the 
+      areas that are to be painted. See the discussion of patterns for 
+      more information. 
+
+
+    * The Indexed color space provides a way to map from small integers 
+      to arbitrary colors in a different color space such as a device 
+      independent color space. 
+
+
+    * The Separation color space provides control over either the 
+      production of a color separation or the application of a device 
+      colorant, depending on the nature and configuration of the 
+      device. 
+
+    The following device dependent color spaces are standard: 
+
+
+
+    * The DeviceGray color space is equivalent to the existing 
+      PostScript language's gray color model. 
+
+
+    * The DeviceRGB color space is equivalent to the existing 
+      PostScript language's red-green-blue (RGB) color model. 
+
+
+    * The DeviceCMYK color space is equivalent to the existing 
+      PostScript language's cyan-magenta-yellow-black (CMYK) color 
+      model. 
+
+
+------------------------------
+
+Subject: 11.16 New screening/halftoning technology 
+
+
+
+    * Improved algorithms for determining the angles and frequencies 
+      used for halftone screens. The improvements fall into two primary 
+      categories: general improvements, and improvements specific to 
+      color separations. 
+
+
+    * General improvements: (1) The new algorithms yield a 10 % 
+      improvement in the speed of the setscreen and image operators; 
+      (2) Earlier version of PostScript software could produce halftone 
+      screens only for certain angle and frequency combinations. Enough 
+      of these combinations were available so that any requested screen 
+      could be fairly well approximated by one of the available angle 
+      and frequency combinations. In contrast, the improved halftoning 
+      algorithms can provide as much as a ten-fold increase in the 
+      number of angle-frequency combinations that are available, 
+      depending on the device resolution and the available memory. 
+      Benefits: Increased performance and higher quality halftone 
+      screens. 
+
+
+    * Improvements specific to color separations: An additional feature 
+      is available that enables PostScript software to generate 
+      extremely accurate screen angles and frequencies. The screens 
+      produced by this method can achieve an angular accuracy of within 
+      05 degrees or better, depending on such parameters as exact 
+      screen angle requested, device resolution, and memory available 
+      for use by the algorithm. Benefits: Extremely high-quality color 
+      separations that approach the quality that previously was 
+      available only from high-end, color electronic pre-press systems. 
+
+
+------------------------------
+
+Subject: 11.17 Improved printer support features 
+
+
+
+    * Page device setup provides a device independent framework for 
+      specifying the requirements of a page description and for 
+      controlling both standard features, such as the number of copies, 
+      and optional features, such as duplex printing, paper trays, 
+      paper sizes, and other peripheral features. 
+
+
+    * Applications developers will be able to write a single driver for 
+      a variety of different PostScript printers. The same code can be 
+      used to address printer specific features whether the features 
+      exist in the printer or not. If the feature is not in the 
+      printer, the application can decide how to best respond to the 
+      lack of the feature. Benefits: Enhanced functionality. ISVs 
+      benefit by having a more uniform method for accessing printer 
+      specific features. End users benefit by having software that will 
+      take advantage of their printer's features. 
+
+
+------------------------------
+
+Subject: 11.18 Interpreter parameters 
+
+    Administrative operations, such as system configuration and 
+    changing input-output device parameters, are now organized in a 
+    more systematic way. Allocation of memory and other resources for 
+    specific purposes is under software control. For example, there are 
+    parameters controlling the maximum amount of memory to be used for 
+    VM, font cache, pattern cache, and halftone screens. Benefits: 
+    Flexibility. 
+
+
+------------------------------
+
+Subject: 11.19 Resources 
+
+
+
+    * A resource is a collection of named objects that either reside in 
+      VM or can be located and brought into VM on demand. There are 
+      separate categories of resources with independent name spaces - 
+      for example, fonts and forms are distinct resource categories. 
+
+
+    * The language includes convenient facilities for locating and 
+      managing resources. 
+
+
+------------------------------
+
+Subject: 11.20 Dictionaries 
+
+    Many Level 2 operators expect a dictionary operand that contains 
+    key-value pairs specifying parameters to the operator. Language 
+    features controlled in this way include halftones, images, forms, 
+    patterns, and device setup. This organization allows for optional 
+    parameters and future extensibility. For convenience in using such 
+    operators, the PostScript language syntax includes new tokens, 
+  
+  
+   << and >>,
+  
+  
+    to construct a dictionary containing the bracketed key-value pairs. 
+    Benefits: Convenience, extensibility. 
+
+
+------------------------------
+
+Subject: 11.21 When did Level 2 products come available? 
+
+    The first Level 2 products were available in early 1991. Level 2 
+    printers will soon be much more common. 
+
+
+------------------------------
+
+Subject: 11.22 Are Level 1 and Level 2 implementations compatible? 
+
+    [ Mostly, but not fully. The incompatibilities are of sufficient 
+    magnitude that when QMS introduced its first Level 2 compatible 
+    printer, it provided a ``Level 1'' mode for backward compatibility, 
+    for handling jobs which wouldn't run in Level 2. This should not be 
+    taken as too much of a criticism...some of the incom- patibilities 
+    from Level 1 to Level 2 involved fixing design mistakes in Level 1, 
+    or tightening up definitions which had been loose in Level 1 (where 
+    careless application writers had made use of the looseness, writing 
+    not to the language specification but to particular 
+    implementations.) ] 
+
+    (C) 1990 Adobe Systems Incorporated. All rights reserved. 
+    PostScript, Display PostScript, and Adobe are trademarks of Adobe 
+    Systems Incorporated registered in the U.S. All other product names 
+    are trademarks or registered trademarks of their respective 
+
+    Acknowledgments 
+
+
+    This FAQ was compiled based heavily on the contributions of and 
+    with the help of Henry McGilton, Dick Dunn, Howard Gayle, Dan 
+    Carrigan, Carl Orthlieb, Ed Garay, Robert Lerche, Bruno Hall, Tom 
+    Epperly, and Chris Lewis. 
+
+    Also thanks to contributors Paul Balyoz, Karl Berry, Jerry Black, 
+    Charles Cashion, Jim DeLaHunt, Leonard Hamey, Chris Herborth, Steve 
+    Kinzler, Bill Lee, Timo Lehtinen, Carl Lydick, Otto Makela, Bill 
+    Pringle, Tony Valsamidis, and Jamie Zawinski. 
+
+    Special thanks to Ken Porter, who originally compiled and organized 
+    this FAQ. 
+
+  
+  
+  Ver  Date     Reason
+  ----------------------------------------------------------------
+  1.00 12-18-90 Creation by Ken Porter
+  1.06  5-29-91 expanded on EPS explanation, general updates
+  2.00 10-25-92 Brought up to date and expanded, by Jon Monsarrat
+  2.1   5-21-93 Revised because of new comp.sources.postscript group.
+  2.2  12-26-93 Finally incorporated all the '93 comments and suggestions.
+  2.3  07-07-94 Incorporated early '94 comments and suggestions.  
+  
+  
+    This FAQ is copyright (C) 1994 by Jonathan Monsarrat. Permission is 
+    granted to freely edit and distribute as long as this copyright 
+    notice is included. 
+
+    This document was written with the LaTeX language and formatted by 
+    LameTeX, the PostScript hacker's LaTeX. 
+  
+%! Jon Monsarrat     jgm@cs.brown.edu     moderator, comp.sources.postscript %!
+(LcHdBidZi_hdQ6[PaVa1b4c6F"J4b/>$O<)(di_zk{:UFfUg;ABF)(2n>]Eh:u?<)(P"M#R\(:$T<)
+([gXfSZ]f\\dZbeZeb^fH;`?dR=ZS7)(K P!U!: H<)(9l9cCf:o?$)(7W4]6`:X;=)(U"W#_%:"R-)
+(A 5"<&Y%K"F"M,M,S\)i3e.M5F_PZR9>lP-)(wBxEuEs7x;uBq:q<q>hFh7o:=Nj<)(Z#]#b#:$R-)
+(m+m+k3S!R+d,;"^<)(GFP\\RamZf;TAP{X{fd<{C7)(4840N2:6N=)([ Z#^&:!c<)(<%?$C$:#8<)
+(D!J"L#:!B<)/a{def}def/M{exch}a/S{repeat}a/Q{{40 add}if}a 18{{}forall/R M a/x 2
+/y 3/z 5 3{R M mod 1 eq a}S x Q M y Q moveto 57 sub{3{y Q M x Q M 6 2 roll}S
+curveto}S z{fill}{stroke}ifelse}S showpage
+
+  
+

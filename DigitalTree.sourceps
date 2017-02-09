@@ -1,0 +1,27 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/leftmargin    2 cm def /rightmargin 2   cm def
+/bottommargin  1 cm def /topmargin   1.5 cm def
+
+/ss 0.15 def % Square Size
+/distort 1.5 def % How much should we multiply in 'x' direction
+/c1 [0.5 1 0.5] def
+/c2 [0.2 0.5 0.2] def
+
+/backgrounds [ 
+  [[0 0 1 1][0.7 0.7 0.7]]
+  [[0.5 ss 2 div distort mul sub  0.5 ss 2 mul sub  0.5 ss 2 div distort mul add  0.5 ss 2 mul add] c1 ]
+  [[0.5 ss distort mul sub  0.5 ss 2 mul sub  0.5  0.5 ss sub] c2]
+  [[0.5 ss distort mul sub  0.5  0.5  0.5 ss add] c2]
+  [[0.5  0.5 ss sub  0.5 ss distort mul add  0.5] c2]
+  [[0.5  0.5 ss add  0.5 ss distort mul add  0.5 ss 2 mul add] c2]
+] def
+
+
+my_init
+
+begin_file () begin_page  
+
+end_page end_file

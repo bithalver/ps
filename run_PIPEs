@@ -1,0 +1,8 @@
+cat cl.ps | \
+gwPIPE "/PS_ALLNETS [ [[1 0][0 0][0 1][1 1]] [[2 3 4 <</colors [0 0 1]>>][1 2 3 <</threads 10 /colors [0 0.5 1]>>]]] def" \
+"/PS_XSIZE 2000 def" "/PS_YSIZE 1000 def" \
+"/PS_LINEWIDTH 0 def" \
+"/PS_BACKGROUND [0.8 1 0.8] def" |\
+ps2jpegPIPE >a.jpeg
+xv a.jpeg
+rm a.jpeg

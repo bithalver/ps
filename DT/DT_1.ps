@@ -1,0 +1,50 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+my_init
+
+/leftmargin    2 cm def /rightmargin 1 cm def
+/bottommargin  2 cm def /topmargin   1.5 cm def
+
+/threads 10 def
+/style 0 def
+
+% /h 8 22.5 basiccplane def
+
+
+/n1 4 0 basicplane def
+
+/h1 n1 4 1 3 2 1 connectbasicplane def
+/n2 h1 2 3 4 2 1 connectbasicplane def
+/h2 n2 4 1 3 2 1 connectbasicplane def
+/n3 h2 2 3 4 2 1 connectbasicplane def
+/h3 n3 4 1 3 2 1 connectbasicplane def
+/n4 h3 2 3 4 2 1 connectbasicplane def
+/h4 n4 4 1 3 2 1 connectbasicplane def
+/n5 h4 2 3 4 2 1 connectbasicplane def
+/h5 n5 4 1 3 2 1 connectbasicplane def
+/n6 h5 2 3 4 2 1 connectbasicplane def
+/h6 n6 4 1 3 2 1 connectbasicplane def
+
+
+n1 [4 1 2] nthpoints pcn
+h1 [1 2 3] nthpoints 4 -1 roll paddn
+n2 [4 1 2] nthpoints 4 -1 roll paddn
+h2 [1 2 3] nthpoints 4 -1 roll paddn
+n3 [4 1 2] nthpoints 4 -1 roll paddn
+h3 [1 2 3] nthpoints 4 -1 roll paddn
+n4 [4 1 2] nthpoints 4 -1 roll paddn
+h4 [1 2 3] nthpoints 4 -1 roll paddn
+n5 [4 1 2] nthpoints 4 -1 roll paddn
+h5 [1 2 3] nthpoints 4 -1 roll paddn
+n6 [4 1 2] nthpoints 4 -1 roll paddn
+h6 [1 2 3] nthpoints 4 -1 roll paddn
+
+/test exch def
+
+%%Page: "DT" DT
+clearallnets 
+test nadd
+gsave fitto1page drawallnets showpage grestore
+%%EndPage: "DT" DT

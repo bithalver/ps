@@ -1,0 +1,29 @@
+%!PS-Adobe-3.0
+%%DocumentData: Clean7Bit
+%%EndComments
+
+/PS_THREADS 18 def
+
+my_init
+
+/oa { add dup 12 gt {12 sub} if } def /kv { sub dup  1 lt {12 add} if } def
+
+/k 12 15 basicplane def
+
+begin_file
+
+1 1 4 { /rit exch def
+  1 1 4 { /minta exch def
+    [(12in_) rit 1 string cvs (_) minta 1 string cvs] addstrings begin_page
+    1 1 12 { /so exch def
+      so 1 eq
+        { k [ so dup 6 oa dup rit oa ] nthpoints pcn }
+        { 
+          so 1 sub minta mod 0 eq 
+          { k [ so dup 6 oa dup rit oa ] nthpoints 4 -1 roll paddn } if 
+        } ifelse
+    } for
+    nadd  end_page
+  } for
+} for
+end_file
